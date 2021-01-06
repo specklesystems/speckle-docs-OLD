@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: VuepressDeploy
 
 # Controls when the action will run. 
 on:
@@ -27,4 +27,4 @@ jobs:
         TARGET_REPO: username/repo
         TARGET_BRANCH: master
         BUILD_SCRIPT: yarn && yarn build
-        BUILD_DIR: blog/.vuepress/dist/
+        BUILD_DIR: .vuepress/dist/
