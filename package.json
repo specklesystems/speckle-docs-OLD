@@ -9,8 +9,8 @@
   },
   "repository": "https://github.com/specklesystems/speckle-docs/Speckle Docs",
   "scripts": {
-    "dev": "vuepress dev src",
-    "build": "vuepress build src"
+    "dev": "vuepress dev",
+    "build": "vuepress build"
   },
   "license": "MIT",
   "devDependencies": {
