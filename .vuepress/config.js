@@ -1,11 +1,11 @@
 const { description } = require('../package')
 
 module.exports = {
-  base: '/speckle-docs/',
+  base: '/',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Docs Boilerplate',
+  title: 'Speckle Docs',
   
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
@@ -22,7 +22,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
-
+  theme: "book",
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *
@@ -36,26 +36,36 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Guide',
-        link: '/guide/',
+        text: 'User Guide',
+        link: '/user/',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'Developer Docs',
+        link: '/dev/'
       },
       {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
+        text: 'Speckle Website',
+        link: 'https://speckle.systems'
       }
     ],
     sidebar: {
-      '/guide/': [
+      '/user/': [
         {
-          title: 'Guide',
+          title: 'User Guide 🤷',
           collapsable: false,
           children: [
             '',
-            'using-vue',
+            'getting-started',
+          ]
+        }
+      ],
+      '/dev/': [
+        {
+          title: 'Developer Docs 👩‍💻',
+          collapsable: false,
+          children: [
+            '',
+            'speckle-sharp',
           ]
         }
       ],
