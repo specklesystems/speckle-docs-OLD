@@ -16,7 +16,7 @@ jobs:
         node-version: '12.x'
     - run: npm ci
     - run: npm run build
-
+    - run: cp CNAME .vuepress/dist/CNAME
     - name: Init new repo in dist folder and commit generated files
       run: |
         cd .vuepress/dist
