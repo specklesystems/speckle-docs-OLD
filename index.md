@@ -1,8 +1,8 @@
 ---
 home: true
-# heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: Documentation on everything Speckle
-# actionText: Quick Start →
+heroImage: assets/box.png
+tagline: Coming soon!
+#actionText: Quick Start →
 # actionLink: /guide/
 # features:
 # - title: Feature 1 Title
@@ -13,3 +13,4 @@ tagline: Documentation on everything Speckle
 #   details: Feature 3 Description
 footer: Made by Speckle with ❤️
 ---
+

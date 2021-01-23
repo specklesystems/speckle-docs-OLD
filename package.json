@@ -7,7 +7,7 @@
     "name": "Speckle",
     "email": "matteo@speckle.systems"
   },
-  "repository": "https://github.com/specklesystems/speckle-docs/Speckle Docs",
+  "repository": "https://github.com/specklesystems/speckle-docs",
   "scripts": {
     "dev": "vuepress dev",
     "build": "vuepress build"
@@ -16,7 +16,5 @@
   "devDependencies": {
     "vuepress": "^1.5.3"
   },
-  "dependencies": {
-    "vuepress-theme-book": "0.0.5"
-  }
+  "dependencies": {}
 }

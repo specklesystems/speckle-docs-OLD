@@ -2,38 +2,27 @@ const { description } = require('../package')
 
 module.exports = {
   base: '/',
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#title
-   */
   title: 'Speckle Docs',
   
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#description
-   */
   description: description,
-
-  /**
-   * Extra tags to be injected to the page HTML `<head>`
-   *
-   * ref：https://v1.vuepress.vuejs.org/config/#head
-   */
   head: [
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'theme-color', content: '#0480FB' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
-  theme: "book",
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
    *
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
-    editLinks: false,
+    //repo: 'https://github.com/specklesystems/speckle-docs/',
+    editLinks: true,
     docsDir: '',
     editLinkText: '',
-    lastUpdated: false,
+    activeHeaderLinks: false,
+    lastUpdated: true,
+    logo: '/assets/logo-docs.png',
     nav: [
       {
         text: 'User Guide',
@@ -41,7 +30,27 @@ module.exports = {
       },
       {
         text: 'Developer Docs',
-        link: '/dev/'
+        items: [
+          {
+            text: 'Getting Started',
+            link: '/dev/getting-started/',
+          },
+          {
+            text: 'Desktop & SDKs', 
+            items: [
+              {text: 'Speckle Sharp 🦈', link: '/dev/speckle-sharp/'},
+              {text: 'Speckle Py 🐍', link: '/dev/speckle-py/'}
+            ]
+          },
+          {
+            text: 'Web',
+            items: [
+              {text: 'Server', link: '/dev/server/'},
+              {text: 'Frontend', link: '/dev/frontend/'},
+              {text: '3D Viewer', link: '/dev/viewer/'}
+            ]
+          },
+        ]
       },
       {
         text: 'Speckle Website',
@@ -55,20 +64,52 @@ module.exports = {
           collapsable: false,
           children: [
             '',
-            'getting-started',
+            'connectors',
           ]
         }
       ],
-      '/dev/': [
+      '/dev/getting-started/': [
         {
           title: 'Developer Docs 👩‍💻',
           collapsable: false,
           children: [
-            '',
-            'speckle-sharp',
+            ''
           ]
         }
       ],
+      '/dev/speckle-sharp/': [
+        {
+          title: 'Speckle Sharp 🦈',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        },
+        {
+          title: 'Core 🎱',
+          collapsable: false,
+          children: [
+            'core',
+            'transports'
+          ]
+        },
+        {
+          title: 'Kits 🛠',
+          collapsable: false,
+          children: [
+            'kits',
+            'objects'
+          ]
+        },
+        {
+          title: 'Connectors 🔌',
+          collapsable: false,
+          children: [
+            'dynamo',
+            'grasshopper'
+          ]
+        }
+      ]
     }
   },
 
