@@ -1,10 +1,3 @@
 # Getting Started
 
-
-Welcome and bla bla!
-
-## Introduction
-
-### What is Speckle?
-
-### Hows does Speckle work?
+This section is work in progress 🚧 ! Please check back again soon :)

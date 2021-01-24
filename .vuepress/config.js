@@ -73,7 +73,9 @@ module.exports = {
           title: 'Developer Docs 👩‍💻',
           collapsable: false,
           children: [
-            ''
+            '',
+            'contributing',
+            'code-of-conduct',
           ]
         }
       ],
@@ -106,7 +108,9 @@ module.exports = {
           collapsable: false,
           children: [
             'dynamo',
-            'grasshopper'
+            'grasshopper',
+            'revit',
+            'rhino'
           ]
         }
       ]
