@@ -123,6 +123,15 @@ module.exports = {
           ]
         }
       ],
+      '/dev/speckle-py/': [
+        {
+          title: 'Speckle Py 🐍',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        }
+      ],
       '/dev/web/': [
         {
           title: 'Speckle Web 🌍',
