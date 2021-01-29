@@ -173,7 +173,11 @@ module.exports = {
           title: 'Deep Dives 🤿',
           collapsable: false,
           children: [
-            ''
+            '',
+            'base',
+            'transports',
+            'apps-auth',
+            'desktopui'
           ]
         }
       ]
