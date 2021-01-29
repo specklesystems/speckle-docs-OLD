@@ -6,6 +6,6 @@ You can download the latest version of Speckle Manager [[LINK HERE]]
 
 ![screenshot of the manager](../.vuepress/public/assets/manager.png)
 
-Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
+Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager. If you don't have a Server to use yet, continue on to the [next section](/user/web) to learn how to spin up a dev server.
 
 The Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the "Connectors" menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions become available.

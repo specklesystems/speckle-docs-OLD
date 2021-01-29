@@ -15,6 +15,9 @@ Before you can spin up a local dev server, you'll need to install the following:
 
 Speckle Manager is our desktop application for managing local accounts and connectors. You will need to install it before you can use the Speckle Connectors. Get the latest version [LINK HERE]()
 
+The Manager allows you to add and remove Speckle accounts to your local environment. Simply head to the "Accounts" page to add your first account. You'll need to enter a server URL (which can just be `http://localhost:3000` - continue to the next section to learn how to spin up a dev server) then follow the instructions to log in/register and authorise the Manager. From Manager, you'll also be able to set a Default Account which is the account any Desktop Connectors will use if you don't specify an account.
+
+The Manager also has a "Connectors" page where you can view, install, update, and uninstall our official Desktop Connectors.
 ## Web
 
 [Speckle Web](/dev/web) is a monorepo containing the three web components of Speckle: the Server, the Frontend, and the Viewer. To get started, clone the repo from [here](https://github.com/specklesystems/speckle-server).

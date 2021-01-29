@@ -8,21 +8,21 @@ If you don't already have a Speckle 2.0 Server to use, this section will walk yo
 
 There are a few dependencies you'll need before you can set up your local server:
 
-**Node**
+**1. Node**
 
 We recommend using version 12.
 
-**Postgres**
+**2. Postgres**
 
 You can get Postgres for any platform [here](https://www.postgresql.org/download/). You'll also probably want a GUI like [PgAdmin](https://www.pgadmin.org/download/).
 
-**Redis**
+**3. Redis**
 
 If you are on MacOS, you can download Redis [here](https://jpadilla.github.io/redisapp)
 
 For Windows, you can download Redis [here](https://github.com/microsoftarchive/redis/releases/tag/win-3.0.504)
 
-**Lerna**
+**4. Lerna**
 
 This one is easy - all you need to do is open up a terminal and run the following:
 
