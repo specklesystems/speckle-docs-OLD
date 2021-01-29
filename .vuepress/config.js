@@ -3,7 +3,7 @@ const { description } = require('../package')
 module.exports = {
   base: '/',
   title: 'Speckle Docs',
-  
+
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#0480FB' }],
@@ -36,18 +36,18 @@ module.exports = {
             link: '/dev/getting-started/',
           },
           {
-            text: 'Desktop & SDKs', 
+            text: 'Desktop & SDKs',
             items: [
-              {text: 'Speckle Sharp 🦈', link: '/dev/speckle-sharp/'},
-              {text: 'Speckle Py 🐍', link: '/dev/speckle-py/'}
+              { text: 'Speckle Sharp 🦈', link: '/dev/speckle-sharp/' },
+              { text: 'Speckle Py 🐍', link: '/dev/speckle-py/' }
             ]
           },
           {
             text: 'Web',
             items: [
-              {text: 'Server', link: '/dev/server/'},
-              {text: 'Frontend', link: '/dev/frontend/'},
-              {text: '3D Viewer', link: '/dev/viewer/'}
+              { text: 'Server', link: '/dev/web/server/' },
+              { text: 'Frontend', link: '/dev/web/frontend/' },
+              { text: '3D Viewer', link: '/dev/web/viewer/' }
             ]
           },
         ]
@@ -60,12 +60,22 @@ module.exports = {
     sidebar: {
       '/user/': [
         {
+          title: 'Quickstart ⌛',
+          collapsable: false,
+          children: [
+            'quickstart'
+          ]
+        },
+        {
           title: 'User Guide 🤷',
           collapsable: false,
           children: [
-            ''
+            '',
+            'manager',
+            'web',
+            'connectors'
           ]
-        }
+        },
       ],
       '/dev/getting-started/': [
         {
@@ -110,6 +120,36 @@ module.exports = {
             'grasshopper',
             'revit',
             'rhino'
+          ]
+        }
+      ],
+      '/dev/web/': [
+        {
+          title: 'Speckle Web 🌍',
+          collapsable: false,
+          children: [
+            ''
+          ]
+        },
+        {
+          title: 'Server ☁',
+          collapsable: false,
+          children: [
+            'server'
+          ]
+        },
+        {
+          title: 'Frontend 🔮',
+          collapsable: false,
+          children: [
+            'frontend'
+          ]
+        },
+        {
+          title: 'Viewer 📦',
+          collapsable: false,
+          children: [
+            'viewer'
           ]
         }
       ]
