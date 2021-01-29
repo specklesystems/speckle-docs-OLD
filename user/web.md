@@ -69,11 +69,11 @@ By now the frontend should be finished bootstrapping. You're ready to power up!
 
 ## Running Locally
 
-These are the steps you'll need to go through to start up you local Speckle Server.
+Here's all you need to do to start up you local Speckle Server:
 
 1.  Make sure you've got both Redis and Postgres running. You'll also want to create a Postgres database called `speckle2_dev`.
 2.  Head into the `packages/frontend` folder and run `npm run dev`
 3.  Finally, in `packages/server` run `npm run dev`
 
-You should now see the shiny new frontend at [`localhost:3000`](http://localhost:3000)! Also check out [`localhost:3000/graphql`](http://localhost:3000/graphql) to have a play with the explorer.
+You should now see the shiny new frontend at [`localhost:3000`](http://localhost:3000)! Also check out [`localhost:3000/graphql`](http://localhost:3000/graphql) to have a play with the API in the GraphQL explorer.
 
