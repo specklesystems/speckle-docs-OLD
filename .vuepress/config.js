@@ -175,6 +175,7 @@ module.exports = {
           children: [
             '',
             'base',
+            'decomposition',
             'transports',
             'apps-auth',
             'desktopui'
