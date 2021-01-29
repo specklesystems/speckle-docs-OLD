@@ -44,6 +44,7 @@ module.exports = {
           },
           {
             text: 'Web',
+            link: '/dev/web/',
             items: [
               { text: 'Server', link: '/dev/web/server/' },
               { text: 'Frontend', link: '/dev/web/frontend/' },
@@ -53,6 +54,10 @@ module.exports = {
         ]
       },
       {
+        text: 'Deep Dives',
+        link: '/deep-dives/'
+      },
+      {
         text: 'Speckle Website',
         link: 'https://speckle.systems'
       }
@@ -60,7 +65,7 @@ module.exports = {
     sidebar: {
       '/user/': [
         {
-          title: 'Quickstart ⌛',
+          title: 'Quickstart 🏃‍♀️',
           collapsable: false,
           children: [
             'quickstart'
@@ -116,6 +121,7 @@ module.exports = {
           title: 'Connectors 🔌',
           collapsable: false,
           children: [
+            'connectors',
             'dynamo',
             'grasshopper',
             'revit',
@@ -159,6 +165,15 @@ module.exports = {
           collapsable: false,
           children: [
             'viewer'
+          ]
+        }
+      ],
+      '/deep-dives/': [
+        {
+          title: 'Deep Dives 🤿',
+          collapsable: false,
+          children: [
+            ''
           ]
         }
       ]
