@@ -33,12 +33,12 @@ module.exports = {
         items: [
           {
             text: 'Getting Started',
-            link: '/dev/getting-started/',
+            link: '/dev/'
           },
           {
             text: 'Desktop & SDKs',
             items: [
-              { text: 'Speckle Sharp 🦈', link: '/dev/speckle-sharp/' },
+              { text: 'Speckle Sharp 🦈', link: '/dev/core/' },
               { text: 'Speckle Py 🐍', link: '/dev/speckle-py/' }
             ]
           },
@@ -78,11 +78,12 @@ module.exports = {
             '',
             'manager',
             'web',
-            'connectors'
+            'connectors',
+            'interoperability'
           ]
         },
       ],
-      '/dev/getting-started/': [
+      '/dev/': [
         {
           title: 'Developer Docs 👩‍💻',
           collapsable: false,
@@ -91,30 +92,25 @@ module.exports = {
             'contributing',
             'code-of-conduct',
           ]
-        }
-      ],
-      '/dev/speckle-sharp/': [
+        },
+        {
+          title: 'Speckle Web 🌍',
+          collapsable: false,
+          children: [
+            'web',
+            'server',
+            'frontend',
+            'viewer'
+          ]
+        },
         {
           title: 'Speckle Sharp 🦈',
           collapsable: false,
           children: [
-            ''
-          ]
-        },
-        {
-          title: 'Core 🎱',
-          collapsable: false,
-          children: [
             'core',
-            'transports'
-          ]
-        },
-        {
-          title: 'Kits 🛠',
-          collapsable: false,
-          children: [
+            'transports',
             'kits',
-            'objects'
+            'objects',
           ]
         },
         {
@@ -125,46 +121,15 @@ module.exports = {
             'dynamo',
             'grasshopper',
             'revit',
-            'rhino'
+            'rhino',
+            'desktopui'
           ]
-        }
-      ],
-      '/dev/speckle-py/': [
+        },
         {
           title: 'Speckle Py 🐍',
           collapsable: false,
           children: [
-            ''
-          ]
-        }
-      ],
-      '/dev/web/': [
-        {
-          title: 'Speckle Web 🌍',
-          collapsable: false,
-          children: [
-            ''
-          ]
-        },
-        {
-          title: 'Server ☁',
-          collapsable: false,
-          children: [
-            'server'
-          ]
-        },
-        {
-          title: 'Frontend 🔮',
-          collapsable: false,
-          children: [
-            'frontend'
-          ]
-        },
-        {
-          title: 'Viewer 📦',
-          collapsable: false,
-          children: [
-            'viewer'
+            'speckle-py'
           ]
         }
       ],
@@ -178,7 +143,6 @@ module.exports = {
             'decomposition',
             'transports',
             'apps-auth',
-            'desktopui'
           ]
         }
       ]
