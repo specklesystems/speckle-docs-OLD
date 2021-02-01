@@ -46,9 +46,9 @@ module.exports = {
             text: 'Web',
             link: '/dev/web/',
             items: [
-              { text: 'Server', link: '/dev/web/server/' },
-              { text: 'Frontend', link: '/dev/web/frontend/' },
-              { text: '3D Viewer', link: '/dev/web/viewer/' }
+              { text: 'Server', link: '/dev/server/' },
+              { text: 'Frontend', link: '/dev/frontend/' },
+              { text: '3D Viewer', link: '/dev/viewer/' }
             ]
           },
         ]
@@ -89,6 +89,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'quickstart',
             'contributing',
             'code-of-conduct',
           ]
