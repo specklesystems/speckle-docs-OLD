@@ -20,6 +20,7 @@ module.exports = {
     editLinks: true,
     docsDir: '',
     editLinkText: '',
+    sidebarDepth: 2,
     activeHeaderLinks: false,
     lastUpdated: true,
     logo: '/assets/logo-docs.png',
