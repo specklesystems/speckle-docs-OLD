@@ -2,11 +2,6 @@
 
 Core is the .NET SDK for Speckle 2.0. It uses .NET Standard 2.0 and has been tested on Windows and MacOS.
 
-## Building
-
-Make sure you clone this repository together with its submodules: `git clone https://github.com/specklesystems/Core.git -recursive`.
-Afterwards, just restore all the NuGet packages and hit Build!
-
 ## Developing
 
 This project is evolving fast, to better understand how to use Core we suggest checking out the Unit and Integration tests. Running the integration tests locally requires a local server running on your computer.
