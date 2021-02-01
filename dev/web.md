@@ -1,4 +1,4 @@
-# Speckle Web
+# Getting Started
 
 If you don't already have a Speckle 2.0 Server to use, this section will walk you through how to get a dev server up and running locally.
 
