@@ -141,6 +141,7 @@ module.exports = {
             '',
             'base',
             'decomposition',
+            'kits',
             'transports',
             'apps-auth',
           ]
