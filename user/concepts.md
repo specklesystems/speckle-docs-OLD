@@ -2,6 +2,15 @@
 
 This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2.0, this is a great place to start!
 
+## The Base Object
+
+### What is it?
+
+
+### What does it contain?
+
+### How do I use it?
+
 ## Streams
 
 ### What are they?
@@ -60,8 +69,12 @@ Maybe you're working on a smaller scale and your stream focusses on a single fac
 
 ### What are they?
 
+Commits are a bit like a "save" of the most current version of your data. They allow you to track the changes in your stream and easily see who changed what and when.
 
+Each time you send data, you are creating a commit which contains all the objects in your stream along with additional information such as the time, date, and author of the commit. The author of a commit can optionally add a *commit message* which is a short description of what they've done and what has changed. Like a stream, each commit is assigned a generated `commitId` which can be used to identify and retrieve it. You can go back in time and look at the history of your stream through the series of commits.
 
 ### How do I use them?
 
+If you have used a connector and you've sent data to a stream, you've already used them! Each time data is sent to a stream, a commit is created. To help you keep track of the changes in your stream, it is a good idea to add a commit message that succinctly describes what the commit contains. Some of the connectors pre-populate a default commit message for you, but you are still free to write your own to add more detail.
 
+When receiving data in a connector, you have the option of either staying synced with the latest commit or receiving a specific commit based on the `commitId`. If you choose to stay on the latest commit, you'll see a notification when someone else has sent new data to the stream. When you see this, you'll be able to use the receive function to get the new commit and update your file.
