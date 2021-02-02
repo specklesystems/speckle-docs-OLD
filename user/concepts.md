@@ -42,6 +42,26 @@ To see step-by-step guides on how to get from AEC Software A to AEC Software B, 
 
 ## Branches
 
+### What are they?
+
+Branches give you an extra layer of organisation within a stream. All streams start with a single default branch called `main`. If you would like to "branch" off from this `main` branch and work on multiple different versions of your data in parallel or if you want to segment separate parts of your data from each other, that is where branches come in. 
+
+### How do I use them?
+
+You can add as many additional branches to your streams as you would like. All the connectors give you the option of creating new branches and switching between them. 
+
+Let's say you have a very large model you want to add to a single stream, but your collaborators from different disciplines don't want to receive the whole model every time. You could split the model up into different branches: `structural`, `mep`, `archi`. 
+
+Perhaps you have a complex model that encompasses a site with multiple separate buildings. You could still contain the whole model in a single stream, but create a separate branch for each building: `building A`, `building B`, `building C`. 
+
+Maybe you're working on a smaller scale and your stream focusses on a single facade. However, you would like to present a couple different options to the client. The stream could be split into `option A`, `option B`, and `option C` which you could then easily switch between to explore the different options in your next meeting.
 
 ## Commits
+
+### What are they?
+
+
+
+### How do I use them?
+
 
