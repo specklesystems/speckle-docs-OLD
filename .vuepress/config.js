@@ -77,6 +77,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'concepts',
             'manager',
             'web',
             'connectors',
