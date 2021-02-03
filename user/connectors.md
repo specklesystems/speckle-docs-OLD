@@ -4,9 +4,11 @@ Before you can start sending and receiving data using the Desktop Connectors, yo
 
 ## Grasshopper
 
+This section is work in progress 🚧 ! Please check back again soon 😃
 
 ## Dynamo
 
+This section is work in progress 🚧 ! Please check back again soon 😃
 
 ## Revit & Rhino
 
