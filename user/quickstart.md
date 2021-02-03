@@ -6,7 +6,7 @@ Pressed for time? Too impatient to read through a lot of docs? Already familiar 
 
 Before you can use Speckle, you'll need to download the Speckle Manager. Manager is a desktop application that allows you to add Speckle accounts to your computer and use them with the Desktop Connectors. It is also where you can manage and install the Desktop Connectors.
 
-It is available for both Windows and MacOS and you can find the latest version [LINK HERE]().
+It is available for both Windows and MacOS and you can find the latest version [here](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe).
 
 ![speckle manager home page](../.vuepress/public/assets/manager.png)
 
@@ -16,7 +16,7 @@ The web frontend is your gateway to the server. From here, you can browse server
 
 ### Adding an Account
 
-Whether or not you already have a Speckle account, you can get started by opening up the Manager and heading to the "Accounts" page. From here, click the big "+ Add" button and paste in your server URL. If your company doesn't already have an internal one, you can use our testing server [LINK HERE!!!](). This will open the server in the browser where you can either log in or register to authorise the manager.
+Whether or not you already have a Speckle account, you can get started by opening up the Manager and heading to the "Accounts" page. From here, click the big "+ Add" button and paste in your server URL. If your company doesn't already have an internal one, you can use our testing server [COMING SOON](). This will open the server in the browser where you can either log in or register to authorise the manager.
 
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
 

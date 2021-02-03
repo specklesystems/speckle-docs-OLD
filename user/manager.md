@@ -6,7 +6,7 @@ Speckle Manager is a desktop application that handles accounts and connectors on
 
 Speckle Manager is available for both Windows and MacOS.
 
-You can download the latest version of Speckle Manager [[LINK HERE]]
+You can download the latest version of Speckle Manager [here](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe).
 
 ![screenshot of the manager](../.vuepress/public/assets/manager.png)
 
