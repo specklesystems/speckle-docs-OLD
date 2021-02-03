@@ -3,7 +3,7 @@ home: true
 heroImage: assets/box.png
 tagline: >
   Discover Speckle.
-  Unleash the power of your CAD and BIM data. From end user step-by-step guides to developer SDK and API documentation - we got you covered.
+  Unleash the power of your CAD and BIM data. From end user step-by-step guides to developer SDK and API documentation - we've got you covered.
 actionText: Quick Start →
 actionLink: /user/
 features:

@@ -24,7 +24,7 @@ Following instructions on how to get started debugging and contributing to this 
 
 ### Server
 
-In order to test Speckle in all its glory you'll need a server running, you can run a local one by simply following the [Server instructions](/dev/speckle-server).
+In order to test Speckle in all its glory you'll need a server running, you can run a local one by simply following the [Server Guide](/dev/web).
 
 If you're facing any errors make sure Postgress and Redis are up and running.
 

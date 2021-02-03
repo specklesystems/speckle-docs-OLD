@@ -3,7 +3,7 @@ const { description } = require('../package')
 module.exports = {
   base: '/',
   title: 'Speckle Docs',
-  
+
   description: description,
   head: [
     ['meta', { name: 'theme-color', content: '#0480FB' }],
@@ -20,6 +20,7 @@ module.exports = {
     editLinks: true,
     docsDir: '',
     editLinkText: '',
+    sidebarDepth: 2,
     activeHeaderLinks: false,
     lastUpdated: true,
     logo: '/assets/logo-docs.png',
@@ -33,24 +34,29 @@ module.exports = {
         items: [
           {
             text: 'Getting Started',
-            link: '/dev/getting-started/',
+            link: '/dev/'
           },
           {
-            text: 'Desktop & SDKs', 
+            text: 'Desktop & SDKs',
             items: [
-              {text: 'Speckle Sharp 🦈', link: '/dev/speckle-sharp/'},
-              {text: 'Speckle Py 🐍', link: '/dev/speckle-py/'}
+              { text: 'Speckle Sharp 🦈', link: '/dev/core/' },
+              { text: 'Speckle Py 🐍', link: '/dev/speckle-py/' }
             ]
           },
           {
             text: 'Web',
+            link: '/dev/web/',
             items: [
-              {text: 'Server', link: '/dev/server/'},
-              {text: 'Frontend', link: '/dev/frontend/'},
-              {text: '3D Viewer', link: '/dev/viewer/'}
+              { text: 'Server', link: '/dev/server/' },
+              { text: 'Frontend', link: '/dev/frontend/' },
+              { text: '3D Viewer', link: '/dev/viewer/' }
             ]
           },
         ]
+      },
+      {
+        text: 'Deep Dives',
+        link: '/deep-dives/'
       },
       {
         text: 'Speckle Website',
@@ -60,56 +66,87 @@ module.exports = {
     sidebar: {
       '/user/': [
         {
+          title: 'Quickstart 🏃‍♀️',
+          collapsable: false,
+          children: [
+            'quickstart'
+          ]
+        },
+        {
           title: 'User Guide 🤷',
           collapsable: false,
           children: [
-            ''
+            '',
+            'concepts',
+            'manager',
+            'web',
+            'connectors',
+            'interoperability'
           ]
-        }
+        },
       ],
-      '/dev/getting-started/': [
+      '/dev/': [
         {
           title: 'Developer Docs 👩‍💻',
           collapsable: false,
           children: [
             '',
+            'quickstart',
             'contributing',
             'code-of-conduct',
           ]
-        }
-      ],
-      '/dev/speckle-sharp/': [
+        },
+        {
+          title: 'Speckle Web 🌍',
+          collapsable: false,
+          children: [
+            'web',
+            'server',
+            'frontend',
+            'viewer'
+          ]
+        },
         {
           title: 'Speckle Sharp 🦈',
           collapsable: false,
           children: [
-            ''
-          ]
-        },
-        {
-          title: 'Core 🎱',
-          collapsable: false,
-          children: [
             'core',
-            'transports'
-          ]
-        },
-        {
-          title: 'Kits 🛠',
-          collapsable: false,
-          children: [
+            'transports',
             'kits',
-            'objects'
+            'objects',
           ]
         },
         {
           title: 'Connectors 🔌',
           collapsable: false,
           children: [
+            'connectors',
             'dynamo',
             'grasshopper',
             'revit',
-            'rhino'
+            'rhino',
+            'desktopui'
+          ]
+        },
+        {
+          title: 'Speckle Py 🐍',
+          collapsable: false,
+          children: [
+            'speckle-py'
+          ]
+        }
+      ],
+      '/deep-dives/': [
+        {
+          title: 'Deep Dives 🤿',
+          collapsable: false,
+          children: [
+            '',
+            'base',
+            'decomposition',
+            'kits',
+            'transports',
+            'apps-auth',
           ]
         }
       ]
