@@ -51,15 +51,19 @@ Finally, there are more advanced components for creating and expanding custom ob
 
 #### Desktop UIs
 
-Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them. The Sender has a light blue "Send" button while a Receiver has a dark blue "Receive" button. 
+Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them. 
 
-[[ UPDATED SCREENSHOTS ]]
+![desktopui-home-screenshot](https://user-images.githubusercontent.com/7717434/106737903-2e2a5180-660f-11eb-996f-dc3c45ae7c90.png)
 
-WHAT A SENDER DO
+The big blue button in the bottom right corner will let you add an existing stream or create a new one. Once you've added a stream, you'll see a new Sender card on the home screen. You can click the centre "0 objects" button to add objects to the stream using selection or filters. Once you've added objects, you can send by clicking the big blue Send button. If you want to add a commit message, just click the three dots menu to the right of the Send button.
 
-WHAT A RECEIVER DO
+![desktopui-new-stream](https://user-images.githubusercontent.com/7717434/106741747-08ec1200-6614-11eb-9162-829670899da9.gif)
 
-ADD COLLABS
+Clicking on a stream card will let you edit it's name and description, add collaborators, or remove the stream from the file.
+
+A Receiver has a commit selection button in the centre instead of an objects selection button. This button opens a menu that lets you choose if you want to receive a specific commit or just the latest commit.
+
+![desktopui-switch-cards](https://user-images.githubusercontent.com/7717434/106739209-c5dc6f80-6610-11eb-8625-01b19240c612.gif)
 
 #### Further Reading
 
@@ -69,3 +73,6 @@ If you'd like more detailed step-by-step guides for sending data from AEC Softwa
 
 ## Conclusion
 
+That's all, folks! You are now successfully set up and have the tools to send and receive your data using Speckle. If you need further guidance on anything we covered here, head over to the more detailed [User Guide](/user/). If you want to learn more about the code side of things, the [Dev Docs](/dev/) should be your next stop. If you're looking for more in-depth reading on how Speckle does its Speckling, have a browse through the [Deep Dives](/deep-dives/).
+
+If you're enjoying Speckle, have any questions, or would like to share any feedback or suggestions, please drop by our [Community Forum](https://discourse.speckle.works/) and join the conversation.
