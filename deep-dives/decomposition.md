@@ -4,7 +4,7 @@ This post was originally part of the Making Speckle 2.0 series of posts on the c
 
 ## Preamble
 
-Good morning everyone in the @Speckle_Insider! The previous post covered the new [base Speckle object](https://discourse.speckle.works/t/core-2-0-the-base-object/782). This one covers an equally important concern, namely how Speckle deals with the structure and composition of design data. 
+The previous post covered the new [base Speckle object](https://discourse.speckle.works/t/core-2-0-the-base-object/782). This one covers an equally important concern, namely how Speckle deals with the structure and composition of design data. 
 
 ## Blobs and Trees
 
