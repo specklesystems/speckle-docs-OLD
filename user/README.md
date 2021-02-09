@@ -4,7 +4,7 @@
 
 Welcome to Speckle - the open source data platform for architecture, engineering, and construction. Speckle liberates your data from proprietary file formats and closed source software and puts it back into your hands. 
 
-We currently have Connectors for some of the most popular AEC software including Grasshopper, Rhino, Dynamo, and Revit with even more in development. Since everything is and always will be open source, you are empowered to extend and adapt it, create your own Connectors, and build your own automations and applications on top of Speckle. You can read more about what we do on [our website](https://speckle.systems/).
+We currently have Connectors for some of the most popular AEC software including Grasshopper, Rhino, Dynamo, and Revit with even more in development. Since everything is and always will be open source, you are empowered to extend and adapt it, create your own Connectors, and build your own automations & applications on top of Speckle. You can read more about what we do on [our website](https://speckle.systems/)
 
 ## This Guide
 

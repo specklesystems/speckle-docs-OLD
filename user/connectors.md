@@ -1,5 +1,7 @@
 # Desktop Connectors
 
+## Prerequisites 
+
 Before you can start sending and receiving data using the Desktop Connectors, you'll need to install the [Speckle Manager](/user/manager). This will allow you to add your Speckle account to your computer and install the different Connectors.
 
 ## Grasshopper
@@ -18,9 +20,14 @@ Revit and Rhino share the same UI, so this section will apply to both applicatio
 
 The home page of the Desktop UI is where you can see all the streams you have in your currently open file. The streams are represented as cards on the home page and can be either _Senders_ or _Receivers_. At the bottom right of the window is a big blue button which is how you add new streams to your current file.
 
-![desktopui-home-screenshot](https://user-images.githubusercontent.com/7717434/106737903-2e2a5180-660f-11eb-996f-dc3c45ae7c90.png)
+![desktopui home page with labelled buttons](https://user-images.githubusercontent.com/7717434/107382404-badd7f80-6ae7-11eb-9941-2265b1cc5748.png)
+
 
 Senders and Receivers both have three buttons across the bottom. The leftmost one is the branch switching and creation button and the rightmost one is the Send/Receive button. On a Receiver, the centre button allows you to choose which commit you would like to receive. On a Sender, the centre button lets you add objects from your model to the stream.
+
+![desktopui stream details page with labelled buttons](https://user-images.githubusercontent.com/7717434/107384024-7e128800-6ae9-11eb-8e2d-76dec6f54b03.png)
+
+Clicking on a stream card will take you to the details page. Here you can edit the stream's name or description, manage collaborators, or remove it from the connector.
 
 ### Sending Data
 
