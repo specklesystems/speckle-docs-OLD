@@ -1,7 +1,5 @@
 # Introduction
 
-## Introduction
-
 > ⚠ This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+ ⚠
 
 ## Developing & Debugging

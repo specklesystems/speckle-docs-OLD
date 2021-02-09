@@ -65,13 +65,15 @@ While that's doing it's thing, you can pop over to `packages/server`. This is th
 
 In this folder, you'll see a file called `.env-example`. Copy this file, rename it to simply `.env` and fill in the blanks. Make sure this new `.env` file is in the `/server` folder alongside the example file.
 
+Finally, head into Postgres and create a database called `speckle2_dev`.
+
 By now the frontend should be finished bootstrapping. You're ready to power up! 
 
 ## Running Locally
 
 Here's all you need to do to start up you local Speckle Server:
 
-1.  Make sure you've got both Redis and Postgres running. You'll also want to create a Postgres database called `speckle2_dev`.
+1.  Make sure you've got instances of both Redis and Postgres running.
 2.  Head into the `packages/frontend` folder and run `npm run dev`
 3.  Finally, in `packages/server` run `npm run dev`
 
