@@ -46,6 +46,8 @@ To see step-by-step guides on how to get from AEC Software A to AEC Software B, 
 
 Branches give you an extra layer of organisation within a stream. All streams start with a single default branch called `main`. If you would like to "branch" off from this `main` branch and work on multiple different versions of your data in parallel or if you want to segment separate parts of your data from each other, that is where branches come in. 
 
+![branch menu from the Speckle frontend](https://user-images.githubusercontent.com/7717434/107365334-8dd3a180-6ad4-11eb-8d6f-47bc42b80da4.png)
+
 ### How do I use them?
 
 You can add as many additional branches to your streams as you would like. All the connectors give you the option of creating new branches and switching between them. 
@@ -60,9 +62,12 @@ Maybe you're working on a smaller scale and your stream focusses on a single fac
 
 ### What are they?
 
-Commits are a bit like a "save" of the most current version of your data. They allow you to track the changes in your stream and easily see who changed what and when.
+Commits are a bit like a "save" of the most current version of your data - a point in time where you have "committed" your changes. They allow you to track the changes in your stream and easily see who changed what and when.
 
-Each time you send data, you are creating a commit which contains all the objects in your stream along with additional information such as the time, date, and author of the commit. The author of a commit can optionally add a *commit message* which is a short description of what they've done and what has changed. Like a stream, each commit is assigned a generated `commitId` which can be used to identify and retrieve it. You can go back in time and look at the history of your stream through the series of commits.
+Each time you send data, you are creating a new commit which contains all the objects in your stream along with additional information such as the time, date, and author of the commit. The author of a commit can optionally add a *commit message* which is a short description of what they've done and what has changed. Like a stream, each commit is assigned a generated `commitId` which can be used to identify and retrieve it. You can go back in time and look at the history of your stream through the series of commits.
+
+![a commit card from the Speckle frontend](https://user-images.githubusercontent.com/7717434/107365302-814f4900-6ad4-11eb-894f-3094863ad7c6.png)
+
 
 ### How do I use them?
 
@@ -76,7 +81,7 @@ The `Base` object is probably not something you'll have to deal with directly wh
 
 ### What is it?
 
-Sending a collection of Revit elements? Each of those elements is being converted into a Speckle equivalent which inherits from the `Base` class. The commit you just created when sending those elements? That is also a `Base` which contains all the Revit elements nested within it.
+Sending a collection of Revit elements? Each of those elements is being converted into a Speckle Object equivalent which inherits from the `Base` class. The commit you just created when sending those elements? That is also a `Base` which contains all the Revit elements nested within it.
 
 The `Base` object is the building block of Speckle data. It is a dynamic object that is the "base" of all other Speckle objects. The `Base` and other objects that inherit from it have a combination of pre-defined properties (eg `id`, `speckle_type`, `units`) and dynamic properties which can be added on the fly. Property values can also be other `Base` objects such as a `RevitColumn` containing a `Line` representing its base line.
 
