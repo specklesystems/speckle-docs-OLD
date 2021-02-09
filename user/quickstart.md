@@ -53,7 +53,7 @@ Finally, there are more advanced components for creating and expanding custom ob
 
 Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them. 
 
-![desktopui-home-screenshot](https://user-images.githubusercontent.com/7717434/106737903-2e2a5180-660f-11eb-996f-dc3c45ae7c90.png)
+![desktopui home page with labelled buttons](https://user-images.githubusercontent.com/7717434/107382404-badd7f80-6ae7-11eb-9941-2265b1cc5748.png)
 
 The big blue button in the bottom right corner will let you add an existing stream or create a new one. Once you've added a stream, you'll see a new Sender card on the home screen. You can click the centre "0 objects" button to add objects to the stream using selection or filters. Once you've added objects, you can send by clicking the big blue Send button. If you want to add a commit message, just click the three dots menu to the right of the Send button.
 
