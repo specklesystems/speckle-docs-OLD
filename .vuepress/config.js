@@ -159,5 +159,13 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
+    [
+      "vuepress-plugin-matomo",
+      {
+        'siteId': 5,
+        'trackerUrl': "https://speckle.matomo.cloud/"
+      },
+
+    ]
   ]
 }
