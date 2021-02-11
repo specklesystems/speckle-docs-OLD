@@ -47,6 +47,12 @@ Receiving data is a very simple operation. You just need to create a `Receive` n
 
 ### Creating custom objects
 
+There's several different ways to create custom speckle objects using the Grasshopper. One of them is using the `Create Speckle Object` node.
+
+This node has _variable input parameters_, meaning that you can modify the ammount of input nodes it has by zooming into the component.
+
+You can also modify the name of this inputs by right-clicking the input name. In the right-click menu, you will also find the options to change the **access type** of that input. Meaning, if the object property should be a single item, or a list.
+
 ### Using Streams in GH
 
 > If you want to know more about streams, go [here](./concepts.md#streams) 👈
