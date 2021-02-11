@@ -1,3 +1,6 @@
+---
+permalink: /
+---
 # Getting Started
 
 ## Introduction
