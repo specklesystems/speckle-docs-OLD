@@ -15,7 +15,41 @@ You'll also find 2 extra categories marked as `Dev`. These categories hold nodes
 - Dev/Conversion: Conversion + serialization nodes.
 - Dev/Transports: Not sure what transports are? Read up on [XXX](https://XXX)
 
+### Sending Data
+
+Let's look at how we would send some data in grasshopper. First, start by creating a new `Send` node.
+
+In order to send some data to the server, we will also need to _create a stream_. We can do this by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
+
+Once you've got the three nodes in your canvas, you are ready to get started!
+
+#### Creating a stream
+
+Select the desired account from the dropdown and connect it to the `Stream Create` node.
+
+If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
+
+#### Adding objects
+
+In order to select which objects to send in grasshopper, we just need to connect the desired nodes to the `Data` input in the `Send` node. The sender supports any type of data, in any structure (item, list, datatree), and will convert any Rhino objects into a Speckle compatible format when necessary.
+
+#### Sending data
+
+The only thing left to do is to connect the `Stream Create` output to the `Stream` input in the `Send` node, and then press the **Send button**.
+
+You should see the progress report in the lower side of the Send node, and once finished, you will get a notification with some basic info.
+
+To view the data you just sent in Grasshopper, just right-click the `Send` node and select the `View commit ...` option. This should open a new browser window loading the _stream url_. You can share that url with any collaborators so they can receive the data.
+
+### Receiving Data
+
+Receiving data is a very simple operation. You just need to create a `Receive` node, and connect to it a panel with the _stream url_ we obtained from the send operation.
+
+### Creating custom objects
+
 ### Using Streams in GH
+
+> If you want to know more about streams, go [here](./concepts.md#streams) 👈
 
 In _Grasshopper_, you can work with streams in several ways. All nodes that accept `Streams` as input, or that output `Streams` as a result, will be identified by the **Stream Parameter** icon.
 
@@ -28,6 +62,8 @@ You can also instantiate a stream by copy/pasting the stream url from your serve
 #### Working with branches
 
 Branches cannot be created or directly selected in the Grasshopper connector, but all `Stream` type inputs accept _branch url's_ that you can copy directly from the server's website.
+
+> Want to know more about `branches` in Speckle? Go [here](./concepts.md#branches) 👈
 
 ### Object conversion and Kits
 
@@ -53,7 +89,7 @@ You can also distinguish them by the message displaying the selected kit under t
 
 ##### Send node
 
-![alt](/assets/grasshopper/nodes-send.png)
+![Send node](/assets/grasshopper/nodes-send.png)
 
 The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
 
@@ -77,7 +113,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Receive node
 
-![alt](/assets/grasshopper/nodes-receive.png)
+![Receive node](/assets/grasshopper/nodes-receive.png)
 
 The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
 
@@ -93,7 +129,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Local Send node
 
-![alt](/assets/grasshopper/nodes-send-local.png)
+![Send local node](/assets/grasshopper/nodes-send-local.png)
 
 The **Local Send** node performs sending operations directly to the users's local database.
 
@@ -109,7 +145,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Local receive node
 
-![alt](/assets/grasshopper/nodes-receive-local.png)
+![Receive local node](/assets/grasshopper/nodes-receive-local.png)
 
 The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
@@ -127,7 +163,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Create Speckle Object
 
-![alt](/assets/grasshopper/nodes-create-object.png)
+![Create speckle object node.](/assets/grasshopper/nodes-create-object.png)
 
 The **Create Speckle Object** node allows for the creation of custom objects that can be sent via Speckle. This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ section, you should see a `+/-` sign that will allow you to add/remove properties from the object. You can also modify the name of these properties, as well as their _access type_.
 
@@ -149,7 +185,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Create Speckle Object by Key/Value pairs
 
-![alt](img/nodes-create-object-keyval.png)
+![Create object by key/value](img/nodes-create-object-keyval.png)
 
 This node will create a new speckle object using a list of `Keys` to be used as the object's properties, and a list of values (or nested list) to assign to each property.
 
@@ -165,7 +201,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Expand Speckle Object
 
-![alt](/assets/grasshopper/nodes-expand-object.png)
+![Expand Object node](/assets/grasshopper/nodes-expand-object.png)
 
 The **Expand Speckle Object** works in the exact oposite way as the [Create Speckle Object](#create-speckle-object). When a `Base` object is plugged into the input, it will automatically create the outputs for each of the `Base` objects properties.
 
@@ -182,7 +218,7 @@ All outputs will appear in alphabetical order regardless on the order they were 
 
 ##### Extend Speckle Object
 
-![alt](/assets/grasshopper/nodes-extend-object.png)
+![Extend object node](/assets/grasshopper/nodes-extend-object.png)
 
 The **Extend Speckle Object** provides a way to add new properties to an already existing `Base` object.
 
@@ -224,7 +260,7 @@ Output is dynamically generated based on the user selected schema.
 
 ##### Accounts node
 
-![alt](/assets/grasshopper/nodes-accounts.png)
+![Accounts node](/assets/grasshopper/nodes-accounts.png)
 
 The **Accounts** node provides a fast way of selecting different Speckle accounts. Uses the native grasshopper
 
@@ -244,7 +280,7 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 ##### Get stream
 
-![alt](/assets/grasshopper/nodes-stream-get.png)
+![Stream get node](/assets/grasshopper/nodes-stream-get.png)
 
 The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
 
@@ -259,7 +295,7 @@ The **Stream Get** node will try to find an existing `Stream`, given it's unique
 
 ##### List streams
 
-![alt](/assets/grasshopper/nodes-stream-list.png)
+![Stream list node](/assets/grasshopper/nodes-stream-list.png)
 
 The **List Streams** node returns a specified ammount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
 
@@ -274,7 +310,7 @@ The **List Streams** node returns a specified ammount of streams available in an
 
 ##### Stream details
 
-![alt](/assets/grasshopper/nodes-stream-details.png)
+![Strean details node](/assets/grasshopper/nodes-stream-details.png)
 
 The **Stream Details** node returns all relevant information related to a specific `Stream`.
 
@@ -295,7 +331,7 @@ The **Stream Details** node returns all relevant information related to a specif
 
 ##### Stream update
 
-![alt](/assets/grasshopper/nodes-stream-update.png)
+![Stream update node](/assets/grasshopper/nodes-stream-update.png)
 
 The **Stream Update** node allows for updating the _name_, _description_ and _link sharing_ (which will make your data publicly available to read by anyone with the _stream url_)
 
@@ -312,19 +348,39 @@ The **Stream Update** node allows for updating the _name_, _description_ and _li
 
 #### Dev - Conversion
 
+These nodes where developed exclusively for testing/development purposes. If you don't know what these are, you most likely won't ever need them.
+
 ##### Convert to Speckle node
+
+![Convert to Speckle node](/assets/grasshopper/nodes-convert-tospeckle.png)
+
+The **Convert to Speckle** node will try to convert any Rhino objects (such as lines, curves, meshes...) into Speckle objects.
+
+This node was developed for testing/development purposes, as any _Kit Selection_-capable component will already perform this conversion step.
 
 ##### Convert to Native node
 
+The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
+
+This node was developed for testing/development purposes, as any _Kit Selection_-capable component will already perform this conversion step.
+
 ##### Serialize Speckle objects node
 
+![alt](/assets/grasshopper/node-serialize.png)
+
+The **Serialize objects** node will convert any Speckle object into `JSON` formatted text.
+
 ##### Deserialize Speckle objects node
+
+![alt](/assets/grasshopper/nodes-deserialize.png)
+
+The **Deserialize objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
 #### Dev - Transports
 
 **Transports** represent a connection to the specific place your data is being saved to, and can be retreived from.
 
-The most used transport at the moment is the **Server Transport**, as it is used to send and receive data from a specific Speckle server; although others are used too.
+The most used transport at the moment is the **Server Transport**, as it is used to send and receive data from a specific Speckle server; although others are available too.
 
 ##### Server Transport
 
