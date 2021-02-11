@@ -17,5 +17,7 @@
     "@vuepress/plugin-medium-zoom": "^1.8.0",
     "vuepress": "^1.5.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vuepress-plugin-matomo": "^1.0.2"
+  }
 }
