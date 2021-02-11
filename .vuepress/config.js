@@ -85,7 +85,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Interoperability 🌪',
+          title: 'Interoperability ⚡',
           collapsable: false,
           children: [
             'interoperability',
