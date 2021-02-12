@@ -1,4 +1,4 @@
-# About Core
+# Core
 
 Core is the .NET SDK for Speckle 2.0. It uses .NET Standard 2.0 and has been tested on Windows and MacOS.
 
