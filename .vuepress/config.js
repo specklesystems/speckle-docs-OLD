@@ -81,7 +81,6 @@ module.exports = {
             'manager',
             'web',
             'connectors',
-            'interoperability'
           ]
         },
         {

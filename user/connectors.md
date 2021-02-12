@@ -61,4 +61,4 @@ On a Receiver, you get a new button which lets you control which commit you want
 
 ![desktopui-switch-cards](https://user-images.githubusercontent.com/7717434/106739209-c5dc6f80-6610-11eb-8625-01b19240c612.gif)
 
-On a Receiver card, receiving is as easy as pressing the blue "Receive" button.
+On a Receiver card, receiving is as easy as pressing the blue "Receive" button. If you've never received the data before, the connector will fetch all the objects from your Speckle server. If you have already received some of the objects before, the process will be quicker as the objects will be fetched from your local cache.
