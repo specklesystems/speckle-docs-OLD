@@ -21,6 +21,8 @@ Let's look at how we would send some data in grasshopper. First, start by creati
 
 In order to send some data to the server, we will also need to _create a stream_. We can do this by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
 
+![Nodes for sending data](/assets/grasshopper/sending-data-necessary%20nodes.png)
+
 Once you've got the three nodes in your canvas, you are ready to get started!
 
 #### Creating a stream
