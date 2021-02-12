@@ -1,12 +1,12 @@
 # Desktop Connectors
 
-## Prerequisites 
+## Prerequisites
 
 Before you can start sending and receiving data using the Desktop Connectors, you'll need to install the [Speckle Manager](/user/manager). This will allow you to add your Speckle account to your computer and install the different Connectors.
 
 ## Grasshopper
 
-This section is work in progress 🚧 ! Please check back again soon 😃
+[Go to section](./grasshopper/index.md)
 
 ## Dynamo
 
@@ -21,7 +21,6 @@ Revit and Rhino share the same UI, so this section will apply to both applicatio
 The home page of the Desktop UI is where you can see all the streams you have in your currently open file. The streams are represented as cards on the home page and can be either _Senders_ or _Receivers_. At the bottom right of the window is a big blue button which is how you add new streams to your current file.
 
 ![desktopui home page with labelled buttons](https://user-images.githubusercontent.com/7717434/107382404-badd7f80-6ae7-11eb-9941-2265b1cc5748.png)
-
 
 Senders and Receivers both have three buttons across the bottom. The leftmost one is the branch switching and creation button and the rightmost one is the Send/Receive button. On a Receiver, the centre button allows you to choose which commit you would like to receive. On a Sender, the centre button lets you add objects from your model to the stream.
 
@@ -55,9 +54,9 @@ Here's a recap in the form of a snappy gif:
 
 ### Receiving Data
 
-Speckle allows you to send and receive from the same stream. To switch a Sender to a Receiver, just click the double arrow button on the top right hand corner of the stream card. 
+Speckle allows you to send and receive from the same stream. To switch a Sender to a Receiver, just click the double arrow button on the top right hand corner of the stream card.
 
-On a Receiver, you get a new button which lets you control which commit you want to receive. You can either choose to stay up to date with the latest commit or stick to a specific commit. Just press the Commit button and select your desired option. If you choose to stay on the "latest" commit, you won't be updated automatically. You'll see a notification that things have changed and you will be prompted to click the "Receive" button to sync up. 
+On a Receiver, you get a new button which lets you control which commit you want to receive. You can either choose to stay up to date with the latest commit or stick to a specific commit. Just press the Commit button and select your desired option. If you choose to stay on the "latest" commit, you won't be updated automatically. You'll see a notification that things have changed and you will be prompted to click the "Receive" button to sync up.
 
 ![desktopui-switch-cards](https://user-images.githubusercontent.com/7717434/106739209-c5dc6f80-6610-11eb-8625-01b19240c612.gif)
 

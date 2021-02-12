@@ -1,6 +1,6 @@
 ## Grasshopper Connector
 
-![GH Connector components](/assets/grasshopper/speckle-gh-main-tab.png)
+![GH Connector components](./img/speckle-gh-main-tab.png)
 
 Once installed, the **Grasshopper Connector** will appear under the `Speckle 2` tab, or if you use _tab icons_ you'll see our new Speckle logo instead.
 
@@ -21,7 +21,7 @@ Let's look at how we would send some data in grasshopper. First, start by creati
 
 In order to send some data to the server, we will also need to _create a stream_. We can do this by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
 
-![Nodes for sending data](/assets/grasshopper/sending-data-necessary%20nodes.png)
+![Nodes for sending data](./img/sending-data-necessary%20nodes.png)
 
 Once you've got the three nodes in your canvas, you are ready to get started!
 
@@ -61,11 +61,11 @@ You can also modify the name of this inputs by right-clicking the input name. In
 
 In _Grasshopper_, you can work with streams in several ways. All nodes that accept `Streams` as input, or that output `Streams` as a result, will be identified by the **Stream Parameter** icon.
 
-![Stream parameter](/assets/grasshopper/params-stream.png)
+![Stream parameter](./img/params-stream.png)
 
 You can also instantiate a stream by copy/pasting the stream url from your server into a `Panel`.
 
-![Stream url panel](/assets/grasshopper/streams-panel.png)
+![Stream url panel](./img/streams-panel.png)
 
 #### Working with branches
 
@@ -79,17 +79,17 @@ Speckle 2.0 comes with one Kit pre-installed, the `Objects Kit`. This kit is in 
 
 Once a document is open in Grasshopper, you will find a `Speckle 2` application menu that will allow you to specify the appropriate kit to use by default.
 
-![Kit selection menu](/assets/grasshopper/menu-kit-selection.png)
+![Kit selection menu](./img/menu-kit-selection.png)
 
 This will set the kit to be used by any newly created components in your Grasshopper canvas.
 
 When necessary, you can always adjust the kit being used at each individual component by right-clicking it. The _right-click_ menu should display the same kit selection items. This menu should be available on any component that performs object conversions (most object-management, send, receive...).
 
-![Kit selection component menu](/assets/grasshopper/menu-right-click-kit-selection.png)
+![Kit selection component menu](./img/menu-right-click-kit-selection.png)
 
 You can also distinguish them by the message displaying the selected kit under the component.
 
-![Selected kit message](/assets/grasshopper/nodes-create-object.png)
+![Selected kit message](./img/nodes-create-object.png)
 
 ### Nodes
 
@@ -97,14 +97,14 @@ You can also distinguish them by the message displaying the selected kit under t
 
 ##### Send node
 
-![Send node](/assets/grasshopper/nodes-send.png)
+![Send node](./img/nodes-send.png)
 
 The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
 
 There is also an option to set the node to automátically send every time there is a change in the data. You will find this option in the right-click menu of the node.
 
-| ![Activating auto mode in sender](/assets/grasshopper/nodes-send-automode-activate.png) | ![Auto-send mode active in sender](/assets/grasshopper/nodes-send-automode-active.png) |
-| --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| ![Activating auto mode in sender](./img/nodes-send-automode-activate.png) | ![Auto-send mode active in sender](./img/nodes-send-automode-active.png) |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 
 
 This node is capable of [Kit Selection](#object-conversion-and-kits)
@@ -121,7 +121,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Receive node
 
-![Receive node](/assets/grasshopper/nodes-receive.png)
+![Receive node](./img/nodes-receive.png)
 
 The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
 
@@ -137,7 +137,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Local Send node
 
-![Send local node](/assets/grasshopper/nodes-send-local.png)
+![Send local node](./img/nodes-send-local.png)
 
 The **Local Send** node performs sending operations directly to the users's local database.
 
@@ -153,7 +153,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Local receive node
 
-![Receive local node](/assets/grasshopper/nodes-receive-local.png)
+![Receive local node](./img/nodes-receive-local.png)
 
 The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
@@ -171,7 +171,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Create Speckle Object
 
-![Create speckle object node.](/assets/grasshopper/nodes-create-object.png)
+![Create speckle object node.](./img/nodes-create-object.png)
 
 The **Create Speckle Object** node allows for the creation of custom objects that can be sent via Speckle. This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ section, you should see a `+/-` sign that will allow you to add/remove properties from the object. You can also modify the name of these properties, as well as their _access type_.
 
@@ -183,9 +183,9 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 > i.e. If you plug a list of numbers into a `Create Speckle Object` node, depending on the specified access of that property you will get 2 different results:
 >
 > - **Item access**: The result will be a **list** of base objects, with only one item each.
->   ![Item access](/assets/grasshopper/params-base-itemAccess.png)
+>   ![Item access](./img/params-base-itemAccess.png)
 > - **List accesss**: The result will be **one** base object, with the entire list of items saved in the property.
->   ![List Access](/assets/grasshopper/params-base-listAccess.png)
+>   ![List Access](./img/params-base-listAccess.png)
 
 > **Detach/Do not detach**
 >
@@ -201,15 +201,15 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 > When using this component, there is no option to specify a properties `detached` state, so all props will be detached by default.
 
-![Creating an object with keys and values as items](/assets/grasshopper/nodes-create-keyval-item.png)
+![Creating an object with keys and values as items](./img/nodes-create-keyval-item.png)
 
-![Creating an object with keys and values as lists](/assets/grasshopper/nodes-create-keyval-list.png)
+![Creating an object with keys and values as lists](./img/nodes-create-keyval-list.png)
 
 > Notice when creating list items, the data structure must mach. Meaning, the keys and values for each object must start with the same branch index.
 
 ##### Expand Speckle Object
 
-![Expand Object node](/assets/grasshopper/nodes-expand-object.png)
+![Expand Object node](./img/nodes-expand-object.png)
 
 The **Expand Speckle Object** works in the exact oposite way as the [Create Speckle Object](#create-speckle-object). When a `Base` object is plugged into the input, it will automatically create the outputs for each of the `Base` objects properties.
 
@@ -226,7 +226,7 @@ All outputs will appear in alphabetical order regardless on the order they were 
 
 ##### Extend Speckle Object
 
-![Extend object node](/assets/grasshopper/nodes-extend-object.png)
+![Extend object node](./img/nodes-extend-object.png)
 
 The **Extend Speckle Object** provides a way to add new properties to an already existing `Base` object.
 
@@ -244,7 +244,7 @@ This node is capable of [Kit Selection](#object-conversion-and-kits)
 
 ##### Schema Builder
 
-![Schema Builder node](/assets/grasshopper/nodes-schema-builder.png)
+![Schema Builder node](./img/nodes-schema-builder.png)
 
 The **Schema Builder** node will allow for the creation of specific custom objects that are supported by the Speckle Objects Kit.
 
@@ -252,7 +252,7 @@ These include mainly building elements to enhance interoperability between Rhino
 
 When a new **Schema Builder** node is created, a pop-up window will be displayed prompting the user to select a specific object schema. This schema will be used to populate the input/output ports of the node with the appropriate fields.
 
-![Schema builder pop-up](/assets/grasshopper/nodes-schema-builder-popup.png)
+![Schema builder pop-up](./img/nodes-schema-builder-popup.png)
 
 This node is capable of [Kit Selection](#object-conversion-and-kits)
 
@@ -268,7 +268,7 @@ Output is dynamically generated based on the user selected schema.
 
 ##### Accounts node
 
-![Accounts node](/assets/grasshopper/nodes-accounts.png)
+![Accounts node](./img/nodes-accounts.png)
 
 The **Accounts** node provides a fast way of selecting different Speckle accounts. Uses the native grasshopper
 
@@ -276,7 +276,7 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 ##### Create stream
 
-![alt](/assets/grasshopper/nodes-create-stream.png)
+![alt](./img/nodes-create-stream.png)
 
 ###### Inputs
 
@@ -288,7 +288,7 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 ##### Get stream
 
-![Stream get node](/assets/grasshopper/nodes-stream-get.png)
+![Stream get node](./img/nodes-stream-get.png)
 
 The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
 
@@ -303,7 +303,7 @@ The **Stream Get** node will try to find an existing `Stream`, given it's unique
 
 ##### List streams
 
-![Stream list node](/assets/grasshopper/nodes-stream-list.png)
+![Stream list node](./img/nodes-stream-list.png)
 
 The **List Streams** node returns a specified ammount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
 
@@ -318,7 +318,7 @@ The **List Streams** node returns a specified ammount of streams available in an
 
 ##### Stream details
 
-![Strean details node](/assets/grasshopper/nodes-stream-details.png)
+![Strean details node](./img/nodes-stream-details.png)
 
 The **Stream Details** node returns all relevant information related to a specific `Stream`.
 
@@ -339,7 +339,7 @@ The **Stream Details** node returns all relevant information related to a specif
 
 ##### Stream update
 
-![Stream update node](/assets/grasshopper/nodes-stream-update.png)
+![Stream update node](./img/nodes-stream-update.png)
 
 The **Stream Update** node allows for updating the _name_, _description_ and _link sharing_ (which will make your data publicly available to read by anyone with the _stream url_)
 
@@ -360,7 +360,7 @@ These nodes where developed exclusively for testing/development purposes. If you
 
 ##### Convert to Speckle node
 
-![Convert to Speckle node](/assets/grasshopper/nodes-convert-tospeckle.png)
+![Convert to Speckle node](./img/nodes-convert-tospeckle.png)
 
 The **Convert to Speckle** node will try to convert any Rhino objects (such as lines, curves, meshes...) into Speckle objects.
 
@@ -374,13 +374,13 @@ This node was developed for testing/development purposes, as any _Kit Selection_
 
 ##### Serialize Speckle objects node
 
-![alt](/assets/grasshopper/node-serialize.png)
+![alt](./img/node-serialize.png)
 
 The **Serialize objects** node will convert any Speckle object into `JSON` formatted text.
 
 ##### Deserialize Speckle objects node
 
-![alt](/assets/grasshopper/nodes-deserialize.png)
+![alt](./img/nodes-deserialize.png)
 
 The **Deserialize objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
@@ -392,24 +392,24 @@ The most used transport at the moment is the **Server Transport**, as it is used
 
 ##### Server Transport
 
-![Server transport node](/assets/grasshopper/nodes-transports-server.png)
+![Server transport node](./img/nodes-transports-server.png)
 
 Creates a connection to a specific Speckle Server.
 
 ##### SQLite Transport
 
-![SQLite Transport](/assets/grasshopper/nodes-transport-sqlite.png)
+![SQLite Transport](./img/nodes-transport-sqlite.png)
 
 Creates a connection to a specific SQLite database.
 
 ##### Disk Transport
 
-![Disk tranport](/assets/grasshopper/nodes-transport-disk.png)
+![Disk tranport](./img/nodes-transport-disk.png)
 
 Creates a connection to a specific file in the computer's disk, where the data will be saved in JSON format.
 
 ##### Memory Transport
 
-![Memory transport](/assets/grasshopper/nodes-transport-memory.png)
+![Memory transport](./img/nodes-transport-memory.png)
 
 Creates a connection to in-memory storage.
