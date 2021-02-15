@@ -69,8 +69,6 @@ The repo also contains the [DesktopUI](https://github.com/specklesystems/speckle
 
 Currently, we have four Connectors within Speckle Sharp: Dynamo, Grasshopper, Revit, and Rhino. The Connectors are what free your data from their source applications and allow you to access them from wherever you need them. They provide simple and intuitive user interfaces for selecting, sending, and receiving data to and from your Server.
 
-[[PROB SOME IMAGES OR GIFS HERE FOR VISUAL INTEREST]]
-
 ### Installation
 You can install release builds of the Connectors from the [Speckle Manager](#manager) or you can debug them locally by cloning [the repo](https://github.com/specklesystems/speckle-sharp). Instructions for building and debugging each of the Connectors can be found in the [Dev Docs](/dev/speckle-sharp/connectors). 
 

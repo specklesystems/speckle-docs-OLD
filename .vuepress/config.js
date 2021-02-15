@@ -82,7 +82,8 @@ module.exports = {
             "manager",
             "web",
             "connectors/",
-            "interoperability"
+            "connectors/grasshopper/",
+            "connectors/dynamo/"
           ]
         },
         {

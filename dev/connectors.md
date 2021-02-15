@@ -1,2 +1,7 @@
 # Introduction
 
+The Connectors are what connect various AEC software to Speckle. They contain the user interfaces for interacting with your data in the native AEC software and sending them to the server. The connectors rely on [Kits](/dev/kits) to convert native objects to Speckle objects. By default, all official Speckle connectors use the default kit named simply [Objects](/dev/objects) within Speckle Sharp. Objects contains all the converters for the AEC software we currently support. 
+
+The official connectors include: Dynamo, Grasshopper, Revit, & Rhino. We also have WIP connectors for Unity, AutoCAD, and Civil3D. If you would like to help develop these connectors, please check them out on GitHub and start a conversation either in the issues or on the community forum!
+
+Have a dream for a connector that doesn't yet exist? We have all the tools ready for you to start developing your own! We are very enthusiastic about community connectors and would love to help you bring them to life. To get started, check out the guide for [Building Your Own Connectors](/dev/desktopui.md). Feel free to reach out with any questions or calls for more contributors to the project on to [forum](https://discourse.speckle.works/).
