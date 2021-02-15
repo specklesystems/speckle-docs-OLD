@@ -1,4 +1,4 @@
-# Grasshopper Connector
+# 🔌 Grasshopper
 
 ![GH Connector components](./img/speckle-gh-main-tab.png)
 
@@ -13,7 +13,7 @@ The connector is divided into 2 main categories, on the Speckle 2 category you w
 You'll also find the `Speckle 2Dev`. These categories hold nodes designed for advanced users and developers:
 
 - Dev/Conversion: Conversion + serialization nodes.
-- Dev/Transports: Not sure what transports are? Read up on [XXX](https://XXX)
+- Dev/Transports: Not sure what transports are? Check [this](./../../../dev/transports.md) out!
 
 ## Sending Data
 
@@ -57,7 +57,7 @@ You can also modify the name of this inputs by right-clicking the input name. In
 
 ## Using Streams in GH
 
-> If you want to know more about streams, go [here](./concepts.md#streams) 👈
+> If you want to know more about streams, go [here](./../../concepts.md#streams) 👈
 
 In _Grasshopper_, you can work with streams in several ways. All nodes that accept `Streams` as input, or that output `Streams` as a result, will be identified by the **Stream Parameter** icon.
 
@@ -71,7 +71,7 @@ You can also instantiate a stream by copy/pasting the stream url from your serve
 
 Branches cannot be created or directly selected in the Grasshopper connector, but all `Stream` type inputs accept _branch url's_ that you can copy directly from the server's website.
 
-> Want to know more about `branches` in Speckle? Go [here](./concepts.md#branches) 👈
+> Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#branches) 👈
 
 ## Object conversion and Kits
 

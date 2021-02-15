@@ -83,7 +83,8 @@ module.exports = {
             "web",
             "connectors/",
             "connectors/grasshopper/",
-            "connectors/dynamo/"
+            "connectors/dynamo/",
+            "connectors/revit-rhino/"
           ]
         },
         {

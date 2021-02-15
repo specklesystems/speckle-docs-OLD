@@ -1,4 +1,4 @@
-# Dynamo Connector
+# 🔌 Dynamo
 
 ![Dyn Connector components](./img/nodes-cat-all.png)
 
@@ -69,6 +69,8 @@ This dictionary will be automatically converted to a `Base` object during the _S
 You can instantiate a stream by copy/pasting the stream url from your server into a `string` node.
 
 <!-- TODO: Add image of stream -->
+
+Under the _Streams_ category in the _Speckle 2_ tab, you will also find all nodes to obtain, manage and edit streams from within Dynamo.
 
 ### Working with branches
 
