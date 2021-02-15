@@ -2,6 +2,8 @@
 
 Speckle 2.0 gives you the option of streaming objects as base geometry from Rhino to Revit, or directly into Revit families as BuiltElements through the Rhino schema builder commands. 
 
+![Direct Conversion Example]()
+
 ## Features
 
 Currently, direct conversions are available for the following types:
@@ -23,6 +25,8 @@ Stream your Rhino objects directly into Revit as BuiltElements! Rhino to Revit i
 Some schemas have additional parameters that can be manually modified for custom control over parameters like Revit Family or Revit Type.
 
 ## Assigning schemas
+
+![ApplySpeckleSchema Example]()
 
 ### The automagic method 
 
