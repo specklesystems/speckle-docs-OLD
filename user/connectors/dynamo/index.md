@@ -4,16 +4,9 @@
 
 Once installed, the **Dynamo Connector** will appear under the `Speckle 2` and `Speckle 2 Dev Tools` tabs.
 
-The connector is divided into 3 main categories:
+The `Speckle 2` tab contains the main nodes necessary to operate with Speckle, including send/receive nodes, streams and accounts.
 
-- Send/Receive
-- Object management
-- Streams & Accounts
-
-You'll also find 2 extra categories marked as `Dev`. These categories hold nodes designed for advanced users and developers:
-
-- Dev/Conversion: Conversion + serialization nodes.
-- Dev/Transports: Not sure what transports are? Read up on [XXX](https://XXX)
+The `Speckle 2 Dev Tools` tabs contain nodes for more advanced use-cases, as well as some handy tools for Speckle developers/hackers.
 
 ## Sending Data
 
@@ -23,17 +16,27 @@ In order to send some data to the server, we will also need to _create a stream_
 
 ### Creating a stream
 
-Select the desired account from the dropdown and connect it to the `Stream Create` node.
+To create a new stream, right-click on the canvas and search for the `Stream Create` node. This node has a custom UI that allows you to select a specific account to use, and a button to confirm the stream creation.
 
-If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
+![Create a stream](./img/nodes-create-stream.png)
+
+Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (just create a new `Stream Create` node).
+
+Select the appropriate account and press the blue button. If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
+
+![Creating a stream](./img/guide-stream-create.gif)
 
 ### Adding objects
 
-In order to select which objects to send in grasshopper, we just need to connect the desired nodes to the `data` input in the `Send` node. The sender will convert any Dynamo objects into a Speckle compatible format when necessary.
+In order to select which objects to send in Dynamo, we just need to connect the desired nodes to the `data` input in the `Send` node. The sender will convert any Dynamo objects into a Speckle compatible format when necessary.
 
-### Sending data
+![Connect data](./img/guide-send-connect-data.png)
+
+### Create a commit
 
 The only thing left to do is to connect the `Stream Create` output to the `Stream` input in the `Send` node, and then press the **Send button**.
+
+![Create commit](./img/guide-send-create-commit.gif)
 
 You should see the progress report in the lower side of the Send node, and once finished, you will get a notification with some basic info.
 
@@ -47,23 +50,29 @@ Receiving data is a very simple operation. You just need to create a `Receive` n
 
 Once connected, just press _"Receive"_, and you should see the node reporting the current progress. After the process has been completed, you could inspect the data you just received using Dynamo's inspection tools.
 
+![Receiving data](./img/guide-receive.gif)
+
 ## Creating custom objects
 
-<!-- TODO: Dictionaries in dynamo -->
+> This section is work in progress 🚧 ! Please check back again soon 😃
 
-This section is work in progress 🚧 ! Please check back again soon 😃
+In Dynamo, working with dictionaries is natively supported, so creating custom objects is as simple as creating a dictionary containing the keys and values you wish to include in the `Base` object.
+
+This dictionary will be automatically converted to a `Base` object during the _Send_ operation.
+
+![Create custom objects](./img/guide-custom-objects.png)
 
 ## Using Streams in Dynamo
 
 > If you want to know more about streams, go [here](./concepts.md#streams) 👈
 
-YOu can instantiate a stream by copy/pasting the stream url from your server into a `string` node.
+You can instantiate a stream by copy/pasting the stream url from your server into a `string` node.
 
 <!-- TODO: Add image of stream -->
 
 ### Working with branches
 
-Branches cannot be created or directly selected in the Dynamo connector, but all `Stream` inputs accept _branch url's_ that you can copy directly from the server's website.
+Branches cannot be created or directly selected in the Dynamo connector, but all `Stream` inputs accept _branch url's_ that you can copy directly from the server's website. When using a _stream url_ with no branch, the default branch will be used (`main`)
 
 > Want to know more about `branches` in Speckle? Go [here](./concepts.md#branches) 👈
 
@@ -137,7 +146,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 ![Accounts node](./img/nodes-accounts.png)
 
-The **Accounts** node provides a fast way of selecting different Speckle accounts. Uses the native grasshopper
+The **Accounts** node provides a fast way of selecting different Speckle accounts.
 
 > Accounts must be set-up in your computer using the **Speckle Manager**. If no accounts are shown after setting up the solution
 
