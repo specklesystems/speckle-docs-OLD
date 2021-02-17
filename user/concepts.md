@@ -2,11 +2,17 @@
 
 This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2, this is a great place to start!
 
+::: tip
+Whenever we mention the word **data**, or **objects** or **elements** etc, we're always referring to the same thing. This could be CAD geometry, BIM elements (geometry+data) or pure data (text, numbers, etc...).
+:::
+
+Data in Speckle is organised in Streams, Branches and Commits. To use Speckle you only really need to know what a Stream is, as Branches and Commits are slightly more advanced, but will add a lot of flexibility and control to your future workflows.
+
 ## Streams
 
 ### What are they?
 
-The main data structure in Speckle is the stream. A stream is simply a collection of objects with some helpful additional information to manage and retrieve them. Each stream is assigned a generated `streamId` which uniquely identifies the stream on a server. You can give a stream a name and description to help organise your streams. A stream also has a list of collaborators including an owner and additional reviewers and contributors which the owner has chosen to share the stream with.
+The main data structure in Speckle is the stream. A stream is simply a collection of objects with some helpful additional information to manage and retrieve them. Each stream is assigned a generated `streamId` which uniquely identifies the stream on a server. You can give a stream a name and description to help organise your streams. A stream also lets you manage permissions: it has a list of collaborators including an owner and additional reviewers and contributors which the owner has chosen to share the stream with.
 
 ### What do they contain?
 
@@ -26,9 +32,9 @@ A stream also contains further options for managing your data by way of _branche
 There are two stream-level visibility options: Public and Private.
 
 - **Public**: Anyone with the link or `streamId` can view the stream
-- **Private**: People need to be invited to the stream to access it
+- **Private**: People need to be added as _collaborators_ to the stream to access it
 
-In addition to this, you can share the stream with specific people and assign them a specific role. There are three default roles:
+Collaborators can have one of three default roles:
 
 - **Owner**: full dictatorial access including deletion rights and permissions control
 - **Contributor**: can edit the stream's contents (create new branches and commits) but cannot edit stream details (name and description) or manage collaborators
@@ -50,7 +56,7 @@ Branches give you an extra layer of organisation within a stream. All streams st
 
 ### How do I use them?
 
-You can add as many additional branches to your streams as you would like. All the connectors give you the option of creating new branches and switching between them.
+You can add as many additional branches to your streams as you would like. Some connectors and Speckle web give you the option of creating new branches and switching between them.
 
 Let's say you have a very large model you want to add to a single stream, but your collaborators from different disciplines don't want to receive the whole model every time. You could split the model up into different branches: `structural`, `mep`, `archi`.
 
@@ -58,15 +64,24 @@ Perhaps you have a complex model that encompasses a site with multiple separate 
 
 Maybe you're working on a smaller scale and your stream focusses on a single facade. However, you would like to present a couple different options to the client. The stream could be split into `option A`, `option B`, and `option C` which you could then easily switch between to explore the different options in your next meeting.
 
+If you are familiar with `git`, you might be wondering _"Can I also merge the content of a branch into another one?"_. The answer is yes, but currently that can only happen inside one of the AEC software for which we have connectors. The merged data can then be re-sent to an existing or new branch.
+
 ## Commits
 
 ### What are they?
 
 Commits are a bit like a "save" of the most current version of your data - a point in time where you have "committed" your changes. They allow you to track the changes in your stream and easily see who changed what and when.
 
-Each time you send data, you are creating a new commit which contains all the objects in your stream along with additional information such as the time, date, and author of the commit. The author of a commit can optionally add a _commit message_ which is a short description of what they've done and what has changed. Like a stream, each commit is assigned a generated `commitId` which can be used to identify and retrieve it. You can go back in time and look at the history of your stream through the series of commits.
+Each time you send data, you are automatically creating a new commit which contains all the objects in your stream along with additional information such as the time, date, and author of the commit. The author of a commit can optionally add a _commit message_ which is a short description of what they've done and what has changed. Like a stream, each commit is assigned a generated `commitId` which can be used to identify and retrieve it. You can go back in time and look at the history of your stream through the series of commits.
 
 ![a commit card from the Speckle frontend](https://user-images.githubusercontent.com/7717434/107365302-814f4900-6ad4-11eb-894f-3094863ad7c6.png)
+
+The great thing about commits is that they create a timeline of all the changes your stream, or project, goes through and give you the possibility of "going back in time" whenever you want.
+Say goodby to saving your files as "AM_Project_Design-final", "AM_Project_Design-final-final", "AM_Project_Design-final-final-latest"...!
+
+::: tip IMPORTANT
+It's important to note that commits are immutable, you can change their message but not their content. Sent the wrong data? No problem simply send the correct one once again and the new commit will take over.
+:::
 
 ### How do I use them?
 

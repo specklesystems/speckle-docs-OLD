@@ -1,18 +1,28 @@
 # Speckle Manager
 
-Speckle Manager is a desktop application that handles accounts and connectors on your machine. You need to add a Speckle account to your computer using the Manager in order for the Connectors use them to send and receive data from a Speckle Server.
+Speckle Manager is a desktop application that handles accounts and connectors on your machine. You need to add a Speckle account to your computer using Manager in order for the Connectors to use them to send and receive data from a Speckle Server.
 
 ## Installation
 
-Speckle Manager is available for both Windows and MacOS.
+Speckle Manager is available for both Windows and Mac.
 
-You can download the latest version of Speckle Manager [here](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe).
+Download the latest version of Speckle Manager:
+
+- [Speckle Manager for Windows](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe)
+- [Speckle Manager for Mac](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.dmg)
+
+Manager for Windows will automatically update when an update is available, in Mac you have to manually install new versions.
 
 ![screenshot of the manager](../.vuepress/public/assets/manager.png)
 
 ## Adding Accounts
 
-Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager. If you don't have a Server to use yet, continue on to the [next section](/user/web) to learn how to spin up a dev server.
+Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
+
+::: tip IMPORTANT
+This guide assumes you have access to a **Speckle Server**.
+It might have been provided by your company, you might have deployed one locally, or you might be using one provided by us.
+:::
 
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
 
