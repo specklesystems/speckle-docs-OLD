@@ -34,28 +34,7 @@ module.exports = {
       },
       {
         text: "Developer Docs",
-        items: [
-          {
-            text: "Getting Started",
-            link: "/dev/"
-          },
-          {
-            text: "Desktop & SDKs",
-            items: [
-              { text: "Speckle Sharp 🦈", link: "/dev/core/" },
-              { text: "Speckle Py 🐍", link: "/dev/speckle-py/" }
-            ]
-          },
-          {
-            text: "Web",
-            link: "/dev/web/",
-            items: [
-              { text: "Server", link: "/dev/server/" },
-              { text: "Frontend", link: "/dev/frontend/" },
-              { text: "3D Viewer", link: "/dev/viewer/" }
-            ]
-          }
-        ]
+        link: "/dev/"
       },
       {
         text: "Deep Dives",
