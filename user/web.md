@@ -1,5 +1,7 @@
 # Speckle Web 
 
+![speckle web tour](https://user-images.githubusercontent.com/7717434/107507119-0438d800-6b97-11eb-88e0-a14f5871f5c9.gif)
+
 ## Introduction 
 
 Speckle Web is what you see what you head to Speckle in the browser at `your-server.speckle.systems`. It is your one-stop shop for managing and coordinating your data. From Speckle Web, you can create and edit streams, view your data in 3D, manage your account, and share your data with others.

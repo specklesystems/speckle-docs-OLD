@@ -21,10 +21,10 @@ Finally, in the `packages/server` folder:
 
 ## Developing
 
-The server consists of several semi-related components, or modules. These can be found in `/modules`. Module composition:
+The server consists of several semi-related components, or modules. These can be found in `/modules`. The main points of interest here are:
 
 - an `index.js` file that exposes two functions, `init` and `finalize` (mandatory)
-- a `graph` folder, with two subfolders, namely `resolvers` and `schemas` (optional - these will be picked up and merged).
+- a `core` folder, which contains the GraphQL `resolvers` and `schemas` in the `graph` subfolder (optional - these will be picked up and merged).
 
 ## Server & Apps
 
@@ -48,3 +48,5 @@ To run all tests, simply run `npm run test`. To run specific tests, use the `moc
 
 - `mocha --grep @auth --watch` to run tests pertaning to the auth module only in watch mode.
 - `mocha --grep @core-streams --watch` to run tests pertaining to stream related services.
+
+Getting tests running for the GraphQL subscriptions was a bit of a journey! If you'd like to learn more about how we did it, check out the [blog post](https://speckle.systems/blog/testing-gql-subs).
