@@ -14,11 +14,15 @@ Let's look at how we would send some data in Dynamo. First, start by creating a 
 
 ![Send node](./img/nodes-send.png)
 
-In order to send some data to the server, we will also need to _create a stream_. We can do this by double clicking the canvas and searching for the `Stream Create` node.
+In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/connectors/dynamo/#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
 
 ### Creating a stream
 
 To create a new stream, right-click on the canvas and search for the `Stream Create` node. This node has a custom UI that allows you to select a specific account to use, and a button to confirm the stream creation.
+
+::: tip
+You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions. 
+:::
 
 Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (just create a new `Stream Create` node).
 
@@ -32,7 +36,7 @@ In order to select which objects to send in Dynamo, we just need to connect the 
 
 ![Connect data](./img/guide-send-connect-data.png)
 
-### Create a commit
+### Sending data
 
 The only thing left to do is to connect the `Stream Create` output to the `Stream` input in the `Send` node, and then press the **Send button**.
 
@@ -44,6 +48,10 @@ To view the data you just sent from Dynamo in the server, you can use the `View 
 
 ![View online](./img/nodes-view-online.png)
 
+::: tip
+The View Online node is especially useful as data cannot be easily copy/pasted from dynamo nodes
+:::
+
 ## Receiving Data
 
 Receiving data is a very simple operation. You just need to create a `Receive` node, and connect to it a panel with the _stream url_ we obtained from the send operation.
@@ -54,19 +62,25 @@ Once connected, just press _"Receive"_, and you should see the node reporting th
 
 ## Creating custom objects
 
-In Dynamo, working with dictionaries is natively supported, so creating custom objects is as simple as creating a dictionary containing the keys and values you wish to include in the `Base` object.
+A custom object is a [Base Object](/user/concepts.html#the-base-object) with custom properties assigned to it. It's basically a custom data structure you can create to send data in a specific format that you define.
+
+In Dynamo, we use dictionaries to represent custom objects since they are natively supported, so creating custom objects is as simple as creating a dictionary containing the keys and values you wish to include in the `Base` object.
 
 This dictionary will be automatically converted to a `Base` object during the _Send_ operation.
 
-> Know more about the Speckle `Base` object [here](./../../concepts.md#the-base-object) 👈
+::: tip
+Learn more about the Speckle `Base` object [here](./../../concepts.md#the-base-object) 👈
+:::
 
 ![Create custom objects](./img/guide-custom-objects.png)
 
 ## Using Streams in Dynamo
 
-> If you want to know more about streams, go [here](./../../concepts.md#streams) 👈
+::: tip
+If you want to know more about streams, go [here](./../../concepts.md#streams) 👈
+:::
 
-You can instantiate a stream by copy/pasting the stream url from your server into a `string` node.
+You can instantiate an existing stream by copy/pasting the stream url from your browser into a `string` node.
 
 <!-- TODO: Add image of stream -->
 
@@ -76,7 +90,9 @@ Under the _Streams_ category in the _Speckle 2_ tab, you will also find all node
 
 Branches cannot be created or directly selected in the Dynamo connector, but all `Stream` inputs accept _branch url's_ that you can copy directly from the server's website. When using a _stream url_ with no branch, the default branch will be used (`main`)
 
-> Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#branches) 👈
+::: tip
+Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#branches) 👈
+:::
 
 ## Nodes
 

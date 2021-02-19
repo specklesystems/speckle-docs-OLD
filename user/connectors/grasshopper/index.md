@@ -19,15 +19,19 @@ You'll also find the `Speckle 2Dev`. These categories hold nodes designed for ad
 
 Let's look at how we would send some data in grasshopper. First, start by creating a new `Send` node.
 
-In order to send some data to the server, we will also need to _create a stream_. We can do this by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
+In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/connectors/grasshopper/#using-streams-in-grasshopper)). We can create one by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
 
 ![Nodes for sending data](./img/sending-data-necessarynodes.png)
 
-Once you've got the three nodes in your canvas, you are ready to get started!
+Once you've got the three nodes in your canvas, you are ready to send data around!
 
 ### Creating a stream
 
 Select the desired account from the dropdown and connect it to the `Stream Create` node.
+
+::: tip
+You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions. 
+:::
 
 If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
 
@@ -49,21 +53,25 @@ Receiving data is a very simple operation. You just need to create a `Receive` n
 
 ## Creating custom objects
 
+A custom object is a [Base Object](/user/concepts.html#the-base-object) with custom properties assigned to it. It's basically a custom data structure you can create to send data in a specific format that you define.
+
 There's several different ways to create custom speckle objects using the Grasshopper. One of them is using the `Create Speckle Object` node.
 
-This node has _variable input parameters_, meaning that you can modify the ammount of input nodes it has by zooming into the component.
+This node has _variable input parameters_, meaning that you can modify the amount of input nodes it has by zooming into the component. Each input you define will represent a new property on the object.
 
 You can also modify the name of this inputs by right-clicking the input name. In the right-click menu, you will also find the options to change the **access type** of that input. Meaning, if the object property should be a single item, or a list.
 
-## Using Streams in GH
+## Using Streams in Grasshopper
 
-> If you want to know more about streams, go [here](./../../concepts.md#streams) 👈
+::: tip
+If you want to know more about streams, go [here](/user/concepts.md#streams) 👈
+:::
 
 In _Grasshopper_, you can work with streams in several ways. All nodes that accept `Streams` as input, or that output `Streams` as a result, will be identified by the **Stream Parameter** icon.
 
 ![Stream parameter](./img/params-stream.png)
 
-You can also instantiate a stream by copy/pasting the stream url from your server into a `Panel`.
+The easiest way to use an existing stream in a component is with its stream url. Just copy it from your browser (or from a stream get / stream create component) and paste it into a `Panel`.
 
 ![Stream url panel](./img/streams-panel.png)
 
@@ -71,7 +79,11 @@ You can also instantiate a stream by copy/pasting the stream url from your serve
 
 Branches cannot be created or directly selected in the Grasshopper connector, but all `Stream` type inputs accept _branch url's_ that you can copy directly from the server's website.
 
-> Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#branches) 👈
+::: tip 
+Want to know more about `branches` in Speckle? Go [here](/user/concepts.md#branches) 👈
+:::
+
+Whan a branch url is used as input for a Receive component, the receiver will only get data sent to that specific branch.
 
 ## Object conversion and Kits
 
@@ -246,7 +258,8 @@ The **Extend Speckle Object** provides a way to add new properties to an already
 
 ![Schema Builder node](./img/nodes-schema-builder.png)
 
-The **Schema Builder** node will allow for the creation of specific custom objects that are supported by the Speckle Objects Kit.
+The **Schema Builder** node is a very powerful one.
+It allows to create specific custom objects that are defined in your Kit.
 
 These include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
 
@@ -298,6 +311,10 @@ Once an account has been provided, the node will generate a new stream and remem
 
 The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
 
+::: tip
+You can also use a stream URL copied from your browser instead of using this node
+:::
+
 ##### Inputs
 
 - _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
@@ -312,6 +329,10 @@ The **Stream Get** node will try to find an existing `Stream`, given it's unique
 ![Stream list node](./img/nodes-stream-list.png)
 
 The **List Streams** node returns a specified ammount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
+
+::: tip
+You can also use a stream URL copied from your browser instead of using this node
+:::
 
 ##### Inputs
 
