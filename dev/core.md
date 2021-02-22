@@ -1,11 +1,22 @@
-# Core
+# Introduction
 
-Core is the .NET SDK for Speckle 2.0. It uses .NET Standard 2.0 and has been tested on Windows and MacOS.
+Our .NET SDK is [Core](https://github.com/specklesystems/speckle-sharp/tree/master/Core), and it's part of our [SpeckleSharp repo](https://github.com/specklesystems/speckle-sharp).
+Core is written in .NET Standard 2.0, it's been tested on Windows and MacOS and it's being used by all our .NET based connectors.
 
-## Developing
+## Getting started
 
-This project is evolving fast, to better understand how to use Core we suggest checking out the Unit and Integration tests. Running the integration tests locally requires a local server running on your computer. To learn how to ge a local server up, head over to the [Speckle Web Docs](/dev/web)
+Before integrating Core in your next project, [please make sure it's supported by your framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
+We haven't yet released a NuGet package for Core 2.0, until then you can use it by building it yourself and referencing it directly.
 
-## Tests
+## How to use
 
-There are two test projects: one for unit tests and one for integration tests. The latter needs a server running locally in order to run.
+We'll soon be adding here plenty of examples on how to use Core, in the meantime the best way to explore its functionalities is to check out the unit and integration tests in the repo.
+
+Here's a quick summary of the main tasks Core will help you with:
+
+- account management
+- sending and receiving data
+- serialization
+- speckle kit management
+- stream, branch and commit api calls
+- subscriptions

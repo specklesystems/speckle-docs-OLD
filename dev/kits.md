@@ -1,199 +1,124 @@
 # Kits
 
-## What Are Kits?
+This post was originally part of the Making Speckle 2.0 series of posts on the community forum. Check it out on the forum [here](https://discourse.speckle.works/t/introducing-kits-2-0/710?u=izzylys)!
 
-Kits are the tools Speckle uses to handle interoperability. They allow you to send objects to Speckle from various different AEC applications. They consist of two parts:
+With this post we want to explain how we are planning to restructure **Speckle Kits** for 2.0. The main goal of these changes is improving stability and ease of use.
 
-- **Types:** the object model that defines the structure of data
-- **Converters:** implementations of conversion routines between the object model and various AEC applications
+> If you're not familiar with Kits and what they do, here's a quick overview below. For a longer overview, Dimitrie previously [wrote an article about it here](https://speckle.systems/blog/schemas-revisited). More specific information can be found in the [developer documentation here](https://speckle.systems/docs/developers/object-models/).
 
-The default Kit that comes with Speckle is [Objects Kit](/dev/objects) which includes our object model and the converters for the software we officially support - at the moment that's Rhino/Grasshopper, Dynamo, and Revit. However, you are of course free to roll your own or fork and modify ours to suit your needs. As of the beta release, easy swapping of kits within the connectors is not fully supported. However, this will be fully supported by the time we officially ship 2.0 🎉
+## Overview: What is a Kit?
 
-If you want more in-depth info on all things Kits and how this has changed from 1.0, check out the [deep dive](/deep-dives/kits).
+![what is a kit?|690x195](https://discourse.speckle.works/uploads/default/optimized/1X/f7ce9276c37b105133e7eccf0e376ae3093a991d_2_690x195.png) 
 
-## Types
+Kits are at the heart of how Speckle *manages* interoperability. They are, in a nutshell, a package consisting of:
 
-A kit has a collection of supported *types*. These are the objects that have been defined in the kit and can be converted to and from Speckle - ie the object model. 
+- **an object model** that defines the structure of data
+- **implementations** for various AEC authoring applications (ie, conversion routines that make the translations happen)
 
-### Creating Types
+Whenever a connector is "sending to Speckle", it needs to convert data (lines, points, beams, doors, etc.) into this intermediate object model. Upon receiving, the opposite conversion happens.
 
-There are a few general rules to keep in mind when writing these object classes.
+Kits are not tied into the core of Speckle, they are pluggable. Anyone **can add/remove them as they wish or develop their own**. We've seen various h4cK3r$ writing their own kits - if you're one of them, we'd love to hear your feedback and understand how you've been using kits so far! 
 
-#### 1. Always inherit from the `Base` class
+## Kits 1.0
 
-This ensures serialisation and deserialisation happen through Speckle, with the default sane serialisation handling that we know we can support. Most importantly, it will enable type name handling and cross-kit legibility. For more on the `Base` class, head to the [deep dive](../deep-dives/base) on this subject.
+In the current iteration of Speckle we've created and have been distributing by default a few kits:
 
-#### 2. Reference loops will be ignored
+- [CoreGeometry](https://github.com/speckleworks/SpeckleCoregeometry) - mostly geometrical objects, and some others.
+- [Elements](https://github.com/speckleworks/Speckleelements) - general purpose BIM elements (currently *very* Revit centric)
+- [Structural](https://github.com/speckleworks/SpeckleStructural) - structural specific (curated by Arup)
 
-You can always recreate them post deserialisation using a function flagged with the `[OnDeserialized]` attribute like so:
+![How Kits worked in 1.0|690x299](https://discourse.speckle.works/uploads/default/optimized/1X/014484c61a706c1e1bf3b1c3280be5218dbdfc43_2_690x299.png) 
 
-```cs
-  [OnDeserialized]
-  internal void onDeserialized(StreamingContext context)
-  {
-    Edges.ForEach(e => e.Brep = this);
-    Loops.ForEach(l => l.Brep = this);
-    Trims.ForEach(t => t.Brep = this);
-    Faces.ForEach(f => f.Brep = this);
-  }
-```
+Whenever a connector (ie. the Rhino connector) wants to send something, let's say a Rhino line (again, it also applies to the 'receive' part), it will call a method in Core that will:
 
-#### 3. Keep data structures lean
+- using reflection, it will go through each kit it can find on the users's machine and get all methods capable of converting a Rhino line to Speckle
+- pick the first one and try convert the line
+- if the conversion fails, it'll move onto the second match; etc.
 
-You should prefer typed arrays over lists of non-primitive values. For example, instead of a `List<Point>` for keeping track of mesh vertices, use a `List<double>`
+This approach worked great so far. It nevertheless has a few limitations in the way it's currently implemented in 1.0:
 
-#### 4. Always include a parameterless constructor
+- it's an heuristic approach because **the connector** doesn't really know or can't really choose what Kit to use,
+- there is a high chance of conflicts if, for instance, someone introduces a new kit with the same methods of another kit, the connector could be picking the wrong method,
+- because of the large amount of reflection being used, it's hard to debug and it's difficult to report warnings and errors to the end user when something goes wrong.
 
-This is for Newtonsoft serialisation / deserialisation. At worst, flag one constructor with the `[JsonConstructor]` attribute. Keep in mind this does indirect magic that can potentially trip you up - eg key names must match argument prop names. 
+Most importantly, the conversion operation - handled by Core - was not deterministic. You were not guaranteed to get the right conversion, and, as a developer, the only control mechanism you had was to exclude some kits. 
 
-### Example
+## Kits 2.0
 
-With these rules in mind, creating your own classes by subclassing `Base` is relatively straight forward. Additionally, there are also a few [interfaces](https://github.com/specklesystems/speckle-sharp/blob/master/Objects/Objects/Interfaces.cs) an object can inherit from including `ICurve`, `IHasArea`, `IHasVolume`, and `IHasBoundingBox`. 
+Going forward, in 2.0, each Kit will be assumed to be able to handle all element types passing through Speckle. Additionally, when a connector needs to convert an object, it will explicitly pick what Kit to use, if more than one is available.
 
-For a simple example, this is what our [box class](https://github.com/specklesystems/speckle-sharp/blob/master/Objects/Objects/Geometry/Box.cs) looks like:
+![The problem with using multiple Kits simultaneously](https://discourse.speckle.works/uploads/default/optimized/1X/f9890eead0fb8aa7bbe141a6cf7dd16453b0d176_2_690x449.png) 
 
-```cs
-public class Box : Base, IHasVolume, IHasArea, IHasBoundingBox
-{
-  public Plane basePlane { get; set; }
+As a direct consequence, the previously existing kits (Geometry and Elements) will be merged into a single kit - currently named **"Objects"**. The Objects Kit will consist of:
 
-  public Interval xSize { get; set; }
+- A project containing the schemas (class definitions) *(separate nuget)*
+- A set of projects containing the conversion routines for host software:
+    - ConverterRevit *(separate nuget)*
+    - ConverterDynamo *(separate nuget)*
+    - ConverterRhinoGrasshopper *(separate nuget)*
 
-  public Interval ySize { get; set; }
+The conversion flow in 2.0 is greatly simplified: 
 
-  public Interval zSize { get; set; }
+- convert the object using the provided `ISpeckleConverter` class.
+- if the conversion fails, send an error back.
 
-  public Box bbox { get; }
+# Discussion Time!
 
-  public double area { get; set; }
+This new approach solves most of the issues of 1.0, but it does introduce a few new challenges, which we hope to discuss with you. The list below is by no means exhaustive, so feel free to add  your voice. 
 
-  public double volume { get; set; }
+## Versioning
 
-  public Box() { }
+How will we manage versioning and backwards compatibility? 
 
-  public Box(Plane basePlane, Interval xSize, Interval ySize, Interval zSize, string units = Units.Meters, string applicationId = null)
-  {
-    this.basePlane = basePlane;
-    this.xSize = xSize;
-    this.ySize = ySize;
-    this.zSize = zSize;
-    this.applicationId = applicationId;
-    this.units = units;
-  }
-}
-```
+### (A) The simple solution
 
-## Converters
+**Never remove, modify or change an existing property from a class.** To keep things tidy, there's several preliminary thoughts:
 
-Converters are the key to interoperability. They include the conversion routines for objects to and from the Types. You create a new converter for each different application you want to support by inheriting from the [`ISpeckleConverter` interface](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Core/Kits/ISpeckleConverter.cs). All you converters should live together in the same kit alongside your types. You can see how we've implemented converters in our default Objects Kit [here](https://github.com/specklesystems/speckle-sharp/tree/master/Objects/Converters).
+- mark old, no longer used properties, as `[Deprecated]`
+- make sure that they have "sane" default values
 
-Converters exist in the `MyKit.Converter` namespace and can either be broken up into smaller partial classes for each supported type (see the Revit Converter) or for each category (eg `ConverterX.Geometry` and `ConverterX.BuiltElements` as in the rest of our converters).
+### (B) The complicated solution
 
-The converters contain two key methods:
+- If **non-additive changes** happen in the object model (ie, a property is changed, renamed or removed), the **kit's minor version number should be bumped** (ie, from 2.0.0 → 2.1.0).
+- On the end-users's machine, we always install (and keep) the new minor version alongside all the old minor versions of the same kit (e.g, `~/SpeckleKits/MyKit/[2.0.0], [2.1.0], [2.n.x]`).
+- Each object, when converted, will contain the version number of the kit, so that Core can pick up the correct one.
 
-- `ConvertToNative`: converts a Speckle object to the native software
-- `ConvertToSpeckle`: converts a native software object to Speckle
+Both have advantages and disadvantages. We're inclined towards (B) though, as it would provide a more rigorous framework with less room for errors.
 
-The specific conversion routines for each supported type are defined separately and called from these key methods. If the type is not supported, an error should be added to the converter's `ConversionErrors` and a null object should be returned. 
+## Extending An Existing Kit & Swapping Kits
 
-For example, here is a shortened version of the [`ConvertToSpeckle`](https://github.com/specklesystems/speckle-sharp/blob/9ba30e125f2bd65d2f746563d00a90a736ade116/Objects/Converters/ConverterRevit/ConverterRevitShared/ConverterRevit.cs#L69-L154) method in `ConverterRevit`:
+This one packs a few more questions. 
 
-```cs
-public Base ConvertToSpeckle(object @object)
-{
-  Base returnObject = null;
-  switch (@object)
-  {
-    case DB.DetailCurve o:
-      returnObject = DetailCurveToSpeckle(o);
-      break;
-    case DB.DirectShape o:
-      returnObject = DirectShapeToSpeckle(o);
-      break;
-    case DB.FamilyInstance o:
-      returnObject = FamilyInstanceToSpeckle(o);
-      break;
-    case DB.Floor o:
-      returnObject = FloorToSpeckle(o);
-      break;
-    // etc ...
-    default:
-      ConversionErrors.Add(new Error("Type not supported", $"Cannot convert {@object.GetType()} to Speckle"));
-      returnObject = null;
-      break;
-  }
-  
-  return returnObject;
-}
-```
+Because of the potential for conflicts & confusion (code-wise) in conversions, etc. we'll go for a single-kit approach: you will be able to use different kits, but they'll need to function independently.
 
-And here is the Revit [`BeamToSpeckle`](https://github.com/specklesystems/speckle-sharp/blob/9ba30e125f2bd65d2f746563d00a90a736ade116/Objects/Converters/ConverterRevit/ConverterRevitShared/Partial%20Classes/ConvertBeam.cs#L93-L111) method which is called by the `FamilyInstanceToSpeckle` conversion:
+One of the reasons for the change is also that, while we've seen quite a few custom kits being developed by our community, we've rarely seen people needing to swap between kits (or sets of kits). The logic here is that, if company Rando develops a RandoKit, they will be using their kit and won't need the official SpeckleKit active at the same time.
 
-```cs
-private RevitBeam BeamToSpeckle(DB.FamilyInstance revitBeam)
-{
-  var baseGeometry = LocationToSpeckle(revitBeam);
-  var baseLine = baseGeometry as ICurve;
-  if (baseLine == null)
-  {
-    throw new Exception("Only line based Beams are currently supported.");
-  }
+**Swapping: Should end-users be able to swap kits from the connectors UI, or should it be an system admin setting?** 
 
-  var speckleBeam = new RevitBeam();
-  speckleBeam.type = Doc.GetElement(revitBeam.GetTypeId()).Name;
-  speckleBeam.baseLine = baseLine;
-  speckleBeam.level = ConvertAndCacheLevel(revitBeam, BuiltInParameter.INSTANCE_REFERENCE_LEVEL_PARAM);
-  speckleBeam["@displayMesh"] = GetElementMesh(revitBeam);
+To start with it will be only be a general/system setting, mainly due to time and dev constraints on our end. We will add an option to swap kits in the connector uis in the beta stage. 
 
-  GetAllRevitParamsAndIds(speckleBeam, revitBeam);
+**Extending: How do I extend an existing kit?** 
 
-  return speckleBeam;
-}
-```
+Simple, just fork it and add your extensions/changes. If you feel they're useful, send a PR and we'll look into merging upstream. 
 
-## Kit Interface
+**Kits from scratch?** 
 
-Once you've got your object model and your conversion routines, you can officially put together your kit by inheriting from the [`ISpeckleKit` interface](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Core/Kits/ISpeckleKit.cs) and register your `Types` and `Converters`.
+Totally doable. We'll provide instructions on how to create a Speckle 2.0 compatible kit. 
 
-```cs
-public interface ISpeckleKit
-{
-  IEnumerable<Type> Types { get; }
-  
-  IEnumerable<string> Converters { get; }
+## Licensing
 
-  string Description { get; }
-  string Name { get; }
-  string Author { get; }
-  string WebsiteOrEmail { get; }
+**Should we license the core speckle kit under a copyleft license?** 
 
-  /// <summary>
-  /// Tries to load a converter for a specific app. 
-  /// </summary>
-  /// <param name="app">Must be one of the Kits.Applications variables.</param>
-  /// <returns>The converter for the specific app, or null.</returns>
-  public ISpeckleConverter LoadConverter(string app);
+This question comes from the fact that we want to share the burden of interoperability and be able to deliver the best & most seamless conversions we can. A copyleft license would encourage that others that extend the existing Objects Kit will share their contributions back - and thus potentially make their way upstream and not get locked into proprietary code bases. 
 
-}
-```
+**On the other hand, there's a perceived fear around copyleft licenses and we would definitively like to hear from you what implication that would have on your potential to contribute and collaborate.** 
 
-## Kit Manager
+### Extras: Naming Changes
 
-The Kit Manager is a handy tool for loading up different kits. By default, it looks for the kits in `AppData/Roaming/Speckle/Kits`. To explore all its features, have a look at the code [here](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Core/Kits/KitManager.cs). 
+The image below show ho we are planning to rename the various VS projects.
 
-See below for a simple example of getting a list of available kits, selecting a specific kit, and loading a converter. 
+![Renaming kits in 2.0|690x336](https://discourse.speckle.works/uploads/default/optimized/1X/3f9e854db48b5f818b3adb743a0e020cdd5968f2_2_690x336.png) 
 
-```cs
-// Get a list of all available kits
-var kits = KitManager.Kits
+### Conclusion
 
-// Get a specific kit by name or from the assembly full name
-var kitByName = KitManager.Kits.FirstOrDefault(kit => kit.Name == "CoreKit");
-var kitFromAssembly = KitManager.GetKit(typeof(CoreKit).Assembly.FullName);
-
-// Load the default Objects Kit and the included Revit converter 
-var kit = KitManager.GetDefaultKit(); 
-var converter = kit.LoadConverter(ConnectorRevitUtils.RevitAppName);
-converter.SetContextDocument(CurrentDoc.Document);
-
-```
+Like with all changes, some people are going to like them and others won't, we know it and understand it! Therefore we'd love to hear your thoughts on this, we'll be following up soon with code samples and alpha versions!
