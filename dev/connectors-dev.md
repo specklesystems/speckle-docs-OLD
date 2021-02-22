@@ -1,4 +1,4 @@
-# Developing your own connector
+# Writing your own connector
 
 Connectors literally connect various AEC software to Speckle. They have the user interfaces for interacting with your data in the native AEC software and sending it to the server. The connectors rely on [Kits](/dev/kits) to convert native objects to Speckle objects. By default, all official Speckle connectors use the default kit named simply [Objects](/dev/objects) within Speckle Sharp. Objects contains all the converters for the AEC software we currently support.
 
