@@ -1,3 +1,3 @@
-# Using our embeddable 3D viewer
+# How to create your own app
 
 This section is currently being built 🚧, please check again later!

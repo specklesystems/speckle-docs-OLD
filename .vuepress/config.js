@@ -37,12 +37,13 @@ module.exports = {
         link: "/dev/"
       },
       {
-        text: "Deep Dives",
-        link: "/deep-dives/"
-      },
-      {
         text: "Speckle Website",
         link: "https://speckle.systems"
+      },
+      //this button has custom style in index.styl under `.nav-item:last-child a`
+      {
+        text: "Join the beta",
+        link: "https://speckle.systems/getstarted/" 
       }
     ],
     sidebar: {
@@ -81,48 +82,32 @@ module.exports = {
         {
           title: "Developer Docs 👩‍💻",
           collapsable: false,
-          children: ["", "quickstart", "contributing", "code-of-conduct"]
+          children: ["", "architecture"]
         },
         {
-          title: "Speckle Web 🌍",
+          title: "Core Concepts",
           collapsable: false,
-          children: ["web", "server", "frontend", "viewer"]
+          children: ["base", "decomposition", "kits", "transports", "apps-auth"]
         },
         {
-          title: "Speckle Sharp 🦈",
+          title: ".NET SDK",
           collapsable: false,
-          children: ["core", "transports", "kits", "objects"]
+          children: ["core", "connectors-dev", "kits-dev"]
         },
         {
-          title: "Connectors 🔌",
+          title: "Python SDK",
           collapsable: false,
-          children: [
-            "connectors",
-            "dynamo",
-            "grasshopper",
-            "revit",
-            "rhino",
-            "desktopui"
-          ]
+          children: ["python"]
         },
         {
-          title: "Speckle Py 🐍",
+          title: "Javascript SDK",
           collapsable: false,
-          children: ["speckle-py"]
-        }
-      ],
-      "/deep-dives/": [
+          children: ["js", "viewer", "js-app-script"]
+        },
         {
-          title: "Deep Dives 🤿",
+          title: "Server API & Apps",
           collapsable: false,
-          children: [
-            "",
-            "base",
-            "decomposition",
-            "kits",
-            "transports",
-            "apps-auth"
-          ]
+          children: ["server-api-apps","tokens-apps", "apps-dev"]
         }
       ]
     }

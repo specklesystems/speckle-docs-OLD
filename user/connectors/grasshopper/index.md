@@ -30,7 +30,7 @@ Once you've got the three nodes in your canvas, you are ready to send data aroun
 Select the desired account from the dropdown and connect it to the `Stream Create` node.
 
 ::: tip
-You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions. 
+You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions.
 :::
 
 If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
@@ -79,13 +79,13 @@ The easiest way to use an existing stream in a component is with its stream url.
 
 Branches cannot be created or directly selected in the Grasshopper connector, but all `Stream` type inputs accept _branch url's_ that you can copy directly from the server's website.
 
-::: tip 
+::: tip
 Want to know more about `branches` in Speckle? Go [here](/user/concepts.md#branches) 👈
 :::
 
 Whan a branch url is used as input for a Receive component, the receiver will only get data sent to that specific branch.
 
-## Object conversion and Kits
+<!-- ## Object conversion and Kits
 
 Speckle 2.0 comes with one Kit pre-installed, the `Objects Kit`. This kit is in charge of all conversions to and from Speckle, but other kits may be introduced in the future, leaving the decision to choose which kit to use at each given time to the end-user.
 
@@ -101,7 +101,7 @@ When necessary, you can always adjust the kit being used at each individual comp
 
 You can also distinguish them by the message displaying the selected kit under the component.
 
-![Selected kit message](./img/nodes-create-object.png)
+![Selected kit message](./img/nodes-create-object.png) -->
 
 ## Nodes
 
@@ -119,7 +119,7 @@ There is also an option to set the node to automátically send every time there 
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Input
 
@@ -137,7 +137,7 @@ There is also an option to set the node to automátically send every time there 
 
 The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -153,7 +153,7 @@ The **Receive node** fetches data from a specified `Stream` or any other valid `
 
 The **Local Send** node performs sending operations directly to the users's local database.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -169,7 +169,7 @@ The **Local Send** node performs sending operations directly to the users's loca
 
 The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -187,7 +187,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 The **Create Speckle Object** node allows for the creation of custom objects that can be sent via Speckle. This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ section, you should see a `+/-` sign that will allow you to add/remove properties from the object. You can also modify the name of these properties, as well as their _access type_.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 > **Modifying the access type**
 >
@@ -209,7 +209,7 @@ The **Create Speckle Object** node allows for the creation of custom objects tha
 
 This node will create a new speckle object using a list of `Keys` to be used as the object's properties, and a list of values (or nested list) to assign to each property.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 > When using this component, there is no option to specify a properties `detached` state, so all props will be detached by default.
 
@@ -225,7 +225,7 @@ This node will create a new speckle object using a list of `Keys` to be used as 
 
 The **Expand Speckle Object** works in the exact oposite way as the [Create Speckle Object](#create-speckle-object). When a `Base` object is plugged into the input, it will automatically create the outputs for each of the `Base` objects properties.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -242,7 +242,7 @@ All outputs will appear in alphabetical order regardless on the order they were 
 
 The **Extend Speckle Object** provides a way to add new properties to an already existing `Base` object.
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -259,7 +259,7 @@ The **Extend Speckle Object** provides a way to add new properties to an already
 ![Schema Builder node](./img/nodes-schema-builder.png)
 
 The **Schema Builder** node is a very powerful one.
-It allows to create specific custom objects that are defined in your Kit.
+It allows to create specific custom objects.
 
 These include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
 
@@ -267,7 +267,7 @@ When a new **Schema Builder** node is created, a pop-up window will be displayed
 
 ![Schema builder pop-up](./img/nodes-schema-builder-popup.png)
 
-> This node is capable of [Kit Selection](#object-conversion-and-kits)
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 ##### Inputs
 
@@ -294,8 +294,6 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 The **Create Stream** node allows for the quick creation of a new Stream. This stream will have default name and description, so it may be a good idea to edit that at some point.
 
 Once an account has been provided, the node will generate a new stream and remember it for as long as the node exists in the canvas; meaning, the only way to create another new stream is to create a new `Create Stream` component.
-
-
 
 ##### Inputs
 
@@ -391,13 +389,13 @@ These nodes where developed exclusively for testing/development purposes. If you
 
 The **Convert to Speckle** node will try to convert any Rhino objects (such as lines, curves, meshes...) into Speckle objects.
 
-This node was developed for testing/development purposes, as any _Kit Selection_-capable component will already perform this conversion step.
+This node was developed for testing/development purposes.
 
 #### Convert to Native node
 
 The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
 
-This node was developed for testing/development purposes, as any _Kit Selection_-capable component will already perform this conversion step.
+This node was developed for testing/development purposes.
 
 #### Serialize Speckle objects node
 

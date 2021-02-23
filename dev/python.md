@@ -1,19 +1,9 @@
 # Introduction
 
-> ⚠ This is the start of the Python client for Speckle 2.0. It is currently quite nebulous and may be trashed and rebuilt at any moment! It is compatible with Python 3.6+ ⚠
+The Python SDK is hosted in our [speckle-py repo](https://github.com/specklesystems/speckle-py), its readme contains instructions on how to build it.
+It's compatible with Python 3.6+.
 
-## Developing & Debugging
-This project uses python-poetry for dependency management, make sure you follow the official [docs](https://python-poetry.org/docs/#installation) to get poetry.
-
-To bootstrap the project environment run `$ poetry install`. This will create a new virtual-env for the project and install both the package and dev dependencies.
-
-If this is your first time using poetry and you're used to creating your venvs within the project directory, run `poetry config virtualenvs.in-project true` to configure poetry to do the same.
-
-To execute any python script run `$ poetry run python my_script.py`
-
-> Alternatively you may roll your own virtual-env with either venv, virtualenv, pyenv-virtualenv etc. Poetry will play along an recognize if it is invoked from inside a virtual environment.
-
-## Overview of functionality 
+## Examples
 
 The `SpeckleClient` is the entry point for interacting with the GraphQL API. You'll need to have a running server to use this.
 

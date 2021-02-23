@@ -21,7 +21,7 @@ In order to send some data to the server, we will also need a stream. You can ei
 To create a new stream, right-click on the canvas and search for the `Stream Create` node. This node has a custom UI that allows you to select a specific account to use, and a button to confirm the stream creation.
 
 ::: tip
-You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions. 
+You can always, also create streams online form Speckle Web. From there you can also set ther name, description and permissions.
 :::
 
 Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (just create a new `Stream Create` node).
@@ -268,7 +268,7 @@ This node was developed for testing/development purposes, as the Send/Receive no
 
 The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
 
-This node was developed for testing/development purposes, as any _Kit Selection_-capable component will already perform this conversion step.
+This node was developed for testing/development purposes.
 
 #### Serialize Speckle objects node
 
