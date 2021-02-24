@@ -109,7 +109,7 @@ Wether or not this sounds complicated, the exposed API is actually rather simple
 
 TODO
 
-## Conclusion
+## Summary
 
 End users and developers can now productively control the way they structure their design data through the decomposition mechanism. From the point of view of the future Speckle connectors, this will enable us to expose object model flexibility in a more elegant way than before to end users. As developers, Speckle gives you another powerful API on top of which you can scaffold your digital automation workflows.
 
