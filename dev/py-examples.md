@@ -35,11 +35,7 @@ Next, we'll need some data to send. To make it more interesting, let's extend `B
 
 ```py
 from speckle.objects import Base
-
-class Point(Base):
-    x: float = 0.0
-    y: float = 0.0
-    z: float = 0.0
+from speckle.objects.point import Point
 
 class Block(Base):
     length: float = 1.0
@@ -53,7 +49,7 @@ class Block(Base):
         self._detachable.append("origin")
 ```
 
-Now let's send a block to the server! To do this, you'll first need to send the object to the stream and get back the object id. You can then use this to create a commit on the stream.
+Now let's send a block to the server! To do this, you'll first need to send the object to the stream and get back the object id or hash. You can then use this to create a commit on the stream that references this object.
 
 ```py
 # here's the data you want to send
@@ -69,13 +65,15 @@ hash = operations.send(base=block, transports=[transport])
 commid_id = client.commit.create(
     stream_id=new_stream_id, 
     obj_id=hash, 
-    message="this is a block I made in speckle-py")
+    message="this is a block I made in speckle-py",
+    )
 ```
 
 Tada! You should now have a commit on your stream containing your block. You'll be able to see the commit on the stream page on the web. Receiving an object back is pretty similar to receiving it. You'll generally be using the client to get a commit, then getting the hash to receive from the `referencedObject` attribute on that commit.
 
 ```py
-# this receives the object back from the transport. the received data will be deserialised into a `Block` 
+# this receives the object back from the transport.
+# the received data will be deserialised back into a `Block` 
 received_base = operations.receive(obj_id=hash, remote_transport=transport)
 ```
 
@@ -149,7 +147,7 @@ The `operations` includes four main methods:
 3. `serialize`: serialise a given `Base` object
 4. `deserialize`: deserializes json into an object into the type specified in `speckle_type` (defaults to a vanilla `Base` if the type can't be found)
 
-Let's look at sending an receiving. You will need to provide a transport to indicate where the objects should be sent / received from. When sending, you can provide multiple transports to send the same object to multiple places simultaneously. At the moment, we have three transports: `SQLiteTransport`, `MemoryTransport`, and `ServerTransport`s. If you'd like to learn more about Transports in Speckle 2.0, have a look [here](/dev/transports).
+Let's look at sending and receiving. You will need to provide a transport to indicate where the objects should be sent / received from. When sending, you can provide multiple transports to send the same object to multiple places simultaneously. At the moment, we have three transports: `SQLiteTransport`, `MemoryTransport`, and `ServerTransport`. If you'd like to learn more about Transports in Speckle 2.0, have a look [here](/dev/transports).
 
 ```py
 from speckle.transports.memory import MemoryTransport
@@ -173,6 +171,8 @@ received_base = operations.receive(obj_id=hash, remote_transport=transport)
 You can also use the GraphQL API to send and receive objects. However, note that this method will not recompose a base and will only get the object you explicitly ask for using by its id.
 
 ```py
+from speckle.objects import Base
+
 # create a test base object
 test_base = Base()
 test_base.testing = "a test base obj"
@@ -187,16 +187,116 @@ objCreate = client.object.create(stream_id="stream id", objects=[obj])
 received_base = client.object.get("stream id", hash)
 ```
 
-### Serialization
+### Base Object & Serialization
+
+The `Base` class is the one you're familiar with from the rest of the Speckle universe. It generally behaves the same way as it does in the other SDKs. For more info about the `Base` object, have a look [here](/dev/base).
+
+```py
+from speckle.objects import Base
+
+# creating a base we will nest within a parent base
+detached_base = Base()
+detached_base.name = "a detached base"
+
+# creating our parent base object
+base_obj = Base()
+
+# attributes can be added using dot or dict notation
+base_obj.name = "my base"
+base_obj["colour"] = "lilac"
+
+# other base objects can be nested within.
+# prepending the attribute name with `@` will detach the nested base when sending
+base_obj["@nested"] = detached_base
+```
+
+The `Base` class has a few handy instance methods for identifying your object's typed and dynamic attributes:
+
+- `get_typed_member_names()` gets all of the names of the defined (typed) attributes of the object
+- `get_dynamic_member_names()` gets all of the names of the dynamic attributes of the object 
+- `get_member_names()` gets a list of all the attributes on the object, dynamic or not
+
+The `Base` class can be subclassed to create your own custom objects. These are automatically added to a a class level registry which is simply a dictionary with the type name as the key. The type is automatically populated by the `speckle_type` attribute, but can be overwritten when writing your class.
+
+Note that all typed attributes of a class must be initialised with a default value for serialisation purposes.
+
+```py
+from speckle.objects import Base
+from speckle.objects.point import Point
+
+class Line(Base):
+    start: Point = Point()
+    end: Point = Point()
+
+class AlternativeLine(Base, speckle_type="Line_Two"):
+    """
+    The `speckle_type` is automatically populated by the class name.
+    You can override this behaviour as demonstrated here.
+    """
+    a: Point = Point()
+    b: Point = Point()
+
+# look, a new custom line!
+line = Line(end=Point(1, 0, 2))
+
+# adding dynamic attributes as normal
+line.blah = "blah"
+line["colour"] = "blue"
+```
+
+You can also mark typed attributes as detachable or chunkable by updating the internal `_detachable` list or `_chunkable` dict.
+
+```py
+from speckle.objects import Base
+
+# members that are chunked upon sending are stored in a dictionary
+# with the name as the key and the maximum chunk size as the value
+CHUNKABLE_PROPS = {
+    "vertices": 1000,
+    "faces": 100,
+    "colors": 100,
+    "textureCoordinates": 100,
+    "test_bases": 10,
+}
+
+# detachable members are just added to an internal list by name
+DETACHABLE = ["detach_this", "origin"]
+
+class FakeMesh(Base):
+    vertices: List[float] = None
+    faces: List[int] = None
+    colors: List[int] = None
+    textureCoordinates: List[float] = None
+    test_bases: List[Base] = None
+    detach_this: Base = None
+    _origin: Point = None
+
+    def __init__(self, **kwargs) -> None:
+        """You'll need an init method to add your chunkable and detachable members"""
+        super().__init__(**kwargs)
+        self._chunkable.update(CHUNKABLE_PROPS) # add the chunkables
+        self._detachable.extend(DETACHABLE) # add the detachables
+
+    # properties are also picked up and serialised as you'd expect
+    @property
+    def origin(self):
+        return self._origin
+
+    @origin.setter
+    def origin(self, value: Point):
+        self._origin = value
+
+```
+
 
 The `BaseObjectSerializer` is what's used behind the scenes in the `operations` for decomposing and serializing `Base` objects so they can be sent / received to the server. You probably won't ever need to use it directly. However, if you want you can use it to get the id (hash) and a serializable object representation of the decomposed `Base`. You can learn more about the Speckle `Base` object [here](/dev/base) and the decomposition API [here](/dev/decomposition).
 
 ```py
-from speckle.objects.base import Base
+from speckle.objects import Base
 from speckle.serialization.base_object_serializer import BaseObjectSerializer
 
 detached_base = Base()
-detached_base.name = "this will get detached"
+detached_base.name = "a detached base"
 
 base_obj = Base()
 base_obj.name = "my base"
@@ -208,7 +308,3 @@ hash, obj_dict = serializer.traverse_base(base_obj)
 hash, serialized = serializer.write_json(base_obj)
 deserialized = serializer.read_json(serialized)
 ```
-
-## Conclusion
-
-This doc is not complete - there's more to see so have a dive into the code and play around! Please feel free to provide feedback, submit issues, or discuss new features ✨
