@@ -5,22 +5,26 @@ body .navbar .site-name, h1, h2
 
 // SEARCH BOX
 
+
+
 .navbar
   box-shadow: 0 3px 8px 0 rgba(116, 129, 141, 0.1)
   .home-link
     .site-name
       display: none
+  .repo-link //hide github link
+    display: none
       
   // last button of navbar `Join the beta`
-  .nav-item:last-child a
+  .nav-item:nth-last-child(2) a
     background: rgb(37,99,235)
     color: white
     padding: .4rem 1rem
     border-radius: .375rem
-  .nav-item:last-child a:hover
+  .nav-item:nth-last-child(2) a:hover
     background: rgb(20,75,202)
     color: white
-  .nav-item:last-child a span
+  .nav-item:nth-last-child(2) a span
     display: none
 
   .links
