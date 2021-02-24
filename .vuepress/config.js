@@ -19,10 +19,11 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    //repo: 'https://github.com/specklesystems/speckle-docs/',
+    repo: 'specklesystems/speckle-docs/',
+    docsBranch: 'main',
     editLinks: true,
+    editLinkText: "Edit this page",
     docsDir: "",
-    editLinkText: "",
     sidebarDepth: 2,
     activeHeaderLinks: false,
     lastUpdated: true,
@@ -92,7 +93,7 @@ module.exports = {
         {
           title: ".NET SDK",
           collapsable: false,
-          children: ["core", "connectors-dev", "kits-dev"]
+          children: ["dotnet", "connectors-dev", "kits-dev", "transports-dev"]
         },
         {
           title: "Python SDK",
