@@ -1,6 +1,13 @@
-# 🔌 Dynamo
+# Dynamo
 
-![Dyn Connector components](./img/nodes-cat-all.png)
+Speckle currently supports Dynamo versions from 2.1 to 2.8 for Autodesk Revit 2019, 2020 and 2021, as well versions of Dynamo Sandbox from 2.1 to 2.8 are supported.
+
+## Getting Started
+
+To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
+
+
+![Dyn Connector components](./img-dyn/nodes-cat-all.png)
 
 Once installed, the **Dynamo Connector** will appear under the `Speckle 2` and `Speckle 2 Dev Tools` tabs.
 
@@ -12,7 +19,7 @@ The `Speckle 2 Dev Tools` tabs contain nodes for more advanced use-cases, as wel
 
 Let's look at how we would send some data in Dynamo. First, start by creating a new `Send` node.
 
-![Send node](./img/nodes-send.png)
+![Send node](./img-dyn/nodes-send.png)
 
 In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/connectors/dynamo/#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
 
@@ -28,25 +35,25 @@ Once created, the node will remember that stream. Meaning you will not be able t
 
 Select the appropriate account and press the blue button. If the stream creation was successfull, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
 
-![Creating a stream](./img/guide-stream-create.gif)
+![Creating a stream](./img-dyn/guide-stream-create.gif)
 
 ### Adding objects
 
 In order to select which objects to send in Dynamo, we just need to connect the desired nodes to the `data` input in the `Send` node. The sender will convert any Dynamo objects into a Speckle compatible format when necessary.
 
-![Connect data](./img/guide-send-connect-data.png)
+![Connect data](./img-dyn/guide-send-connect-data.png)
 
 ### Sending data
 
 The only thing left to do is to connect the `Stream Create` output to the `Stream` input in the `Send` node, and then press the **Send button**.
 
-![Create commit](./img/guide-send-create-commit.gif)
+![Create commit](./img-dyn/guide-send-create-commit.gif)
 
 You should see the progress report in the lower side of the Send node, and once finished, you will get a notification with some basic info.
 
 To view the data you just sent from Dynamo in the server, you can use the `View Online` node. Just plug in the `stream`, `branch` or `commit` url and click the button.
 
-![View online](./img/nodes-view-online.png)
+![View online](./img-dyn/nodes-view-online.png)
 
 ::: tip
 The View Online node is especially useful as data cannot be easily copy/pasted from dynamo nodes
@@ -58,7 +65,7 @@ Receiving data is a very simple operation. You just need to create a `Receive` n
 
 Once connected, just press _"Receive"_, and you should see the node reporting the current progress. After the process has been completed, you could inspect the data you just received using Dynamo's inspection tools.
 
-![Receiving data](./img/guide-receive.gif)
+![Receiving data](./img-dyn/guide-receive.gif)
 
 ## Creating custom objects
 
@@ -72,7 +79,7 @@ This dictionary will be automatically converted to a `Base` object during the _S
 Learn more about the Speckle `Base` object [here](./../../concepts.md#the-base-object) 👈
 :::
 
-![Create custom objects](./img/guide-custom-objects.png)
+![Create custom objects](./img-dyn/guide-custom-objects.png)
 
 ## Using Streams in Dynamo
 
@@ -100,7 +107,7 @@ Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#bra
 
 #### Send node
 
-![Send node](./img/nodes-send.png)
+![Send node](./img-dyn/nodes-send.png)
 
 The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
 
@@ -118,7 +125,7 @@ There is also an switch you can toggle to enable the node to send automatically 
 
 #### Receive node
 
-![Receive node](./img/nodes-receive.png)
+![Receive node](./img-dyn/nodes-receive.png)
 
 The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
 
@@ -132,7 +139,7 @@ The **Receive node** fetches data from a specified `Stream` or any other valid `
 
 #### Local Send node
 
-![Send local node](./img/nodes-send-local.png)
+![Send local node](./img-dyn/nodes-send-local.png)
 
 The **Local Send** node performs sending operations directly to the users's local database.
 
@@ -146,7 +153,7 @@ The **Local Send** node performs sending operations directly to the users's loca
 
 #### Local receive node
 
-![Receive local node](./img/nodes-receive-local.png)
+![Receive local node](./img-dyn/nodes-receive-local.png)
 
 The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
@@ -162,7 +169,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 #### Accounts node
 
-![Accounts node](./img/nodes-accounts.png)
+![Accounts node](./img-dyn/nodes-accounts.png)
 
 The **Accounts** node provides a fast way of selecting different Speckle accounts.
 
@@ -170,7 +177,7 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 #### Create stream
 
-![alt](./img/nodes-create-stream.png)
+![alt](./img-dyn/nodes-create-stream.png)
 
 ##### Inputs
 
@@ -182,7 +189,7 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 #### Get stream
 
-![Stream get node](./img/nodes-stream-get.png)
+![Stream get node](./img-dyn/nodes-stream-get.png)
 
 The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
 
@@ -197,7 +204,7 @@ The **Stream Get** node will try to find an existing `Stream`, given it's unique
 
 #### List streams
 
-![Stream list node](./img/nodes-stream-list.png)
+![Stream list node](./img-dyn/nodes-stream-list.png)
 
 The **List Streams** node returns a specified ammount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
 
@@ -212,7 +219,7 @@ The **List Streams** node returns a specified ammount of streams available in an
 
 #### Stream details
 
-![Strean details node](./img/nodes-stream-details.png)
+![Strean details node](./img-dyn/nodes-stream-details.png)
 
 The **Stream Details** node returns all relevant information related to a specific `Stream`.
 
@@ -233,7 +240,7 @@ The **Stream Details** node returns all relevant information related to a specif
 
 #### Stream update
 
-![Stream update node](./img/nodes-stream-update.png)
+![Stream update node](./img-dyn/nodes-stream-update.png)
 
 The **Stream Update** node allows for updating the _name_, _description_ and _link sharing_ (which will make your data publicly available to read by anyone with the _stream url_)
 
@@ -250,13 +257,13 @@ The **Stream Update** node allows for updating the _name_, _description_ and _li
 
 ### Devtools - Conversion
 
-![Conversion Category](./img/nodes-cat-conversion.png)
+![Conversion Category](./img-dyn/nodes-cat-conversion.png)
 
 These nodes where developed exclusively for testing/development purposes. If you don't know what these are, you most likely won't ever need them.
 
 #### Convert to Speckle node
 
-![Convert to Speckle node](./img/nodes-convert-tospeckle.png)
+![Convert to Speckle node](./img-dyn/nodes-convert-tospeckle.png)
 
 The **Convert to Speckle** node will try to convert any Rhino objects (such as lines, curves, meshes...) into Speckle objects.
 
@@ -264,7 +271,7 @@ This node was developed for testing/development purposes, as the Send/Receive no
 
 #### Convert to Native node
 
-![Convert to Native node](./img/nodes-convert-tonative.png)
+![Convert to Native node](./img-dyn/nodes-convert-tonative.png)
 
 The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
 
@@ -272,19 +279,19 @@ This node was developed for testing/development purposes.
 
 #### Serialize Speckle objects node
 
-![Serialize objects node](./img/node-serialize.png)
+![Serialize objects node](./img-dyn/node-serialize.png)
 
 The **Serialize objects** node will convert any Speckle object into `JSON` formatted text.
 
 #### Deserialize Speckle objects node
 
-![Deserialize objects node](./img/nodes-deserialize.png)
+![Deserialize objects node](./img-dyn/nodes-deserialize.png)
 
 The **Deserialize objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
 ### Dev Tools - Transports
 
-![Transports category](./img/nodes-cat-transports.png)
+![Transports category](./img-dyn/nodes-cat-transports.png)
 
 **Transports** represent a connection to the specific place your data is being saved to, and can be retreived from.
 
@@ -292,24 +299,24 @@ The most used transport at the moment is the **Server Transport**, as it is used
 
 #### Server Transport
 
-![Server transport node](./img/nodes-transports-server.png)
+![Server transport node](./img-dyn/nodes-transports-server.png)
 
 Creates a connection to a specific Speckle Server.
 
 #### SQLite Transport
 
-![SQLite Transport](./img/nodes-transport-sqlite.png)
+![SQLite Transport](./img-dyn/nodes-transport-sqlite.png)
 
 Creates a connection to a specific SQLite database.
 
 #### Disk Transport
 
-![Disk tranport](./img/nodes-transport-disk.png)
+![Disk tranport](./img-dyn/nodes-transport-disk.png)
 
 Creates a connection to a specific file in the computer's disk, where the data will be saved in JSON format.
 
 #### Memory Transport
 
-![Memory transport](./img/nodes-transport-memory.png)
+![Memory transport](./img-dyn/nodes-transport-memory.png)
 
 Creates a connection to in-memory storage.

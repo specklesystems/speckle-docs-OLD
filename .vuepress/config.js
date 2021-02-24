@@ -61,11 +61,22 @@ module.exports = {
             "",
             "concepts",
             "manager",
-            "web",
-            "connectors/",
-            "connectors/grasshopper/",
-            "connectors/dynamo/",
-            "connectors/revit-rhino/"
+            "web"
+          ]
+        },
+        {
+          title: "Connectors 🔌",
+          collapsable: false,
+          children: [
+            "connectors",
+            "ui",
+            "revit",
+            "rhino",
+            "autocadcivil",
+            "grasshopper",
+            "dynamo",
+            "unity"
+            
           ]
         },
         {

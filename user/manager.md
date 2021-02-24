@@ -19,6 +19,8 @@ Manager for Windows will automatically update when an update is available, in Ma
 
 Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
 
+You can also add an account directly from Speckle Web.
+
 ::: tip IMPORTANT
 This guide assumes you have access to a **Speckle Server**.
 It might have been provided by your company, you might have deployed one locally, or you might be using one provided by us.

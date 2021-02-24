@@ -1,6 +1,6 @@
-# 🔌 Revit & Rhino
+# User Interface
 
-Revit and Rhino share the same UI, so this section will apply to both applications. If you have specific questions about either one, head over to the [forum](https://discourse.speckle.works/) to get help from the community!
+Most of our connectors share the same UI (also called Desktop UI), this section goes to describe how to use it.
 
 ## A Quick Tour
 
