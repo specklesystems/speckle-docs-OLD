@@ -44,7 +44,7 @@ module.exports = {
       //this button has custom style in index.styl under `.nav-item:last-child a`
       {
         text: "Join the beta",
-        link: "https://speckle.systems/getstarted/" 
+        link: "https://speckle.systems/getstarted/"
       }
     ],
     sidebar: {
@@ -98,7 +98,7 @@ module.exports = {
         {
           title: "Python SDK",
           collapsable: false,
-          children: ["python"]
+          children: ["python", "py-examples"]
         },
         {
           title: "Javascript SDK",
@@ -108,7 +108,7 @@ module.exports = {
         {
           title: "Server API & Apps",
           collapsable: false,
-          children: ["server-api-apps","tokens-apps", "apps-dev"]
+          children: ["server-api-apps", "tokens-apps", "apps-dev"]
         }
       ]
     }
