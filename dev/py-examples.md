@@ -189,6 +189,8 @@ received_base = client.object.get("stream id", hash)
 
 ### Base Object & Serialization
 
+#### The Base Object
+
 The `Base` class is the one you're familiar with from the rest of the Speckle universe. It generally behaves the same way as it does in the other SDKs. For more info about the `Base` object, have a look [here](/dev/base).
 
 ```py
@@ -215,6 +217,10 @@ The `Base` class has a few handy instance methods for identifying your object's 
 - `get_typed_member_names()` gets all of the names of the defined (typed) attributes of the object
 - `get_dynamic_member_names()` gets all of the names of the dynamic attributes of the object 
 - `get_member_names()` gets a list of all the attributes on the object, dynamic or not
+
+Each `Base` object has an `id` (a unique hash) as it does in the other SDKs. This field is only populated if the `Base` has been previously serialised. If you really need the hash, you can get it using the `get_id()` method. Be aware that if the `id` is not populated, this call will fully serialise the object to create the `id`! By default, the hash will be generated without decomposing the object. However, you can pass `decompose=True` as an argument if you want the decomposed `id`.
+
+#### Subclassing Base
 
 The `Base` class can be subclassed to create your own custom objects. These are automatically added to a a class level registry which is simply a dictionary with the type name as the key. The type is automatically populated by the `speckle_type` attribute, but can be overwritten when writing your class.
 
@@ -288,6 +294,7 @@ class FakeMesh(Base):
 
 ```
 
+#### Serialization
 
 The `BaseObjectSerializer` is what's used behind the scenes in the `operations` for decomposing and serializing `Base` objects so they can be sent / received to the server. You probably won't ever need to use it directly. However, if you want you can use it to get the id (hash) and a serializable object representation of the decomposed `Base`. You can learn more about the Speckle `Base` object [here](/dev/base) and the decomposition API [here](/dev/decomposition).
 

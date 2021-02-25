@@ -76,7 +76,7 @@ module.exports = {
             "grasshopper",
             "dynamo",
             "unity"
-            
+
           ]
         },
         {
@@ -109,7 +109,7 @@ module.exports = {
         {
           title: "Python SDK",
           collapsable: false,
-          children: ["python", "py-examples"]
+          children: ["python", "py-examples", "py-sample"]
         },
         {
           title: "Javascript SDK",
