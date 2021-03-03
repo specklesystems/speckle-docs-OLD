@@ -1,6 +1,6 @@
 # Introduction
 
-Our .NET SDK is [Core](https://github.com/specklesystems/speckle-sharp/tree/master/Core), and it's part of our [SpeckleSharp repo](https://github.com/specklesystems/speckle-sharp).
+Our .NET SDK is called [Core](https://github.com/specklesystems/speckle-sharp/tree/master/Core), and it's part of our [SpeckleSharp repo](https://github.com/specklesystems/speckle-sharp).
 Core is written in .NET Standard 2.0, it's been tested on Windows and MacOS and it's being used by all our .NET based connectors.
 
 ## Getting started
