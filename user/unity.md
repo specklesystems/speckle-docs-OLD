@@ -49,7 +49,7 @@ The `Send()` method accepts additional optional arguments to use different accou
 
 We've only started supporting Unity elements, please let us know what else you'd like to see, and do contribute if you have the skillz!
 
-| Speckle > Unity      | Speckle > Unity | Unity > Speckle |
+| Type                 | Speckle > Unity | Unity > Speckle |
 | -------------------- | --------------- | --------------- |
 | Point                | x               | x               |
 | Line                 | x               |                 |

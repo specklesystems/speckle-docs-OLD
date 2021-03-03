@@ -63,9 +63,37 @@ A custom object is a [Base Object](/user/concepts.html#the-base-object) with cus
 
 There's several different ways to create custom speckle objects using the Grasshopper. One of them is using the `Create Speckle Object` node.
 
-This node has _variable input parameters_, meaning that you can modify the amount of input nodes it has by zooming into the component. Each input you define will represent a new property on the object.
+![Create speckle object node.](./img-gh/nodes-create-object.png)
 
-You can also modify the name of this inputs by right-clicking the input name. In the right-click menu, you will also find the options to change the **access type** of that input. Meaning, if the object property should be a single item, or a list.
+This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ section, you should see a `+/-` sign that will allow you to add/remove properties from the object. Each input you define will represent a new property on the object. You can also modify the name of these properties, as well as their _access type_.
+
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
+
+#### Modifying the access type
+
+Access type operates in the same way as the `Python` and `C#` script components. In this case, you can specify if you want a specific property in the object to be a _list_ or a single _item_.
+i.e. If you plug a list of numbers into a `Create Speckle Object` node, depending on the specified access of that property you will get 2 different results:
+
+- **Item access**: The result will be a **list** of base objects, with only one item each.
+  ![Item access](./img-gh/params-base-itemAccess.png)
+- **List accesss**: The result will be **one** base object, with the entire list of items saved in the property.
+  ![List Access](./img-gh/params-base-listAccess.png)
+
+#### Detach/Do not detach
+
+Every property can also be specified as _detached/non-detached_. When a property is _detached_, it means that the objects it contains will be saved as independent entities in the Speckle database. All properties are detached by default for performance reasons, but you can choose not to by specifying `Do not detach` on the right-click menu.
+
+## Schema Builder
+
+![Schema Builder node](./img-gh/nodes-schema-builder.png)
+
+The **Schema Builder** node is a very powerful one. It works similarly to the node above as it allows to create custom objects, but it does so by following pre-existing schemas. To learn more about [schemas and kits](/dev/kits) check out or dev section.
+
+By default the Schema Builder node comes with a series of types, these include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
+
+When a new **Schema Builder** node is created, a pop-up window will be displayed prompting the user to select a specific object schema. This schema will be used to populate the input/output ports of the node with the appropriate fields.
+
+![Schema builder pop-up](./img-gh/nodes-schema-builder-popup.png)
 
 ## Using Streams in Grasshopper
 
@@ -122,7 +150,7 @@ The **Send node** performs sending operations, usually to a Speckle Server, but 
 There is also an option to set the node to automátically send every time there is a change in the data. You will find this option in the right-click menu of the node.
 
 | ![Activating auto mode in sender](./img-gh/nodes-send-automode-activate.png) | ![Auto-send mode active in sender](./img-gh/nodes-send-automode-active.png) |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
@@ -189,25 +217,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 #### Create Speckle Object
 
-![Create speckle object node.](./img-gh/nodes-create-object.png)
-
-The **Create Speckle Object** node allows for the creation of custom objects that can be sent via Speckle. This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ section, you should see a `+/-` sign that will allow you to add/remove properties from the object. You can also modify the name of these properties, as well as their _access type_.
-
-<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
-
-> **Modifying the access type**
->
-> Access type operates in the same way as the `Python` and `C#` script components. In this case, you can specify if you want a specific property in the object to be a _list_ or a single _item_.
-> i.e. If you plug a list of numbers into a `Create Speckle Object` node, depending on the specified access of that property you will get 2 different results:
->
-> - **Item access**: The result will be a **list** of base objects, with only one item each.
->   ![Item access](./img-gh/params-base-itemAccess.png)
-> - **List accesss**: The result will be **one** base object, with the entire list of items saved in the property.
->   ![List Access](./img-gh/params-base-listAccess.png)
-
-> **Detach/Do not detach**
->
-> Every property can also be specified as _detached/non-detached_. When a property is _detached_, it means that the objects it contains will be saved as independent entities in the Speckle database. All properties are detached by default for performance reasons, but you can choose not to by specifying `Do not detach` on the right-click menu.
+Please refer to the [Creating custom objects](/user/grasshopper.html#creating-custom-objects) section.
 
 #### Create Speckle Object by Key/Value pairs
 
@@ -262,16 +272,7 @@ The **Extend Speckle Object** provides a way to add new properties to an already
 
 #### Schema Builder
 
-![Schema Builder node](./img-gh/nodes-schema-builder.png)
-
-The **Schema Builder** node is a very powerful one.
-It allows to create specific custom objects.
-
-These include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
-
-When a new **Schema Builder** node is created, a pop-up window will be displayed prompting the user to select a specific object schema. This schema will be used to populate the input/output ports of the node with the appropriate fields.
-
-![Schema builder pop-up](./img-gh/nodes-schema-builder-popup.png)
+Please refer to the [Using the Schema Builder](/user/grasshopper.html#schema-builder) section.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 

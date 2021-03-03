@@ -11,7 +11,11 @@ module.exports = {
     [
       "meta",
       { name: "apple-mobile-web-app-status-bar-style", content: "black" }
-    ]
+    ],
+    "script",
+    {
+      src: "/scripts/scroll-to-hash.js",
+    }
   ],
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -119,7 +123,7 @@ module.exports = {
         {
           title: "Server API & Apps",
           collapsable: false,
-          children: ["server-api-apps", "tokens-apps", "apps-dev"]
+          children: ["server-api", "tokens-apps", "apps-dev"]
         }
       ]
     }
