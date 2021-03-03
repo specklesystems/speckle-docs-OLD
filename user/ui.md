@@ -30,7 +30,7 @@ Let's look at how you would create a new stream and send some data. The big blue
 
 The simplest way to add objects to a stream is by selecting what you want in the file, clicking the centre selection button, and choosing the "Set Selection" option. However, you can also get more granular control of your object selection by diving into the filter options.
 
-![image-20210303192353932](img-interop/image-20210303192353932.png)
+![image-20210303192353932](./img-interop/image-20210303192353932.png)
 
 By clicking on (1) an additional view will show, wich will let you filter the model elements with custom filters. This view is different in every connector and is based on top of what the host application can offer in terms of selection. Here's an example of the options available in Revit:
 

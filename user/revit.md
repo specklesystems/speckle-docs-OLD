@@ -12,7 +12,7 @@ To install this connector and add your Speckle account proceed by following the 
 
 Once installed you can find the Revit connector under the Add-ins tab.
 
-![image-20210303191815524](img-revit/image-20210303191815524.png)
+![image-20210303191815524](./img-revit/image-20210303191815524.png)
 
 ## User Interface
 
@@ -22,7 +22,7 @@ This connector uses our shared Desktop UI, head over [its section to see how it 
 
 In Revit, various filters are available to give you more granular control on what elements to send. Once a filter is set, every time you click send, all objects matching it will be sent whether they are visible or not, and even if they were created after setting up the filter.
 
-![image-20210303192915561](img-revit/image-20210303192915561.png)
+![image-20210303192915561](./img-revit/image-20210303192915561.png)
 
 #### Category
 
@@ -46,7 +46,7 @@ The list of available parameters is based off the current elements in the model,
 
 :::
 
-![image-20210303201525577](img-revit/image-20210303201525577.png) 
+![image-20210303201525577](./img-revit/image-20210303201525577.png) 
 
 ## Supported Elements
 
@@ -79,7 +79,7 @@ If you'd like us to add something specific let us know on the [forum](https://di
 | View (FloorPlan, CeilingPlan, Elevation, Section, 3D) |                 | x               |
 | Wall                                                  | x               | x               |
 
-### Raw Geometry
+#### Raw Geometry
 
 Generally speaking, Revit doesn't support raw geometry as it deals with families. Nonetheless, we've made it simple to receive some types of geometry directly, without the need of specifying family type, name or any other parameter.
 
@@ -117,4 +117,4 @@ All Revit type and instance parameters are automatically attached to each elemen
 
 You can inspect them from our Web interface and from any other applications that allow to explore this metadata (eg Grasshopper, Dynamo, Unity...).
 
-![image-20210303224640764](img-revit/image-20210303224640764.png)
+![image-20210303224640764](./img-revit/image-20210303224640764.png)
