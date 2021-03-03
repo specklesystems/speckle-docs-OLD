@@ -119,7 +119,7 @@ module.exports = {
         {
           title: "Server API & Apps",
           collapsable: false,
-          children: ["server-api-apps", "tokens-apps", "apps-dev"]
+          children: ["server-api", "tokens-apps", "apps-dev"]
         }
       ]
     }
