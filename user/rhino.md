@@ -51,11 +51,18 @@ Once the stream has been added go ahead and hit the `Receive` button. This will 
 
 ![Stream receive operation](./img-rhino/rhino-stream-receive.gif)
 
-In order to prevent overriding existing layers/objects in the file. All received objects will be placed in a nested layer structure containing all the layers that the sent objects were placed to, with a parent layer with a name in the format `<STREAM_NAME>: <BRANCH_NAME> @ <COMMIT>`.
+In order to prevent overriding existing layers/objects in the file, all received objects will be placed in a nested layer structure.
+
+This structure will contain all the layers. that the sent objects were placed to, with a parent layer with a name in the format `<STREAM_NAME>: <BRANCH_NAME> @ <COMMIT>`.
 
 ![Commit layers](./img-rhino/rhino-stream-receive-nested-layers.png)
 
-In the following screenshot, you can appreciate the difference between the existing layers of the sent objects, and the layers created by Speckle when receiving the data back; as well as the overlapping received objects(gray) with the original objects (blue and red).
+In the following screenshot, you can appreciate the difference between:
+
+1. the original layers of the sent objects,
+2. and the layers created by Speckle when receiving the data back;
+
+as well as the overlapping received objects(gray) with the original objects (blue and red).
 
 ![Received layers pattern](./img-rhino/rhino-stream-receive-layers.png)
 
@@ -147,4 +154,4 @@ Removing schemas from Rhino objects is super easy:
 
 ## Things to keep in mind
 
-TODO
+This section is work in progress 🚧 ! Please check back again soon 😃
