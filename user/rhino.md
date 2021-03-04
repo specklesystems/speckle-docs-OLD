@@ -8,7 +8,7 @@ To install this connector and add your Speckle account proceed by following the 
 
 Once installed you can find the connector by running the `Speckle` command in Rhino. This should open a new pop-up window with the [Desktop UI](/user/ui.md)
 
-![Speckle command](./img/img-rhino/rhino-speckle-command.png)
+![Speckle command](./img-rhino/rhino-speckle-command.png)
 
 > Do not confuse the `Speckle` command with the `SpecklePanel` command, which is for the previous version of Speckle.
 
@@ -25,19 +25,19 @@ Once the Desktop UI panel is open, go ahead and create a new stream (or add an e
 In order send your objects, we first need to specify the objects we would like to send.
 This can be done either by selection or by filtering data by layers.
 
-![Stream in send mode](./img/img-rhino/rhino-stream-send-mode.png)
+![Stream in send mode](./img-rhino/rhino-stream-send-mode.png)
 
 Select the objects you want to send in Rhino, and then click the button that says `0 objects` in the Speckle Panel. A drop-down will appear; from the options select `Set selection`.
 
-![Stream selection dropdown](./img/img-rhino/rhino-selection-dropdown.png)
+![Stream selection dropdown](./img-rhino/rhino-selection-dropdown.png)
 
 Once that is done, the button that was previously indicating `0 objects` should now display the total count of objects that were selected.
 
-![Stream selection set](./img/img-rhino/rhino-selection-set.png)
+![Stream selection set](./img-rhino/rhino-selection-set.png)
 
 Once that is done, press the `Send` button. You should see a progress bar and, once completed, a success message.
 
-![Stream send operation](./img/img-rhino/rhino-stream-send.gif)
+![Stream send operation](./img-rhino/rhino-stream-send.gif)
 
 > Notice that, when sending from Rhino, the layer structure will be replicated as `Base` object properties, which can then be recreated on the receiving end.
 
@@ -45,19 +45,19 @@ Once that is done, press the `Send` button. You should see a progress bar and, o
 
 In order to receive data from a Speckle stream, we will first need to add that desired stream into our Speckle DesktopUI panel. If the stream already exists on the server it will automatically be added in _receiver mode_.
 
-![Stream in receiver mode](./img/img-rhino/rhino-stream-receive-mode.png)
+![Stream in receiver mode](./img-rhino/rhino-stream-receive-mode.png)
 
 Once the stream has been added go ahead and hit the `Receive` button. This will display a progress bar (just like the sending operation) and, if successfull, will add the received objects to the current document.
 
-![Stream receive operation](./img/img-rhino/rhino-stream-receive.gif)
+![Stream receive operation](./img-rhino/rhino-stream-receive.gif)
 
 In order to prevent overriding existing layers/objects in the file. All received objects will be placed in a nested layer structure containing all the layers that the sent objects were placed to, with a parent layer with a name in the format `<STREAM_NAME>: <BRANCH_NAME> @ <COMMIT>`.
 
-![Commit layers](./img/img-rhino/rhino-stream-receive-nested-layers.png)
+![Commit layers](./img-rhino/rhino-stream-receive-nested-layers.png)
 
 In the following screenshot, you can appreciate the difference between the existing layers of the sent objects, and the layers created by Speckle when receiving the data back; as well as the overlapping received objects(gray) with the original objects (blue and red).
 
-![Received layers pattern](./img/img-rhino/rhino-stream-receive-layers.png)
+![Received layers pattern](./img-rhino/rhino-stream-receive-layers.png)
 
 ## Supported elements
 
@@ -77,7 +77,7 @@ Non-geometric elements and any geometric element not listed above, such as text 
 
 Speckle 2.0 gives you the option of streaming objects as `base` geometry from Rhino to Revit, or directly into Revit families as BuiltElements through the Rhino schema builder commands.
 
-![example](./img/Rhino-To-Revit-Interop-Example.gif)
+![example](./img-rhino/rhino-revit-example.gif)
 
 ### Features
 
@@ -102,7 +102,7 @@ Stream your Rhino objects directly into Revit as BuiltElements! Rhino to Revit i
 
 ### Assigning schemas
 
-![command](./img/Rhino-To-Revit-Interop-Command.gif)
+![command](./img-rhino/rhino-schemaGen-command.gif)
 
 #### The automagic method
 
