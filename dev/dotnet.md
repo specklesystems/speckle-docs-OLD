@@ -24,3 +24,67 @@ Server specific tasks:
 - stream, branch and commit api calls
 - update notifications (subscriptions)
 - local account management
+
+## Structuring Your Data 🚧
+
+Speckle allows you to structure your data in any way you like. Here's a quick example:
+
+```cs
+using Speckle.Core.Models;
+
+var myBuilding = new Base()
+
+myBuilding[ "@floors" ] = myFloors;
+myBuilding[ "@walls" ] = myWalls;
+myBuilding[ "name" ] = "Southwood Park"
+
+```
+
+The `Base` object behaves like a dictionary - with some added Speckle smarts - and lets you organically compose your data in any way you want. 
+
+::: tip
+
+For more advanced usage, check [the tests out](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Tests/BaseTests.cs)! 
+
+:::
+
+TODO: Creating a simple class that extends Base
+
+## Serializing Data 🚧
+
+Getting a JSON representation of your data is easy:
+
+```cs
+using Speckle.Core.Api;
+using Speckle.Core.Models;
+
+var serlializedBuilding = Operations.Serialize( myBuilding );
+var deserializedBuilding = Operations.Deserialize( serlialisedBuilding );
+
+```
+
+::: tip
+
+For more advanced usage, check [the serialisation tests out](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/Tests/SerializationTests.cs#L10-L34)! 
+
+:::
+
+## Sending Data 🚧
+
+TODO
+
+::: tip
+
+For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)! 
+
+:::
+
+## Receiving Data 🚧
+
+TODO
+
+::: tip
+
+For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)! 
+
+:::
