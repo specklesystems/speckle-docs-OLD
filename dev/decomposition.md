@@ -107,7 +107,85 @@ Wether or not this sounds complicated, the exposed API is actually rather simple
 
 ## Chunking
 
-TODO
+### Problem
+
+Some list properties of various objects can get very large. Examples:
+
+- a Brep with many faces will have a Surfaces list prop containing 1000s of potentially heavy Surfaces.
+- a mesh with 100k+ vertices and faces.
+
+This results in a clunky (memory heavy) serialisation process and can be unsafe (read: cause borkages) due to memory limitations. 
+
+### Solutions
+
+In order of preference. Note that they are not exclusive, and they build on top of each other: 
+
+- First, optimise the list property so it's more lightweight
+- Second, chunk the list property
+
+### First port of call: Optimise the list property 🧪
+
+For example, you might be tempted to define a mesh like this: 
+
+```csharp
+public class Mesh : Base 
+{
+    public List<Point> vertices { get; set; }
+    // ...
+}
+```
+
+A much more efficient way is to define it like this: 
+
+```csharp
+public class Mesh : Base 
+{
+  // Typed array of 3
+    public List<double> vertices { get; set; }
+    // ...
+}
+```
+
+Instead of storing each individual vertex as a point, you store them in a typed array. Serialisation will be much faster and leaner.
+
+### Second port of call: Use the `Chunkable` Attribute 🆕
+
+In some cases you might be too lazy to actually optimise the storage of a list property, or it might be too convenient to use the class itself. 
+
+Alternatively, you might still have a simple `List<double>` that expands to millions+ of items, like in the case of a very large mesh. 
+
+In the cases above, the best way is to mark the property as `Chunkable` together with `[DetachProperty]`. This will tell the serialiser that it should split it into manageable chunks of items, the size of which you can control. 
+
+Here's how that looks like currently in the mesh class:
+
+```csharp
+public class Mesh : Base
+{
+    [DetachProperty]
+    [Chunkable(20000)] // Chunks this array into batches of 20k numbers
+    public List<double> vertices { get; set; } = new List<double>();
+
+    [DetachProperty]
+    [Chunkable(20000)] // Chunks this array into batches of 20k numbers
+    public List<int> faces { get; set; } = new List<int>();
+
+    [DetachProperty]
+    [Chunkable(20000)] // Chunks this array into batches of 20k numbers
+    public List<int> colors { get; set; } = new List<int>();
+
+    [DetachProperty]
+    [Chunkable(20000)] // Chunks this array into batches of 20k numbers
+    public List<double> textureCoordinates { get; set; } = new List<double>();
+}
+```
+
+::: warning Potential Footguns
+
+The DetachProperty attribute by itself can be a performance footgun in some scenarios: for example, if you have a `List<Point>` that can grow really big and you mark it as detachable, without marking it as chunkable, each individual point in that list will be stored as a separate entity.
+
+This is bad: serialisation and deserialisation will take longer, and it essentially amounts to bad object model design (in speckle terms of course).  
+
+:::
 
 ## Summary
 
