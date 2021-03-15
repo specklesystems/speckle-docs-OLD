@@ -4,9 +4,11 @@ You can stream _Grasshopper_ native geometry to Revit using Speckle! In this gui
 
 ## Getting started
 
-Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://link)
+Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1TYX8aL_CZ7fVLaE1pWz4h4qYZYYAaA0o?usp=sharing)
 
-> Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
+::: tip
+Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
+:::
 
 ## Sending `Rhino/Grasshopper` geometry objects
 
@@ -30,13 +32,13 @@ Let's send some geometry objects from Grasshopper to Revit. We'll start with the
 
 ![Send geometry from GH](./img-interop/interop-gh:rvt-geometry-send.gif)
 
-> **Viewing your stream**
-> Right click the `Send node` and select `View commit....`. This will open a new browser window taking you to the Stream location in your Speckle server.
-> ![View stream online](./img-interop/interop-gh:rvt-viewStream.png)
->
-> - Streams created in Grasshopper have the name `Random Stream` by default, so feel free to change it to be able to identify it in Revit. You can also identify a stream by it's unique ID.
+::: tip Viewing your stream
+Right click the `Send node` and select `View commit....`. This will open a new browser window taking you to the Stream location in your Speckle server.
+![View stream online](./img-interop/interop-gh:rvt-viewStream.png)
 
-Now for the Revit side of things:
+- Streams created in Grasshopper have the name `Random Stream` by default, so feel free to change it to be able to identify it in Revit. You can also identify a stream by it's unique ID.
+  :::
+  Now for the Revit side of things:
 
 1. Open a new Revit file, and call up the Revit Desktop UI via the Speckle 2 plugin ribbon.
 2. Add the stream you just created by clicking the blue `+` button on the lower right corner.
@@ -85,11 +87,15 @@ Meaning, you are free to organize your data as needed for any other application 
 
 In order to create other _native_ Revit elements, we'd need to use the `Schema Builder` node in Grasshopper.
 
-> When first create the node, a pop-up window will appear allowing you to select the object type you want to create. These are organized into two main categories:
->
-> - Built elements: These are Speckle elements created to support common built elements (beam, wall, slab, level...) accross the entire Speckle ecosystem.
-> - Revit elements: These are specifically designed to support Revit specific entities and workflows.
->   ![Schema builder pop-up](./img-interop/interop-gh:rvt-schemaBuilder-popup.gif)
+::: tip SchemaBuilder node pop-up
+
+When first create the node, a pop-up window will appear allowing you to select the object type you want to create. These are organized into two main categories:
+
+- Built elements: These are Speckle elements created to support common built elements (beam, wall, slab, level...) accross the entire Speckle ecosystem.
+- Revit elements: These are specifically designed to support Revit specific entities and workflows.
+  ![Schema builder pop-up](./img-interop/interop-gh:rvt-schemaBuilder-popup.gif)
+
+:::
 
 ### Creating Levels and Floors
 
@@ -115,19 +121,22 @@ Since these are native Revit Elements, you can edit as any other Revit type. Dou
 
 ![Edit revit floors from Speckle](./img-interop/interop-gh:rvt-schema-editFloorsRevit.gif)
 
-> ### Automatic floor creation
->
-> The Revit connector will always attempt to assign objects to existing floors when available. If the object lies at a height where no `level` exists, a new level will be automatically generated with the name `Generated Level XXXX`, where `XXXX` will be the height at that level.
->
-> This is specially true when sending `BuiltElements`. Notice the lack of `level` in the `Floor` node as opposed to the `RevitFloor`. If sending a `Floor`, a level will be generated at the height of the floor outline.
->
-> ![Floor nodes comparison](./img-interop/interop-gh:rvt-schema-floorComparison.png)
+::: tip Automatic floor creation
+
+The Revit connector will always attempt to assign objects to existing floors when available. If the object lies at a height where no `level` exists, a new level will be automatically generated with the name `Generated Level XXXX`, where `XXXX` will be the height at that level.
+
+This is specially true when sending `BuiltElements`. Notice the lack of `level` in the `Floor` node as opposed to the `RevitFloor`. If sending a `Floor`, a level will be generated at the height of the floor outline.
+
+![Floor nodes comparison](./img-interop/interop-gh:rvt-schema-floorComparison.png)
+:::
 
 ## Assigning parameter values
 
 The `Schema Builder` node also contains a `Parameter` type, created specifically to pass parameter values along with the Revit model elements being sent.
 
-> When sending Revit elements with custom parameters, you must ensure the parameters exist for the type/family you are targetting or the value will not be set.
+::: warning
+When sending Revit elements with custom parameters, you must ensure the parameters exist for the type/family you are targetting or the value will not be set.
+:::
 
 Passing parameter values is as easy as connecting the desired parameter to the `parameter` input of a `RevitElement` node. Let's modify the `Mark` parameter value to be the current level elevation.
 
@@ -144,7 +153,9 @@ In Revit:
 1. Press the receive button as soon as you get notified of the updated data.
 2. Select any of the floors that were sent and ensure the parameter has been properly set.
 
-> You can do this with any type of parameter in your model (family/shared...)
+::: tip
+You can do this with any type of parameter in your model (family/shared...)
+:::
 
 ![Receiving stairs in Revit](./img-interop/interop-gh:rvt-schema-parameterSet.png)
 
@@ -157,7 +168,9 @@ Let's try it out with the stairs:
 1. Create a new `SchemaBuilder` node and select `DirectShape` from the Revit category.
 2. You'll notice the `DirectShape` node will also create a `ValueList` drowpdown to select the appropriate element type.
 3. Connect the `Stairs by level` node to the `BaseGeometries` input.
-   > The `BaseGeometries` input expects a list, so make sure you graft it to create one `DS` per stair object.
+   ::: tip
+   The `BaseGeometries` input expects a list, so make sure you graft it to create one `DS` per stair object.
+   :::
 4. Connect a panel to the `name` input, and write a meaningful name (it can be unique for each object).
 5. Connect the `DirectShape` output **and** the previously created `RevitFloors` to a sender and press `Send`
 
@@ -179,7 +192,9 @@ If all went well, your walls should have updated along with the floor changes.
 
 ## Using Speckle in the Family Editor
 
-> You can definitelly use Speckle inside the Family editor but this section is currently being built 🚧, please check again later!
+::: warning Under construction
+You can definitelly use Speckle inside the Family editor but this section is currently being built 🚧, please check again later!
+:::
 
 ## Known issues
 

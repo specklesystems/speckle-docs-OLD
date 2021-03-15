@@ -4,9 +4,11 @@ You can stream _Revit_ native elements to _Grasshopper_ using Speckle! In this g
 
 ## Getting started
 
-Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Revit and Grasshopper files for this tutorial [here](https://link)
+Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Revit and Grasshopper files for this tutorial [here](https://drive.google.com/drive/folders/1xl6X6g7Lestv6krJ-oLDdX8Ch5c1kWa7?usp=sharing)
 
-> Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
+::: tip
+Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
+:::
 
 ## Sending Revit elements by selection
 
@@ -38,12 +40,13 @@ Add some elements to the stream via selection or filter and send them to be able
 1. First, you will need a new Grasshopper file.
 2. Create a `Receive` node, and a panel with the stream url.
 3. Connect the panel to the `Receive` node and press the button.
+   ::: tip
+   When receiving Revit elements in GH, independently of the type of filter/selection used, you will receive a single `Base` object.
 
-   > When receiving Revit elements in GH, independently of the type of filter/selection used, you will receive a single `Base` object.
-   >
-   > This `Base` object will contain all of the elements organized by type. As with any other `Base` object in Grasshopper, in order to see what's inside we need to _expand it_.
+   This `Base` object will contain all of the elements organized by type. As with any other `Base` object in Grasshopper, in order to see what's inside we need to _expand it_.
 
    ![Single speckle object receive](./img-interop/interop-rvt:gh-receive-baseObject.png)
+   :::
 
 4. Use an `Expand Speckle Object` node and connect it to the received data. It will now display all the different types that were `received`, each in its own output.
 
