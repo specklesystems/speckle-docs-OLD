@@ -66,3 +66,9 @@ Parameters are just `Base` objects, so just as we did in the previous section, w
 Each parameter will expose its name and value, as well as other relevant information such as the value type, and booleans to determine if it's _read only_, _shared_ or a _type_ parameter.
 
 Now you can use your grasshopper nodes to operate on the Revit data inside Grasshopper!
+
+## Known issues
+
+- Under the `beta` release, there is limited support for Solid elements to be sent _from_ Revit _to_ Speckle. Any solid that is not supported will be converted to a `Mesh` instead.
+
+  Speckle 2.0 is currently under `beta`. You can find any known issues on our [GitHub Repo Issues page](https://github.com/specklesystems/speckle-sharp/issues?q=is%3Aissue+is%3Aopen).
