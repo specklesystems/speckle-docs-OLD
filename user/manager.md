@@ -33,3 +33,28 @@ You can also add an account directly from Speckle Web.
 The Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the "Connectors" menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions are released.
 
 ![manager-connectors](https://user-images.githubusercontent.com/7717434/106609134-2b6f2400-655d-11eb-8d2a-1730115e3bc7.gif)
+
+## Adding Accounts manually
+
+Using Speckle Manager to handle your accounts and connectors is the recommended way, but if you'd like to do without it a manual flow is also available.
+
+To manually add an account you first need to [generate a token for your account](/dev/tokens-apps).
+
+Then you can proceed to create a `.json` file in `%appdata%\Speckle\Accounts\` with the following data structure:
+
+```json
+{
+  "token": "YOUR-TOKEN-HERE",
+  "serverInfo": {
+    "name": "Server Name",
+    "company": "Company Name",
+    "url": "https://YOUR-SERVE-URL-HERE"
+  },
+  "userInfo": {
+    "id": "YOUR-USER-ID",
+    "name": "First Last",
+    "email": "firstlast@email.com",
+  }
+}
+
+```

@@ -86,10 +86,9 @@ module.exports = {
           ]
         },
         {
-          title: "Interoperability ⚡",
+          title: "Tutorials ⚡",
           collapsable: false,
           children: [
-            "interoperability",
             "interop-gh-revit",
             "interop-revit-gh",
             "interop-rhino-revit"
