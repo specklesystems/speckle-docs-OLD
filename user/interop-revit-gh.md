@@ -33,7 +33,7 @@ All filters work in a similar way:
 
 Add some elements to the stream via selection or filter and send them to be able to receive them in Grasshopper.
 
-![Sending filtered elements](./img-interop/interop-rvt:gh-filterByCategoryAndSend.gif)
+![Sending filtered elements](./img-interop/gh-filterByCategoryAndSend.gif)
 
 ## Receiving Revit elements in Grasshopper
 
@@ -45,18 +45,18 @@ Add some elements to the stream via selection or filter and send them to be able
 
    This `Base` object will contain all of the elements organized by type. As with any other `Base` object in Grasshopper, in order to see what's inside we need to _expand it_.
 
-   ![Single speckle object receive](./img-interop/interop-rvt:gh-receive-baseObject.png)
+   ![Single speckle object receive](./img-interop/gh-receive-baseObject.png)
    :::
 
 4. Use an `Expand Speckle Object` node and connect it to the received data. It will now display all the different types that were `received`, each in its own output.
 
 5. Some of those may also be `Base` objects, in which case we will need to also _expand them_. You can use as many `Expand Speckle Object` nodes as necessary to get to the data you are looking for.
 
-   ![Expand recursively](./img-interop/interop-rvt:gh-expandRevitObjects.png)
+   ![Expand recursively](./img-interop/gh-expandRevitObjects.png)
 
 6. Alternatively, if you just need the value of one of the properties, you can use the `Speckle Object Value by Key` and specify in a panel the name of the property you want the value of. It also results in a clearer graph for your GH definitions.
 
-   ![Get single property value](./img-interop/interop-rvt:gh-getPropertyByKey.png)
+   ![Get single property value](./img-interop/gh-getPropertyByKey.png)
 
 ### Accessing element parameters
 
@@ -64,7 +64,7 @@ Every Revit object contains a `parameters` list, that holds the data for all the
 
 Parameters are just `Base` objects, so just as we did in the previous section, we'll have to expand them to see their names and values.
 
-![Expand parameters](./img-interop/interop-rvt:gh-getParameterValues.png)
+![Expand parameters](./img-interop/gh-getParameterValues.png)
 
 Each parameter will expose its name and value, as well as other relevant information such as the value type, and booleans to determine if it's _read only_, _shared_ or a _type_ parameter.
 
