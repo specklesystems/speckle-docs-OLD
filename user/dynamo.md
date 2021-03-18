@@ -20,7 +20,7 @@ Let's look at how we would send some data in Dynamo. First, start by creating a 
 
 ![Send node](./img-dyn/nodes-send.png)
 
-In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/dynamo/#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
+In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/dynamo.md#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
 
 ### Creating a stream
 

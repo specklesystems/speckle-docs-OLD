@@ -68,7 +68,7 @@ A Receiver has a commit selection button in the centre instead of an objects sel
 
 For information on using specific connectors, check out the [Desktop Connectors](/user/connectors) section of the User Guide.
 
-If you'd like more detailed step-by-step guides for sending data from AEC Software A to AEC Software B, check out our [Interoperability Guides](/user/interoperability)
+If you'd like more detailed step-by-step guides for sending data from AEC Software A to AEC Software B, check out our [Interoperability Guides](/user/interop-gh-revit)
 
 ## Conclusion
 
