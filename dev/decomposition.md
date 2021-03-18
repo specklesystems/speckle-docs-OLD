@@ -1,6 +1,6 @@
 # Decomposition API
 
-This post was originally part of the Making Speckle 2.0 series of posts on the community forum, it's been adapted as part of our dev docs. Check out [the original on our forum](https://discourse.speckle.works/t/core-2-0-decomposition-api/911)!
+This post was originally part of the Making Speckle 2.0 series of posts on the community forum, it's been adapted as part of our dev docs. Check out [the original on our forum](https://speckle.community/t/core-2-0-decomposition-api/911)!
 
 ## Preamble
 
@@ -11,7 +11,7 @@ This page covers how Speckle deals with the structure and composition of design 
 Design and construction data is mostly relational: **built elements link to each other.** Despite this, there is no canonical way of structuring it.
 How do they relate to each other? Well, it depends!
 
-![structure|690x295](https://discourse.speckle.works/uploads/default/optimized/1X/cb099e4d3a8553053869d791f0ce1fcaebca3c7a_2_690x295.png)
+![structure|690x295](https://speckle.community/uploads/default/optimized/1X/cb099e4d3a8553053869d791f0ce1fcaebca3c7a_2_690x295.png)
 
 For example, a `Site` object may contain one or more `Building` objects. These, in turn, may contain one more `Levels`, and each of these `Levels` may contain some `Walls`, `Floor` and `Beam` elements. Or, those `Building` objects may each individually reference the same `Site`. Within the `Building` object, there's all the `Walls` and `Beams`, and each of them, rather than being grouped under a `Level`, they individually reference a specific `Level`.
 
@@ -66,7 +66,7 @@ When an instance of the Building class gets saved, the `Site` will be stored sep
 
 In our example, each Level can hold, in a _detachable_ property, all its walls, beams, ducts, pipes, furniture, and other built elements. Consequently, each of these elements will be individually accessible from the storage layer, and will maintain topological unity. Why is this important? Let's imagine a building with a series of levels separated by floor slabs. **The slab between two levels pertains to which level: the bottom one, or the top one?**
 
-![thinks|690x174](https://discourse.speckle.works/uploads/default/original/1X/3ea9d660024d5f3545933133165737e063fa87d5.png)
+![thinks|690x174](https://speckle.community/uploads/default/original/1X/3ea9d660024d5f3545933133165737e063fa87d5.png)
 
 ### Dynamic Detachment
 
@@ -114,31 +114,31 @@ Some list properties of various objects can get very large. Examples:
 - a Brep with many faces will have a Surfaces list prop containing 1000s of potentially heavy Surfaces.
 - a mesh with 100k+ vertices and faces.
 
-This results in a clunky (memory heavy) serialisation process and can be unsafe (read: cause borkages) due to memory limitations. 
+This results in a clunky (memory heavy) serialisation process and can be unsafe (read: cause borkages) due to memory limitations.
 
 ### Solutions
 
-In order of preference. Note that they are not exclusive, and they build on top of each other: 
+In order of preference. Note that they are not exclusive, and they build on top of each other:
 
 - First, optimise the list property so it's more lightweight
 - Second, chunk the list property
 
 ### First port of call: Optimise the list property 🧪
 
-For example, you might be tempted to define a mesh like this: 
+For example, you might be tempted to define a mesh like this:
 
 ```csharp
-public class Mesh : Base 
+public class Mesh : Base
 {
     public List<Point> vertices { get; set; }
     // ...
 }
 ```
 
-A much more efficient way is to define it like this: 
+A much more efficient way is to define it like this:
 
 ```csharp
-public class Mesh : Base 
+public class Mesh : Base
 {
   // Typed array of 3
     public List<double> vertices { get; set; }
@@ -150,11 +150,11 @@ Instead of storing each individual vertex as a point, you store them in a typed 
 
 ### Second port of call: Use the `Chunkable` Attribute 🆕
 
-In some cases you might be too lazy to actually optimise the storage of a list property, or it might be too convenient to use the class itself. 
+In some cases you might be too lazy to actually optimise the storage of a list property, or it might be too convenient to use the class itself.
 
-Alternatively, you might still have a simple `List<double>` that expands to millions+ of items, like in the case of a very large mesh. 
+Alternatively, you might still have a simple `List<double>` that expands to millions+ of items, like in the case of a very large mesh.
 
-In the cases above, the best way is to mark the property as `Chunkable` together with `[DetachProperty]`. This will tell the serialiser that it should split it into manageable chunks of items, the size of which you can control. 
+In the cases above, the best way is to mark the property as `Chunkable` together with `[DetachProperty]`. This will tell the serialiser that it should split it into manageable chunks of items, the size of which you can control.
 
 Here's how that looks like currently in the mesh class:
 
@@ -183,7 +183,7 @@ public class Mesh : Base
 
 The DetachProperty attribute by itself can be a performance footgun in some scenarios: for example, if you have a `List<Point>` that can grow really big and you mark it as detachable, without marking it as chunkable, each individual point in that list will be stored as a separate entity.
 
-This is bad: serialisation and deserialisation will take longer, and it essentially amounts to bad object model design (in speckle terms of course).  
+This is bad: serialisation and deserialisation will take longer, and it essentially amounts to bad object model design (in speckle terms of course).
 
 :::
 

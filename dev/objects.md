@@ -6,18 +6,18 @@ Objects Kit is the default [Speckle 2.0 Kit](/dev/kits). It includes geometry an
 
 While Objects Kit is the default, you are free to develop your own Kit or fork this one to customise it yourself. As of the beta release, easy swapping of kits within the connectors is not fully supported. However, this will be fully supported by the time we officially ship 2.0 🎉
 
-More info on Objects and Kits in 2.0 can be found in our [deep dive into kits](/deep-dives/kits).
+More info on Objects and Kits in 2.0 can be found in our [Kits section](/dev/kits).
 
 ## Developing
 
-Objects Kit is just a set of simple Data Transfer Objects that are fairly straightforward to understand. The object model is split into two main parts: 
+Objects Kit is just a set of simple Data Transfer Objects that are fairly straightforward to understand. The object model is split into two main parts:
 
 - `Geometry`: the basic building blocks such as points, lines, meshes, surfaces, etc
 - `BuiltElements`: higher level elements such as rooms, beams, ducts, openings, topography, etc
 
 ### Writing Objects
 
-If you'd like to contribute more [objects](https://github.com/specklesystems/speckle-sharp/tree/master/Objects/Objects) to the Objects Kit or extend and customise the kit yourself, you can easily do so by creating new classes that inherit from `Base`. You can read more about the `Base` class [here](/deep-dives/base). There are also a few [interfaces](https://github.com/specklesystems/speckle-sharp/blob/master/Objects/Objects/Interfaces.cs) an object can inherit from including `ICurve`, `IHasArea`, `IHasVolume`, and `IHasBoundingBox`.
+If you'd like to contribute more [objects](https://github.com/specklesystems/speckle-sharp/tree/master/Objects/Objects) to the Objects Kit or extend and customise the kit yourself, you can easily do so by creating new classes that inherit from `Base`. You can read more about the `Base` class [here](/dev/base). There are also a few [interfaces](https://github.com/specklesystems/speckle-sharp/blob/master/Objects/Objects/Interfaces.cs) an object can inherit from including `ICurve`, `IHasArea`, `IHasVolume`, and `IHasBoundingBox`.
 
 The class itself needs to have an empty constructor for serialisation / deserialisation purposes. You can create as many additional constructors for your own use as makes sense.
 
@@ -56,7 +56,7 @@ public class Box : Base, IHasVolume, IHasArea, IHasBoundingBox
 
 ### Specific Host Application Support
 
-The basic objects are intended to be as general as possible 
+The basic objects are intended to be as general as possible
 
 In order to better support interop between the various AEC host applications and Speckle, Objects also contains classes that help to deal with native object types and their properties. These inherit from a more generic Speckle object but add additional properties that are important for specific applications, but are too specific to include in the generic object.
 
@@ -69,7 +69,7 @@ The Objects Kit doesn't just stop at Objects - you need converters as well! Thes
 - `ConvertToNative`: converts a Speckle object to the native software
 - `ConvertToSpeckle`: converts a native software object to Speckle
 
-Both of these core methods check if the specific type passed into it is supported by the converter, then calls the conversion method for that type accordingly. 
+Both of these core methods check if the specific type passed into it is supported by the converter, then calls the conversion method for that type accordingly.
 
 For example, here is a shortened version of the [`ConvertToSpeckle`](https://github.com/specklesystems/speckle-sharp/blob/9ba30e125f2bd65d2f746563d00a90a736ade116/Objects/Converters/ConverterRevit/ConverterRevitShared/ConverterRevit.cs#L69-L154) method in `ConverterRevit`:
 
@@ -97,7 +97,7 @@ public Base ConvertToSpeckle(object @object)
       returnObject = null;
       break;
   }
-  
+
   return returnObject;
 }
 ```

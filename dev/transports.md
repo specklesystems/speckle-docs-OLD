@@ -1,6 +1,6 @@
 # Transports
 
-This post was originally part of the Making Speckle 2.0 series of posts on the community forum, it's been adapted as part of our dev docs. Check out [the original on our forum](https://discourse.speckle.works/t/core-2-0-transports/919)!
+This post was originally part of the Making Speckle 2.0 series of posts on the community forum, it's been adapted as part of our dev docs. Check out [the original on our forum](https://speckle.community/t/core-2-0-transports/919)!
 
 ## Preamble
 

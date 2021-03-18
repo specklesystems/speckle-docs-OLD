@@ -4,7 +4,7 @@ In this tutorial, we'll be working with Speckle data and using it to create a su
 
 ![dashboard using speckle-py, plotly, and dash](../dev/img/pysample-dashboard.gif)
 
-We will assume you have general knowledge of Python and Speckle. If anything trips you up, have a look back at the [Python examples](/dev/py-examples) or the [Speckle Concepts](/user/concepts). 
+We will assume you have general knowledge of Python and Speckle. If anything trips you up, have a look back at the [Python examples](/dev/py-examples) or the [Speckle Concepts](/user/concepts).
 
 If you want to follow along with the code, the repo for this project can be found [here](https://github.com/izzylys/demo-specklepy).
 
@@ -127,7 +127,7 @@ Note that we've added a _detached_ dynamic attribute called `@material` to each 
 
 We can now use the `add_materials_data()` method we wrote to update all the levels in the stream and send these updated levels back. Let's add on to what we've already written.
 
-To send our updated building, we'll need to create a parent `Base` and place our list of nested levels inside this parent. To keep things consistent, we'll be adding them to a field called `data`. 
+To send our updated building, we'll need to create a parent `Base` and place our list of nested levels inside this parent. To keep things consistent, we'll be adding them to a field called `data`.
 
 ```py
 from speckle.objects import Base
@@ -387,6 +387,7 @@ if __name__ == "__main__":
     app.run_server(debug=True)
 
 ```
+
 </code-block>
 
 <code-block title="style.css">
@@ -399,7 +400,7 @@ body {
 }
 
 .header {
-  background-color: #0A2948;
+  background-color: #0a2948;
   height: 256px;
   display: flex;
   flex-direction: column;
@@ -407,7 +408,7 @@ body {
 }
 
 .header-title {
-  color: #FAFAFA;
+  color: #fafafa;
   font-size: 48px;
   font-weight: bold;
   text-align: center;
@@ -416,7 +417,7 @@ body {
 }
 
 .header-description {
-  color: #FAFAFA;
+  color: #fafafa;
   margin: 4px auto;
   text-align: center;
   max-width: 450px;
@@ -435,12 +436,13 @@ body {
 .card {
   display: flex;
   margin: 1em;
-  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   @media {
     width: 48%;
   }
 }
 ```
+
 </code-block>
 </code-group>
 
@@ -448,9 +450,8 @@ Now all that's left is to run `app.py` and head to [`http://127.0.0.1:8050/`](ht
 
 ![dashboard using speckle-py, plotly, and dash](../dev/img/pysample-dashboard.gif)
 
-
 ## Conclusion
 
-And voila - you've created the basis for a dashboard powered by your Speckle data! This is just a simple start, and we'd love to see the interesting things you build with Speckle. If you have any questions or want to share what you've been hacking, start a conversation on our [forum](https://discourse.speckle.works/)
+And voila - you've created the basis for a dashboard powered by your Speckle data! This is just a simple start, and we'd love to see the interesting things you build with Speckle. If you have any questions or want to share what you've been hacking, start a conversation on our [forum](https://speckle.community/)
 
 For reference, all the code for this project can be found [here](https://github.com/izzylys/demo-specklepy).

@@ -6,7 +6,6 @@ Speckle currently supports Dynamo versions from 2.1 to 2.8 for Autodesk Revit 20
 
 To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
 
-
 ![Dyn Connector components](./img-dyn/nodes-cat-all.png)
 
 Once installed, the **Dynamo Connector** will appear under the `Speckle 2` and `Speckle 2 Dev Tools` tabs.
@@ -21,7 +20,7 @@ Let's look at how we would send some data in Dynamo. First, start by creating a 
 
 ![Send node](./img-dyn/nodes-send.png)
 
-In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/connectors/dynamo/#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
+In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/dynamo/#using-streams-in-dynamo)). We can do this by right clicking the canvas and searching for the `Stream Create` node.
 
 ### Creating a stream
 
@@ -76,7 +75,7 @@ In Dynamo, we use dictionaries to represent custom objects since they are native
 This dictionary will be automatically converted to a `Base` object during the _Send_ operation.
 
 ::: tip
-Learn more about the Speckle `Base` object [here](./../../concepts.md#the-base-object) 👈
+Learn more about the Speckle `Base` object [here](/user/concepts.md#the-base-object) 👈
 :::
 
 ![Create custom objects](./img-dyn/guide-custom-objects.png)
@@ -84,7 +83,7 @@ Learn more about the Speckle `Base` object [here](./../../concepts.md#the-base-o
 ## Using Streams in Dynamo
 
 ::: tip
-If you want to know more about streams, go [here](./../../concepts.md#streams) 👈
+If you want to know more about streams, go [here](/user/concepts.md#streams) 👈
 :::
 
 You can instantiate an existing stream by copy/pasting the stream url from your browser into a `string` node.
@@ -98,7 +97,7 @@ Under the _Streams_ category in the _Speckle 2_ tab, you will also find all node
 Branches cannot be created or directly selected in the Dynamo connector, but all `Stream` inputs accept _branch url's_ that you can copy directly from the server's website. When using a _stream url_ with no branch, the default branch will be used (`main`)
 
 ::: tip
-Want to know more about `branches` in Speckle? Go [here](./../../concepts.md#branches) 👈
+Want to know more about `branches` in Speckle? Go [here](/user/concepts.md#branches) 👈
 :::
 
 ## Nodes
