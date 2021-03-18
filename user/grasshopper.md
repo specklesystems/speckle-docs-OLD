@@ -25,7 +25,7 @@ You'll also find the `Speckle 2Dev`. These categories hold nodes designed for ad
 
 Let's look at how we would send some data in grasshopper. First, start by creating a new `Send` node.
 
-In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/connectors/grasshopper/#using-streams-in-grasshopper)). We can create one by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
+In order to send some data to the server, we will also need a stream. You can either _create a new stream_ or _use an existing one_ (more on this [here](/user/grasshopper/#using-streams-in-grasshopper)). We can create one by double clicking the canvas and searching for the `Stream Create` node. This node requires an account as an input, so we will also need to create an `Accounts` node.
 
 ![Nodes for sending data](./img-gh/sending-data-necessarynodes.png)
 

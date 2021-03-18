@@ -1,6 +1,6 @@
 # Kits
 
-Kits were originally discussed on the community forum. Check out [the original thread](https://discourse.speckle.works/t/introducing-kits-2-0/710)!
+Kits were originally discussed on the community forum. Check out [the original thread](https://speckle.community/t/introducing-kits-2-0/710)!
 
 ## Preamble
 
@@ -12,7 +12,7 @@ Currently Kits are only supported by our .NET SDK
 
 ## What Are Kits?
 
-![what is a kit?|690x195](https://discourse.speckle.works/uploads/default/optimized/1X/f7ce9276c37b105133e7eccf0e376ae3093a991d_2_690x195.png)
+![what is a kit?|690x195](https://speckle.community/uploads/default/optimized/1X/f7ce9276c37b105133e7eccf0e376ae3093a991d_2_690x195.png)
 
 Kits are at the heart of how Speckle _manages_ interoperability. They are, in a nutshell, a package consisting of:
 
@@ -35,7 +35,7 @@ Kit selection is not yet available in most of our connectors. We are planning to
 
 When a connector needs to convert an object, it will only search for available conversion routines in the selected kit and will not automatically fall back on other kits - this might change in the future!
 
-![Conversion](https://discourse.speckle.works/uploads/default/optimized/1X/f9890eead0fb8aa7bbe141a6cf7dd16453b0d176_2_690x449.png)
+![Conversion](https://speckle.community/uploads/default/optimized/1X/f9890eead0fb8aa7bbe141a6cf7dd16453b0d176_2_690x449.png)
 
 ## Objects
 

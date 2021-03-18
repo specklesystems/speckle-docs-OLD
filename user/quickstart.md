@@ -26,7 +26,6 @@ Once you've authorised the Manager, you are ready to use the Desktop Connectors!
 
 ![web-quick-tour](https://user-images.githubusercontent.com/7717434/106624436-90cb1100-656d-11eb-8da1-e413d676a7a6.gif)
 
-
 ## Connectors
 
 The Desktop Connectors are what connect your AEC software to Speckle. They allow you to select, send, and receive data to and from a Speckle server. Currently, we have four official Speckle Connectors: Rhino, Revit, Grasshopper, and Dynamo. We also have WIP connectors for Unity, AutoCAD, and Civil3D.
@@ -51,7 +50,7 @@ Finally, there are more advanced components for creating and expanding custom ob
 
 #### Desktop UIs
 
-Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them. 
+Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them.
 
 ![desktopui home page with labelled buttons](https://user-images.githubusercontent.com/7717434/107382404-badd7f80-6ae7-11eb-9941-2265b1cc5748.png)
 
@@ -73,6 +72,6 @@ If you'd like more detailed step-by-step guides for sending data from AEC Softwa
 
 ## Conclusion
 
-That's all, folks! You are now successfully set up and have the tools to send and receive your data using Speckle. If you need further guidance on anything we covered here, head over to the more detailed [User Guide](/user/). If you want to learn more about the code side of things, the [Dev Docs](/dev/) should be your next stop. If you're looking for more in-depth reading on how Speckle does its Speckling, have a browse through the [Deep Dives](/deep-dives/).
+That's all, folks! You are now successfully set up and have the tools to send and receive your data using Speckle. If you need further guidance on anything we covered here, head over to the more detailed [User Guide](/user/). If you want to learn more about the code side of things, the [Dev Docs](/dev/) should be your next stop. If you're looking for more in-depth reading on how Speckle does its Speckling, have a browse through the additional sections below.
 
-If you're enjoying Speckle, have any questions, or would like to share any feedback or suggestions, please drop by our [Community Forum](https://discourse.speckle.works/) and join the conversation.
+If you're enjoying Speckle, have any questions, or would like to share any feedback or suggestions, please drop by our [Community Forum](https://speckle.community/) and join the conversation.

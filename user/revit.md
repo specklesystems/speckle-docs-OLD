@@ -26,7 +26,7 @@ In Revit, various filters are available to give you more granular control on wha
 
 #### Category
 
-The category filter lets you select one or more of the currently supported Revit categories. 
+The category filter lets you select one or more of the currently supported Revit categories.
 
 #### View
 
@@ -46,13 +46,13 @@ The list of available parameters is based off the current elements in the model,
 
 :::
 
-![image-20210303201525577](./img-revit/image-20210303201525577.png) 
+![image-20210303201525577](./img-revit/image-20210303201525577.png)
 
 ## Supported Elements
 
 We're working hard to support additional elements, the list below will be updated as soon new conversion routines are added.
 
-If you'd like us to add something specific let us know on the [forum](https://discourse.speckle.works/t/speckle-unity-2-0-feedback-wanted/1108)!
+If you'd like us to add something specific let us know on the [forum](https://speckle.community/t/speckle-unity-2-0-feedback-wanted/1108)!
 
 | Type                                                  | Speckle > Revit | Revit > Speckle |
 | ----------------------------------------------------- | --------------- | --------------- |
@@ -89,11 +89,9 @@ Generally speaking, Revit doesn't support raw geometry as it deals with families
 | Brep         | Direct Shape with Generic Model category |
 | Mesh         | Direct Shape with Generic Model category |
 
-
-
 ### Non Supported Elements
 
-Various element and data types do not have a direct conversions in Revit. Therefore sending Numbers, Points, Vectors or other non supported elements will have no effects. 
+Various element and data types do not have a direct conversions in Revit. Therefore sending Numbers, Points, Vectors or other non supported elements will have no effects.
 
 To use such data types in Revit you should check our our [Dynamo Connector](/user/dynamo)
 
@@ -108,8 +106,6 @@ If non supported elements are received in this connector, no errors are thrown.
 The connector takes care of updating received elements automatically when possible (instead of deleting and re-creating them), this is great as dimensions and other annotations won't be lost.
 
 This only works when the application sending the elements sets a unique ID on them, currently this works with elements being sent from Rhino, Grasshopper and Revit.
-
-
 
 ## BIM Data
 

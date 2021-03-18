@@ -4,7 +4,7 @@ Connectors literally connect various AEC software to Speckle. They have the user
 
 The list of official Speckle connectors includes: Revit, Rhino, Dynamo, Grasshopper, Unity, AutoCAD, Civil3D and it keeps growing. If you would like to help develop these connectors, please check them out on GitHub and start a conversation either in the issues or on the community forum!
 
-Have a dream for a connector that doesn't yet exist? We have all the tools ready for you to start developing your own! We are very enthusiastic about community connectors and would love to help you bring them to life. To get started, check out the guide below. Feel free to reach out with any questions or calls for more contributors to the project on our [forum](https://discourse.speckle.works/).
+Have a dream for a connector that doesn't yet exist? We have all the tools ready for you to start developing your own! We are very enthusiastic about community connectors and would love to help you bring them to life. To get started, check out the guide below. Feel free to reach out with any questions or calls for more contributors to the project on our [forum](https://speckle.community/).
 
 ## Getting started
 

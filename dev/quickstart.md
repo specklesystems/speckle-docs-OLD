@@ -6,10 +6,10 @@ In a rush? Don't feel like reading through a lot of documentation? This guide wi
 
 Before you can spin up a local dev server, you'll need to install the following:
 
- - Node
- - Postgres
- - Redis 
- - Lerna
+- Node
+- Postgres
+- Redis
+- Lerna
 
 ## Manager
 
@@ -25,7 +25,7 @@ The Manager also has a "Connectors" page where you can view, install, update, an
 
 ### Setting Up
 
-There are a few setup steps to go through after a fresh clone. 
+There are a few setup steps to go through after a fresh clone.
 
 1. Build the Viewer
 
@@ -35,7 +35,7 @@ npm install
 npm run build
 ```
 
-2. Bootstrap to  the Viewer with the Frontend and install packages
+2. Bootstrap to the Viewer with the Frontend and install packages
 
 ```sh
 cd packages/frontend
@@ -44,7 +44,7 @@ lerna bootstrap
 
 3. Create a Postgres db called `speckle2_dev`
 
-4. Copy and fill in an `.env` file in `packages/server` based on the `.env-example` 
+4. Copy and fill in an `.env` file in `packages/server` based on the `.env-example`
 
 ### Starting Up
 
@@ -55,7 +55,6 @@ Once you've gone through the initial setup, you're just three steps away from sp
 3. In `packages/frontend`, run `npm run dev`
 
 Tada ✨ You should now see the frontend at `localhost:3000`! You can explore the API using the GraphQL Playground at `localhost:3000/graphql`.
-
 
 ## Desktop
 
@@ -70,8 +69,9 @@ The repo also contains the [DesktopUI](https://github.com/specklesystems/speckle
 Currently, we have four Connectors within Speckle Sharp: Dynamo, Grasshopper, Revit, and Rhino. The Connectors are what free your data from their source applications and allow you to access them from wherever you need them. They provide simple and intuitive user interfaces for selecting, sending, and receiving data to and from your Server.
 
 ### Installation
-You can install release builds of the Connectors from the [Speckle Manager](#manager) or you can debug them locally by cloning [the repo](https://github.com/specklesystems/speckle-sharp). Instructions for building and debugging each of the Connectors can be found in the [Dev Docs](/dev/speckle-sharp/connectors). 
+
+You can install release builds of the Connectors from the [Speckle Manager](#manager) or you can debug them locally by cloning [the repo](https://github.com/specklesystems/speckle-sharp). Instructions for building and debugging each of the Connectors can be found in the [Dev Docs](/dev/speckle-sharp/connectors).
 
 ## Conclusion
 
-That's all, folks! Your lighting fast introduction to Speckle is now complete. There's plenty more to see in the Dev Docs and the Deep Dives, so have a browse if you want more information. If you have any questions, feedback, or ideas, join us on [the forum](https://discourse.speckle.works/) and start a discussion!
+That's all, folks! Your lighting fast introduction to Speckle is now complete. There's plenty more to see in the Dev Docs, so have a browse if you want more information. If you have any questions, feedback, or ideas, join us on [the forum](https://speckle.community/) and start a discussion!
