@@ -1,7 +1,7 @@
 # Introduction
 
 Hey devs! Welcome to the **Speckle Dev Docs** - a single source of documentation on everything Speckle!
-If you're looking for info on how to _use_ Speckle, check our [user guide](/user).
+If you're looking for info on how to _use_ Speckle, check our [user guide](/).
 
 > Speckle is the open source data platform for architecture, engineering, and construction. It liberates your data from proprietary file formats and closed source software and puts it back into your hands.
 
