@@ -46,7 +46,7 @@ class Block(Base):
     def __init__(self, **kwargs) -> None:
         super().__init__(**kwargs)
         # mark the origin as a detachable attribute
-        self._detachable.append("origin")
+        self.add_detachable_attrs("origin")
 ```
 
 Now let's send a block to the server! To do this, you'll first need to send the object to the stream and get back the object id or hash. You can then use this to create a commit on the stream that references this object.
@@ -250,7 +250,7 @@ line.blah = "blah"
 line["colour"] = "blue"
 ```
 
-You can also mark typed attributes as detachable or chunkable by updating the internal `_detachable` list or `_chunkable` dict.
+You can also mark typed attributes as detachable or chunkable by updating the internal `_detachable` set or `_chunkable` dict with the provided helper methods.
 
 ```py
 from speckle.objects import Base
@@ -265,8 +265,8 @@ CHUNKABLE_PROPS = {
     "test_bases": 10,
 }
 
-# detachable members are just added to an internal list by name
-DETACHABLE = ["detach_this", "origin"]
+# detachable members are just added to an internal set by name
+DETACHABLE = {"detach_this", "origin"}
 
 class FakeMesh(Base):
     vertices: List[float] = None
@@ -280,8 +280,8 @@ class FakeMesh(Base):
     def __init__(self, **kwargs) -> None:
         """You'll need an init method to add your chunkable and detachable members"""
         super().__init__(**kwargs)
-        self._chunkable.update(CHUNKABLE_PROPS) # add the chunkables
-        self._detachable.extend(DETACHABLE) # add the detachables
+        self.add_chunkable_attrs(**CHUNKABLE_PROPS) # add the chunkables
+        self.add_detachable_attrs(DETACHABLE) # add the detachables
 
     # properties are also picked up and serialised as you'd expect
     @property
