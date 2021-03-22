@@ -16,7 +16,7 @@ The web frontend is your gateway to the server. From here, you can browse server
 
 ### Adding an Account
 
-Whether or not you already have a Speckle account, you can get started by opening up the Manager and heading to the "Accounts" page. From here, click the big "+ Add" button and paste in your server URL. If your company doesn't already have an internal one, you can use our testing server [COMING SOON](). This will open the server in the browser where you can either log in or register to authorise the manager.
+Whether or not you already have a Speckle account, you can get started by opening up the Manager and heading to the "Accounts" page. From here, click the big "+ Add" button and paste in your server URL. If your company doesn't already have an internal one, you can use our [official server](https://speckle.systems/getstarted/). This will open the server in the browser where you can either log in or register to authorise the manager.
 
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
 
@@ -36,19 +36,17 @@ The official connectors can be installed through the "Connectors" page of the Sp
 
 ![manager-connectors](https://user-images.githubusercontent.com/7717434/106609134-2b6f2400-655d-11eb-8d2a-1730115e3bc7.gif)
 
-### Usage
+### Grasshopper and Dynamo
 
-#### Visual Programming
-
-The connectors for Grasshopper and Dynamo are fairly aligned. The most basic components are `Send` and `Receive` which do what they say on the tin. They use the default account you've set in Speckle Manager, though there is also an `Account` component to switch accounts.
+The connectors for [Grasshopper](/user/grasshopper) and [Dynamo](/user/dynamo) are fairly aligned. The most important components are `Send` and `Receive` which do what they say on the tin. They use the default account you've set in Speckle Manager, though there is also an `Account` component to switch accounts.
 
 You also get components to `Create`, `Get`, `Update`, and `Delete` streams as well as get a `List` of your streams or more `Details` for a stream. Streams can be retrieved by either using the `List` component or the url to the stream or a specific commit.
 
 Finally, there are more advanced components for creating and expanding custom objects, serialisation, and local sending / receiving.
 
-[[ IMAGES HERE ]]
+![Create commit](./img-dyn/guide-send-create-commit.gif)
 
-#### Desktop UIs
+### Revit, Rhino, AutoCAD, Civil3D
 
 Applications like Revit and Rhino share the same Desktop UI. The main page displays all the streams that exist in the current file as cards. A card can be either a Sender or Receiver - click the double arrow button on the top right corner of a card to switch between them.
 
@@ -68,10 +66,10 @@ A Receiver has a commit selection button in the centre instead of an objects sel
 
 For information on using specific connectors, check out the [Desktop Connectors](/user/connectors) section of the User Guide.
 
-If you'd like more detailed step-by-step guides for sending data from AEC Software A to AEC Software B, check out our [Interoperability Guides](/user/interop-gh-revit)
+If you'd like more detailed step-by-step guides for sending data from AEC Software A to AEC Software B, check out our [tutorials](/user/interop-gh-revit)
 
 ## Conclusion
 
-That's all, folks! You are now successfully set up and have the tools to send and receive your data using Speckle. If you need further guidance on anything we covered here, head over to the more detailed [User Guide](/user/). If you want to learn more about the code side of things, the [Dev Docs](/dev/) should be your next stop. If you're looking for more in-depth reading on how Speckle does its Speckling, have a browse through the additional sections below.
+That's all, folks! You are now successfully set up and have the tools to send and receive your data using Speckle. If you need further guidance on anything we covered here, head over to the more detailed sections below. If you want to learn more about the code side of things, the [Dev Docs](/dev/) should be your next stop. If you're looking for more in-depth reading on how Speckle does its Speckling, have a browse through the additional sections below.
 
 If you're enjoying Speckle, have any questions, or would like to share any feedback or suggestions, please drop by our [Community Forum](https://speckle.community/) and join the conversation.
