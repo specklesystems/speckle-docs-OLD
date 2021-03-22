@@ -2,9 +2,9 @@
 
 Speckle Manager is a desktop application that handles accounts and connectors on your machine. You need to add a Speckle account to your computer using Manager in order for the Connectors to use them to send and receive data from a Speckle Server.
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
-It might have been provided by your company, you might have deployed one locally, or you might be using one provided by us.
+It might have been provided by your company, you might have deployed one locally, or you might be using our [free official server](https://speckle.systems/getstarted/).
 :::
 
 ## Installation
@@ -53,8 +53,7 @@ Then you can proceed to create a `.json` file in `%appdata%\Speckle\Accounts\` w
   "userInfo": {
     "id": "YOUR-USER-ID",
     "name": "First Last",
-    "email": "firstlast@email.com",
+    "email": "firstlast@email.com"
   }
 }
-
 ```

@@ -13,7 +13,11 @@ Once installed, you can find this connector in the `Add-ins` tab under `Speckle 
 
 ## User Interface
 
+::: tip IMPORTANT 🙌
+
 This connector uses our shared Desktop UI. Read up on general guidelines for usage in the [Desktop UI section](/user/ui).
+
+:::
 
 ### Sending data
 

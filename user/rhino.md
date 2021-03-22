@@ -14,7 +14,11 @@ Once installed you can find the connector by running the `Speckle` command in Rh
 
 ## User Interface
 
-This connector uses our shared Desktop UI, head over to [its section to see how it works](/user/ui).
+::: tip IMPORTANT 🙌
+
+This connector uses our shared Desktop UI. Read up on general guidelines for usage in the [Desktop UI section](/user/ui).
+
+:::
 
 ## Basic usage
 

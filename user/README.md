@@ -17,7 +17,7 @@ You can read more about what we do on [our website](https://speckle.systems/)
 
 ## This Guide
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
 It might have been provided by your company, you might have deployed one locally, or you might be using one provided by us.
 :::
