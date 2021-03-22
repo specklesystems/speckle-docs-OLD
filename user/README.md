@@ -19,7 +19,7 @@ You can read more about what we do on [our website](https://speckle.systems/)
 
 ::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
-It might have been provided by your company, you might have deployed one locally, or you might be using one provided by us.
+If you don't have one provided by your company, you can use our [free Speckle server](https://speckle.systems/getstarted/).
 :::
 
 You will get an introduction to the key Speckle concepts and learn how to get set up and send your first objects to Speckle. We'll go over what you need to install, how to create an account, and how to get the Desktop Connectors you need to get going. At the end, there will also be a few [tutorials](/user/interop-gh-revit) which will walk you through all the steps to get your data from AEC Software A to AEC Software B.

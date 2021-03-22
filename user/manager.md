@@ -4,7 +4,7 @@ Speckle Manager is a desktop application that handles accounts and connectors on
 
 ::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
-It might have been provided by your company, you might have deployed one locally, or you might be using our [free official server](https://speckle.systems/getstarted/).
+If you don't have one provided by your company, you can use our [free Speckle server](https://speckle.systems/getstarted/).
 :::
 
 ## Installation
@@ -27,8 +27,6 @@ Manager for Windows will automatically update when an update is available, in Ma
 Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
 
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
-
-
 
 ### From the Web
 

@@ -2,8 +2,6 @@
 
 Pressed for time? Too impatient to read through a lot of docs? Already familiar with what Speckle is about and want to get started as fast as humanly possible? Here's a lightning fast intro to getting started!
 
-
-
 ## Onboarding
 
 Before you can use Speckle, you'll need an account! Register by using the URL provided by your company or use our [free official server](https://speckle.systems/getstarted/).
@@ -16,15 +14,13 @@ Did you skip the onboarding? No problem, just head over `https://your-server-add
 
 :::
 
-This will guide you thorough:
+This will get you thorough:
 
 - downloading [Speckle Manager](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe) - the one stop solution for account and connector management
 - adding your account
 - creating your first stream
 
 See additional ways to add your account in [Speckle Manager](/user/manager.md#adding-account)
-
-
 
 ## Web
 
@@ -34,7 +30,7 @@ The [web frontend](/user/web) is your gateway to the server. From here, you can 
 
 Once you've authorised the Manager, you are ready to use the desktop [Connectors](/user/connectors)! However, there is still lots to explore on the [web frontend](/user/web). Beyond basic stream creation and browsing, you can create new branches (and soon - commits!), add or remove collaborators, view and edit your profile, manage your authorised apps, and create personal access tokens to use in your own scripts and apps. If you're interested in experimenting with the API, check out our [dev sections](/dev/server-api.).
 
-![image-20210322192558215](img/quickstart/image-20210322192558215.png)
+![image-20210322192558215](./img/quickstart/image-20210322192558215.png)
 
 ## Connectors
 
@@ -54,7 +50,7 @@ You also get components to `Create`, `Get`, `Update`, and `Delete` streams as we
 
 Finally, there are more advanced components for creating and expanding custom objects, serialisation, and local sending / receiving.
 
-![Create commit](./img-dyn/guide-send-create-commit.gif)
+![dyn-send](./img-dyn/dyn-send.gif)
 
 ### Revit, Rhino, AutoCAD, Civil3D
 
