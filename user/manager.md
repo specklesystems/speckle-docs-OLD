@@ -14,7 +14,7 @@ Speckle Manager is available for both Windows and Mac.
 Download the latest version of Speckle Manager:
 
 - [Speckle Manager for Windows](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe)
-- [Speckle Manager for Mac](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.dmg)
+- [Speckle Manager for Mac](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.dmg) (currently account management only)
 
 Manager for Windows will automatically update when an update is available, in Mac you have to manually install new versions.
 
@@ -22,11 +22,25 @@ Manager for Windows will automatically update when an update is available, in Ma
 
 ## Adding Accounts
 
+### From Manager
+
 Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
 
-You can also add an account directly from Speckle Web.
-
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
+
+
+
+### From the Web
+
+Just visit your profile and click "Add account to desktop manager":
+
+![image-20210322195941511](img/manager/image-20210322195941511.png)
+
+### During Onboarding
+
+You can also add an account directly from Speckle Web as part of the onboarding process you will see after registering on a new server:
+
+![account-onboarding](./img/manager/account-onboarding.gif)
 
 ## Installing Connectors
 

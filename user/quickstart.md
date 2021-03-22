@@ -2,33 +2,43 @@
 
 Pressed for time? Too impatient to read through a lot of docs? Already familiar with what Speckle is about and want to get started as fast as humanly possible? Here's a lightning fast intro to getting started!
 
-## Manager
 
-Before you can use Speckle, you'll need to download the Speckle Manager. Manager is a desktop application that allows you to add Speckle accounts to your computer and use them with the Desktop Connectors. It is also where you can manage and install the Desktop Connectors.
 
-It is available for both Windows and MacOS and you can find the latest version [here](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe).
+## Onboarding
 
-![speckle manager home page](../.vuepress/public/assets/manager.png)
+Before you can use Speckle, you'll need an account! Register by using the URL provided by your company or use our [free official server](https://speckle.systems/getstarted/).
+
+As you register you'll be guided through a quick onboarding process.
+
+::: tip Psss!
+
+Did you skip the onboarding? No problem, just head over `https://your-server-address/onboarding`
+
+:::
+
+This will guide you thorough:
+
+- downloading [Speckle Manager](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe) - the one stop solution for account and connector management
+- adding your account
+- creating your first stream
+
+See additional ways to add your account in [Speckle Manager](/user/manager.md#adding-account)
+
+
 
 ## Web
 
-The web frontend is your gateway to the server. From here, you can browse server activity, view and manage streams, share your streams with others, visualise your data in the 3D viewer, and more!
-
-### Adding an Account
-
-Whether or not you already have a Speckle account, you can get started by opening up the Manager and heading to the "Accounts" page. From here, click the big "+ Add" button and paste in your server URL. If your company doesn't already have an internal one, you can use our [official server](https://speckle.systems/getstarted/). This will open the server in the browser where you can either log in or register to authorise the manager.
-
-![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
+The [web frontend](/user/web) is your gateway to the server. From here, you can browse server activity, view and manage streams, share your streams with others, visualise your data in the 3D viewer, and more!
 
 ### Exploring the Frontend
 
-Once you've authorised the Manager, you are ready to use the Desktop Connectors! However, there is still lots to explore on the web frontend. Beyond basic stream creation and browsing, you can create new branches (and soon - commits!), add or remove collaborators, view and edit your profile, manage your authorised apps, and create personal access tokens to use in your own scripts and apps. If you're interested in experimenting with the API, you can head to your profile and click through the link to the GraphQL Explorer (or go to `your-server.com/explorer`).
+Once you've authorised the Manager, you are ready to use the desktop [Connectors](/user/connectors)! However, there is still lots to explore on the [web frontend](/user/web). Beyond basic stream creation and browsing, you can create new branches (and soon - commits!), add or remove collaborators, view and edit your profile, manage your authorised apps, and create personal access tokens to use in your own scripts and apps. If you're interested in experimenting with the API, check out our [dev sections](/dev/server-api.).
 
-![web-quick-tour](https://user-images.githubusercontent.com/7717434/106624436-90cb1100-656d-11eb-8da1-e413d676a7a6.gif)
+![image-20210322192558215](img/quickstart/image-20210322192558215.png)
 
 ## Connectors
 
-The Desktop Connectors are what connect your AEC software to Speckle. They allow you to select, send, and receive data to and from a Speckle server. Currently, we have four official Speckle Connectors: Rhino, Revit, Grasshopper, and Dynamo. We also have WIP connectors for Unity, AutoCAD, and Civil3D.
+The Desktop Connectors are what connect your AEC software to Speckle. They allow you to select, send, and receive data to and from a Speckle server. Currently, we have a growing list of official Speckle Connectors including [Rhino](/user/rhino), [Revit](/user/revit), [Grasshopper](/user/grasshopper), [Dynamo](/user/dynamo), [AutoCAD](/user/autocadcivil), [Civil3D](/user/autocadcivil), [Unity](/user/unity), Blender and more.
 
 ### Installation
 
