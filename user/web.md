@@ -4,10 +4,10 @@
 
 ::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
-It might have been provided by your company, you might have deployed one locally, or you might be using our [free official server](https://speckle.systems/getstarted/).
+If you don't have one provided by your company, you can use our [free Speckle server](https://speckle.systems/getstarted/).
 :::
 
-Speckle Web is what you see what you head to Speckle in the browser at the address provided by your company . It is your one-stop shop for managing and coordinating your data. From Speckle Web, you can create and edit streams, view your data in 3D, manage your account, and share your data with others.
+Speckle Web is what you see what you head to Speckle in the browser. It is your one-stop shop for managing and coordinating your data. From Speckle Web, you can create and edit streams, view your data in 3D, manage your account, and share your data with others.
 
 When you first visit, you'll be prompted to log in or register to that _Speckle Server_. A server is just a particular instance of Speckle that holds your company or organisation's data. Servers are independent of each other meaning if you are a part of multiple Speckle Servers, you'll need to create a new account for each one.
 
