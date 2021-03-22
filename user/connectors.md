@@ -1,6 +1,6 @@
 # Introduction
 
-The Desktop Connectors are plugins for some of the most popular AEC software including Rhino, Revit, Grasshopper, Dynamo, AutoCAD, Civil3D, Unity, Blender and more. They take care of exporting and importing (or better, sending and receiving) data to Speckle Web - without the need of using files!
+The Desktop Connectors are plugins for some of the most popular AEC software including [Rhino](/user/rhino), [Revit](/user/revit), [Grasshopper](/user/grasshopper), [Dynamo](/user/dynamo), [AutoCAD](/user/autocadcivil), [Civil3D](/user/autocadcivil), [Unity](/user/unity), Blender and more. They take care of exporting and importing (or better, sending and receiving) data to Speckle Web - without the need of using files!
 
 Want to see a connector for an application we don't support yet? [Let us know in the forum!](https://speckle.community)
 
@@ -15,6 +15,6 @@ The connectors take care of unit conversions for geometric objects so you don't 
 
 Unit conversion also automatically happens on BIM metadata, so if you're sending a Wall [using the Schema Builder](/user/grasshopper.html#schema-builder) node from Grasshopper to Revit the connectors will take care of converting the height for you.
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 Custom metadata and non-linear units are not currently being converted.
 :::

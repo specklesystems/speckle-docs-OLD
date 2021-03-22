@@ -1,4 +1,4 @@
-# Your Data
+# Concepts
 
 This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2, this is a great place to start!
 
@@ -79,7 +79,7 @@ Each time you send data, you are automatically creating a new commit which conta
 The great thing about commits is that they create a timeline of all the changes your stream, or project, goes through and give you the possibility of "going back in time" whenever you want.
 Say goodby to saving your files as "AM_Project_Design-final", "AM_Project_Design-final-final", "AM_Project_Design-final-final-latest"...!
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 It's important to note that commits are immutable, you can change their message but not their content. Sent the wrong data? No problem simply send the correct one once again and the new commit will take over.
 :::
 

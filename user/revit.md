@@ -16,7 +16,11 @@ Once installed you can find the Revit connector under the Add-ins tab.
 
 ## User Interface
 
-This connector uses our shared Desktop UI, head over [its section to see how it works](/user/ui).
+::: tip IMPORTANT 🙌
+
+This connector uses our shared Desktop UI. Read up on general guidelines for usage in the [Desktop UI section](/user/ui).
+
+:::
 
 ### Filters
 

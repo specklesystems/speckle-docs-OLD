@@ -21,7 +21,7 @@ Kits are at the heart of how Speckle _manages_ interoperability. They are, in a 
 
 Whenever a connector is "sending to Speckle", it needs to convert data (lines, points, beams, doors, etc.) into this intermediate object model. Upon receiving, the opposite process happens.
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 **Kits are not tied into the core of Speckle, they are pluggable.** Anyone can add/remove them as they wish or develop their own.
 :::
 
@@ -29,7 +29,7 @@ Whenever a connector is "sending to Speckle", it needs to convert data (lines, p
 
 A Kit is assumed to be able to handle all element types, geometries and disciplines in use by a user/team/company. This is a core difference from previous iterations of Speckle. It multiple kits are available on a user machine, the user (or system administrators) will be responsible of selecting the default kit.
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 Kit selection is not yet available in most of our connectors. We are planning to add it soon!
 :::
 
