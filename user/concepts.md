@@ -1,4 +1,4 @@
-# Your Data
+# Concepts
 
 This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2, this is a great place to start!
 
