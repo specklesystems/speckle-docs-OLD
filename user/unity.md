@@ -5,8 +5,8 @@ It doesn't have an elaborated UI but it offers convenience methods to send and r
 
 Complementary to the information below, you should check out the [.NET SDK section](/dev/dotnet) too!
 
-::: tip IMPORTANT
-This connector is in alpha stage and is quickly evolving, so is this documentation. Feel free to join the [discussion on our forum](https://discourse.speckle.works/t/speckle-unity-2-0-feedback-wanted/1108) on how to make it better!
+::: tip IMPORTANT 🙌
+This connector is in alpha stage and is quickly evolving, so is this documentation. Feel free to join the [discussion on our forum](https://speckle.community/t/speckle-unity-2-0-feedback-wanted/1108) on how to make it better!
 :::
 
 ![unity example](https://user-images.githubusercontent.com/2679513/108543628-3a83ff00-72dd-11eb-8792-3d43ce54e6af.gif)

@@ -8,7 +8,7 @@ As mentioned in [this page](/dev/kits), kits are made of:
 
 A good example is the Objects kit, in our [speckle-sharp repo](https://github.com/specklesystems/speckle-sharp/tree/master/Objects).
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 Kit selection is not yet available in most of our connectors. We are planning to add it soon!
 :::
 

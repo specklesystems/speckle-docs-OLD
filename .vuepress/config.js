@@ -37,7 +37,7 @@ module.exports = {
     nav: [
       {
         text: "User Guide",
-        link: "/user/"
+        link: "/"
       },
       {
         text: "Developer Docs",
@@ -86,10 +86,9 @@ module.exports = {
           ]
         },
         {
-          title: "Interoperability ⚡",
+          title: "Tutorials ⚡",
           collapsable: false,
           children: [
-            "interoperability",
             "interop-gh-revit",
             "interop-revit-gh",
             "interop-rhino-revit"

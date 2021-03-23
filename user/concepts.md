@@ -1,4 +1,4 @@
-# Your Data
+# Concepts
 
 This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2, this is a great place to start!
 
@@ -44,7 +44,7 @@ Collaborators can have one of three default roles:
 
 Streams are the main mechanism by which data is shared between people and applications. For example, you could create a stream in Revit and send that data to your server. Then, any of your colleagues with access to that stream could view the data in the browser or receive the data in Grasshopper, Rhino, Revit, etc. If any of your colleagues have _collaborator_ access, they are also free to make their own changes and send their changes to the stream. You can then receive those changes from the stream in your original model to see the changes reflected.
 
-To see step-by-step guides on how to get from AEC Software A to AEC Software B, check out our [Interoperability Guides](/user/interoperability).
+To see step-by-step guides on how to get from AEC Software A to AEC Software B, check out our [tutorials](/user/interop-gh-revit).
 
 ## Branches
 
@@ -79,7 +79,7 @@ Each time you send data, you are automatically creating a new commit which conta
 The great thing about commits is that they create a timeline of all the changes your stream, or project, goes through and give you the possibility of "going back in time" whenever you want.
 Say goodby to saving your files as "AM_Project_Design-final", "AM_Project_Design-final-final", "AM_Project_Design-final-final-latest"...!
 
-::: tip IMPORTANT
+::: tip IMPORTANT 🙌
 It's important to note that commits are immutable, you can change their message but not their content. Sent the wrong data? No problem simply send the correct one once again and the new commit will take over.
 :::
 
@@ -105,4 +105,4 @@ An key feature of the `Base` object is _decomposition_. This allows you to flag 
 
 When using the connectors to send existing data, you won't really need to think about the `Base` object as all this is taken care of for you behind the scenes. The objects in your model are converted to Speckle `Base` objects and then are nested within a parent `Base` object to create the commit - all when you press the "Send" button.
 
-If you are getting into creating your own `Base` objects, our deep dives on [The Base Object](/deep-dives/base) and the [Decomposition API](/deep-dives/decomposition) are a great way to get started.
+If you are getting into creating your own `Base` objects, our [The Base Object](/dev/base) section and the [Decomposition API](/dev/decomposition) are a great way to get started.
