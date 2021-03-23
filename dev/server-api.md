@@ -31,4 +31,9 @@ To authenticate, you will need to pass in a personal access token in the authori
 
 ![graphql-explorer](../dev/img/authorization-header-gql.png)
 
+:::tip
+
+How do you create a token, we hear you ask? Read the section on [personal access tokens](/dev/tokens.html)!
+
+:::
 

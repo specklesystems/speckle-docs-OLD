@@ -32,7 +32,7 @@ Once you have downloaded the Manager, you'll be able to easily add an account. A
 
 Just visit your profile and click "Add account to desktop manager":
 
-![image-20210322195941511](img/manager/image-20210322195941511.png)
+![image-20210322195941511](./img/manager/image-20210322195941511.png)
 
 ### During Onboarding
 

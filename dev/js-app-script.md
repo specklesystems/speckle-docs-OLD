@@ -45,6 +45,12 @@ function getMe() {
 }
 ```
 
+:::tip
+
+How do you create a token, we hear you ask? Read the section on [personal access tokens](/dev/tokens.html)!
+
+:::
+
 Here's a function that runs a mutation to create a new stream:
 
 ```js
