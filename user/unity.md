@@ -61,7 +61,7 @@ We've only started supporting Unity elements, please let us know what else you'd
 ### Metadata
 
 Geometry alone is not much fun, that's why we've made it easy to also transfer BIM and custom data with your objects.
-When receiving, a `SpeckleData` component is attached to each object, inside it there is a `Dictionary<string,object>` called `Data` that contains all the metadata coming from Speckle. Likewise, when sending if the objects have a `SpeckleData` component attached to them, it will be used.
+When receiving, a `SpeckleProperties` component is attached to each object, inside it there is a `Dictionary<string,object>` called `Data` that contains all the metadata coming from Speckle. Likewise, when sending if the objects have a `SpeckleProperties` component attached to them, it will be used.
 
 ### Materials
 
