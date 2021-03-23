@@ -9,7 +9,21 @@ This part of our docs is for any developer planning to extend, integrate or impr
 
 We hope to see the great things you'll do with our SDKs and APIs, let's go!
 
-## Speckle, the platform
+## Speckle, The Platform
+
+We call Speckle a data platform; but Speckle is also a set of connectors for AEC applications. There are Speckle Kits, which are the base of our approach to interoperability. Then there's various Speckle apps - like the Speckle 3D viewer, the Speckle Web UI, the Speckle Server... 
+
+That's quite a lot to chew; but you're probably still asking yourself - **what is Speckle**? 
+
+> #### Ultimately, Speckle has two distinct parts: the developer platform, and the applications and products built on top of it. 
+
+So what's what? Simple: if an architect/engineer/aec professional interacts with it, it's a Speckle **product** built on top of Speckle's **developer platform**. 
+
+The developer platform consists of code that makes it easier for us (and you!) to build user facing applications - either web based or desktop based.
+
+This section is about the platform, and not about the products. If you want to see how to use Speckle as an architect or engineer, check our [user guide](/).
+
+## Code Repositories
 
 Our platfrom is made of many moving parts, the code for anything Speckle 2.0 onwards is hosted in our [GitHub specklesystems organization](https://github.com/specklesystems).
 Here's a quick summary of the main repos you'll find there, please make sure to give them a star ⭐️ if you like what you see!
