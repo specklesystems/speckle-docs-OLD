@@ -39,4 +39,6 @@ Data in Speckle Web is stored in [Streams, Branches and Commits](/user/concepts)
 
 [Speckle Manager](/user/manager) is a desktop application that handles accounts and connectors on your machine. You need to add a Speckle account to your computer using Manager in order for the Connectors use them to send and receive data from a Speckle Server.
 
-The Connectors to send and receive data,
+## Legal stuff
+
+Before using any of our software or websites, please make sure you read and understand our [terms of use](https://speckle.systems/terms/), [privacy policy](https://speckle.systems/privacy/) and [trademark usage policy](https://speckle.systems/trademark/).

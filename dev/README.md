@@ -11,13 +11,13 @@ We hope to see the great things you'll do with our SDKs and APIs, let's go!
 
 ## Speckle, The Platform
 
-We call Speckle a data platform; but Speckle is also a set of connectors for AEC applications. There are Speckle Kits, which are the base of our approach to interoperability. Then there's various Speckle apps - like the Speckle 3D viewer, the Speckle Web UI, the Speckle Server... 
+We call Speckle a data platform; but Speckle is also a set of connectors for AEC applications. There are Speckle Kits, which are the base of our approach to interoperability. Then there's various Speckle apps - like the Speckle 3D viewer, the Speckle Web UI, the Speckle Server...
 
-That's quite a lot to chew; but you're probably still asking yourself - **what is Speckle**? 
+That's quite a lot to chew; but you're probably still asking yourself - **what is Speckle**?
 
-> #### Ultimately, Speckle has two distinct parts: the developer platform, and the applications and products built on top of it. 
+> #### Ultimately, Speckle has two distinct parts: the developer platform, and the applications and products built on top of it.
 
-So what's what? Simple: if an architect/engineer/aec professional interacts with it, it's a Speckle **product** built on top of Speckle's **developer platform**. 
+So what's what? Simple: if an architect/engineer/aec professional interacts with it, it's a Speckle **product** built on top of Speckle's **developer platform**.
 
 The developer platform consists of code that makes it easier for us (and you!) to build user facing applications - either web based or desktop based.
 
@@ -76,3 +76,7 @@ Inside our GitHub organization you'll also find a few additional tools you might
 
 Ever struggle with janky behaviour in Grasshopper as things start getting complicated? You might really enjoy the [GrasshopperAsyncComponent](https://speckle.systems/blog/async-gh/).
 Do any dev work in Revit and want a handy tool for viewing and running unit tests? [xUnitRevit](https://speckle.systems/blog/xunitrevit/) might be exactly what you've been looking for.
+
+## Legal stuff
+
+Before using any of our software or websites, please make sure you read and understand our [terms of use](https://speckle.systems/terms/), [privacy policy](https://speckle.systems/privacy/) and [trademark usage policy](https://speckle.systems/trademark/).
