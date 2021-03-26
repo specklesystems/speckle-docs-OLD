@@ -56,6 +56,8 @@ Most of the outputs will also be `Base` objects, meaning you'll have to expand t
 
 ## Sending geometry to Revit
 
+![Plot geometry](./img-interop/v2/InteropGuide-plotData.png)
+
 We'll start by sending in the surrounding buildings of our model, as well as the plot street lines and the plot terrain. For this, we'll first create a `Speckle Object` to organize our data.
 
 ![Plot data speckle object](./img-interop/v2/ghRvt-plot-geometry.png)
@@ -121,6 +123,8 @@ If you don't see the surrounding buildings, ensure you have the Massing objects 
 
 Now that we have our plot and surrounding buildings set-up, let's proceed with the creation of the levels and floor slabs for each level.
 
+![Model floors](./img-interop/v2/InteropGuide_floors.png)
+
 ### Creating levels
 
 - Drag a `Create Schema Object` node to your canvas and select the `RevitLevel` type.
@@ -146,6 +150,8 @@ To select a specific floor type, first select an individual type with a `list it
 
 ## Creating beams
 
+![Model beams](./img-interop/v2/InteropGuide-beams.png)
+
 In this case, since we do not have much information about the structural beams, as they are modelled as simple lines. This is the perfect scenario to use Speckle's `BuiltElements`.
 
 These are simple representations of common BIM elements, that require a minimum amount of input. These elements will be appropriately converted to native elements on each target platform when possible.
@@ -157,7 +163,11 @@ In the case of a `BuiltElements.Beam`, the input required is only the axis line 
 
 ![Create Beams](https://link)
 
-## Creating the core walls
+## Creating the walls
+
+![Create walls](./img-interop/v2/InteropGuide-walls.png)
+
+### Core walls
 
 Just like with floors, we can create walls using the `Create Schema Object` node. There are several ways to create a wall, but for the `Core Walls`, we're going to create them with the `Wall by Face` type. This takes a surface as a reference to create a wall in revit with the same shape.
 
@@ -170,7 +180,7 @@ Just like with floors, we can create walls using the `Create Schema Object` node
 
 ![Create walls by face](./img-interop/v2/ghRvt-createRevitWallsByFace.png)
 
-### Create interior walls
+### Interior walls
 
 We have a bunch of interior walls we haven't done anything with yet. Lets create them using a `line` and a `height`.
 
@@ -227,13 +237,9 @@ In Revit, add the newly created stream to the DesktopUI and press `Receive`.
 
 ![Receiving the building in Revit](https://link)
 
-## Adding more detail
+## Create AdaptiveFamiliy instances
 
-Let's create a new stream to send some additional detail into our Revit model. As we did before, go to the server website and copy the `url` from the new stream. Then, create a new `Send` node in Grasshopper and connect a panel with that `url` to it.
-
-![Sending other data](./img-interop/v2/ghRvt-sendOtherData.png)
-
-### Create AdaptiveFamiliy instances
+![Rhino model of the adaptive families to be created](./img-interop/v2/InteropGuide-panels.png)
 
 Adaptative families in Revit are a cool contraption. You can provide a set of points and they will adapt to the given positions.
 
@@ -263,6 +269,8 @@ In Revit, add the stream you just created using the Desktop UI and receive the d
 
 ### Using branches to swap design alternatives
 
+![alt](https://link)
+
 This is a perfect moment to introduce the behaviour of `branches` in the Speckle Revit connector; and how you can leverage the feature to alternate between different design options.
 
 1. Go to the stream's url in your web browser, and create a new branch called `design-option-2`.
@@ -280,10 +288,3 @@ In Revit, you'll notice there's an update notification in the _Roof Panels_ stre
 You should see the new panels update to reflect the new design option. To go back to the previous version, you can always go back to the `main` branch.
 
 ![Receiving from a different branch](https://link)
-
-## Creating instances of other families
-
-You can also create instances of point based families, like furniture, light fixtures, doors, windows, etc...
-
-- Drag a `Create Schema Object` node to your canvas and select the `FamilyInstance` type.
--
