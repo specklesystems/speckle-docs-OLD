@@ -2,6 +2,8 @@
 
 You can stream _Grasshopper_ native geometry to Revit using Speckle! In this guide, we will send different types of geometry and built elements to Revit to understand how Speckle converts them into native Revit geometries. We will also create some `BuiltElements` using the `SchemaBuilder` node, which allows for the generation of native Revit elements such as walls, floors, topography, etc...
 
+![Fancy video](https://via.placeholder.com/450x150)
+
 ## Getting started
 
 Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1TYX8aL_CZ7fVLaE1pWz4h4qYZYYAaA0o?usp=sharing)
@@ -29,6 +31,8 @@ Now, go to the **Add-ins** tab, and press the `Speckle for Revit` icon. The Spec
 - Go to the `Project Info` filter type, select the _Project Info_, _Levels_ and _Families and Types_ options and press `Set Filter`.
 - Press the `Send` button in the _Project Data_ stream.
 
+![Sharing Project data](https://via.placeholder.com/400x150)
+
 That's it! We've effectively pushed our project information, including all existing levels and loaded families/types to Speckle. We'll use this information to correctly set family/type names for Revit elements.
 
 This concludes our setup. We'll now switch to Grasshopper to receive it and use it to generate new Revit elements.
@@ -40,7 +44,7 @@ Now let's open up our _fake Leadenhall_ building model in Rhino. You'll need to 
 Go to a blank area of your Grasshopper canvas:
 
 1. Create a `Panel` and a `Receive` node.
-2. Paste the _steram url_ we copied in the previous step into the panel.
+2. Paste the _stream url_ we copied in the previous step into the panel.
 3. Connect the panel to the `Receive` node input and press the _Receive_ button.
 4. Create an `Expand Speckle Object` node, and connect the receied data to it.
 
@@ -48,13 +52,13 @@ Once done, it should look like this:
 
 ![Receiving revit project data](./img-interop/v2/ghRvt-receiveRvtData.png)
 
-Most of the outputs will also be `Base` objects, meaning you'll have to expand them to inspect their properties.
+Most of the outputs will also be `Base` objects, meaning you'll have to expand them to inspect their properties (more on this later when using family types).
 
 ## Sending geometry to Revit
 
 We'll start by sending in the surrounding buildings of our model, as well as the plot street lines and the plot terrain. For this, we'll first create a `Speckle Object` to organize our data.
 
-We'll also need to create a new _stream_ in our server, called `Interop - GH/Revit - Plot`, and copy it's `url`.
+![Plot data speckle object](./img-interop/v2/ghRvt-plot-geometry.png)
 
 ::: tip
 Remember you must correctly specify the `Access Type` for each input to generate the right amount of `Base` objects.
@@ -62,9 +66,15 @@ Remember you must correctly specify the `Access Type` for each input to generate
 Inputs set with `List Access` will be shown with an `L` icon beside them.
 :::
 
+We'll also need to create a new _stream_ in our server, called `Interop - GH/Revit - Plot Data`, and copy it's `url`.
+
 Then, we can just plug in the geometries directly into their respective inputs. Connect it to a `Send` node pointing to the stream we just created and press `Send`.
 
-![Plot data speckle object](./img-interop/v2/ghRvt-plot-geometry.png)
+![Sending plot data.](./img-interop/v2/gh-Rvt-sendPlotData.png)
+
+In Revit, add the stream to your DesktopUI and press `Receive`. You should see the plot geometries appear in the model.
+
+![Receiving plot data in revit](https://via.placeholder.com/450x150)
 
 ### Controlling the DirectShape conversion
 
@@ -105,13 +115,13 @@ In Revit, once you get the notification that data was changed, press the receive
 If you don't see the surrounding buildings, ensure you have the Massing objects visibility active in the _Massing / Site_ tab in Revit.
 :::
 
-![Sending/Receiving the plot data as categorized DirectShapes](https://link)
+![Sending/Receiving the plot data as categorized DirectShapes](https://via.placeholder.com/450x150)
 
 ## Generating Floors and Levels
 
 Now that we have our plot and surrounding buildings set-up, let's proceed with the creation of the levels and floor slabs for each level.
 
-### Creating the levels
+### Creating levels
 
 - Drag a `Create Schema Object` node to your canvas and select the `RevitLevel` type.
 - A revit level requires a _name_, _elevation_, and an indication to create a view for that level.
@@ -119,7 +129,7 @@ Now that we have our plot and surrounding buildings set-up, let's proceed with t
 
 ![Level creation](./img-interop/v2/ghRvt-createLevels.png)
 
-### Creating the floors
+### Creating floors
 
 Now we'll create some native Revit floors, using the levels we previously created and the curves available on the `Upper/Lower Floor Outlines` nodes. We'll also need to select a floor type from one of the `available floor types` we received from Revit.
 
@@ -160,6 +170,23 @@ Just like with floors, we can create walls using the `Create Schema Object` node
 
 ![Create walls by face](./img-interop/v2/ghRvt-createRevitWallsByFace.png)
 
+### Create interior walls
+
+We have a bunch of interior walls we haven't done anything with yet. Lets create them using a `line` and a `height`.
+
+- Drag a `Create Schema Object` node to your canvas and select the `Wall by curve and height` type.
+- Connect the nodes `Wall Baseline per level`and `Wall Height per level` to the `baseLine` and `height` input respectively.
+- Connect the `filtered levels` node to the `level` input.
+  ::: tip
+
+  Notice that, since not all levels have walls, the level's have been filtered to contain only the ones that are to be used.
+
+  :::
+
+- You can _flatten_ the output of the node, as we won't be needing that data tree structure anymore.
+
+![Create interior walls](./img-interop/v2/ghRvt-createRevitWalls.png)
+
 ## Categorizing generic geometric objects
 
 For anything that cannot be directly translated into Revit elements, you can still send them directly, as we saw in the first step. Just as we did with the _surrounding buildings_, we can categorize the _Ground Floor Objects_, _Foundation_ and _Ramps_ as `DirectShape` objects with their appropriate categories.
@@ -169,6 +196,16 @@ For anything that cannot be directly translated into Revit elements, you can sti
 ## Organize the building structure
 
 Until this moment, we've been creating several Revit elements we want to send. Before doing so, let's organize that data into a single `Speckle Object` to keep everything tidy.
+
+We have several parts to send:
+
+- Floors
+- Core walls
+- Interior walls
+- Beams
+- Objects at ground floor
+- Substructure
+- Ramps
 
 1. Drag a new `Create Speckle Object` node.
 2. Create inputs for each of the object types we just created.
@@ -182,12 +219,71 @@ Always remember to set the access type of your inputs appropriately.
 
 ## Sending the building structure
 
-On the server's website, create a new stream to send the structure data to. Copy it's `url` and
+On the server's website, create a new stream to send the structure data to. Copy it's `url`. In Grasshopper, create a `Send` node and a panel with the `url` of the stream we created earlier to share the structure.
+
+![Sending the building](./img-interop/v2/gh-Rvt-sendStructureData.png)
+
+In Revit, add the newly created stream to the DesktopUI and press `Receive`.
+
+![Receiving the building in Revit](https://link)
 
 ## Adding more detail
 
-### Create interior walls
+Let's create a new stream to send some additional detail into our Revit model. As we did before, go to the server website and copy the `url` from the new stream. Then, create a new `Send` node in Grasshopper and connect a panel with that `url` to it.
+
+![Sending other data](./img-interop/v2/ghRvt-sendOtherData.png)
 
 ### Create AdaptiveFamiliy instances
 
-## Use Speckle in the family editor
+Adaptative families in Revit are a cool contraption. You can provide a set of points and they will adapt to the given positions.
+
+::: warning
+In order to correctly create _Adaptive Family_ instances, the specified family must be loaded into the Revit project.
+
+The amount of points provided must also coincide with the amount of points the _Adaptive Family_ uses internally.
+:::
+
+You'll find a very simple adaptive component called `4Pt-AdaptivePanel` along with the rest of the files of this guide.
+
+In the file, we already created some _curved square panels_ to act as a fancy roof shading. In the grasshopper file, you'll find a node called `Point groups for adaptive component`, containing the 4 corners of this panels individually grouped.
+
+Sending _Adaptive Components_ to Revit using Speckle is quite easy:
+
+- Drag a `Create Schema Object` node to your canvas and select the `AdaptiveComponent` type.
+- Input the appropriate `family` and `type` (in our case, they are both the same: `4Pt-AdaptivePanel`)
+- Connect the grouped points to the `basePoints` input. The component would generate an `AdaptiveComponent` object for every group of points.
+- Create a new stream on the server to hold this adaptive panels and create a `Send` node pointing to that stream.
+- Send the `AdaptiveComponents` you just created.
+
+![Creating adaptative families](./img-interop/v2/ghRvt-creatingAdaptiveComponents.png)
+
+In Revit, add the stream you just created using the Desktop UI and receive the data. Your panels should appear on the top floor of the building.
+
+![Receiving adaptive panels](https://link)
+
+### Using branches to swap design alternatives
+
+This is a perfect moment to introduce the behaviour of `branches` in the Speckle Revit connector; and how you can leverage the feature to alternate between different design options.
+
+1. Go to the stream's url in your web browser, and create a new branch called `design-option-2`.
+   ![Creating a new stream branch](https://link)
+2. Copy the url of the `branch` page (it should end in `/branches/BRANCH_NAME`)
+3. On the grasshopper file, modify the points in any way. You'll find a proposed modification where one of the corners has been moved upwards on each panel.
+4. Change the `stream url` for the `branch url` we just copied and press send.
+
+In Revit, you'll notice there's an update notification in the _Roof Panels_ stream that specifies there have been changes in a **different branch**. You need to switch branches to receive the new data.
+
+1. Click on the branch name on the Stream card.
+2. Select the branch we just created.
+3. Click the `Receive` button.
+
+You should see the new panels update to reflect the new design option. To go back to the previous version, you can always go back to the `main` branch.
+
+![Receiving from a different branch](https://link)
+
+## Creating instances of other families
+
+You can also create instances of point based families, like furniture, light fixtures, doors, windows, etc...
+
+- Drag a `Create Schema Object` node to your canvas and select the `FamilyInstance` type.
+-
