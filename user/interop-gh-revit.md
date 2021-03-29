@@ -1,7 +1,7 @@
 # Grasshopper ➡ Revit
 
 ::: tip
-We just recently did a major upgrade of this guide, if for whatever reason you were looking for the previous version, you can find it [here](./interop-gh-revit-v1.md)
+We recently did a major upgrade of this guide. If for whatever reason you were looking for the previous version, you can find it [here](./interop-gh-revit-v1.md)
 :::
 You can stream _Grasshopper_ native geometry to Revit using Speckle! In this guide, we will send different types of geometry and built elements to Revit to understand how Speckle converts them into native Revit geometries. We will also create some `BuiltElements` using the `SchemaBuilder` node, which allows for the generation of native Revit elements such as walls, floors, topography, etc...
 
@@ -80,6 +80,14 @@ Then, we can just plug in the geometries directly into their respective inputs. 
 In Revit, add the stream to your DesktopUI and press `Receive`. Here's a quick peek of the process:
 
 ![Receiving plot data in revit](./img-interop/v2/gh-Rvt-anim-plot.gif)
+
+::: tip About sending BREPs
+
+Rhino BREP support still has some limitations we are working on improving, but other's are strictly imposed by the Revit API. In order to ensure unsupported geometric objects still get represented when importing to Revit, we provide a `fallback` value for every `BREP` in the form of a `Mesh`.
+
+So, whenever a BREP conversion fails in Revit, the resulting object will still be generated in the model, only as a tesselated representation of the smooth BREP.
+
+:::
 
 ### Controlling the DirectShape conversion
 
@@ -303,3 +311,7 @@ You should see the new panels update to reflect the new design option. To go bac
 🚧 This section is still under construction 🚧
 
 :::
+
+## Known issues
+
+Speckle 2.0 is currently under `beta`. You can find any known issues on our [GitHub Repo Issues page](https://github.com/specklesystems/speckle-sharp/issues?q=is%3Aissue+is%3Aopen).
