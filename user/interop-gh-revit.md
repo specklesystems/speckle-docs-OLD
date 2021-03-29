@@ -1,91 +1,99 @@
 # Grasshopper ➡ Revit
 
+::: tip
+We recently did a major upgrade of this guide. If for whatever reason you were looking for the previous version, you can find it [here](./interop-gh-revit-v1.md)
+:::
 You can stream _Grasshopper_ native geometry to Revit using Speckle! In this guide, we will send different types of geometry and built elements to Revit to understand how Speckle converts them into native Revit geometries. We will also create some `BuiltElements` using the `SchemaBuilder` node, which allows for the generation of native Revit elements such as walls, floors, topography, etc...
+
+![Fancy video](./img-interop/v2/ghrvt-intro.gif)
 
 ## Getting started
 
-Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1TYX8aL_CZ7fVLaE1pWz4h4qYZYYAaA0o?usp=sharing)
+Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1bFRqtdL62bHaA1LAfdzll59FBv0givxE?usp=sharing)
 
 ::: tip
 Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
 :::
 
-## Sending `Rhino/Grasshopper` geometry objects
+We're also going to assume that you already have access to a Speckle 2.0 server, and you have correctly set up your account for that server in the _Speckle Manager_.
 
-The _Grasshopper Connector_ supports sending any type of geometry or data. This geometric data may not be fully supported in Revit as such, so the Revit converter will determine what type of Revit element each geometry get's converted to.
+## Sharing Revit project data
 
-### Default conversions
+Let's start with the easy part: In order to create Revit elements using Speckle, we should ideally have some knowledge of the current information available in our Revit project.
 
-Let's send some geometry objects from Grasshopper to Revit. We'll start with the GH part:
+Let's create a new project using the default `Architectural Template`. You can use your prefered units. A project will be created with 2 default levels (_level 0_ and _level 1_). It should also have some default families loaded in the project.
 
-1. Open the Rhino file. The model is organized into a `Structure` layer for columns and an `Architecture` layer for floors and walls.
-2. Open the Grasshopper file. You'll notice several grouped nodes. Focus on the topmost one, called **"Default Conversions"**.
-   ![Default conversions group](./img-interop/rvt-defaultConversions.png)
-3. Here, we've already selected different common geometry types from our Rhino model.
-   - A curve
-   - A BREP
-   - A Mesh
-4. Create a new `Sender` node in the Grasshopper canvas.
-5. Create a new `Stream` by adding an `Accounts` and a `Create Stream` node; and connect them as shown:
-   > You can also use an existing stream for this if you prefer.
-6. Push the send button and wait for the sender to _do its thing_.
+Now, go to the **Add-ins** tab, and press the `Speckle for Revit` icon. The Speckle _Desktop UI_ should appear.
 
-![Send geometry from GH](./img-interop/rvt-geometry-send.gif)
-
-::: tip Viewing your stream
-Right click the `Send node` and select `View commit....`. This will open a new browser window taking you to the Stream location in your Speckle server.
-![View stream online](./img-interop/rvt-viewStream.png)
-
-- Streams created in Grasshopper have the name `Random Stream` by default, so feel free to change it to be able to identify it in Revit. You can also identify a stream by it's unique ID.
+- Press the blue `+` button on the lower-right corner to add a stream to the file.
+- Create a new stream by writing a name and clicking on the blue arrow icon. You should see the `Stream` card appear on the _DesktopUI_ window.
+  ::: tip
+  In our case, we'll call our stream **Interop - GH/Revit - Project Data**
   :::
-  Now for the Revit side of things:
+- Press the blue button at the center that reads `0 object` and select the option `Set/Edit Objects Filter`.
+- Go to the `Project Info` filter type, select the _Project Info_, _Levels_ and _Families and Types_ options and press `Set Filter`.
+- Press the `Send` button in the _Project Data_ stream.
 
-1. Open a new Revit file, and call up the Revit Desktop UI via the Speckle 2 plugin ribbon.
-2. Add the stream you just created by clicking the blue `+` button on the lower right corner.
-3. Press the `Receive` button in the stream card and wait for it to finish.
-4. Once done, you should see the different geometry elements converted to Revit:
-   1. All curves would have been converted to `ModelCurves`
-   2. All BREP/Mesh elements would be converted to `DirectShape`'s with the 'Generic Model' category.
+![Sharing Project data](./img-interop/v2/ghRvt-sendProjectData.gif)
 
-> The stream card will also display any warnings or errors that ocurred during the process.
+That's it! We've effectively pushed our project information, including all existing levels and loaded families/types to Speckle. We'll use this information to correctly set family/type names for Revit elements.
 
-![Receive geometry from GH in Revit](./img-interop/rvt-geometry-receive.gif)
+This concludes our setup. We'll now switch to Grasshopper to receive it and use it to generate new Revit elements.
 
-If you want to have more control over how these geometries get converted in Revit, keep going to the next section 👇
+## Using Revit project data
 
-### About sending `BREPs`
+Now let's open up our _fake Leadenhall_ building model in Rhino. You'll need to open both Rhino and Grasshopper files, as there are some grasshopper nodes that reference geometries from the Rhino file.
+
+Go to a blank area of your Grasshopper canvas:
+
+1. Create a `Panel` and a `Receive` node.
+2. Paste the _stream url_ we copied in the previous step into the panel.
+3. Connect the panel to the `Receive` node input and press the _Receive_ button.
+4. Create an `Expand Speckle Object` node, and connect the receied data to it.
+
+Once done, it should look like this:
+
+![Receiving revit project data](./img-interop/v2/ghRvt-receiveRvtData.png)
+
+Most of the outputs will also be `Base` objects, meaning you'll have to expand them to inspect their properties (more on this later when using family types).
+
+## Sending geometry to Revit
+
+![Plot geometry](./img-interop/v2/InteropGuide-plotData.png)
+
+We'll start by sending in the surrounding buildings of our model, as well as the plot street lines and the plot terrain. For this, we'll first create a `Speckle Object` to organize our data.
+
+![Plot data speckle object](./img-interop/v2/ghRvt-plot-geometry.png)
+
+::: tip
+Remember you must correctly specify the `Access Type` for each input to generate the right amount of `Base` objects.
+
+Inputs set with `List Access` will be shown with an `L` icon beside them.
+:::
+
+We'll also need to create a new _stream_ in our server, called `Interop - GH/Revit - Plot Data`, and copy it's `url`.
+
+Then, we can just plug in the geometries directly into their respective inputs. Connect it to a `Send` node pointing to the stream we just created and press `Send`.
+
+![Sending plot data.](./img-interop/v2/gh-Rvt-sendPlotData.png)
+
+In Revit, add the stream to your DesktopUI and press `Receive`. Here's a quick peek of the process:
+
+![Receiving plot data in revit](./img-interop/v2/gh-Rvt-anim-plot.gif)
+
+::: tip About sending BREPs
 
 Rhino BREP support still has some limitations we are working on improving, but other's are strictly imposed by the Revit API. In order to ensure unsupported geometric objects still get represented when importing to Revit, we provide a `fallback` value for every `BREP` in the form of a `Mesh`.
 
 So, whenever a BREP conversion fails in Revit, the resulting object will still be generated in the model, only as a tesselated representation of the smooth BREP.
 
-## Sending custom `Base` objects
+:::
 
-With Speckle, you can create you own custom objects to represent and organize data in anyway. Let's create a custom object for the geometry we sent in the previous step.
+### Controlling the DirectShape conversion
 
-- Bring a new `Create Speckle Object` node onto the canvas.
-- Zoom-in to the node and add some properties inputs to it.
-  - You can rename inputs by right-clicking the input name.
-  - You can also specify if the input is of `item` or `list` type. Similar to how the scripting nodes operate in Grasshopper.
-- Connect the geometries we sent earlier to each of the input types. If done correctly, the result should be just **one** `Base` object.
-- Connect that object to the `Data` input on the `Send` node.
-- Press send and wait until it finishes.
+As you may have noticed, our surrounding buildings have been created in Revit as `Generic Models`. This is the default conversion behaviour when sending geometry elements that are not directly supported by Revit (such as meshes or breps).
 
-![Sending `base` objects from GH](./img-interop/rvt-base-send.gif)
-
-Now let's switch to Revit:
-
-If you already had the file open from the previous step, you should have an update notification on the `stream` we added earlier. Press the receive button and wait for the process to complete.
-
-As you may notice, even though the geometry was sent inside a `Base` object, all entities will still appear in the Revit model. This is because the conversion process will look for any objects it can convert to Revit native elements, independently of the data structure they are sent in.
-
-Meaning, you are free to organize your data as needed for any other application (i.e.: GH->GH data trees) and still receive it in Revit properly.
-
-![Receive `base` objects from GH in Revit](./img-interop/rvt-geometry-receive.gif)
-
-## Sending `SchemaBuilder` objects
-
-In order to create other _native_ Revit elements, we'd need to use the `Schema Builder` node in Grasshopper.
+In order to control this behaviour, we can use the `Schema Builder` node.
 
 ::: tip SchemaBuilder node pop-up
 
@@ -97,103 +105,211 @@ When first create the node, a pop-up window will appear allowing you to select t
 
 :::
 
-### Creating Levels and Floors
+- Drag a `Create Schema Object` node to your canvas.
+- From the pop-up, select `DirectShape` and press ok. A new node and a dropdown should appear.
+- Select `Mass` from the dropdown list.
+- Connect the surrounding building geometries to the `baseGeometries` input. _Graft_ the input to generate one direct shape per geometry.
+- You'll also need to connect a panel with a desired name for each `DirectShape`.
 
-Let's start by creating some `RevitLevels`, which we will later use to assign other objects to it's appropriate building level.
+Let's also send the `terrain` as a native `RevitTopography` object.
 
-1. Create a new `SchemaBuilder` node and select `Create Level` within the Revit category.
-2. Connect to it the _Level Name_ and _Level Height_ nodes that already existed in the file.
-3. Create a new `SchemaBuilder` node and select `RevitFloor`within the Revit category.
-4. Wire up the `RevitFloor` node
-   - `family` and `type`: connect a panel with the appropriate family and type name. If the family/type does not exist in the document, a _default_ one will be selected.
-   - `outline`: connect the `Floor Outlines` node. This is just a collection of the perimeter curves for each floor (extracted from the Revit file)
-   - `level`: Connect the levels we created on step 1-2.
-5. Create a sender, wire it up as explained in the previous steps (data + stream) and press send. You can use the same stream as before.
+- Drag a `Create Schema Object` node to your canvas and select the `RevitTopography` type.
+- Connect the terrain mesh to the revit topography `displayMesh` input.
 
-![Create Revit floors in GH](./img-interop/rvt-schema-createFloors.png)
+It should end up looking like this:
 
-Go back to the Revit file, you should see a notification in your stream telling you the data was updated.
+![Sending direct shape with category](./img-interop/v2/ghRvt-plot-revitObjects.png)
 
-1. Press `Receive` and wait for the process to finish.
-2. Once done, you should see your newly created floors and levels. Each floor assigned to it's corresponding level.
+Now swap those direct shapes for the original geometries and send them.
 
-Since these are native Revit Elements, you can edit as any other Revit type. Double-click any of the floor to edit their floor lines.
-
-![Edit revit floors from Speckle](./img-interop/rvt-schema-editFloorsRevit.gif)
-
-::: tip Automatic floor creation
-
-The Revit connector will always attempt to assign objects to existing floors when available. If the object lies at a height where no `level` exists, a new level will be automatically generated with the name `Generated Level XXXX`, where `XXXX` will be the height at that level.
-
-This is specially true when sending `BuiltElements`. Notice the lack of `level` in the `Floor` node as opposed to the `RevitFloor`. If sending a `Floor`, a level will be generated at the height of the floor outline.
-
-![Floor nodes comparison](./img-interop/rvt-schema-floorComparison.png)
-:::
-
-## Assigning parameter values
-
-The `Schema Builder` node also contains a `Parameter` type, created specifically to pass parameter values along with the Revit model elements being sent.
-
-::: warning
-When sending Revit elements with custom parameters, you must ensure the parameters exist for the type/family you are targetting or the value will not be set.
-:::
-
-Passing parameter values is as easy as connecting the desired parameter to the `parameter` input of a `RevitElement` node. Let's modify the `Mark` parameter value to be the current level elevation.
-
-1. Focus on the `RevitFloors` we created earlier.
-2. Create a new `Schema Builder` node and select the type `Parameter`
-3. Use a `Expand Speckle Object` node to extract the information from the levels.
-4. Connect the elevation to a text node (to force it to be a string) and connect it to the `Parameter` node as shown
-5. Now, send the floors clicking the `Send` button.
-
-![Send floors with parameter values](./img-interop/rvt-schema-createFloorWithParam.png)
-
-In Revit:
-
-1. Press the receive button as soon as you get notified of the updated data.
-2. Select any of the floors that were sent and ensure the parameter has been properly set.
+In Revit, once you get the notification that data was changed, press the receive button. You should now see the surrounding buildings appear as `Massing` objects.
 
 ::: tip
-You can do this with any type of parameter in your model (family/shared...)
+If you don't see the surrounding buildings, ensure you have the Massing objects visibility active in the _Massing / Site_ tab in Revit.
 :::
 
-![Receiving stairs in Revit](./img-interop/rvt-schema-parameterSet.png)
+![Sending/Receiving the plot data as categorized DirectShapes](./img-interop/v2/gh-Rvt-anim-plotRvt.gif)
 
-## Sending complex geometry
+## Generating Floors and Levels
 
-In cases of higher complexity, creating native Revit elements may not be an option. When necessary, when can also send any complex geometry (curves, BREPs, meshes) to Revit as a `DirectShape`. This allows us to assign parameter values and a category type to our element.
+Now that we have our plot and surrounding buildings set-up, let's proceed with the creation of the levels and floor slabs for each level.
 
-Let's try it out with the stairs:
+![Model floors](./img-interop/v2/InteropGuide_floors.png)
 
-1. Create a new `SchemaBuilder` node and select `DirectShape` from the Revit category.
-2. You'll notice the `DirectShape` node will also create a `ValueList` drowpdown to select the appropriate element type.
-3. Connect the `Stairs by level` node to the `BaseGeometries` input.
-   ::: tip
-   The `BaseGeometries` input expects a list, so make sure you graft it to create one `DS` per stair object.
-   :::
-4. Connect a panel to the `name` input, and write a meaningful name (it can be unique for each object).
-5. Connect the `DirectShape` output **and** the previously created `RevitFloors` to a sender and press `Send`
+### Creating levels
 
-Now in Revit just press **Receive** and wait for the magic to happen.
+- Drag a `Create Schema Object` node to your canvas and select the `RevitLevel` type.
+- A revit level requires a _name_, _elevation_, and an indication to create a view for that level.
+- Connect the `lower floor names` and `lower floor heights` to their respective inputs in the `RevitLevel` node.
 
-![Receive complex stairs](./img-interop/rvt-schema-receiveDS.gif)
+![Level creation](./img-interop/v2/ghRvt-createLevels.png)
 
-## Receiving updates
+### Creating floors
 
-In order to ensure that further work on your model does not get deleted when receiving updated data from Speckle, we only delete/add objects when necessary, and update any other existing objects that have been modified.
+Now we'll create some native Revit floors, using the levels we previously created and the curves available on the `Upper/Lower Floor Outlines` nodes. We'll also need to select a floor type from one of the `available floor types` we received from Revit.
 
-Lets test this with a simple wall:
+::: tip
+To select a specific floor type, first select an individual type with a `list item` node, and then use the `Expand Speckle Object` node to inspect it's properties.
+:::
 
-1. In the Revit model, add some new elements, such as walls, linked to the Floors we received.
-2. In grasshopper, modify the affected level in some way and send the new changes.
-3. Receive the changes in Revit.
+1. Create two `SchemaBuilder` nodes with `RevitFloor` type.
+2. Connect the selected family name and type.
+3. Connect the respective levels and outlines (upper/lower) to each `RevitFloor` node.
 
-If all went well, your walls should have updated along with the floor changes.
+![Grasshopper, creating Revit floors](./img-interop/v2/ghRvt-createFloors.png)
+
+## Creating beams
+
+![Model beams](./img-interop/v2/InteropGuide-beams.png)
+
+In this case, since we do not have much information about the structural beams, as they are modelled as simple lines. This is the perfect scenario to use Speckle's `BuiltElements`.
+
+These are simple representations of common BIM elements, that require a minimum amount of input. These elements will be appropriately converted to native elements on each target platform when possible.
+
+In the case of a `BuiltElements.Beam`, the input required is only the axis line of that beam.
+
+1. Drag a `Create Schema Object` node to your canvas and select the `Beam` type (not `RevitBeam`).
+2. Connect all truss lines to the `baseLine` input. Since we don't really care about the data structure they're organized by, we can flatten the input.
+
+![Create Beams](https://link)
+
+## Creating the walls
+
+![Create walls](./img-interop/v2/InteropGuide-walls.png)
+
+### Core walls
+
+Just like with floors, we can create walls using the `Create Schema Object` node. There are several ways to create a wall, but for the `Core Walls`, we're going to create them with the `Wall by Face` type. This takes a surface as a reference to create a wall in revit with the same shape.
+
+1. Drag a `Create Schema Object` node to your canvas and select the `Wall by Face` type.
+2. Locate the node called `Core Walls` and connect it to the `surface` input.
+3. Select a category from the _available wall types_ we received from Revit and connect it's family name and type.
+4. The last thing we need is a level, but in this case, we already know there is a level called `Level 0` on our project, which is at ground level. We can reference it using the `Level by name` schema.
+5. Drag a `Create Schema Object` node to your canvas and select the `Level by name`.
+6. Connect a panel with the text "Level 0" to it's only input, and connect the resulting level into the `Wall by Face` node.
+
+![Create walls by face](./img-interop/v2/ghRvt-createRevitWallsByFace.png)
+
+### Interior walls
+
+We have a bunch of interior walls we haven't done anything with yet. Lets create them using a `line` and a `height`.
+
+- Drag a `Create Schema Object` node to your canvas and select the `Wall by curve and height` type.
+- Connect the nodes `Wall Baseline per level`and `Wall Height per level` to the `baseLine` and `height` input respectively.
+- Connect the `filtered levels` node to the `level` input.
+  ::: tip
+
+  Notice that, since not all levels have walls, the level's have been filtered to contain only the ones that are to be used.
+
+  :::
+
+- You can _flatten_ the output of the node, as we won't be needing that data tree structure anymore.
+
+![Create interior walls](./img-interop/v2/ghRvt-createRevitWalls.png)
+
+## Categorizing generic geometric objects
+
+For anything that cannot be directly translated into Revit elements, you can still send them directly, as we saw in the first step. Just as we did with the _surrounding buildings_, we can categorize the _Ground Floor Objects_, _Foundation_ and _Ramps_ as `DirectShape` objects with their appropriate categories.
+
+![Create categorized direct shape objects](./img-interop/v2/ghRvt-genericObj-directShape.png)
+
+## Organize the building structure
+
+Until this moment, we've been creating several Revit elements we want to send. Before doing so, let's organize that data into a single `Speckle Object` to keep everything tidy.
+
+We have several parts to send:
+
+- Floors
+- Core walls
+- Interior walls
+- Beams
+- Objects at ground floor
+- Substructure
+- Ramps
+
+1. Drag a new `Create Speckle Object` node.
+2. Create inputs for each of the object types we just created.
+3. Connect everything appropriately.
+
+::: tip
+Always remember to set the access type of your inputs appropriately.
+:::
+
+![Structure object](./img-interop/v2/ghRvt-structureData.png)
+
+## Sending the building structure
+
+On the server's website, create a new stream to send the structure data to. Copy it's `url`. In Grasshopper, create a `Send` node and a panel with the `url` of the stream we created earlier to share the structure.
+
+![Sending the building](./img-interop/v2/gh-Rvt-sendStructureData.png)
+
+In Revit, add the newly created stream to the DesktopUI and press `Receive`. You can see the entire process in the animation bellow.
+
+![Receiving the building in Revit](./img-interop/v2/gh-Rvt-anim-structureData.gif)
+
+## Create AdaptiveFamiliy instances
+
+![Rhino model of the adaptive families to be created](./img-interop/v2/InteropGuide-panels.png)
+
+Adaptative families in Revit are a cool contraption. You can provide a set of points and they will adapt to the given positions.
+
+::: warning
+In order to correctly create _Adaptive Family_ instances, the specified family must be loaded into the Revit project.
+
+The amount of points provided must also coincide with the amount of points the _Adaptive Family_ uses internally.
+:::
+
+You'll find a very simple adaptive component called `4Pt-AdaptivePanel` along with the rest of the files of this guide.
+
+In the file, we already created some _curved square panels_ to act as a fancy roof shading. In the grasshopper file, you'll find a node called `Point groups for adaptive component`, containing the 4 corners of this panels individually grouped.
+
+Sending _Adaptive Components_ to Revit using Speckle is quite easy:
+
+- Drag a `Create Schema Object` node to your canvas and select the `AdaptiveComponent` type.
+- Input the appropriate `family` and `type` (in our case, they are both the same: `4Pt-AdaptivePanel`)
+- Connect the grouped points to the `basePoints` input. The component would generate an `AdaptiveComponent` object for every group of points.
+- Create a new stream on the server to hold this adaptive panels and create a `Send` node pointing to that stream.
+- Send the `AdaptiveComponents` you just created.
+
+![Creating adaptative families](./img-interop/v2/ghRvt-creatingAdaptiveComponents.png)
+
+In Revit, add the stream you just created using the Desktop UI and receive the data. Your panels should appear on the top floor of the building.
+
+![Receiving adaptive panels](./img-interop/v2/gh-Rvt-anim-panels.gif)
+
+### Using branches to swap design alternatives
+
+This is a perfect moment to introduce the behaviour of `branches` in the Speckle Revit connector; and how you can leverage the feature to alternate between different design options.
+
+1. Go to the stream's url in your web browser, and create a new branch called `design-option-2`.
+2. Copy the url of the `branch` page (it should end in `/branches/BRANCH_NAME`)
+3. On the grasshopper file, modify the points in any way, like modifying the `seed` input in the `Random numbers` node.
+4. Change the `stream url` for the `branch url` we just copied and press send.
+
+In Revit, you'll notice there's an update notification in the _Roof Panels_ stream that specifies there have been changes in a **different branch**. You need to switch branches to receive the new data.
+
+1. Click on the branch name on the Stream card.
+2. Select the branch we just created.
+3. Click the `Receive` button.
+
+You should see the new panels update to reflect the new design option. To go back to the previous version, you can always go back to the `main` branch.
+
+![Receiving from a different branch](./img-interop/v2/ghRvt-swapBranches.gif)
 
 ## Using Speckle in the Family Editor
 
-::: warning Under construction
-You can definitelly use Speckle inside the Family editor but this section is currently being built 🚧, please check again later!
+::: warning
+
+🚧 This section is still under construction 🚧
+
+:::
+
+### Populating family instances in the model
+
+::: warning
+
+🚧 This section is still under construction 🚧
+
 :::
 
 ## Known issues
