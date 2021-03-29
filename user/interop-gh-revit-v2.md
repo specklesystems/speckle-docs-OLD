@@ -74,9 +74,9 @@ Then, we can just plug in the geometries directly into their respective inputs. 
 
 ![Sending plot data.](./img-interop/v2/gh-Rvt-sendPlotData.png)
 
-In Revit, add the stream to your DesktopUI and press `Receive`. You should see the plot geometries appear in the model.
+In Revit, add the stream to your DesktopUI and press `Receive`. Here's a quick peek of the process:
 
-![Receiving plot data in revit](https://via.placeholder.com/450x150)
+![Receiving plot data in revit](./img-interop/v2/gh-Rvt-anim-plot.gif)
 
 ### Controlling the DirectShape conversion
 
@@ -117,7 +117,7 @@ In Revit, once you get the notification that data was changed, press the receive
 If you don't see the surrounding buildings, ensure you have the Massing objects visibility active in the _Massing / Site_ tab in Revit.
 :::
 
-![Sending/Receiving the plot data as categorized DirectShapes](https://via.placeholder.com/450x150)
+![Sending/Receiving the plot data as categorized DirectShapes](./img-interop/v2/gh-Rvt-anim-plotRvt.gif)
 
 ## Generating Floors and Levels
 
@@ -233,9 +233,9 @@ On the server's website, create a new stream to send the structure data to. Copy
 
 ![Sending the building](./img-interop/v2/gh-Rvt-sendStructureData.png)
 
-In Revit, add the newly created stream to the DesktopUI and press `Receive`.
+In Revit, add the newly created stream to the DesktopUI and press `Receive`. You can see the entire process in the animation bellow.
 
-![Receiving the building in Revit](https://link)
+![Receiving the building in Revit](./img-interop/v2/gh-Rvt-anim-structureData.gif)
 
 ## Create AdaptiveFamiliy instances
 
@@ -265,7 +265,7 @@ Sending _Adaptive Components_ to Revit using Speckle is quite easy:
 
 In Revit, add the stream you just created using the Desktop UI and receive the data. Your panels should appear on the top floor of the building.
 
-![Receiving adaptive panels](https://link)
+![Receiving adaptive panels](./img-interop/v2/gh-Rvt-anim-panels.gif)
 
 ### Using branches to swap design alternatives
 
