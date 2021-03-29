@@ -6,7 +6,7 @@ You can stream _Grasshopper_ native geometry to Revit using Speckle! In this gui
 
 ## Getting started
 
-Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1TYX8aL_CZ7fVLaE1pWz4h4qYZYYAaA0o?usp=sharing)
+Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Rhino and Grasshopper files or this tutorial [here](https://drive.google.com/drive/folders/1bFRqtdL62bHaA1LAfdzll59FBv0givxE?usp=sharing)
 
 ::: tip
 Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
