@@ -2,7 +2,7 @@
 
 You can stream _Grasshopper_ native geometry to Revit using Speckle! In this guide, we will send different types of geometry and built elements to Revit to understand how Speckle converts them into native Revit geometries. We will also create some `BuiltElements` using the `SchemaBuilder` node, which allows for the generation of native Revit elements such as walls, floors, topography, etc...
 
-![Fancy video](https://via.placeholder.com/450x150)
+![Fancy video](./img-interop/v2/ghrvt-intro.gif)
 
 ## Getting started
 
@@ -31,7 +31,7 @@ Now, go to the **Add-ins** tab, and press the `Speckle for Revit` icon. The Spec
 - Go to the `Project Info` filter type, select the _Project Info_, _Levels_ and _Families and Types_ options and press `Set Filter`.
 - Press the `Send` button in the _Project Data_ stream.
 
-![Sharing Project data](https://via.placeholder.com/400x150)
+![Sharing Project data](./img-interop/v2/ghRvt-sendProjectData.gif)
 
 That's it! We've effectively pushed our project information, including all existing levels and loaded families/types to Speckle. We'll use this information to correctly set family/type names for Revit elements.
 
@@ -269,14 +269,11 @@ In Revit, add the stream you just created using the Desktop UI and receive the d
 
 ### Using branches to swap design alternatives
 
-![alt](https://link)
-
 This is a perfect moment to introduce the behaviour of `branches` in the Speckle Revit connector; and how you can leverage the feature to alternate between different design options.
 
 1. Go to the stream's url in your web browser, and create a new branch called `design-option-2`.
-   ![Creating a new stream branch](https://link)
 2. Copy the url of the `branch` page (it should end in `/branches/BRANCH_NAME`)
-3. On the grasshopper file, modify the points in any way. You'll find a proposed modification where one of the corners has been moved upwards on each panel.
+3. On the grasshopper file, modify the points in any way, like modifying the `seed` input in the `Random numbers` node.
 4. Change the `stream url` for the `branch url` we just copied and press send.
 
 In Revit, you'll notice there's an update notification in the _Roof Panels_ stream that specifies there have been changes in a **different branch**. You need to switch branches to receive the new data.
@@ -287,4 +284,4 @@ In Revit, you'll notice there's an update notification in the _Roof Panels_ stre
 
 You should see the new panels update to reflect the new design option. To go back to the previous version, you can always go back to the `main` branch.
 
-![Receiving from a different branch](https://link)
+![Receiving from a different branch](./img-interop/v2/ghRvt-swapBranches.gif)
