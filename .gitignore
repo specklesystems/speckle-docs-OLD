@@ -3,3 +3,4 @@ node_modules
 **/Thumbs.db
 **/Icon
 .vscode/
+**/.DS_Store

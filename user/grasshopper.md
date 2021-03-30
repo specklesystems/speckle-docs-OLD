@@ -141,15 +141,18 @@ This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ 
 #### Modifying the access type
 
 Access type operates in the same way as the `Python` and `C#` script components. In this case, you can specify if you want a specific property in the object to be a _list_ or a single _item_.
-i.e. If you plug a list of numbers into a `Create Speckle Object` node, depending on the specified access of that property you will get 2 different results:
 
-![Access type menu](./img-gh/menu-listAccess.png)
+![Access type menu](./img-gh/menu-listAccess.gif)
+
+::: warning
+Choosing the wrong access type for your data may result in duplicated data being generated.
+:::
 
 #### Detach/Do not detach
 
 Every property can also be specified as _detached/non-detached_. When a property is _detached_, it means that the objects it contains will be saved as independent entities in the Speckle database. All properties are detached by default for performance reasons, but you can choose not to by specifying `Do not detach` on the right-click menu.
 
-![Detach/Do not detach](./img-gh/menu-DoNotDetach.png)
+![Detach/Do not detach](./img-gh/menu-DoNotDetach.gif)
 
 #### Optional
 
@@ -157,7 +160,7 @@ Every property can also be flagged as _optional_. This will allow you to create 
 
 There is a limitation on this behaviour: at least one of the node's inputs must be _non-optional_.
 
-![Optional menu](./img-gh/menu-Optional.png)
+![Optional menu](./img-gh/menu-Optional.gif)
 
 ::: tip
 
