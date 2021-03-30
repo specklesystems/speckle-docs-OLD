@@ -143,14 +143,29 @@ This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ 
 Access type operates in the same way as the `Python` and `C#` script components. In this case, you can specify if you want a specific property in the object to be a _list_ or a single _item_.
 i.e. If you plug a list of numbers into a `Create Speckle Object` node, depending on the specified access of that property you will get 2 different results:
 
-- **Item access**: The result will be a **list** of base objects, with only one item each.
-  ![Item access](./img-gh/params-base-itemAccess.png)
-- **List accesss**: The result will be **one** base object, with the entire list of items saved in the property.
-  ![List Access](./img-gh/params-base-listAccess.png)
+![Access type menu](./img-gh/menu-listAccess.png)
 
 #### Detach/Do not detach
 
 Every property can also be specified as _detached/non-detached_. When a property is _detached_, it means that the objects it contains will be saved as independent entities in the Speckle database. All properties are detached by default for performance reasons, but you can choose not to by specifying `Do not detach` on the right-click menu.
+
+![Detach/Do not detach](./img-gh/menu-DoNotDetach.png)
+
+#### Optional
+
+Every property can also be flagged as _optional_. This will allow you to create new objects with _incomplete_ data.
+
+There is a limitation on this behaviour: at least one of the node's inputs must be _non-optional_.
+
+![Optional menu](./img-gh/menu-Optional.png)
+
+::: tip
+
+When you activate any of the previous options, the corresponding icon will be shown in the parameter, very much like the `Graft/Flatten/Simplify` options.
+
+![State tags](./img-gh/menu-stateTags.png)
+
+:::
 
 ## Schema Builder
 
