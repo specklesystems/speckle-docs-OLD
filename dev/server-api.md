@@ -1,6 +1,8 @@
 # Introduction
 
-Speckle server, frontend and viewer are hosted in our [speckle-server](https://github.com/specklesystems/speckle-server) repo, each project has its own folder and readme with instructions on how to build it.
+Speckle server, frontend and viewer are hosted in our [speckle-server](https://github.com/specklesystems/speckle-server) repo.
+
+To set up a local Speckle server for development, check out the Readme files in the git repo for a quick start, or the [Local Setup](/dev/server-setup) page for detailed instructions.  
 
 ## Server API
 
