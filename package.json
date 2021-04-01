@@ -18,6 +18,7 @@
     "vuepress": "^1.5.3"
   },
   "dependencies": {
+    "markdown-it-html5-embed": "^1.0.0",
     "vuepress-plugin-matomo": "^1.0.2"
   }
 }

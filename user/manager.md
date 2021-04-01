@@ -60,6 +60,12 @@ You can also add an account directly from Speckle Web as part of the onboarding 
 
 ![account-onboarding](./img/manager/account-onboarding.gif)
 
+:::warning Account problems
+
+Having trouble adding an account? It's probably the firewall. Check our [quick faq guide for possible solutions](/user/FAQs.html#i-cannot-add-an-account-in-speckle-manager)!
+
+:::
+
 ### Adding Accounts manually
 
 Using Speckle Manager to handle your accounts and connectors is the recommended way, but if you'd like to do without it a manual flow is also available.
