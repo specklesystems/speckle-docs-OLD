@@ -23,7 +23,7 @@ Let's send our first stream! Since we won't be sending the context geometry as f
 5. In Revit Desktop UI, click the blue **Add a stream** button on the bottom. Add the `Context` stream card to UI by clicking the arrow next to the stream in the popup window.
 6. Click **Receive** on the stream card, and watch the geometry come in as generic models!
 
-![](./img-interop/rhino-revit-context.gif)
+![](./img-interop/rhino-revit-context.mp4)
 
 ### Send ground floor geometry with walls, floors, and a facewall
 
@@ -46,7 +46,7 @@ You should see a **<SpeckleSchema,Floor>** keyvalue pair in the attribute user t
 
 Create a `Ground Floor` stream to send all geometry from the *Leadenhallish::Ground Floor* layer, and receive it in your Revit file! Any objects that were assigned a schema will be converted as default Revit families.
 
-![](./img-interop/rhino-revit-ground-floor.gif)
+![](./img-interop/rhino-revit-ground-floor.mp4)
 
 ### Send the core brep as walls and floors
 
@@ -59,7 +59,7 @@ Next, we'll send try to send the core geometry as `Wall` and `Floor` surfaces.
 5. Now try applying schemas again. Voila, floors and walls were assigned!
 6. Create a `Core` stream and send the geometry to Revit
 
-![](./img-interop/rhino-revit-core.gif)
+![](./img-interop/rhino-revit-core.mp4)
 
 ### Send the floor slabs and truss to complete the model
 
@@ -70,7 +70,7 @@ To finish off our model, let's now send the floor slabs and truss with the autom
 3. Cycle through some of the truss members to look at their assigned schema: lines with < 45 degree deviation from vertical are assigned as columns, while all others are assigned as beams.
 4. Create a `Floors and Truss` stream and send to Revit - our Leadenhall lookalike building is now complete!
 
-![](./img-interop/rhino-revit-floors-and-truss.gif)
+![](./img-interop/rhino-revit-floors-and-truss.mp4)
 
 ## Remarks
 

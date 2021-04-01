@@ -1,6 +1,16 @@
 const { description } = require("../package")
 
 module.exports = {
+  markdown: {
+    extendMarkdown: md => {
+      // use more markdown-it plugins!
+      md.use( require('markdown-it-html5-embed'), {
+              html5embed: {
+                useImageSyntax: true, // Enables video/audio embed with ![]() syntax (default)
+                useLinkSyntax: true   // Enables video/audio embed with []() syntax
+            }})
+    }
+  },
   base: "/",
   title: "Speckle Docs",
 
@@ -17,7 +27,7 @@ module.exports = {
       {
         src: "/scripts/scroll-to-hash.js",
       }
-  ]
+    ]
   ],
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
