@@ -68,7 +68,7 @@ module.exports = {
         {
           title: "Quickstart 🏃‍♀️",
           collapsable: false,
-          children: ["quickstart"]
+          children: ["quickstart", "FAQs"]
         },
         {
           title: "User Guide 🤷",
