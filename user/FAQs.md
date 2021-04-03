@@ -1,4 +1,4 @@
-# Frequently Asked Questions
+# FAQs
 
 ## Speckle Server is unreachable
 
@@ -7,9 +7,9 @@ If you cannot access it from **your browser** or from **Speckle Manager**:
 
 - make sure you are online by visiting other websites
 - make sure the server address is not blocked by a corporate firewall or VPN, by either trying to access it via a different network (eg mobile network) or by contacting your IT department
-- the server could be down! If it's hosted by us, we're most likely working on it already. If it's hosted by your companyn, please reach out to them
+- the server could be down! If it's hosted by us, we're most likely working on it already. If it's hosted by your company, please reach out to them
 
-If the server address is **blocked by a corporate firewall or VPN**, kindly ask your IT department to whitelist the following domains that Speckle uses: 
+If the server address is **blocked by a corporate firewall or VPN**, kindly ask your IT department to whitelist the following domains and subdomains that Speckle uses: 
 
 - speckle.xyz (critical)
 - speckle.systems

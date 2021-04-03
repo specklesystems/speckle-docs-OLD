@@ -6,9 +6,19 @@ Core is written in .NET Standard 2.0, it's been tested on Windows and MacOS and 
 
 ## Getting started
 
-Before integrating Core in your next project, [please make sure it's supported by your framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
+Core and Objects are written in .NET Standard 2.0, before using them [please make sure they are supported by your .NET framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support). 
 
-We haven't yet released a NuGet package for Core 2.0, until then you can use it by building it yourself and referencing it directly.
+We have published various Nugets to make it simpler to use Speckle in your next .NET project. Here's what's available at the moment:
+
+- Core
+- All Transports
+- Objects
+- All Objects Converters
+
+All our nugets are prefixed by `Speckle.` 
+
+![image](https://user-images.githubusercontent.com/2679513/113474800-0833f880-946a-11eb-8c90-92b23918a0c8.png)
+
 
 ## How to use
 
