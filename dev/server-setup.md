@@ -1,12 +1,13 @@
-# Local Setup
+# Deploying a local Server
 
-There are 2 main ways of running a local Speckle server:
-- With local development tools, useful for development and debugging
-- In docker containers, to easily get the server running without setting up a local development environment
+There are two main ways of running a local Speckle server:
+- in docker containers, to easily get the server running without setting up a local development environment
+- with local development tools, useful for development and debugging
+
 
 ## Dependencies
 
-The Speckle server needs 2 services available over the network:
+The Speckle server needs two services available over the network:
 - PostgreSQL (tested with v12 and v13)
 - Redis
 
@@ -14,16 +15,20 @@ To get these dependencies up and running locally, the git repo contains
 [a docker-compose file](https://github.com/specklesystems/speckle-server/blob/main/docker-compose-deps.yml)
 for running these dependencies locally in docker containers.
 
-You can simply run:
+::: tip
+There are additional ways to set up these dependencies, but they are more advanced and are not included in this guide.
+:::
+
+To proceed with the `docker-compose` file, you can simply run:
 ```bash
 docker-compose -f docker-compose-deps.yml up -d
 ```
 
-This will run the following containers, with automatic starting them up at system startup:
+This will run the following containers, and will automatically launch them at system startup:
 - **PostgreSQL v13**, listening only on `127.0.0.1:5432` with default credentials `speckle`:`speckle` and a database named `speckle`.
 - **Redis v6**, listening only on `127.0.0.1:6379`
-- **PGAdmin4**, listening only on [http://127.0.0.1:16543/](http://127.0.0.1:16543/) with default credentials `admin@localhost` : `admin`
-- **Redis Insight**, listening only on `http://127.0.0.1:8001/`
+- **PGAdmin4**, listening only on `127.0.0.1:16543` with default credentials `admin@localhost` : `admin`
+- **Redis Insight**, listening only on `127.0.0.1:8001`
 
 All of the above containers listen on the local loopback interface (`127.0.0.1`) and are NOT accessible from the local network (for security, since they use default credentials)
 
@@ -35,7 +40,12 @@ Docker-compose creates named docker volumes for storing data for each of the con
 You can view existing docker volumes with `docker volume ls` and delete a volume and existing data with `docker volume rm [volume_name]` 
 
 ## Method 1: Run in docker containers
-This is the recommended method for getting the Speckle server to run locally without having development tools installed.
+
+::: tip IMPORTANT
+This setup is not recommended for use in production, if you need help deploying a production server, [we can help](https://speckle.systems/getstarted/)!
+:::
+
+This is the recommended method for getting the Speckle server to run locally without needing development tools installed.
 
 The git repository contains [a docker-compose file](https://github.com/specklesystems/speckle-server/blob/main/docker-compose-speckle.yml) for running the Speckle server frontend and backend in docker containers.
 
@@ -44,7 +54,7 @@ docker-compose -f docker-compose-speckle.yml up -d
 ```
 (You can safely ignore the warnings about the *orphan containers*)
 
-This will run the following containers, with automatic starting them up at system startup:
+This will run the following containers, and will automatically launch them at system startup:
 - **speckle-frontend**, an nginx container that serves the Vue app build as static files (does not listen to any port on the host)
 - **speckle-server**, the `server` component that listens on `http://localhost:3000/` and is configured to proxy the frontend requests to the `speckle-frontend` container
 
@@ -55,22 +65,28 @@ If you want the speckle server to be accessed from the network, you should modif
 
 ## Method 2: Run locally
 
-This is the recommended method for developing the Speckle Server. You need a local nodejs setup.
+::: tip IMPORTANT
+This setup is not recommended for use in production, if you need help deploying a production server, [we can help](https://speckle.systems/getstarted/)!
+:::
 
-To run Speckle Server, you must run:
-- The `frontend` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/frontend))
-- The `server` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/server))
+This is the recommended method for developing or debugging the Speckle Server. You'll need to have Node.js installed.
 
-Detailed instructions for running locally are kept up to date in the readme.md files.
+To run the Speckle Server, you need to run:
+- the `frontend` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/frontend))
+- the `server` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/server))
 
-A very important part is setting up the variables in the `.env` file according to your deployment. You can just get started by copying the `.env-example` file to `.env` and then edit when needed.
+Detailed instructions for running them locally are kept up to date in their respective readme.md files.
 
-In this deployment type, the frontend's Vue app will listen by default on all interfaces (available over the network) on `port 8080`, but will have no knowledge about the `server` component, and thus **should not be accessed directly**.
+::: tip IMPORTANT
+Don't forget to set up the variables in the `.env` file according to your deployment. You can get started by copying the `.env-example` file to `.env` and then edit it.
+:::
+
+In this deployment type, the frontend Vue app will listen by default on all interfaces (available over the network) on `port 8080`, but will have no knowledge about the `server` component, and thus **should not be accessed directly**.
 
 The server component will listen on all interfaces (available over the network) on `port 3000`, and will proxy the frontend requests to the frontend component (as configured in .env file).
 
-So you can access the Speckle server in the browser at [http://localhost:3000/](http://localhost:3000/).
+You can access Speckle Web from your browser at [http://localhost:3000/](http://localhost:3000/).
 
-**If you plan to access the speckle server over the network**, you should update the `CANONICAL_URL` variable in the .env file to the URL that is used to access the server.
+**If you plan to access the server over the network**, you should update the `CANONICAL_URL` variable in the .env file to the URL that is used to access the server.
 
 
