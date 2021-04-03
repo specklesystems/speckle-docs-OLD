@@ -1,12 +1,15 @@
 # Frequently Asked Questions
 
-## I cannot add an account in Speckle Manager!
+## Speckle Server is unreachable
 
-This is quite common; the most likely culprit is your corporate firewall. How you can check that's the case: try switching to a different network - such as your guest wifi, or 4G tethering and see if it works then.
+When a Speckle Server is unreachable a few things could be going on, let's see them.
+If you cannot access it from **your browser** or from **Speckle Manager**:
 
-:::tip 
+- make sure you are online by visiting other websites
+- make sure the server address is not blocked by a corporate firewall or VPN, by either trying to access it via a different network (eg mobile network) or by contacting your IT department
+- the server could be down! If it's hosted by us, we're most likely working on it already. If it's hosted by your companyn, please reach out to them
 
-To fix this properly, kindly ask your IT department to whitelist the following domains that Speckle uses: 
+If the server address is **blocked by a corporate firewall or VPN**, kindly ask your IT department to whitelist the following domains that Speckle uses: 
 
 - speckle.xyz (critical)
 - speckle.systems
@@ -15,7 +18,20 @@ To fix this properly, kindly ask your IT department to whitelist the following d
 
 If more questions about this, feel free to reach out!
 
-:::
+## I cannot add an account in Speckle Manager!
+
+This is probably related to the server being unreachable, please check the section above.
+If the server is available and the account flow just doesn't work, please try alternative methods of [adding your account](/user/manager).
+If nothing works, please [let us know on the forum!](https://speckle.community)!  
+
+## How do I merge two branches in Speckle
+
+Currently, commits, branches or streams cannot be merged via Speckle, but you can do so in most authoring software supported by Speckle. For instance, you can manually merge two branches or even streams easily in Grasshopper.
+
+## Why can't I see anything in the 3D Viewer?
+
+Our 3D Viewer only supports visualizing geometry. If you're sending any data that doesn't have a supported geometrical representation it will not be visible, for example when sending a list of Levels or Revit Family and Type names. You'll always be able to explore the raw data of a Stream in the JSON editor inside the commit page.
+
 
 ## I forgot my password 🤔
 
