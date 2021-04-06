@@ -17,7 +17,7 @@ If the server address is **blocked by a corporate firewall or VPN**, kindly ask 
 - speckle.community
 - speckle-releases.ams3.digitaloceanspaces.com (critical)
 
-If more questions about this, feel free to reach out!
+For any more questions about this, feel free to reach out!
 
 ## I cannot add an account in Speckle Manager!
 
