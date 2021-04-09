@@ -54,17 +54,17 @@ Alternatively, you can also use one of the following nodes to create / retrieve 
 You cannot send data to a specific commit. Commits represent your stream in a specific point in time and cannot be edited.
 :::
 
-#### Adding objects
+### Adding objects
 
 In order to select which objects to send in Dynamo, we just need to connect the desired node to the `data` input in the `Send` node. The sender will convert any supported Dynamo objects into a Speckle compatible format when necessary.
 
-#### Adding a commit message
+### Adding a commit message
 
 It's good practice to add a "commit message" whenever you send you data, especially if working with others, this message should describe the changes being pushed.
 You can add a commit message by passing some text to the `message` port.
 The commit message will be visible in Speckle Web where you will also be allowed to edit it.
 
-#### Sending
+### Sending
 
 The only thing left to do is to press the **Send button**.
 
@@ -77,6 +77,12 @@ To view the data you just sent from Dynamo online, you can use the `View Online`
 ::: tip
 The View Online node is especially useful as data cannot be easily copy/pasted from dynamo nodes
 :::
+
+### Viewing a Stream online
+
+To view the sent stream online you can just right click on the sender node:
+
+![image](https://user-images.githubusercontent.com/2679513/114192190-1b9d0300-9945-11eb-952a-8676a4854397.png)
 
 ### Sending to a specific branch
 
@@ -120,6 +126,12 @@ Similarly to commits, you can also point the receive node to a specific object, 
 You can find the ID of an object from the Speckle Web interface:
 
 ![image-20210322185007725](./img-dyn/image-20210322185007725.png)
+
+### Viewing a Stream online
+
+To view the received stream online you can just right click on the receiver node:
+
+![image](https://user-images.githubusercontent.com/2679513/114192622-9bc36880-9945-11eb-8b49-639f0f34b619.png)
 
 ## Creating custom objects
 
@@ -218,6 +230,12 @@ Once created, the node will remember that stream. Meaning you will not be able t
 Select the appropriate account and press the blue button. If the stream creation was successful, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
 
 ![Creating a stream](./img-dyn/guide-stream-create.gif)
+
+#### Viewing the Stream online
+
+To view the newly created stream online you can just right click on the node:
+
+![image](https://user-images.githubusercontent.com/2679513/114194176-2193e380-9947-11eb-8b55-8f2f56d07773.png)
 
 #### Inputs
 
