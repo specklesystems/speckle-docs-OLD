@@ -9,8 +9,8 @@ Let's look at how to send an object to a stream on your server, then receive tha
 First, you'll need to create and authenticate a client. To use the client, you'll need access to a Speckle server. To authenticate the client, you'll either need local accounts (added using [Manager](/user/manager)) or you can go to `your-server.com/profile` and create a Personal Access Token.
 
 ```py
-from speckle.api.client import SpeckleClient
-from speckle.api.credentials import get_default_account
+from specklepy.api.client import SpeckleClient
+from specklepy.api.credentials import get_default_account
 
 # initialise the client
 client = SpeckleClient(host="your-server.com") # or whatever your host is
@@ -34,8 +34,8 @@ new_stream = client.stream.get(id=new_stream_id)
 Next, we'll need some data to send. To make it more interesting, let's extend `Base` to create a simple block. All your custom objects should inherit from `Base` to ensure serialisation will work as expected.
 
 ```py
-from speckle.objects import Base
-from speckle.objects.point import Point
+from specklepy.objects import Base
+from specklepy.objects.point import Point
 
 class Block(Base):
     length: float = 1.0
@@ -84,8 +84,8 @@ received_base = operations.receive(obj_id=hash, remote_transport=transport)
 The `SpeckleClient` is the entry point for interacting with the GraphQL API. You'll need to have access to a speckle server to use this. To authenticate, you'll need a token. You can either get one from an account you've already added to your computer using the [Manager](/user/manager) or you can head to `your-server.com/profile` and create a Personal Access Token.
 
 ```py
-from speckle.api.client import SpeckleClient
-from speckle.api.credentials import get_default_account, get_local_accounts
+from specklepy.api.client import SpeckleClient
+from specklepy.api.credentials import get_default_account, get_local_accounts
 
 all_accounts = get_local_accounts() # get back a list
 account = get_default_account()
@@ -150,8 +150,8 @@ The `operations` includes four main methods:
 Let's look at sending and receiving. You will need to provide a transport to indicate where the objects should be sent / received from. When sending, you can provide multiple transports to send the same object to multiple places simultaneously. At the moment, we have three transports: `SQLiteTransport`, `MemoryTransport`, and `ServerTransport`. If you'd like to learn more about Transports in Speckle 2.0, have a look [here](/dev/transports).
 
 ```py
-from speckle.transports.memory import MemoryTransport
-from speckle.api import operations
+from specklepy.transports.memory import MemoryTransport
+from specklepy.api import operations
 
 transport = MemoryTransport()
 
@@ -171,7 +171,7 @@ received_base = operations.receive(obj_id=hash, remote_transport=transport)
 You can also use the GraphQL API to send and receive objects. However, note that this method will not recompose a base and will only get the object you explicitly ask for using by its id.
 
 ```py
-from speckle.objects import Base
+from specklepy.objects import Base
 
 # create a test base object
 test_base = Base()
@@ -194,7 +194,7 @@ received_base = client.object.get("stream id", hash)
 The `Base` class is the one you're familiar with from the rest of the Speckle universe. It generally behaves the same way as it does in the other SDKs. For more info about the `Base` object, have a look [here](/dev/base).
 
 ```py
-from speckle.objects import Base
+from specklepy.objects import Base
 
 # creating a base we will nest within a parent base
 detached_base = Base()
@@ -227,8 +227,8 @@ The `Base` class can be subclassed to create your own custom objects. These are 
 Note that all typed attributes of a class must be initialised with a default value for serialisation purposes.
 
 ```py
-from speckle.objects import Base
-from speckle.objects.point import Point
+from specklepy.objects import Base
+from specklepy.objects.point import Point
 
 class Line(Base):
     start: Point = Point()
@@ -253,7 +253,7 @@ line["colour"] = "blue"
 You can also mark typed attributes as detachable or chunkable by updating the internal `_detachable` set or `_chunkable` dict with the provided helper methods.
 
 ```py
-from speckle.objects import Base
+from specklepy.objects import Base
 
 # members that are chunked upon sending are stored in a dictionary
 # with the name as the key and the maximum chunk size as the value
@@ -299,8 +299,8 @@ class FakeMesh(Base):
 The `BaseObjectSerializer` is what's used behind the scenes in the `operations` for decomposing and serializing `Base` objects so they can be sent / received to the server. You probably won't ever need to use it directly. However, if you want you can use it to get the id (hash) and a serializable object representation of the decomposed `Base`. You can learn more about the Speckle `Base` object [here](/dev/base) and the decomposition API [here](/dev/decomposition).
 
 ```py
-from speckle.objects import Base
-from speckle.serialization.base_object_serializer import BaseObjectSerializer
+from specklepy.objects import Base
+from specklepy.serialization.base_object_serializer import BaseObjectSerializer
 
 detached_base = Base()
 detached_base.name = "a detached base"

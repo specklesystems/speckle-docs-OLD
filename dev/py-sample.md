@@ -19,10 +19,10 @@ In this case, we're going to be looking at this twisty building Alan generated i
 The snippet below shows how you would authenticate the client, get the commit we're interested in, and use a server transport to receive the commit object.
 
 ```py
-from speckle.api import operations
-from speckle.api.client import SpeckleClient
-from speckle.api.credentials import get_default_account
-from speckle.transports.server import ServerTransport
+from specklepy.api import operations
+from specklepy.api.client import SpeckleClient
+from specklepy.api.credentials import get_default_account
+from specklepy.transports.server import ServerTransport
 
 # create and authenticate a client
 client = SpeckleClient(host=HOST)
@@ -130,7 +130,7 @@ We can now use the `add_materials_data()` method we wrote to update all the leve
 To send our updated building, we'll need to create a parent `Base` and place our list of nested levels inside this parent. To keep things consistent, we'll be adding them to a field called `data`.
 
 ```py
-from speckle.objects import Base
+from specklepy.objects import Base
 
 # add the materials data to our levels
 levels = [add_materials_data(level) for level in levels]
