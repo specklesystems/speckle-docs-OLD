@@ -53,9 +53,6 @@ Any layer information from the incoming stream will be appended to the prefix wi
 | PolyFace Mesh  | x    |         | `In Progress` |
 | SubD Mesh      | x    |         | `In Progress` |
 
-| BuiltElement   | Send | Receive | Status        |
-| -------------- | ---- | ------- | ------------- |
-
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |
 | BlockInstance  |      |         | `In Progress` |
@@ -74,9 +71,11 @@ Any layer information from the incoming stream will be appended to the prefix wi
 ### Unsupported elements
 
 **AUTOCAD**
+
 Breps and hatches are not supported.
 
 **CIVIL3D**
+
 Subassemblies and Assemblies are not supported.
 
 ### Things to keep in mind
