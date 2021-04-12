@@ -58,40 +58,42 @@ We're working hard to support additional elements, the list below will be update
 
 If you'd like us to add something specific let us know on the [forum](https://speckle.community/t/speckle-unity-2-0-feedback-wanted/1108)!
 
-| Type                                                  | Speckle > Revit | Revit > Speckle |
-| ----------------------------------------------------- | --------------- | --------------- |
-| Adaptive Component                                    | x               | x               |
-| Beam                                                  | x               | x               |
-| Brace                                                 | x               | x               |
-| Building Pad                                          |                 | x               |
-| Ceiling                                               |                 | x               |
-| Curves (Model, Detail, Room Boundary)                 | x               | x               |
-| Direct Shape                                          | x               | x               |
-| Duct                                                  | x               | x               |
-| Face Wall                                             | x               |                 |
-| Family Instance                                       | x               | x               |
-| Floor                                                 | x               | x               |
-| Group                                                 |                 | x               |
-| Level                                                 | x               | x               |
-| Opening (Wall, Vertical, Shaft)                       | x               | x               |
-| Project Information                                   |                 | x               |
-| Railing                                               | x               | x               |
-| Roof (Extrusion, Footprint)                           | x               | x               |
-| Room                                                  |                 | x               |
-| Stair                                                 |                 | x               |
-| Topography                                            | x               | x               |
-| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) |                 | x               |
-| Wall                                                  | x               | x               |
+| BuiltElement                                          | Send    | Receive | Status        |
+| ----------------------------------------------------- | ------- | ------- | ------------- |
+| Adaptive Component                                    | x       | x       | `Complete`    |
+| Beam                                                  | x       | x       | `Complete`    |
+| Brace                                                 | x       | x       | `Complete`    |
+| Building Pad                                          | x       |         | `In Progress` |
+| Ceiling                                               | x       |         | `In Progress` |
+| Curves (Model, Detail, Room Boundary)                 | x       | x       | `Complete`    |
+| Direct Shape                                          | x       | x       | `Complete`    |
+| Duct                                                  | x       | x       | `Complete`    |
+| Face Wall                                             |         | x       | `In Progress` |
+| Family Instance                                       | x       | x       | `Complete`    |
+| Floor                                                 | x       | x       | `Complete`    |
+| Group                                                 | x       |         | `In Progress` |
+| Level                                                 | x       | x       | `Complete`    |
+| Opening (Wall, Vertical, Shaft)                       | x       | x       | `Complete`    |
+| Project Information                                   | x       |         | `In Progress` |
+| Railing                                               | x       | x       | `Complete`    |
+| Roof (Extrusion, Footprint)                           | x       | x       | `Complete`    |
+| Room                                                  | x       |         | `Complete`    |
+| Stair                                                 | x       |         | `Complete`    |
+| Topography                                            | x       | x       | `Complete`    |
+| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | x       |         | `In Progress` |
+| Wall                                                  | x       | x       | `Complete`    |
 
-#### Raw Geometry
+| Other                                                 | Send    | Receive | Status        |
+| ----------------------------------------------------- | ------- | ------- | ------------- |
+| RenderMaterial                                        |         |         | `In Progress` |
 
 Generally speaking, Revit doesn't support raw geometry as it deals with families. Nonetheless, we've made it simple to receive some types of geometry directly, without the need of specifying family type, name or any other parameter.
 
-| Type         | Speckle > Revit                          |
-| ------------ | ---------------------------------------- |
-| Line & Curve | Model Curves                             |
-| Brep         | Direct Shape with Generic Model category |
-| Mesh         | Direct Shape with Generic Model category |
+| Geometry                                              | Send    | Receive        | Status        |
+| ----------------------------------------------------- | ------- | -------------- | ------------- |
+| Line & Curve                                          |         | As ModelCurve  | `In Progress` |
+| Brep                                                  |         | As DirectShape | `Complete`    |
+| Mesh                                                  |         | As DirectShape | `Complete`    |
 
 ### Non Supported Elements
 

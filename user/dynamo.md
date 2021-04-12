@@ -370,3 +370,28 @@ Creates a connection to a specific file in the computer's disk, where the data w
 ![Memory transport](./img-dyn/nodes-transport-memory.png)
 
 Creates a connection to in-memory storage.
+
+## Supported elements
+
+| Geometry       | Send        | Receive | Status        |
+| -------------- | ----------- | ------- | ------------- |
+| Point          | x           | x       | `Complete`    |
+| Line           | x           | x       | `Complete`    |
+| Plane          | x           | x       | `Complete`    |
+| Arc            | x           | x       | `Complete`    |
+| Circle         | x           | x       | `Complete`    |
+| Cuboid         | As Box      | x       | `Complete`    |
+| Ellipse        | x           | x       | `Complete`    |
+| Helix          | As Spline   |         | `Complete`    |
+| Polyline       |             | As Rectangle, Polycurve, or Polygon| `Complete`    |
+| Polycurve      | x           | x       | `Complete`    |
+| Polygon        | As Polyline | x       | `Complete`    |
+| Rectangle      | As Polyline | x       | `Complete`    |
+| Spline         | x           | x       | `Complete`    |
+| Brep           | x           | x       | `Complete`    |
+| Mesh           | x           | x       | `Complete`    |
+
+
+### Unsupported elements
+
+Any geometric element not listed above are not supported.

@@ -72,11 +72,35 @@ as well as the overlapping received objects(gray) with the original objects (blu
 
 ## Supported elements
 
-When sending data from Rhino, almost all geometric elements are supported. This includes:
+Almost all geometric elements are supported by the Rhino connector. This includes:
 
-- Vector entities (point, vector, plane)
-- Curve entities (line, curve, polylines, polycurves, NURBS...)
-- Surface entities (surfaces, meshes and breps)
+| Geometry       | Send    | Receive | Status        |
+| -------------- | ------- | ------- | ------------- |
+| Point          | x       | x       | `Complete`    |
+| Line           | x       | x       | `Complete`    |
+| Plane          | x       | x       | `Complete`    |
+| Arc            | x       | x       | `Complete`    |
+| Circle         | x       | x       | `Complete`    |
+| Ellipse        | x       | x       | `Complete`    |
+| Polyline       | x       | x       | `Complete`    |
+| Polycurve      | x       | x       | `Complete`    |
+| Spline         | x       | x       | `Complete`    |
+| Nurb Surface   | As Brep | x       | `Complete`    |
+| Brep           | x       | x       | `Complete`    |
+| Extrusion      | x       | As Brep | `Complete`    |
+| Mesh           | x       | x       | `Complete`    |
+
+| BuiltElement   | Send    | Receive | Status        |
+| -------------- | ------- | ------- | ------------- |
+| View           | x       | x       | `Complete`    |
+| ModelCurve     |         | As Curve| `Complete`    |
+| DirectShape    |         | As Mesh | `Complete`    |
+
+| Other          | Send    | Receive | Status        |
+| -------------- | ------- | ------- | ------------- |
+| RenderMaterial | x       |         | `In Progress` |
+| BlockInstance  |         |         | `In Progress` |
+| BlockDefinition|         |         | `In Progress` |
 
 > We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API.
 
