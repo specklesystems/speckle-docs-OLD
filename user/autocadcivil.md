@@ -38,25 +38,46 @@ Any layer information from the incoming stream will be appended to the prefix wi
 ## Supported elements
 
 **AUTOCAD**
-| Geometry | Send | Receive | Status |
-| -------- | ---- | ------- | ------ |
-| Point | x | x | `Complete` |
-| Line | x | x | `Complete` |
-| Arc | x | x | `Complete` |
-| Circle | x | x | `Complete` |
-| Ellipse | x | x | `Complete` |
-| Polyline | x | x | `Complete` |
-| Polycurve | x | x | `Complete` |
-| Spline | x | x | `Complete` |
-| Surface | | | `In Progress` |
-| Polysurface | | | `In Progress` |
-| Nurbs Surface | | | `In Progress` |
-| Brep | | | `In Progress` |
+| Geometry       | Send | Receive | Status        |
+| -------------- | ---- | ------- | ------------- |
+| Point          | x    | x       | `Complete`    |
+| Line           | x    | x       | `Complete`    |
+| Arc            | x    | x       | `Complete`    |
+| Circle         | x    | x       | `Complete`    |
+| Ellipse        | x    | x       | `Complete`    |
+| Polyline       | x    | x       | `Complete`    |
+| Polycurve      | x    | x       | `Complete`    |
+| Spline         | x    | x       | `Complete`    |
+| Plane Surface  | x    |         | `In Progress` |
+| Nurb Surface   | x    |         | `In Progress` |
+| PolyFace Mesh  | x    |         | `In Progress` |
+| SubD Mesh      | x    |         | `In Progress` |
+
+| BuiltElement   | Send | Receive | Status        |
+| -------------- | ---- | ------- | ------------- |
+
+| Other          | Send | Receive | Status        |
+| -------------- | ---- | ------- | ------------- |
+| BlockInstance  |      |         | `In Progress` |
+| BlockDefinition|      |         | `In Progress` |
 
 **CIVIL3D**
-| Geometry | Send | Receive | Status |
-| -------- | ---- | ------- | ------ |
-| Featureline | x | | `In Progress` |
+| Geometry      | Send | Receive | Status        |
+| ------------- | ---- | ------- | ------------- |
+| Featureline   | x    |         | `In Progress` |
+| Alignment     |      |         | `In Progress` |
+| Profile       |      |         | `In Progress` |
+| Tin Surface   |      |         | `In Progress` |
+| Grid Surface  |      |         | `In Progress` |
+| Pipe          |      |         | `In Progress` |
+
+### Unsupported elements
+
+**AUTOCAD**
+Breps and hatches are not supported.
+
+**CIVIL3D**
+Subassemblies and Assemblies are not supported.
 
 ### Things to keep in mind
 
