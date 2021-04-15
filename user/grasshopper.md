@@ -205,6 +205,7 @@ The **Schema Builder** node also provides additional support for the following b
 | Column                                                | x       |         | `Complete`    |
 | Curves (Model, Detail, Room Boundary)                 | x       |         | `Complete`    |
 | Direct Shape                                          | x       |         | `Complete`    |
+| Freeform Element                                      | x       |         | `Complete`    |
 | Duct                                                  | x       |         | `Complete`    |
 | Face Wall                                             | x       |         | `Complete`    |
 | Family Instance                                       | x       |         | `Complete`    |

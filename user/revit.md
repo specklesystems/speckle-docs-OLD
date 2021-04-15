@@ -71,6 +71,7 @@ If you'd like us to add something specific let us know on the [forum](https://sp
 | Face Wall                                             |         | x       | `In Progress` |
 | Family Instance                                       | x       | x       | `Complete`    |
 | Floor                                                 | x       | x       | `Complete`    |
+| Freeform Element                                      |         | x       | `In Progress` |
 | Group                                                 | x       |         | `In Progress` |
 | Level                                                 | x       | x       | `Complete`    |
 | Opening (Wall, Vertical, Shaft)                       | x       | x       | `Complete`    |
