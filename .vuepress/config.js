@@ -102,7 +102,8 @@ module.exports = {
             "tutorials",
             "interop-gh-revit",
             "interop-revit-gh",
-            "interop-rhino-revit"
+            "interop-rhino-revit",
+            "tutorial-unity-revit-rhino-experiences"
           ]
         }
       ],

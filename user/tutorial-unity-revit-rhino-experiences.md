@@ -12,7 +12,7 @@ typora-copy-images-to: img
 
 In this tutorial we will create an interactive Unity app that renders Revit data in real time. We'll see how the Unity connector works and how to write custom code that pulls data from Speckle that was generated in Revit and Rhino. We'll also see how to work with streams and branches to organize data.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yNK0k0LmNl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://www.youtube.com/embed/yNK0k0LmNl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 The Unity Connector is evolving fast, to follow this tutorial it is recommended that you pull the version at the start commit as future versions might be different.
 
@@ -151,7 +151,7 @@ Now, this apps is of course an over simplification of what a proper interactive 
 
 The UI and logic can be completely customized, a good starting point for this would be looking into the `SpeckleExamples.cs` class or the prefabs used for the UI components.
 
-For instance, you could perform different actions when the data is received or consume the Revit metadata attached to the objects with a script.
+For instance, you could perform different actions when the data is received or consume the Revit metadata attached to the objects with a script, and instead of having the stream cards custom for a UI, custom buttons could be added to pull a specific commit and model.
 
 
 
