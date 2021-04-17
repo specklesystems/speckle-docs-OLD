@@ -99,9 +99,11 @@ module.exports = {
           title: "Tutorials ⚡",
           collapsable: false,
           children: [
+            "tutorials",
             "interop-gh-revit",
             "interop-revit-gh",
             "interop-rhino-revit",
+            "tutorial-unity-revit-rhino-experiences",
             "interop-autocad-rhinogh"
           ]
         }
