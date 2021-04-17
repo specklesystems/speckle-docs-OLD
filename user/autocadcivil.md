@@ -21,7 +21,7 @@ This connector uses our shared Desktop UI. Read up on general guidelines for usa
 
 ### Sending data
 
-The AutoCAD Civil3D connector supports selection filtering by layer. **The alpha version currently does NOT support sending blocks!**
+The AutoCAD Civil3D connector supports selection filtering by layer.
 
 ### Receiving data
 
@@ -55,24 +55,24 @@ Any layer information from the incoming stream will be appended to the prefix wi
 
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |
-| BlockInstance  |      |         | `In Progress` |
-| BlockDefinition|      |         | `In Progress` |
+| BlockInstance  | x    | x       | `Complete`    |
+| BlockDefinition| x    | x       | `Complete`    |
 
 **CIVIL3D**
-| Geometry      | Send | Receive | Status        |
-| ------------- | ---- | ------- | ------------- |
-| Featureline   | x    |         | `In Progress` |
-| Alignment     |      |         | `In Progress` |
-| Profile       |      |         | `In Progress` |
-| Tin Surface   |      |         | `In Progress` |
-| Grid Surface  |      |         | `In Progress` |
-| Pipe          |      |         | `In Progress` |
+| Geometry      | Send | Receive | Status         |
+| ------------- | ---- | ------- | -------------- |
+| Featureline   | x    |         | `In Progress`  |
+| Alignment     |      |         | `In Progress`  |
+| Profile       |      |         | `In Progress`  |
+| Tin Surface   |      |         | `In Progress`  |
+| Grid Surface  |      |         | `In Progress`  |
+| Pipe          |      |         | `In Progress`  |
 
 ### Unsupported elements
 
 **AUTOCAD**
 
-Breps and hatches are not supported.
+Breps, hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic and nested blocks are not supported at this time.
 
 **CIVIL3D**
 

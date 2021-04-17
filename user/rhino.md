@@ -99,14 +99,14 @@ Almost all geometric elements are supported by the Rhino connector. This include
 | Other          | Send    | Receive | Status        |
 | -------------- | ------- | ------- | ------------- |
 | RenderMaterial | x       |         | `In Progress` |
-| BlockInstance  |         |         | `In Progress` |
-| BlockDefinition|         |         | `In Progress` |
+| BlockInstance  | x       | x       | `Complete`    |
+| BlockDefinition| x       | x       | `Complete`    |
 
-> We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API.
+> We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API. 
 
 ### Unsupported elements
 
-Non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported.
+Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported. Nested blocks are not supported at this time.
 
 ## Schema Builder
 
