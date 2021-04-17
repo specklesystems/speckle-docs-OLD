@@ -1,5 +1,11 @@
 # Rhino ➡ Revit
 
+**Level:** beginner
+
+**Author:** Claire
+
+**Software used:** Revit 2021, Rhino 7
+
 Stream Rhino geometry directly into Revit as BuiltElements with Speckle! In this tutorial, we'll send a sample building from Rhino into default `Floor`, `Wall`, `Facewall`, and `Column` and `Beam` families in Revit with the **ApplySpeckleSchema** command.
 
 ![](./img-interop/rhino-revit-intro.gif)
@@ -17,8 +23,8 @@ Before getting started, make sure you have Speckle Manager installed and an acti
 Let's send our first stream! Since we won't be sending the context geometry as families, the next steps are just a warm up (with some fun layer filtering action):
 
 1. Create a new `Context` stream and check that it is on **Sender** mode. If not, click the arrows on the top right corner to swap the card mode.
-2. Click the blue **Objects** button and select *Set/Edit Objects Filter* from the dropdown.
-3. From the `Layer` filter tab, select *Context::Buildings* and *Leadenhallish:Substructure* and click **Set Filter**. 
+2. Click the blue **Objects** button and select _Set/Edit Objects Filter_ from the dropdown.
+3. From the `Layer` filter tab, select _Context::Buildings_ and _Leadenhallish:Substructure_ and click **Set Filter**.
 4. Click **Send** on the `Context` stream card.
 5. In Revit Desktop UI, click the blue **Add a stream** button on the bottom. Add the `Context` stream card to UI by clicking the arrow next to the stream in the popup window.
 6. Click **Receive** on the stream card, and watch the geometry come in as generic models!
@@ -31,20 +37,20 @@ For the ground level of our building, we're going to send geometry as a mix of w
 
 Let's try using the **Automagic** ⚡ method, which automatically decides which schemas to apply to your selected geoemtry based on object and layer names as well as geometry type. Let's test this out and see which geometries were successfully assigned a schema:
 
-1. Lock the context layers you sent from the previous section, and hide all layers except for *Leadenhallish::Ground Floor* for ease of selection.
-2. Type **ApplySpeckleSchema** in the command line - notice that the *Automatic* command option toggle is by default set to *On*.
-3. Select all objects in *Leadenhallish::Ground Floor* and hit **Enter** to finish the command.
-4. Now click through the geometry and check which pieces have been assigned a Speckle schema by navigating to the *Object > Properties > Attribute User Text* panel.
+1. Lock the context layers you sent from the previous section, and hide all layers except for _Leadenhallish::Ground Floor_ for ease of selection.
+2. Type **ApplySpeckleSchema** in the command line - notice that the _Automatic_ command option toggle is by default set to _On_.
+3. Select all objects in _Leadenhallish::Ground Floor_ and hit **Enter** to finish the command.
+4. Now click through the geometry and check which pieces have been assigned a Speckle schema by navigating to the _Object > Properties > Attribute User Text_ panel.
 
-You should see a **<SpeckleSchema,Floor>** keyvalue pair in the attribute user text panel of any planar horizontal surfaces on the ground floor. However, the planar vertical surfaces were not assigned a schema, even though they should be walls: this is because the automagic method picked up the word *Floor* in the layer name and only tried to assign the `Floor` schema to all the selected objects! Let's manually set a wall schema for our vertical surfaces:
+You should see a **<SpeckleSchema,Floor>** keyvalue pair in the attribute user text panel of any planar horizontal surfaces on the ground floor. However, the planar vertical surfaces were not assigned a schema, even though they should be walls: this is because the automagic method picked up the word _Floor_ in the layer name and only tried to assign the `Floor` schema to all the selected objects! Let's manually set a wall schema for our vertical surfaces:
 
-1. Select the vertical surfaces on the *Leadenhallish::Ground Floor* layer.
-2. Type **ApplySpeckleSchema** in the command line and set the *Automatic* command option toggle to *Off*. Hit **Enter**.
-3. The command now shows two options. Make sure *DirectShape* is set to *Off*, and click on the *Schema* option toggle to change the schema to *Wall*. Hit **Enter**.
-4. Check the *Attribute User Text* panel and you should see a **<SpeckleSchema,Wall>** entry now!
-5. Repeat steps 1-4 for the curving surface on the ground floor, this time selecting the *Schema=Facewall* option instead.
+1. Select the vertical surfaces on the _Leadenhallish::Ground Floor_ layer.
+2. Type **ApplySpeckleSchema** in the command line and set the _Automatic_ command option toggle to _Off_. Hit **Enter**.
+3. The command now shows two options. Make sure _DirectShape_ is set to _Off_, and click on the _Schema_ option toggle to change the schema to _Wall_. Hit **Enter**.
+4. Check the _Attribute User Text_ panel and you should see a **<SpeckleSchema,Wall>** entry now!
+5. Repeat steps 1-4 for the curving surface on the ground floor, this time selecting the _Schema=Facewall_ option instead.
 
-Create a `Ground Floor` stream to send all geometry from the *Leadenhallish::Ground Floor* layer, and receive it in your Revit file! Any objects that were assigned a schema will be converted as default Revit families.
+Create a `Ground Floor` stream to send all geometry from the _Leadenhallish::Ground Floor_ layer, and receive it in your Revit file! Any objects that were assigned a schema will be converted as default Revit families.
 
 ![](./img-interop/rhino-revit-ground-floor.mp4)
 
@@ -52,7 +58,7 @@ Create a `Ground Floor` stream to send all geometry from the *Leadenhallish::Gro
 
 Next, we'll send try to send the core geometry as `Wall` and `Floor` surfaces.
 
-1. Lock the previous layer and unhide the *Leadenhallish::Core* layer.
+1. Lock the previous layer and unhide the _Leadenhallish::Core_ layer.
 2. Select all geometry - notice that the core is modelled as a single brep.
 3. Try to apply schemas automatically with the **ApplySpeckleSchema** command.
 4. No schemas were assigned to the brep! We need to explode it first into surfaces: select the brep and type **Explode** in the command line.
@@ -63,9 +69,9 @@ Next, we'll send try to send the core geometry as `Wall` and `Floor` surfaces.
 
 ### Send the floor slabs and truss to complete the model
 
-To finish off our model, let's now send the floor slabs and truss with the automagic method. We don't need to worry about missing schemas in the *Leadenhallish::Floor Slabs* layer since it only has horizontal surfaces, and the truss curves in *Leadenhallish::Structure* sublayers will be smartly picked up as either `Column` or `Beam` members!
+To finish off our model, let's now send the floor slabs and truss with the automagic method. We don't need to worry about missing schemas in the _Leadenhallish::Floor Slabs_ layer since it only has horizontal surfaces, and the truss curves in _Leadenhallish::Structure_ sublayers will be smartly picked up as either `Column` or `Beam` members!
 
-1. Lock the previous layer and unhide *Leadenhallish::Structure* and select *Leadenhallish::Floor Slabs*. Select all containing geometry.
+1. Lock the previous layer and unhide _Leadenhallish::Structure_ and select _Leadenhallish::Floor Slabs_. Select all containing geometry.
 2. Apply schemas automatically with the **ApplySpeckleSchema** command.
 3. Cycle through some of the truss members to look at their assigned schema: lines with < 45 degree deviation from vertical are assigned as columns, while all others are assigned as beams.
 4. Create a `Floors and Truss` stream and send to Revit - our Leadenhall lookalike building is now complete!

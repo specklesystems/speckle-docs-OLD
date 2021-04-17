@@ -1,5 +1,11 @@
 # Grasshopper ➡ Revit
 
+**Level:** intermediate
+
+**Author:** Alan
+
+**Software used:** Revit 2021, Grasshopper for Rhino 7
+
 ::: tip
 We recently did a major upgrade of this guide. If for whatever reason you were looking for the previous version, you can find it [here](./interop-gh-revit-v1.md)
 :::

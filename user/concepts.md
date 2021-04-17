@@ -44,7 +44,7 @@ Collaborators can have one of three default roles:
 
 Streams are the main mechanism by which data is shared between people and applications. For example, you could create a stream in Revit and send that data to your server. Then, any of your colleagues with access to that stream could view the data in the browser or receive the data in Grasshopper, Rhino, Revit, etc. If any of your colleagues have _collaborator_ access, they are also free to make their own changes and send their changes to the stream. You can then receive those changes from the stream in your original model to see the changes reflected.
 
-To see step-by-step guides on how to get from AEC Software A to AEC Software B, check out our [tutorials](/user/interop-gh-revit).
+To see step-by-step guides on how to get from AEC Software A to AEC Software B, check out our [tutorials](/user/tutorials).
 
 ## Branches
 
