@@ -101,7 +101,8 @@ module.exports = {
           children: [
             "interop-gh-revit",
             "interop-revit-gh",
-            "interop-rhino-revit"
+            "interop-rhino-revit",
+            "interop-autocad-rhinogh"
           ]
         }
       ],
