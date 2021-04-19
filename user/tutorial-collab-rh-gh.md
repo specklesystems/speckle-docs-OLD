@@ -16,6 +16,12 @@ Check it the [model out right here in your browser](https://speckle.xyz/streams/
 
 :::
 
+> If you're tired of reading things, you can find a video tutorial down below. We use a different sample model, but the principles are the same!
+> Otherwise, just skip it and follow along here. 
+
+<div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://www.youtube.com/embed/drLcMwb6W8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</details>
+
 How are we going to structure this? Simple! First off, we're going to create a new stream with four separate branches that can match four different sections of a typical design process. Each colleague will be pushing their data to one of these branches:  
 
 1. Site Branch (Alice - Project Manager) 
