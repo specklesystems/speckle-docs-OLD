@@ -1,10 +1,10 @@
 # Quality control AutoCAD drawings in Grasshopper
 
-**Level:** intermediate
-
-**Author:** Claire
-
-**Software used:** AutoCAD, Rhino, Grasshopper
+>**Level:** intermediate
+>
+>**Author:** Claire
+>
+>**Software used:** AutoCAD, Rhino, Grasshopper
 
 Quality control your AutoCAD drawing with the visual programming power of Grasshopper! In this tutorial, we'll send a floorplan from AutoCAD to Rhino with Speckle, run a simple Grasshopper script to find incorrectly drawn lines, and send the annotations back to AutoCAD. We'll also adjust some blocks in Rhino along the way.
 
