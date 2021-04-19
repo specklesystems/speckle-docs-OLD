@@ -1,4 +1,10 @@
-# AutoCAD ➡ Rhino & Grasshopper
+# Quality control AutoCAD drawings in Grasshopper
+
+**Level:** intermediate
+
+**Author:** Claire
+
+**Software used:** AutoCAD, Rhino, Grasshopper
 
 Quality control your AutoCAD drawing with the visual programming power of Grasshopper! In this tutorial, we'll send a floorplan from AutoCAD to Rhino with Speckle, run a simple Grasshopper script to find incorrectly drawn lines, and send the annotations back to AutoCAD. We'll also adjust some blocks in Rhino along the way.
 
@@ -17,9 +23,9 @@ Before getting started, make sure you have Speckle Manager installed and an acti
 Let's send our first stream commit! Keep in mind that we'll use branches to organize our data in this tutorial.
 
 1.  Create a new `Plan Coordination` stream and check that it is on **Sender** mode. If not, click the arrows on the top right corner to swap the card mode.
-2.  Create a new `Annotations` branch by clicking on **main** in the bottom left of the card and selecting *Add a new branch* from the drop down. Switch back to **main** after creating the new branch.
+2.  Create a new `Annotations` branch by clicking on **main** in the bottom left of the card and selecting _Add a new branch_ from the drop down. Switch back to **main** after creating the new branch.
 3.  Select all geometry in the file.
-4.  Click the blue **Objects** button and select *Set Selection* from the dropdown.
+4.  Click the blue **Objects** button and select _Set Selection_ from the dropdown.
 5.  Click **Send** on the `Plan Coordination` stream card. Type `Drawing for review` in the comment line, and click **Send** again to commit the selected geometry.
 6.  To view the drawing in the web viewer, click the **Open in browser** icon in the top right corner of the card. Keep this tab open for later.
 7.  In Rhino Desktop UI, click the blue **Add a stream** button on the bottom. Add the `Plan Coordination` stream card to UI by clicking the arrow next to the stream in the popup window.
@@ -31,7 +37,7 @@ Let's send our first stream commit! Keep in mind that we'll use branches to orga
 
 The sample plan drawing from AutoCAD has some messy lines with gaps or overlaps at the ends that need to be cleaned up - we'll run a quick analysis in Grasshopper and send the results back to AutoCAD.
 
-1.  Select all drawing lines in Rhino and set them in the input `Crv node` in Grasshopper by right-clicking the node and selecting *Select Multiple Curves* from the dropdown.
+1.  Select all drawing lines in Rhino and set them in the input `Crv node` in Grasshopper by right-clicking the node and selecting _Select Multiple Curves_ from the dropdown.
 2.  You should see small circles previewed on all curve ends that are not correctly adjoining other curves in the drawing! Adjust the `Radius` slider in the input to customize the size of these annotation circles.
 3.  To send our annotations back to AutoCAD, get the `Annotations` branch url from the web browser tab we opened in the previous section. Navigate to the `Annotations` branch page in the browser and copy this url.
 4.  In the Speckle section of the grasshopper script, paste your copied url into the text panel.
@@ -41,7 +47,7 @@ The sample plan drawing from AutoCAD has some messy lines with gaps or overlaps 
 
 ![](./img-interop/autocad-rhinogh-annotations.mp4)
 
-### Modify drawing blocks in Rhino 
+### Modify drawing blocks in Rhino
 
 Finally, we'll make some changes to the door blocks and send them back to AutoCAD.
 
