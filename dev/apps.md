@@ -2,12 +2,6 @@
 
 This tutorial is currently under construction 🚧, please check again later!
 
-:::tip
-
-In the meantime, check out the [documnetation on Apps & Auth](/dev/apps-auth)
-
-:::
-
 Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle.
 
 In this first part, we'll be creating a very simple web app capable of:
@@ -22,7 +16,7 @@ Let's get started! 🚀
 
 ## Requirements
 
-This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCode_ as our IDE but you can use any other (even Notepad if your crazy enough!).
+This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCode_ as our IDE but you can use any other (even Notepad if your brave enough!).
 
 You'll also need to have `node` installed, as well as `vue-cli` and have some basic understanding of how `Vue.js` works.
 
@@ -108,7 +102,7 @@ Once accepted, you'll see the `App Id` and `App Secret`, as well as an indicatio
 Note that the `redirect url` points to our local computer network. When deploying this app to a service like Netlify, we'll have to create a new one pointing to the correct Netlify url.
 :::
 
-### Saving app credentials as ENV variables
+#### Saving app credentials as ENV variables
 
 The `App Id` and `App Secret` are used to identify your app, so you should never add them to your version control. Instead, we'll be using `ENV` variables to save that information, which also allows us to modify it in different scenarios (development/production).
 
@@ -248,7 +242,7 @@ We can now use these actions in any component by calling `this.$store.dispatch(A
 
 In your `App.vue` file, replace it's contents with the following:
 
-```js
+```vue
 <template lang="html">
   <v-app>
     <v-app-bar app color="primary" dark>
@@ -295,7 +289,6 @@ export default {
   }
 }
 </script>
-
 ```
 
 Notice there's an `isAuthenticated` computed property that defaults to `false` for now (we'll update it later). There's also a pair of `v-btn` buttons linked to this boolean value. When there is no user authenticated, we'll show the login button, and when there is a user authenticated, we'll show thoe Log Out button.
@@ -366,7 +359,7 @@ export const userInfoQuery = () => `query {
     }`
 ```
 
-Add this to the `speckleUtils.js` file. Remember to import `userInfoQuery`.
+Add this to the `src/speckleUtils.js` file. Remember to import `userInfoQuery`.
 
 ```js
 export function speckleFetch(query) {
@@ -497,3 +490,286 @@ router.beforeEach(async (to, from, next) => {
   }
 })
 ```
+
+That should do it!! Now, if you refresh the page you should see a welcome message with your user name and the server name you connected to, as well as the `Log Out` button.
+
+### Searching for streams
+
+Now that we have access to our user and server data in our app, and also distinguish when a user is logged in or not, we can start fetching other info from our server. Let's start with a **stream search** field. The selected stream will also be stored in `vuex`, so we'll also add the appropriate state props, methods and actions to it.
+
+1. Start by adding the following function to our `speckeQueries.js`
+
+```js
+export const streamSearchQuery = search => `query {
+      streams(query: "${search}") {
+        totalCount
+        cursor
+        items {
+          id
+          name
+          updatedAt
+        }
+      }
+    }`
+```
+
+2. Then add the following function to `speckleUtils.js`. We'll use it to fetch the search results in our `SpeckleSearch` component (2 steps bellow)
+
+```js
+export const searchStreams = e => speckleFetch(streamSearchQuery(e))
+```
+
+3. Modify `src/store/index.js` as shown in the following code block. We've just added a `currentStream` property to the state, a `setCurrentStream` mutation and two actions, `handleStreamSelection` and `clearStreamSelection`. This will allow us to save the user selection in our app state.
+
+```js
+import Vue from "vue"
+import Vuex from "vuex"
+
+import {
+  exchangeAccessCode,
+  getUserData,
+  goToSpeckleAuthPage,
+  speckleLogOut
+} from "@/speckleUtils"
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    user: null,
+    serverInfo: null,
+    currentStream: null,
+  },
+  getters: {
+    isAuthenticated: state => state.user != null
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user
+    },
+    setServerInfo(state, info) {
+      state.serverInfo = info
+    },
+    setCurrentStream(state, stream) {
+      state.currentStream = stream
+    }
+  },
+  actions: {
+    logout(context) {
+      // Wipe the state
+      context.commit("setUser", null)
+      context.commit("setServerInfo", null)
+      context.commit("setCurrentStream", null)
+      // Wipe the tokens
+      speckleLogOut()
+    },
+    exchangeAccessCode(context, accessCode) {
+      // Here, we could save the tokens to the store if necessary.
+      return exchangeAccessCode(accessCode)
+    },
+    getUser(context) {
+      return getUserData()
+        .then(json => {
+          var data = json.data
+          context.commit("setUser", data.user)
+          context.commit("setServerInfo", data.serverInfo)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    },
+    redirectToAuth() {
+      goToSpeckleAuthPage()
+    },
+    handleStreamSelection(context, stream) {
+      context.commit("setCurrentStream", stream)
+
+    }
+    clearStreamSelection(context) {
+      context.commit("setCurrentStream", null)
+    }
+  },
+  modules: {}
+})
+
+```
+
+4. Now we'll create a new component called `SpeckleSearch.vue` to handle all the search UI in one place.
+
+```vue
+<template>
+  <v-autocomplete
+    v-model="selectedSearchResult"
+    :items="streams.items"
+    :search-input.sync="search"
+    no-filter
+    counter="2"
+    rounded
+    filled
+    dense
+    flat
+    hide-no-data
+    hide-details
+    placeholder="Streams Search"
+    item-text="name"
+    item-value="id"
+    return-object
+    clearable
+    append-icon=""
+    @update:search-input="debounceInput"
+  >
+    <template #item="{ item }" color="background">
+      <v-list-item-content>
+        <v-list-item-title>
+          <v-row class="pa-0 ma-0">
+            {{ item.name }}
+            <v-spacer></v-spacer>
+            <span class="streamid">{{ item.id }}</span>
+          </v-row>
+        </v-list-item-title>
+        <v-list-item-subtitle class="caption">
+          Updated
+          <timeago :datetime="item.updatedAt"></timeago>
+        </v-list-item-subtitle>
+      </v-list-item-content>
+    </template>
+  </v-autocomplete>
+</template>
+
+<script>
+import { debounce } from "debounce"
+import { searchStreams } from "@/speckleUtils"
+
+export default {
+  name: "StreamSearch",
+  data: () => ({
+    search: "",
+    streams: { items: [] },
+    selectedSearchResult: null
+  }),
+  watch: {
+    selectedSearchResult(val) {
+      this.search = ""
+      this.streams.items = []
+      if (val) this.$emit("selected", val)
+    }
+  },
+  methods: {
+    fetchSearchResults(e) {
+      if (!e || e?.length < 3) return
+      return searchStreams(e).then(json => {
+        this.streams = json.data.streams
+      })
+    },
+    debounceInput: debounce(function(e) {
+      this.fetchSearchResults(e)
+    }, 300)
+  }
+}
+</script>
+
+<style scoped></style>
+```
+
+5. Create also a simple `WelcomeView.vue` to show to our non-authenticated users.
+
+```vue
+<template lang="html">
+  <v-container
+    fill-height
+    fluid
+    class="home flex-column justify-center align-center primary--text"
+  >
+    <h1>Welcome to the Speckle Demo App!</h1>
+    <h3>This app part of our developer guides</h3>
+    <p>Please log in to access you Speckle data.</p>
+  </v-container>
+</template>
+<script>
+export default {
+  name: "WelcomeView"
+}
+</script>
+```
+
+6. Modify the `Home.vue` view.
+
+```vue
+<template lang="html">
+  <WelcomeView v-if="!$store.getters.isAuthenticated" />
+  <v-container v-else class="home pa-6">
+    <stream-search
+      @selected="$store.dispatch('handleStreamSelection', $event)"
+    />
+    <h2 class="pt-6 primary--text">
+      <span v-if="selectedStream">
+        {{ selectedStream.name }} — {{ selectedStream.id }}
+        <v-btn
+          outlined
+          text
+          small
+          class="ml-3"
+          :href="serverUrl + '/streams/' + selectedStream.id"
+        >
+          View in server
+        </v-btn>
+        <v-btn
+          outlined
+          text
+          small
+          class="ml-3"
+          color="error"
+          @click="$store.dispatch('clearStreamSelection')"
+        >
+          Clear selection
+        </v-btn>
+      </span>
+      <span v-else>
+        <em>No stream selected. Find one using the search bar 👆🏼</em>
+      </span>
+    </h2>
+  </v-container>
+</template>
+
+<script>
+import StreamSearch from "@/components/StreamSearch"
+
+export default {
+  name: "Home",
+  components: { WelcomeView, StreamSearch },
+  data: () => {
+      serverUrl: process.env.VUE_APP_SERVER_URL
+    }
+  }
+  methods: {},
+  computed: {
+    selectedStream: function() {
+      return this.$store.state.currentStream
+    }
+  }
+}
+</script>
+```
+
+7. In `App.vue` there is a commented line referencing the `<router-view/>. Uncomment it.
+
+After making these changes, your app should display a welcome message when not logged in:
+
+![Welcome message](XXX)
+
+and the search bar and selection text when logged in:
+
+![Search bar and selection](XXX)
+
+Introducing some text into the search bar should display a list of results in a dropdown. Selecting one of the result items will change the selection text from `No stream selected` to display the selected Stream name and id, as well as 2 buttons. The first one will take you to the stream page in the server, while the second one will clear the selection in the app state.
+
+![Search and selection functionality](XXX)
+
+## Getting and displaying commit data
+
+So far, we've managed to authenticate with our Speckle server, fetch user and server information and search for available streams, as well as storing the results in our app state.
+
+Now, let's use our `selectedStream` to display a table with all it's commits, as well as some data associated with each commit. Since the commit list can be rather large, we'll be adding basic pagination functionality to the table.
+
+For that, we'll need to fetch the commit data associated with the stream, modify our `store/index.js` to hold that new data.
+
