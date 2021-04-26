@@ -7,3 +7,493 @@ This tutorial is currently under construction 🚧, please check again later!
 In the meantime, check out the [documnetation on Apps & Auth](/dev/apps-auth)
 
 :::
+
+Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle.
+
+In this first part, we'll be creating a very simple web app capable of:
+
+- Authenticating a user through a Speckle server OAuth.
+- Search for stream's available to the user.
+- Display commit data associated with a given stream.
+- Filter the data to be displayed.
+- Cache results in `localStorage` to _remember_ the app state accross page reloads.
+
+Let's get started! 🚀
+
+## Requirements
+
+This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCode_ as our IDE but you can use any other (even Notepad if your crazy enough!).
+
+You'll also need to have `node` installed, as well as `vue-cli` and have some basic understanding of how `Vue.js` works.
+
+Knowing your way around `OAuth` protocols and authentication in general will definitely come in handy, but is **not required**, as we'll be providing most of the necessary logic (and code!) for that.
+
+You can learn more about Vue.js [here](XXX).
+
+## Setting up the Vue.js app
+
+This is the simplest step. Open a new terminal, set the current directory to wherever you want the project to be located and run the following command:
+
+```bash
+vue create speckle-demo-app
+```
+
+This will ask you some questions, select the same answers as the screenshot bellow:
+
+![Vue.js setup answers](XXX)
+
+Once done, you'd have your Vue.js project ready. To open the project in **VSCode** we just need to run:
+
+```
+code speckle-demo-app
+```
+
+::: warning
+This step assumes you already installed VSCode in your path. If you haven't, there's a command for it in VSCode.
+
+![Install vscode in path](https://link)
+:::
+
+### Install other dependencies
+
+We'll also be using `Vuetify` to make our life easier, as it has many useful componets out of the box. To add it, run:
+
+```bash
+vue add vuetify
+```
+
+When asked for a preset, choose **Default**.
+
+We'll also need to add a couple of handy dependencies such as `vuex-persist` for state storage, `vue-timeago` to display user-friendly dates and `debounce`. For this, run the following command:
+
+```bash
+npm i vuex-persist vue-timeago debounce
+```
+
+### Run your app for the first time
+
+If everything went well, running the following command should make the app available at [http://localhost:8080](http://localhost:8080).
+
+```
+npm run serve
+```
+
+In chrome, things should be looking like this:
+
+![Vuetify default welcome page](XXX)
+
+### Creating the `Speckle` files
+
+For convenience, we're going to isolate all the `speckle` related code into 2 files:
+
+- `src/speckleQueries.js` will hold some utility functions to build our `GraphQL` queries.
+- `src/speckleUtils.js` will hold all call's to the Speckle server, as well as some constants. It will deal with login/logout functionality too.
+
+## Authenticating with the Server
+
+### Creating an Application
+
+In order to be able to talk to our Speckle server, we first need to `Create an App` in that server with an existing account. To do that, visit the server's frontend (https://speckle.xyz), log in with your account and visit the profile page.
+
+Scroll down until you see the `Applications` section, and press the `New App` button. A pop-up should appear, fill it in as follows:
+
+- **Name:** SpeckleDemoApp
+- **Scopes**: `stream:read`, `profile:read`, `profile:email`
+- **Redirect url**: `http://localhost:8080`
+- **Descritpion**: My first speckle app
+
+Once accepted, you'll see the `App Id` and `App Secret`, as well as an indication to the url pattern we should use (`https://speckle.xyz/authn/verify/{appId}/{challenge}`).
+
+::: warning
+Note that the `redirect url` points to our local computer network. When deploying this app to a service like Netlify, we'll have to create a new one pointing to the correct Netlify url.
+:::
+
+### Saving app credentials as ENV variables
+
+The `App Id` and `App Secret` are used to identify your app, so you should never add them to your version control. Instead, we'll be using `ENV` variables to save that information, which also allows us to modify it in different scenarios (development/production).
+
+`Vue.js` will automatically read any `.env` files in the root of your project and load the variables accordingly, but will also replace all references with the actual value of the variable on compilation (which we **do not want**). We can tell `vue.js` to not do this by creating a file named `.env.local` instead. The contents should look like this 👇🏼 (remember to replace your ID and Secret appropriately)
+
+```
+VUE_APP_SPECKLE_ID=YOUR_APP_ID
+VUE_APP_SPECKLE_SECRET=YOUR_APP_SECRET
+VUE_APP_SERVER_URL=https://speckle.xyz
+VUE_APP_SPECKLE_NAME=SpeckleDemo
+```
+
+### Login in with Speckle
+
+Ultra simplified, the way this works is the following:
+
+1. User clicks the login button
+2. User is redirected to the auth page in the Speckle server (using the provided url pattern when creating an application)
+3. User will log in and allow the app to access his data (hopefully?).
+4. User is redirected to our specified `Redirect URL`, with an attached `access_code`.
+5. Using that access code, we can exchange it for a pair of `token/refresh token`, which is what allows the app to "talk" to the server as that user. We'll save those in `localStorage`.
+
+This may sound rather complicated, but it boils down to 2 different interactions (redirect your user and exchange the access code).
+
+#### Adding auth functions to `speckleUtils.js`
+
+In our `src/speckleUtils.js` file, paste in the following code. You'll find some constants that refer to our previously set `ENV` variables, as well as several functions.
+
+- `goToSpeckleAuthPage`: Will generate a random challenge, save it in localStorage and direct the url to the auth page in the specified speckle server.
+- `exchangeAccessCode`: Will `fetch` from the server a new pair of `token/refresh token` and clear the `challenge`.
+- `speckleLogOut`: Will erase all necessary data from `localStorage`.
+
+::: tip
+Note that `goToSpeckleAuthPage` saves the challenge, and `exchangeAccessCode` uses that same challenge to exchange the tokens. If the challenge used doesn't match, the request will fail.
+:::
+
+```js
+export const APP_NAME = process.env.VUE_APP_SPECKLE_NAME
+export const SERVER_URL = process.env.VUE_APP_SERVER_URL
+export const TOKEN = `${APP_NAME}.AuthToken`
+export const REFRESH_TOKEN = `${APP_NAME}.RefreshToken`
+export const CHALLENGE = `${APP_NAME}.Challenge`
+
+export function goToSpeckleAuthPage() {
+  // Generate random challenge
+  var challenge =
+    Math.random()
+      .toString(36)
+      .substring(2, 15) +
+    Math.random()
+      .toString(36)
+      .substring(2, 15)
+  // Save challenge in localStorage
+  localStorage.setItem(CHALLENGE, challenge)
+  // Send user to auth page
+  window.location = `${SERVER_URL}/authn/verify/${process.env.VUE_APP_SPECKLE_ID}/${challenge}`
+}
+
+export function speckleLogOut() {
+  localStorage.removeItem(TOKEN)
+  localStorage.removeItem(REFRESH_TOKEN)
+}
+
+export function exchangeAccessCode(accessCode) {
+  return fetch(`${SERVER_URL}/auth/token/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      accessCode: accessCode,
+      appId: "explorer",
+      appSecret: "explorer",
+      challenge: localStorage.getItem(CHALLENGE)
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.token) {
+        localStorage.removeItem(CHALLENGE)
+        localStorage.setItem(TOKEN, data.token)
+        localStorage.setItem(REFRESH_TOKEN, data.refreshToken)
+      }
+      return data
+    })
+}
+```
+
+#### Linking to `vuex`
+
+Since we're using `vuex` to manage the state of our application, we'll also add the redirect, exchange and logout logic as `actions`. We can then invoke them in any of our application components.
+
+Replace the contents of the file `src/store/index.js` with the following:
+
+```js
+import Vue from "vue"
+import Vuex from "vuex"
+
+import {
+  exchangeAccessCode,
+  getUserData,
+  goToSpeckleAuthPage,
+  speckleLogOut
+} from "@/speckleUtils"
+
+
+export default new Vuex.Store({
+  state: {
+  },
+  getters: {
+  },
+  mutations: {
+  },
+  actions: {
+    logout(context) {
+      // Wipe the state
+
+      // Wipe the tokens
+      speckleLogOut()
+    },
+    exchangeAccessCode(context, accessCode) {
+      // Here, we could save the tokens to the store if necessary.
+      return exchangeAccessCode(accessCode)
+    }
+    redirectToAuth() {
+      // Use the speckleUtils redirect logic
+      goToSpeckleAuthPage()
+    }
+  },
+  modules: {}
+})
+```
+
+We can now use these actions in any component by calling `this.$store.dispatch(ACTION_NAME, ...params)`.
+
+#### Add `Log In/Log Out` buttons.
+
+In your `App.vue` file, replace it's contents with the following:
+
+```js
+<template lang="html">
+  <v-app>
+    <v-app-bar app color="primary" dark>
+      <div class="d-flex align-center">
+        <v-img
+          alt="Speckle Logo"
+          class="shrink mr-2"
+          contain
+          :src="require(`@/assets/img.png`)"
+          transition="scale-transition"
+          width="40"
+          height="24"
+        />
+        <h3>SPECKLE DEMO APP</h3>
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        outlined
+        v-if="!isAuthenticated"
+        @click="$store.dispatch('redirectToAuth')"
+      >
+        <span>Login with Speckle</span>
+      </v-btn>
+      <v-btn outlined v-else @click="$store.dispatch('logout')">
+        Log out
+      </v-btn>
+    </v-app-bar>
+
+    <v-main>
+      <!-- <router-view /> -->
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+export default {
+  name: "App",
+  computed: {
+    isAuthenticated() {
+      return false
+    }
+  }
+}
+</script>
+
+```
+
+Notice there's an `isAuthenticated` computed property that defaults to `false` for now (we'll update it later). There's also a pair of `v-btn` buttons linked to this boolean value. When there is no user authenticated, we'll show the login button, and when there is a user authenticated, we'll show thoe Log Out button.
+
+Each is binded to the actions in the store we created earlier.
+
+```html
+<v-btn
+  outlined
+  v-if="!isAuthenticated"
+  @click="$store.dispatch('redirectToAuth')"
+>
+  <span>Login with Speckle</span>
+</v-btn>
+<v-btn outlined v-else @click="$store.dispatch('logout')">
+  Log out
+</v-btn>
+```
+
+At this point in time, your App should display only a menu bar with the title and the Log In button.
+
+![App.vue with login butotn](XXX)
+
+Now press the Log In button, follow the steps in the server and allow the app to access your data. This will take you back to `http://localhost:8080`. But notice the url will now contain a trailing `?access_code=YOUR_ACCESS_CODE`, we can now edit our `src/router/index.js` file to exchange the access code whenever it finds one.
+
+#### Exchange the `access_code`
+
+In order to exchange the access code automatically whenever it is provided in the url, we're going to use one of `vue-router`'s features. `vue-router` is the plugin that handles url routes in your app, it also parses query values and url parameters so you won't have to.
+
+We can implement a `beforeEach` handler, that will allow us to run some code right before each page is loaded in our app. At this point, we'll check if it contains an access code and if so, exchange it.
+
+Open your `src/router/index.js` file and add this code right above the `export default router` line.
+
+```js
+router.beforeEach(async (to, from, next) => {
+  if (to.query.access_code) {
+    // If the route contains an access code, exchange it and go home.
+    store
+      .dispatch("exchangeAccessCode", to.query.access_code)
+      .then(() => next("/"))
+      .catch(err => {
+        console.warn("exchange failed", err)
+        next("/")
+      })
+  }
+})
+```
+
+Now, press the Log In button again, allow the app to access your account and wait for the redirect to the app. Once it's done, you should have 2 variables stored in `localStorage`: `SpeckleDemo.Token` and `SpeckleDemo.RefreshToken`
+
+At this point, we've managed to save our authentication token but our app still cannot discern if your users are authenticated or not (remember the `isAuthenticated` computed property in `App.vue`). We'll add this on the next step.
+
+### Fetching user data
+
+In order for our app to know **who** we are, it needs to fetch our user's data. The best place to fetch, and store, this data, is in our `store`.
+
+Add the following function to our `speckleQueries.js` file. This is the graphQL query that will fetch the user and server info.
+
+```js
+export const userInfoQuery = () => `query {
+      user {
+        name
+      },
+      serverInfo {
+        name
+        company
+      }
+    }`
+```
+
+Add this to the `speckleUtils.js` file. Remember to import `userInfoQuery`.
+
+```js
+export function speckleFetch(query) {
+  let token = localStorage.getItem(TOKEN)
+  if (token)
+    return fetch(`${SERVER_URL}/graphql`, {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        query: query
+      })
+    }).then(res => res.json())
+  else return Promise.reject("You are not logged in (token does not exist)")
+}
+
+export const getUserData = () => speckleFetch(userInfoQuery())
+```
+
+Replace the contents of your `src/store/index.js` with the following code:
+
+```js
+import Vue from "vue"
+import Vuex from "vuex"
+
+import {
+  exchangeAccessCode,
+  getStreamCommits,
+  getUserData,
+  goToSpeckleAuthPage,
+  speckleLogOut
+} from "@/speckleUtils"
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  state: {
+    user: null,
+    serverInfo: null
+  },
+  getters: {
+    isAuthenticated: state => state.user != null
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user
+    },
+    setServerInfo(state, info) {
+      state.serverInfo = info
+    }
+  },
+  actions: {
+    logout(context) {
+      // Wipe the state
+      context.commit("setUser", null)
+      context.commit("setServerInfo", null)
+      // Wipe the tokens
+      speckleLogOut()
+    },
+    exchangeAccessCode(context, accessCode) {
+      // Here, we could save the tokens to the store if necessary.
+      return exchangeAccessCode(accessCode)
+    },
+    getUser(context) {
+      return getUserData()
+        .then(json => {
+          var data = json.data
+          context.commit("setUser", data.user)
+          context.commit("setServerInfo", data.serverInfo)
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    },
+    redirectToAuth() {
+      goToSpeckleAuthPage()
+    }
+  },
+  modules: {}
+})
+```
+
+Now, in the `App.vue` file, modify the `isAuthenticated` computed property as shown:
+
+```js
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated
+    }
+```
+
+Also, in the `template` section, add the following on top of the Login/Logout buttons
+
+```html
+<div v-if="isAuthenticated">
+  Welcome
+  <b>{{ $store.state.user.name }}</b>
+  ! You are connected to
+  <b>
+    {{ $store.state.serverInfo.company }}'s
+    <em>{{ $store.state.serverInfo.name }}</em>
+  </b>
+</div>
+
+<v-spacer></v-spacer>
+```
+
+The only thing left to do is to also tell the `router` to check the `user` on every page change. For this, modify the `beforeEach` implementation by adding an `else` clause to our previous condition
+
+```js
+router.beforeEach(async (to, from, next) => {
+  if (to.query.access_code) {
+    // If the route contains an access code, exchange it and go home.
+    store
+      .dispatch("exchangeAccessCode", to.query.access_code)
+      .then(() => next("/"))
+      .catch(err => {
+        console.warn("exchange failed", err)
+        next("/")
+      })
+  } else {
+    // Check on every route change if you still have access.
+    store
+      .dispatch("getUser")
+      .then(to => next(to))
+      .catch(err => next("/"))
+  }
+})
+```
