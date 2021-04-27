@@ -34,7 +34,7 @@ vue create speckle-demo-app
 
 This will ask you some questions, select the same answers as the screenshot bellow:
 
-![Vue.js setup answers](XXX)
+![Vue.js setup answers](./img/apps-guide/app-guide-vue-setup.png)
 
 Once done, you'd have your Vue.js project ready. To open the project in **VSCode** we just need to run:
 
@@ -45,7 +45,7 @@ code speckle-demo-app
 ::: warning
 This step assumes you already installed VSCode in your path. If you haven't, there's a command for it in VSCode.
 
-![Install vscode in path](https://link)
+![Install vscode in path](./app)
 :::
 
 ### Install other dependencies
@@ -399,7 +399,8 @@ export const getUserData = () => speckleFetch(userInfoQuery())
 
 Replace the contents of your `src/store/index.js` with the following code:
 
-:::details 
+:::details
+
 ```js
 import Vue from "vue"
 import Vuex from "vuex"
@@ -1159,17 +1160,17 @@ First, you'll need a GitHub account to push your app's repo to, and a Netlify ac
 ### Create your site
 
 1. Go to your Netlify's dashboard and find the `New site from Git` button
-   ![New site from git button](XXX)
+   ![New site from git button](./img/apps-guide/app-guide-netlify-new-site.png)
 2. Follow the steps as shown:
-   1. !![Step 1](XXX)
-   2. !![Step 2](XXX)
-   3. !![Step 3](XXX)
+   1. ![Step 1](./img/apps-guide/app-guide-netlify-new-site-2.png)
+   2. ![Step 2](./img/apps-guide/app-guide-netlify-new-site-3.png)
+   3. ![Step 3](./img/apps-guide/app-guide-netlify-new-site-4.png)
    4. Once this is done, you'll have a netlify url where you're app will live.
 3. Create a new Application on the Speckle server and set it's callback url to the application url you just got from Netlify. This will give you a new `appId` and `appSecret`.
 4. Last step is to set the `env` variables, similar to how we did it for our development server.
    1. Go to `Site Settings`->`Build and Deploy`-`Environment`
    2. Add the same environment variables as in your `.env.local` file but using the `appId` and `appSecret` values from setp 3.
-      ![Env variables](XXX)
+      ![Env variables](./img/apps-guide/app-guide-netlify-env.png)
 5. Go to the `Deploys` section of your app, find the `Trigger Deploy` button and select the `Deploy Site` option. This will force your app to restart and detect the new env variables.
 
 That's it! If you visit your netlify url, you should see your app running smoothly!
