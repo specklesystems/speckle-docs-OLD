@@ -26,7 +26,7 @@ Connectors are made of the following parts:
 - **custom logic** specific to the host application (for selecting elements, saving senders and receivers in the project file etc)
 - **a converter** to convert between the host application and Speckle geometry and BIM elements
 
-For the purpose of this tutorial, we'll be using a user interface called [DesktopUI](/user/ui) currently in use by our Revit, Rhino, AutoCAD and Civil 3D connectors. But you can of course create your own or use whatever the host application you are integrating with provides (eg visual programming),
+For the purpose of this tutorial, we'll be using a user interface called [DesktopUI](/user/ui) currently in use by our Revit, Rhino, AutoCAD and Civil 3D connectors. But you can of course create your own or use whatever the host application you are integrating with provides - that's the case of visual programming software.
 
 ## Getting started
 
@@ -311,7 +311,7 @@ The most important methods in a converter are `ConvertToNative` and `ConvertToSp
 
 Please have a look at how things are done in other converters, you will most likely end up having a switch statement with a list of functions that handle the various geometry and data types.
 
-The logic of these routines can get quite complicated if you want to support nested elements or simply updating of previously received objects and we recommend adding such functionalities later.
+The logic of these routines can get quite complicated if you want to support nested elements or update previously received objects, and we recommend adding such functionalities later.
 
 ::: tip IMPORTANT
 
