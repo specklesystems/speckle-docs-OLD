@@ -4,9 +4,13 @@ Our .NET SDK is called [Core](https://github.com/specklesystems/speckle-sharp/tr
 
 Core is written in .NET Standard 2.0, it's been tested on Windows and MacOS and it's being used by all our .NET based connectors.
 
+::: tip
+Core is available on NuGet as `Speckle.Core`.
+:::
+
 ## Getting started
 
-Core and Objects are written in .NET Standard 2.0, before using them [please make sure they are supported by your .NET framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support). 
+Core and Objects are written in .NET Standard 2.0, before using them [please make sure they are supported by your .NET framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
 
 We have published various Nugets to make it simpler to use Speckle in your next .NET project. Here's what's available at the moment:
 
@@ -15,10 +19,9 @@ We have published various Nugets to make it simpler to use Speckle in your next 
 - Objects
 - All Objects Converters
 
-All our nugets are prefixed by `Speckle.` 
+All our nugets are prefixed by `Speckle.`
 
 ![image](https://user-images.githubusercontent.com/2679513/113474800-0833f880-946a-11eb-8c90-92b23918a0c8.png)
-
 
 ## How to use
 
@@ -31,6 +34,7 @@ Here's a quick summary of the main tasks Core helps you with:
 - speckle kit management (the interoperability core)
 
 Server specific tasks:
+
 - stream, branch and commit api calls
 - update notifications (subscriptions)
 - local account management
@@ -50,11 +54,11 @@ myBuilding[ "name" ] = "Southwood Park"
 
 ```
 
-The `Base` object behaves like a dictionary - with some added Speckle smarts - and lets you organically compose your data in any way you want. 
+The `Base` object behaves like a dictionary - with some added Speckle smarts - and lets you organically compose your data in any way you want.
 
 ::: tip
 
-For more advanced usage, check [the tests out](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Tests/BaseTests.cs)! 
+For more advanced usage, check [the tests out](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Tests/BaseTests.cs)!
 
 :::
 
@@ -75,7 +79,7 @@ var deserializedBuilding = Operations.Deserialize( serlialisedBuilding );
 
 ::: tip
 
-For more advanced usage, check [the serialisation tests out](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/Tests/SerializationTests.cs#L10-L34)! 
+For more advanced usage, check [the serialisation tests out](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/Tests/SerializationTests.cs#L10-L34)!
 
 :::
 
@@ -85,7 +89,7 @@ TODO
 
 ::: tip
 
-For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)! 
+For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)!
 
 :::
 
@@ -95,6 +99,6 @@ TODO
 
 ::: tip
 
-For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)! 
+For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)!
 
 :::
