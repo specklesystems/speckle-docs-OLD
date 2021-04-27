@@ -373,24 +373,28 @@ Creates a connection to in-memory storage.
 
 ## Supported elements
 
-| Geometry       | Send        | Receive | Status        |
-| -------------- | ----------- | ------- | ------------- |
-| Point          | x           | x       | `Complete`    |
-| Line           | x           | x       | `Complete`    |
-| Plane          | x           | x       | `Complete`    |
-| Arc            | x           | x       | `Complete`    |
-| Circle         | x           | x       | `Complete`    |
-| Cuboid         | As Box      | x       | `Complete`    |
-| Ellipse        | x           | x       | `Complete`    |
-| Helix          | As Spline   |         | `Complete`    |
-| Polyline       |             | As Rectangle, Polycurve, or Polygon| `Complete`    |
-| Polycurve      | x           | x       | `Complete`    |
-| Polygon        | As Polyline | x       | `Complete`    |
-| Rectangle      | As Polyline | x       | `Complete`    |
-| Spline         | x           | x       | `Complete`    |
-| Brep           | x           | x       | `Complete`    |
-| Mesh           | x           | x       | `Complete`    |
+| Geometry       | Send          | Receive       | Status     |
+| -------------- | ------------- | ------------- | ---------- |
+| Point          | x             | x             | `Complete` |
+| Line           | x             | x             | `Complete` |
+| Plane          | x             | x             | `Complete` |
+| Arc            | x             | x             | `Complete` |
+| Circle         | x             | x             | `Complete` |
+| Cuboid         | As Box        | x             | `Complete` |
+| Ellipse        | x             | x             | `Complete` |
+| Helix          | As Spline     |               | `Complete` |
+| Polyline       |               | x<sup>α</sup> | `Complete` |
+| Polycurve      | x             | x             | `Complete` |
+| Polygon        | As Polyline   | x             | `Complete` |
+| Rectangle      | As Polyline   | x             | `Complete` |
+| Spline         | x             | x             | `Complete` |
+| Brep           | x             | x             | `Complete` |
+| Mesh           | x             | x             | `Complete` |
+| Revit Elements | x<sup>β</sup> |               | `Complete` |
 
+<sup>α</sup>: As Rectangle, Polycurve, or Polygon
+
+<sup>β</sup>: All Revit elements described [here](/user/revit.html#supported-elements) can also be sent from Dynamo
 
 ### Unsupported elements
 
