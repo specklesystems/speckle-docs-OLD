@@ -2,13 +2,15 @@ const { description } = require("../package")
 
 module.exports = {
   markdown: {
+    lineNumbers: true,
     extendMarkdown: md => {
       // use more markdown-it plugins!
-      md.use( require('markdown-it-html5-embed'), {
-              html5embed: {
-                useImageSyntax: true, // Enables video/audio embed with ![]() syntax (default)
-                useLinkSyntax: true   // Enables video/audio embed with []() syntax
-            }})
+      md.use(require("markdown-it-html5-embed"), {
+        html5embed: {
+          useImageSyntax: true, // Enables video/audio embed with ![]() syntax (default)
+          useLinkSyntax: true // Enables video/audio embed with []() syntax
+        }
+      })
     }
   },
   base: "/",
@@ -25,7 +27,7 @@ module.exports = {
     [
       "script",
       {
-        src: "/scripts/scroll-to-hash.js",
+        src: "/scripts/scroll-to-hash.js"
       }
     ]
   ],
@@ -35,8 +37,8 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: 'specklesystems/speckle-docs/',
-    docsBranch: 'main',
+    repo: "specklesystems/speckle-docs/",
+    docsBranch: "main",
     editLinks: true,
     editLinkText: "Edit this page",
     docsDir: "",
@@ -73,12 +75,7 @@ module.exports = {
         {
           title: "User Guide 🤷",
           collapsable: false,
-          children: [
-            "",
-            "concepts",
-            "manager",
-            "web"
-          ]
+          children: ["", "concepts", "manager", "web"]
         },
         {
           title: "Connectors 🔌",
@@ -92,7 +89,6 @@ module.exports = {
             "grasshopper",
             "dynamo",
             "unity"
-
           ]
         },
         {
