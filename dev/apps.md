@@ -10,7 +10,7 @@ In this first part, we'll be creating a very simple web app capable of:
 - Search for stream's available to the user.
 - Display commit data associated with a given stream.
 - Filter the data to be displayed.
-- Cache results in `localStorage` to _remember_ the app state accross page reloads.
+- Cache results in `localStorage` to _remember_ the app state across page reloads.
 
 Let's get started! 🚀
 
@@ -22,9 +22,9 @@ You'll also need to have `node` installed, as well as `vue-cli` and have some ba
 
 Knowing your way around `OAuth` protocols and authentication in general will definitely come in handy, but is **not required**, as we'll be providing most of the necessary logic (and code!) for that.
 
-You can learn more about Vue.js [here](XXX).
+You can learn more about Vue [here](XXX).
 
-## Setting up the Vue.js app
+## Setting up the Vue app
 
 This is the simplest step. Open a new terminal, set the current directory to wherever you want the project to be located and run the following command:
 
@@ -34,9 +34,9 @@ vue create speckle-demo-app
 
 This will ask you some questions, select the same answers as the screenshot bellow:
 
-![Vue.js setup answers](./img/apps-guide/app-guide-vue-setup.png)
+![Vue setup answers](./img/apps-guide/app-guide-vue-setup.png)
 
-Once done, you'd have your Vue.js project ready. To open the project in **VSCode** we just need to run:
+Once done, you'd have your Vue project ready. To open the project in **VSCode** we just need to run:
 
 ```bash
 code speckle-demo-app
@@ -50,7 +50,7 @@ This step assumes you already installed VSCode in your path. If you haven't, the
 
 ### Install other dependencies
 
-We'll also be using `Vuetify` to make our life easier, as it has many useful componets out of the box. To add it, run:
+We'll also be using `Vuetify` to make our life easier, as it has many useful components out of the box. To add it, run:
 
 ```bash
 vue add vuetify
@@ -94,7 +94,7 @@ Scroll down until you see the `Applications` section, and press the `New App` bu
 - **Name:** SpeckleDemoApp
 - **Scopes**: `stream:read`, `profile:read`, `profile:email`
 - **Redirect url**: `http://localhost:8080`
-- **Descritpion**: My first speckle app
+- **Description**: My first speckle app
 
 Once accepted, you'll see the `App Id` and `App Secret`, as well as an indication to the url pattern we should use (`https://speckle.xyz/authn/verify/{appId}/{challenge}`).
 
@@ -247,7 +247,7 @@ export default new Vuex.Store({
 
 We can now use these actions in any component by calling `this.$store.dispatch(ACTION_NAME, ...params)`.
 
-#### Add `Log In/Log Out` buttons.
+#### Add `Log In/Log Out` buttons
 
 In your `App.vue` file, replace it's contents with the following:
 
@@ -304,9 +304,9 @@ export default {
 
 :::
 
-Notice there's an `isAuthenticated` computed property that defaults to `false` for now (we'll update it later). There's also a pair of `v-btn` buttons linked to this boolean value. When there is no user authenticated, we'll show the login button, and when there is a user authenticated, we'll show thoe Log Out button.
+Notice there's an `isAuthenticated` computed property that defaults to `false` for now (we'll update it later). There's also a pair of `v-btn` buttons linked to this boolean value. When there is no user authenticated, we'll show the login button, and when there is a user authenticated, we'll show the Log Out button.
 
-Each is binded to the actions in the store we created earlier.
+Each is bound to the actions in the store we created earlier.
 
 ```html
 <v-btn
@@ -323,7 +323,7 @@ Each is binded to the actions in the store we created earlier.
 
 At this point in time, your App should display only a menu bar with the title and the Log In button.
 
-![App.vue with login butotn](./img/apps-guide/app-guide-login-button.png)
+![App.vue with login button](./img/apps-guide/app-guide-login-button.png)
 
 Now press the Log In button, follow the steps in the server and allow the app to access your data. This will take you back to `http://localhost:8080`. But notice the url will now contain a trailing `?access_code=YOUR_ACCESS_CODE`, we can now edit our `src/router/index.js` file to exchange the access code whenever it finds one.
 
@@ -1146,7 +1146,7 @@ That should cover all the changes needed! Go ahead to [http://localhost:8080](ht
 
 ![Final view with no stream selected](./img/apps-guide/app-guide-full-demo.gif)
 
-## Adding data persitence
+## Adding data persistence
 
 Our app seems to be working fine, but there's still a small adjustment that we can do to make things better. If, for any reason, a user reloads the page, they will loose their current stream selection + commit results, which is annoying. Let's fix that!
 
@@ -1176,13 +1176,13 @@ export default new Vuex.Store({
 })
 ```
 
-and that's it! Your app should now persist the app state accros page refresh. 🚀
+and that's it! Your app should now persist the app state across page refresh. 🚀
 
 ## Publish to Netlify
 
 Now that we have our app up and running locally, there's just one last thing to do: deploy it!
 
-We'll be using Netlify for this guide, but you could also as easily use Heroku, or any other platforms that supports webapps like Vue.js out of the box.
+We'll be using Netlify for this guide, but you could also as easily use Heroku, or any other platforms that supports web-app s like Vue.js out of the box.
 
 First, you'll need a GitHub account to push your app's repo to, and a Netlify account. If you haven't got a netlify account yet, you can log in with your GitHub account, which will make your life easier.
 
@@ -1198,7 +1198,7 @@ First, you'll need a GitHub account to push your app's repo to, and a Netlify ac
 3. Create a new Application on the Speckle server and set it's callback url to the application url you just got from Netlify. This will give you a new `appId` and `appSecret`.
 4. Last step is to set the `env` variables, similar to how we did it for our development server.
    1. Go to `Site Settings`->`Build and Deploy`-`Environment`
-   2. Add the same environment variables as in your `.env.local` file but using the `appId` and `appSecret` values from setp 3.
+   2. Add the same environment variables as in your `.env.local` file but using the `appId` and `appSecret` values from step 3.
       ![Env variables](./img/apps-guide/app-guide-netlify-env.png)
 5. Go to the `Deploys` section of your app, find the `Trigger Deploy` button and select the `Deploy Site` option. This will force your app to restart and detect the new env variables.
 
