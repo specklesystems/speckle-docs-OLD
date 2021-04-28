@@ -214,6 +214,7 @@ import {
   speckleLogOut
 } from "@/speckleUtils"
 
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
