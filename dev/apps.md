@@ -45,7 +45,7 @@ code speckle-demo-app
 ::: warning
 This step assumes you already installed VSCode in your path. If you haven't, there's a command for it in VSCode.
 
-![Install vscode in path](./app)
+![Install vscode in path](./img/apps-guide/app-guide-vscode-shell-install.png)
 :::
 
 ### Install other dependencies
@@ -74,7 +74,9 @@ npm run serve
 
 In chrome, things should be looking like this:
 
-![Vuetify default welcome page](XXX)
+![Vuetify default welcome page](./img/apps-guide/app-guide-setup-preview.png)
+
+## Authenticating with the Server
 
 ### Creating the `Speckle` files
 
@@ -82,8 +84,6 @@ For convenience, we're going to isolate all the `speckle` related code into 2 fi
 
 - `src/speckleQueries.js` will hold some utility functions to build our `GraphQL` queries.
 - `src/speckleUtils.js` will hold all call's to the Speckle server, as well as some constants. It will deal with login/logout functionality too.
-
-## Authenticating with the Server
 
 ### Creating an Application
 
@@ -108,7 +108,7 @@ The `App Id` and `App Secret` are used to identify your app, so you should never
 
 `Vue.js` will automatically read any `.env` files in the root of your project and load the variables accordingly, but will also replace all references with the actual value of the variable on compilation (which we **do not want**). We can tell `vue.js` to not do this by creating a file named `.env.local` instead. The contents should look like this 👇🏼 (remember to replace your ID and Secret appropriately)
 
-```
+```env
 VUE_APP_SPECKLE_ID=YOUR_APP_ID
 VUE_APP_SPECKLE_SECRET=YOUR_APP_SECRET
 VUE_APP_SERVER_URL=https://speckle.xyz
@@ -322,9 +322,11 @@ Each is binded to the actions in the store we created earlier.
 
 At this point in time, your App should display only a menu bar with the title and the Log In button.
 
-![App.vue with login butotn](XXX)
+![App.vue with login butotn](./img/apps-guide/app-guide-login-button.png)
 
 Now press the Log In button, follow the steps in the server and allow the app to access your data. This will take you back to `http://localhost:8080`. But notice the url will now contain a trailing `?access_code=YOUR_ACCESS_CODE`, we can now edit our `src/router/index.js` file to exchange the access code whenever it finds one.
+
+![Redirect with access code](./img/apps-guide/app-guide-redirect-access-code.png)
 
 #### Exchange the `access_code`
 
@@ -803,17 +805,13 @@ In `App.vue` there is a commented line referencing the `<router-view/>. Uncommen
 
 ### Preview results
 
-After making these changes, your app should display a welcome message when not logged in:
+After making these changes, your app should display a welcome message when not logged in and the search bar and selection text when logged in:
 
-![Welcome message](XXX)
-
-and the search bar and selection text when logged in:
-
-![Search bar and selection](XXX)
+![Search bar and selection](./app-guide-img/apps-guide/app-guide-user-fetch.gif)
 
 Introducing some text into the search bar should display a list of results in a dropdown. Selecting one of the result items will change the selection text from `No stream selected` to display the selected Stream name and id, as well as 2 buttons. The first one will take you to the stream page in the server, while the second one will clear the selection in the app state.
 
-![Search and selection functionality](XXX)
+![Search and selection functionality](./img/apps-guide/app-guide-stream-search.gif)
 
 ## Displaying stream commits
 
@@ -1145,9 +1143,39 @@ export default {
 
 That should cover all the changes needed! Go ahead to [http://localhost:8080](https://localhost:8080). If logged in, your app should be looking like this 👇🏼
 
-![Final view with no stream selected](XXX)
+![Final view with no stream selected](./img/apps-guide/app-guide-full-demo.gif)
 
-And once you select a stream, you should be able to
+## Adding data persitence
+
+Our app seems to be working fine, but there's still a small adjustment that we can do to make things better. If, for any reason, a user reloads the page, they will loose their current stream selection + commit results, which is annoying. Let's fix that!
+
+Thankfully, we only need to modify the `store/index.js` file slightly to make this happen. We already installed `vuex-persist`, the plugin that will do all the heavy lifting for us.
+
+First, import vuex-persist
+
+```js
+import VuexPersistence from "vuex-persist"
+```
+
+then create an instance (you'll need to import `APP_NAME` from `speckleUtils.js`) that uses `localStorage`. We could also use `sessionStorage`, which would be deleted at the end of the session.
+
+```js
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  key: `${APP_NAME}.vuex`
+})
+```
+
+add a `plugins` property to the `Vuex.Store` constructor config
+
+```js
+export default new Vuex.Store({
+  plugins: [vuexLocal.plugin],
+  ...
+})
+```
+
+and that's it! Your app should now persist the app state accros page refresh. 🚀
 
 ## Publish to Netlify
 
@@ -1179,6 +1207,6 @@ That's it! If you visit your netlify url, you should see your app running smooth
 
 We've covered quite a lot on this guide, but this was only **Part 1**! Stay tuned for our following releases, where we'll also use our web viewer, fetch the data inside commits, receive notifications from the server, and more!
 
-You can find the entire code for this guide [HERE](XXX)
+You can find the entire code for this guide [HERE](https://github.com/specklesystems/speckle-demo-app)
 
 If you find any issues with this guide, or the apps code, feel free to report them on our [Community Forum](https://speckle.community) or directly on the app's GitHub repo. Wherever it feels more appropriate.
