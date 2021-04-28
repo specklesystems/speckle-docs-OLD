@@ -325,7 +325,7 @@ For any questions feel free to write on the [community forum](https://speckle.co
 
 If the host app you're targeting uses object types not currently defined in the Objects Kit and you'd like to write conversions for them, we are happy to extend it! 
 
-Please get in touch on the forum before making a PR, then have a look at [how to write new objects](http://localhost:8080/dev/objects.html#writing-objects).
+Please get in touch on the forum before making a PR, then have a look at [how to write new objects](/dev/objects.html#writing-objects).
 
 ## Loading the Converter
 

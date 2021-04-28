@@ -38,7 +38,7 @@ Existing authoring applications, such as Rhino, Revit, Autocad, send and receive
 
 Read more about **Kits** [here](/dev/kits). If curious, you can also follow up with the discussion on [our forum](https://speckle.community/t/introducing-kits-2-0/710).
 
-We also have a guide on how to write your own **Connector** - [check it out](http://localhost:8080/dev/connectors-dev.html)!
+We also have a guide on how to write your own **Connector** - [check it out](/dev/connectors-dev.html)!
 
 :::
 
