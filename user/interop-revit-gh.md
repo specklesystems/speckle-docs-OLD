@@ -1,12 +1,14 @@
-# Revit ➡ Grasshopper and back
+# Revit to Grasshopper and back
 
 > **Level:** advanced
 >
->**Author:** Alan
+> **Author:** Alan
 >
->**Software used:** Revit 2021, Grasshopper for Rhino 7
+> **Software used:** Revit 2021, Grasshopper for Rhino 7
 
 You can stream _Revit_ native elements to _Grasshopper_ using Speckle! In this guide, we will send different types of Revit elements, such as walls, floors, levels, etc. We will also learn how to specify which data will be sent by using _filters_, extract parameter values, use them to drive our Grasshopper definitions and how to update parameter values back in the Revit model.
+
+![Intro image](./rvt-gh-img-interop/rvt-gh-intro-img.png)
 
 ## Getting started
 
