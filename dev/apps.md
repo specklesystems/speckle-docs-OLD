@@ -1,6 +1,8 @@
 # Creating Your Own App
 
-Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle. It's geared towards an audience that is familiar with Javascript and web development, or at least not scared by it! 
+![Creating your own Speckle app](./img/apps-guide/app-guide-main-img.jpg)
+
+Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle. It's geared towards an audience that is familiar with Javascript and web development, or at least not scared by it!
 
 In this first part, we'll be creating a very simple web app capable of:
 
@@ -24,19 +26,19 @@ This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCo
 
 You'll also need to have Node installed, as well as `vue-cli` and have some basic understanding of how Vue works.
 
-:::tip Installing the prequisites 
+:::tip Installing the prequisites
 
 **Node:** Probably the easiest way to manage your node installation is through `nvm`. On Windows, you can [use this guide](https://github.com/coreybutler/nvm-windows#install-nvm-windows). If on OSX, you can use the [original nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-**Vue CLI**: Once you have node installed, it's just a matter of running `npm install -g @vue/cli`. 
+**Vue CLI**: Once you have node installed, it's just a matter of running `npm install -g @vue/cli`.
 
 :::
 
 :::warning Getting familiar with Vue
 
-If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand. 
+If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
 
-::: 
+:::
 
 ## Setting up the Vue app
 
@@ -122,11 +124,11 @@ Note that the `redirect url` points to our local computer network. When deployin
 
 The `App Id` and `App Secret` are used to identify your app, so you should never add them to your version control. Instead, we'll be using `ENV` variables to save that information, which also allows us to modify it in different scenarios (development/production).
 
-:::tip 
+:::tip
 
-For those of you who wonder, frontend applications that integrate with the Speckle Server are treated as OAuth **public applications**, because they cannot keep their id and secret safe. 
+For those of you who wonder, frontend applications that integrate with the Speckle Server are treated as OAuth **public applications**, because they cannot keep their id and secret safe.
 
-::: 
+:::
 
 Vue will automatically read any `.env` files in the root of your project and load the variables accordingly, but will also replace all references with the actual value of the variable on compilation (which we **do not want**). We can tell `vue.js` to not do this by creating a file named `.env.local` instead. The contents should look like this 👇🏼 (remember to replace your ID and Secret appropriately).
 
@@ -139,7 +141,7 @@ VUE_APP_SPECKLE_NAME=SpeckleDemo
 
 ### Login in with Speckle
 
-A simplified version of the auth flow with a Speckle Server can be summarised as follows: 
+A simplified version of the auth flow with a Speckle Server can be summarised as follows:
 
 1. User clicks the Login button
 2. User is redirected to the auth page in the Speckle server (using the provided url pattern when creating an application)
@@ -1230,7 +1232,7 @@ That's it! If you visit your netlify url, you should see your app running smooth
 
 We've covered quite a lot on this guide, but this was only **Part 1**! Stay tuned for our following releases, where we'll also use our web viewer, fetch the data inside commits, receive notifications from the server, and more!
 
-:::tip Code Repository 
+:::tip Code Repository
 
 You can find the entire code for this guide [in this repository.](https://github.com/specklesystems/speckle-demo-app)
 
