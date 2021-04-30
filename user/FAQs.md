@@ -16,6 +16,7 @@ If the server address is **blocked by a corporate firewall or VPN**, kindly ask 
 - speckle.dev
 - speckle.community
 - speckle-releases.ams3.digitaloceanspaces.com (critical)
+- raw.githubusercontent.com (critical)
 
 For any more questions about this, feel free to reach out!
 
