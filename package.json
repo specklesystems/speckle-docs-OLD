@@ -15,7 +15,7 @@
   "license": "MIT",
   "devDependencies": {
     "@vuepress/plugin-medium-zoom": "^1.8.0",
-    "vuepress": "^1.5.3"
+    "vuepress": "^1.8.2"
   },
   "dependencies": {
     "markdown-it-html5-embed": "^1.0.0",
