@@ -1,8 +1,6 @@
 # Creating Your Own App
 
-This tutorial is currently under construction 🚧, please check again later!
-
-Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle.
+Welcome to **Part 1** this multi-part guide on how to `Create your own App` using Speckle. It's geared towards an audience that is familiar with Javascript and web development, or at least not scared by it! 
 
 In this first part, we'll be creating a very simple web app capable of:
 
@@ -14,15 +12,31 @@ In this first part, we'll be creating a very simple web app capable of:
 
 Let's get started! 🚀
 
+:::tip Following along
+
+If too busy to follow all the steps, you can find the entire code for this guide [in this repository](https://github.com/specklesystems/speckle-demo-app).
+
+:::
+
 ## Requirements
 
 This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCode_ as our IDE but you can use any other (even Notepad if your brave enough!).
 
-You'll also need to have `node` installed, as well as `vue-cli` and have some basic understanding of how `Vue.js` works.
+You'll also need to have Node installed, as well as `vue-cli` and have some basic understanding of how Vue works.
 
-Knowing your way around `OAuth` protocols and authentication in general will definitely come in handy, but is **not required**, as we'll be providing most of the necessary logic (and code!) for that.
+:::tip Installing the prequisites 
 
-You can learn more about Vue [here](XXX).
+**Node:** Probably the easiest way to manage your node installation is through `nvm`. On Windows, you can [use this guide](https://github.com/coreybutler/nvm-windows#install-nvm-windows). If on OSX, you can use the [original nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+**Vue CLI**: Once you have node installed, it's just a matter of running `npm install -g @vue/cli`. 
+
+:::
+
+:::warning Getting familiar with Vue
+
+If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand. 
+
+::: 
 
 ## Setting up the Vue app
 
@@ -43,14 +57,16 @@ code speckle-demo-app
 ```
 
 ::: warning
+
 This step assumes you already installed VSCode in your path. If you haven't, there's a command for it in VSCode.
 
 ![Install vscode in path](./img/apps-guide/app-guide-vscode-shell-install.png)
+
 :::
 
 ### Install other dependencies
 
-We'll also be using `Vuetify` to make our life easier, as it has many useful components out of the box. To add it, run:
+For our UI, we'll also be using [Vuetify](TODO) to make our life easier, as it has many useful components. To add it, run:
 
 ```bash
 vue add vuetify
@@ -85,7 +101,7 @@ For convenience, we're going to isolate all the `speckle` related code into 2 fi
 - `src/speckleQueries.js` will hold some utility functions to build our `GraphQL` queries.
 - `src/speckleUtils.js` will hold all call's to the Speckle server, as well as some constants. It will deal with login/logout functionality too.
 
-### Creating an Application
+### Registering an Application on the Speckle Server
 
 In order to be able to talk to our Speckle server, we first need to `Create an App` in that server with an existing account. To do that, visit the server's frontend [https://speckle.xyz](https://speckle.xyz), log in with your account and visit the profile page.
 
@@ -106,20 +122,26 @@ Note that the `redirect url` points to our local computer network. When deployin
 
 The `App Id` and `App Secret` are used to identify your app, so you should never add them to your version control. Instead, we'll be using `ENV` variables to save that information, which also allows us to modify it in different scenarios (development/production).
 
-`Vue.js` will automatically read any `.env` files in the root of your project and load the variables accordingly, but will also replace all references with the actual value of the variable on compilation (which we **do not want**). We can tell `vue.js` to not do this by creating a file named `.env.local` instead. The contents should look like this 👇🏼 (remember to replace your ID and Secret appropriately)
+:::tip 
+
+For those of you who wonder, frontend applications that integrate with the Speckle Server are treated as OAuth **public applications**, because they cannot keep their id and secret safe. 
+
+::: 
+
+Vue will automatically read any `.env` files in the root of your project and load the variables accordingly, but will also replace all references with the actual value of the variable on compilation (which we **do not want**). We can tell `vue.js` to not do this by creating a file named `.env.local` instead. The contents should look like this 👇🏼 (remember to replace your ID and Secret appropriately).
 
 ```env
-VUE_APP_SPECKLE_ID=YOUR_APP_ID
-VUE_APP_SPECKLE_SECRET=YOUR_APP_SECRET
+VUE_APP_SPECKLE_ID=YOUR_APP_ID # The Speckle Application Id
+VUE_APP_SPECKLE_SECRET=YOUR_APP_SECRET # The Speckle Application Secret
 VUE_APP_SERVER_URL=https://speckle.xyz
 VUE_APP_SPECKLE_NAME=SpeckleDemo
 ```
 
 ### Login in with Speckle
 
-Ultra simplified, the way this works is the following:
+A simplified version of the auth flow with a Speckle Server can be summarised as follows: 
 
-1. User clicks the login button
+1. User clicks the Login button
 2. User is redirected to the auth page in the Speckle server (using the provided url pattern when creating an application)
 3. User will log in and allow the app to access his data (hopefully?).
 4. User is redirected to our specified `Redirect URL`, with an attached `access_code`.
@@ -176,8 +198,8 @@ export function exchangeAccessCode(accessCode) {
     },
     body: JSON.stringify({
       accessCode: accessCode,
-      appId: "explorer",
-      appSecret: "explorer",
+      appId: process.env.VUE_APP_SPECKLE_ID,
+      appSecret: process.env.VUE_APP_SPECKLE_SECRET,
       challenge: localStorage.getItem(CHALLENGE)
     })
   })
@@ -516,7 +538,7 @@ router.beforeEach(async (to, from, next) => {
 })
 ```
 
-That should do it!! Now, if you refresh the page you should see a welcome message with your user name and the server name you connected to, as well as the `Log Out` button.
+That should do it! Now, if you refresh the page you should see a welcome message with your user name and the server name you connected to, as well as the `Log Out` button.
 
 ## Searching for streams
 
@@ -808,7 +830,7 @@ In `App.vue` there is a commented line referencing the `<router-view/>. Uncommen
 
 After making these changes, your app should display a welcome message when not logged in and the search bar and selection text when logged in:
 
-![Search bar and selection](./app-guide-img/apps-guide/app-guide-user-fetch.gif)
+<!-- ![Search bar and selection](./img/apps-guide/app-guide-user-fetch.gif) -->
 
 Introducing some text into the search bar should display a list of results in a dropdown. Selecting one of the result items will change the selection text from `No stream selected` to display the selected Stream name and id, as well as 2 buttons. The first one will take you to the stream page in the server, while the second one will clear the selection in the app state.
 
@@ -978,7 +1000,7 @@ export default new Vuex.Store({
 
 ## Update `Home.vue`
 
-The `Home.vue` also requires some major additions, so I've highlighted the changes in the code block, but just as the step bellow, feel free to replace the entire content if you're playing it fast and loose!
+The `Home.vue` also requires some major additions, so I've highlighted the changes in the code block, but just as the step below, feel free to replace the entire content if you're playing it fast and loose!
 
 We need to do the following modifications:
 
@@ -1152,7 +1174,7 @@ Our app seems to be working fine, but there's still a small adjustment that we c
 
 Thankfully, we only need to modify the `store/index.js` file slightly to make this happen. We already installed `vuex-persist`, the plugin that will do all the heavy lifting for us.
 
-First, import vuex-persist
+First, import vuex-persist:
 
 ```js
 import VuexPersistence from "vuex-persist"
@@ -1167,7 +1189,7 @@ const vuexLocal = new VuexPersistence({
 })
 ```
 
-add a `plugins` property to the `Vuex.Store` constructor config
+add a `plugins` property to the `Vuex.Store` constructor config:
 
 ```js
 export default new Vuex.Store({
@@ -1208,6 +1230,10 @@ That's it! If you visit your netlify url, you should see your app running smooth
 
 We've covered quite a lot on this guide, but this was only **Part 1**! Stay tuned for our following releases, where we'll also use our web viewer, fetch the data inside commits, receive notifications from the server, and more!
 
-You can find the entire code for this guide [HERE](https://github.com/specklesystems/speckle-demo-app)
+:::tip Code Repository 
+
+You can find the entire code for this guide [in this repository.](https://github.com/specklesystems/speckle-demo-app)
+
+:::
 
 If you find any issues with this guide, or the apps code, feel free to report them on our [Community Forum](https://speckle.community) or directly on the app's GitHub repo. Wherever it feels more appropriate.
