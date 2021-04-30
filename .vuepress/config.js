@@ -88,7 +88,8 @@ module.exports = {
             "autocadcivil",
             "grasshopper",
             "dynamo",
-            "unity"
+            "unity",
+            "unreal"
           ]
         },
         {
@@ -119,7 +120,7 @@ module.exports = {
         {
           title: ".NET SDK",
           collapsable: false,
-          children: ["dotnet", "connectors-dev", "kits-dev", "transports-dev"]
+          children: ["dotnet", "objects", "connectors-dev", "kits-dev", "transports-dev"]
         },
         {
           title: "Python SDK",

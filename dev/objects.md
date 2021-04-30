@@ -4,6 +4,11 @@
 
 Objects Kit is the default [Speckle 2.0 Kit](/dev/kits). It includes geometry and element base classes as well as conversions routines for the AEC applications that we officially support. Objects uses .NET Standard 2.0 and has been tested on Windows and MacOS. You can find the code in [speckle-sharp/Objects](https://github.com/specklesystems/speckle-sharp/tree/master/Objects).
 
+::: tip
+Objects is available on NuGet as `Speckle.Objects`.
+All converters are also available under `Speckle.Objects.COnverter.*`.
+:::
+
 While Objects Kit is the default, you are free to develop your own Kit or fork this one to customise it yourself. As of the beta release, easy swapping of kits within the connectors is not fully supported. However, this will be fully supported by the time we officially ship 2.0 🎉
 
 More info on Objects and Kits in 2.0 can be found in our [Kits section](/dev/kits).

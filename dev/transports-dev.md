@@ -12,6 +12,10 @@ We currently have a couple of transports scaffolded:
 - remote (speckle server)
 - mongodb (experimental)
 
+::: tip
+Transports are available on NuGet as `Speckle.Transports.*`.
+:::
+
 Why are transports really cool? Imagine you want to write your own server, from scratch. To use it in all our connectors, the only thing you need to do is write a transport that uses your server's api!
 
 Another use case would be if you want to simultaneously send your data to a MySQL database. We currently do not support this, but using a custom built transport, you can send your data to it, at the same time as sending it to a Speckle server.

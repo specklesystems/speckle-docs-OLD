@@ -40,4 +40,4 @@ When a connector needs to convert an object, it will only search for available c
 ## Objects
 
 Objects is the name of our default kit. It ships with any of our connectors and it's the perfect base for any customization and/or extension.
-You can find the source code of Objects in our [speckle-sharp repo](https://github.com/specklesystems/speckle-sharp/tree/master/Objects).
+You can read more about it in the [Objects Kit section](/dev/objects).
