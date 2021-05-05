@@ -2,7 +2,7 @@
 
 Speckle currently supports McNeel Rhino 6 and 7.
 
-![](./img-rhino/rhino-video.mp4)
+<div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://www.youtube.com/embed/v56nxXBbtfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Getting Started
 
@@ -76,35 +76,35 @@ as well as the overlapping received objects(gray) with the original objects (blu
 
 Almost all geometric elements are supported by the Rhino connector. This includes:
 
-| Geometry       | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| Point          | x       | x       | `Complete`    |
-| Line           | x       | x       | `Complete`    |
-| Plane          | x       | x       | `Complete`    |
-| Arc            | x       | x       | `Complete`    |
-| Circle         | x       | x       | `Complete`    |
-| Ellipse        | x       | x       | `Complete`    |
-| Polyline       | x       | x       | `Complete`    |
-| Polycurve      | x       | x       | `Complete`    |
-| Spline         | x       | x       | `Complete`    |
-| Nurb Surface   | As Brep | x       | `Complete`    |
-| Brep           | x       | x       | `Complete`    |
-| Extrusion      | x       | As Brep | `Complete`    |
-| Mesh           | x       | x       | `Complete`    |
+| Geometry     | Send    | Receive | Status     |
+| ------------ | ------- | ------- | ---------- |
+| Point        | x       | x       | `Complete` |
+| Line         | x       | x       | `Complete` |
+| Plane        | x       | x       | `Complete` |
+| Arc          | x       | x       | `Complete` |
+| Circle       | x       | x       | `Complete` |
+| Ellipse      | x       | x       | `Complete` |
+| Polyline     | x       | x       | `Complete` |
+| Polycurve    | x       | x       | `Complete` |
+| Spline       | x       | x       | `Complete` |
+| Nurb Surface | As Brep | x       | `Complete` |
+| Brep         | x       | x       | `Complete` |
+| Extrusion    | x       | As Brep | `Complete` |
+| Mesh         | x       | x       | `Complete` |
 
-| BuiltElement   | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| View           | x       | x       | `Complete`    |
-| ModelCurve     |         | As Curve| `Complete`    |
-| DirectShape    |         | As Mesh | `Complete`    |
+| BuiltElement | Send | Receive  | Status     |
+| ------------ | ---- | -------- | ---------- |
+| View         | x    | x        | `Complete` |
+| ModelCurve   |      | As Curve | `Complete` |
+| DirectShape  |      | As Mesh  | `Complete` |
 
-| Other          | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| RenderMaterial | x       |         | `In Progress` |
-| BlockInstance  | x       | x       | `Complete`    |
-| BlockDefinition| x       | x       | `Complete`    |
+| Other           | Send | Receive | Status        |
+| --------------- | ---- | ------- | ------------- |
+| RenderMaterial  | x    |         | `In Progress` |
+| BlockInstance   | x    | x       | `Complete`    |
+| BlockDefinition | x    | x       | `Complete`    |
 
-> We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API. 
+> We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API.
 
 ### Unsupported elements
 
