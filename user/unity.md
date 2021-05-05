@@ -6,7 +6,7 @@ It doesn't have an elaborated UI but it offers convenience methods to send and r
 Complementary to the information below, you should check out the [.NET SDK section](/dev/dotnet) too!
 
 ::: tip
-Check out our (Unity tutorial!)[/user/tutorial-unity-revit-rhino-experiences]
+Check out our [Unity tutorial](/user/tutorial-unity-revit-rhino-experiences)!
 :::
 
 ![unity example](https://user-images.githubusercontent.com/2679513/108543628-3a83ff00-72dd-11eb-8792-3d43ce54e6af.gif)
