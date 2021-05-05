@@ -2,6 +2,8 @@
 
 Speckle currently supports McNeel Rhino 6 and 7.
 
+![](./img-rhino/rhino-video.mp4)
+
 ## Getting Started
 
 To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
