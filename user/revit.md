@@ -75,6 +75,7 @@ If you'd like us to add something specific let us know on the [forum](https://sp
 | Group                                                 | x       |         | `In Progress` |
 | Level                                                 | x       | x       | `Complete`    |
 | Opening (Wall, Vertical, Shaft)                       | x       | x       | `Complete`    |
+| Pipe                                                  | x       | x       | `Complete`    |
 | Project Information                                   | x       |         | `In Progress` |
 | Railing                                               | x       | x       | `Complete`    |
 | Roof (Extrusion, Footprint)                           | x       | x       | `Complete`    |
@@ -83,6 +84,7 @@ If you'd like us to add something specific let us know on the [forum](https://sp
 | Topography                                            | x       | x       | `Complete`    |
 | View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | x       |         | `In Progress` |
 | Wall                                                  | x       | x       | `Complete`    |
+| Wire                                                  | x       | x       | `Complete`    |
 
 | Other                                                 | Send    | Receive | Status        |
 | ----------------------------------------------------- | ------- | ------- | ------------- |
