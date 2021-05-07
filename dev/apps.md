@@ -257,7 +257,7 @@ export default new Vuex.Store({
     exchangeAccessCode(context, accessCode) {
       // Here, we could save the tokens to the store if necessary.
       return exchangeAccessCode(accessCode)
-    }
+    },
     redirectToAuth() {
       // Use the speckleUtils redirect logic
       goToSpeckleAuthPage()
