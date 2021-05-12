@@ -89,7 +89,8 @@ module.exports = {
             "grasshopper",
             "dynamo",
             "unity",
-            "unreal"
+            "unreal",
+            "blender"
           ]
         },
         {
