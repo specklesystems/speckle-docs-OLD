@@ -2,18 +2,15 @@
 permalink: /
 ---
 
-# Introduction
+# Welcome! 
 
-Welcome to the **Speckle User Guide** - a single source of documentation on everything Speckle!
-If you're looking for info on how to _develop_ Speckle, check our [dev docs](/dev).
+Thanks for visiting our user guide! This is the single source of documentation on everything Speckle.
+Organizations all over the world rely on our collaboration, interoperability and automation platform to deliver better buildings, faster.
 
-> Speckle is the open source data platform for architecture, engineering, and construction. It liberates your data from proprietary file formats and closed source software and puts it back into your hands.
-
-Organizations all over the world rely on Speckle for interoperability, automation and collaboration to deliver better buildings, faster.
-
-Speckle is a platform with endless possibilities, we'll walk you through some of its most common usage scenarios, but ultimately you'll have the flexibility to use Speckle (and your data) how best you want.
+Speckle is a platform with endless possibilities, we'll walk you through some of its most common usage scenarios, but ultimately you'll have the flexibility to use Speckle (and your data) however you want.
 
 You can read more about what we do on [our website](https://speckle.systems/)
+If you're looking for info on how to _develop_ Speckle, check our [developer docs](/dev).
 
 ## This Guide
 
