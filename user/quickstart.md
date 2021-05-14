@@ -11,7 +11,7 @@ Before you can use Speckle, you'll need an account!
 ## Onboarding
 As you register, our onboarding process will take you through:
 
-- Downloading and installing the Speckle Manager, the one stop solution for account and connector management.
+- Downloading and installing the Speckle Manager, our desktop application for account and connector management.
 - Linking your newly-created account to the Speckle Manager ([additional ways to do this](/user/manager.md#adding-account)).
 - Creating your first stream.
 
@@ -24,9 +24,9 @@ If you're using our official server, that's: `https://speckle.xyz/onboarding`.
 :::
 
 
-## Web
+## Speckle Web
 
-Our [web frontend](/user/web) is your gateway to the Speckle server. From here, you can:
+Our [browser-based app](/user/web) is your gateway to the Speckle server. From here, you can:
 * View and manage your streams, administer them and control who has viewing + editing access to them.
 * Visualise your data in our 3D viewer
 * Create new branches (and soon - commits!)
@@ -34,7 +34,7 @@ Our [web frontend](/user/web) is your gateway to the Speckle server. From here, 
  
 ::: tip Got Programming Skills?
 
-If you're interested in experimenting with the API, check out our [dev sections](/dev/server-api.).
+If you're interested in experimenting with the API, check out our [developer sections](/dev/server-api.).
 
 :::
 
