@@ -14,7 +14,7 @@ To use Speckle you only really need to know what a stream is. Branches and commi
 
 ## Streams
 
-### What are they?
+### What are streams
 
 The main data structure in Speckle is the **stream**.
 
@@ -57,7 +57,7 @@ To see step-by-step guides on how to send your data between various supported ap
 
 ## Branches
 
-### What are they?
+### What are branches?
 
 Branches give you an extra layer of organisation within a stream. Speckle users frequently use branches to carry out parallel studies / design options.
 
@@ -98,6 +98,14 @@ Please Note: Commits aren't editable, you can change their message but not their
 If you have used a connector and you've sent data to a stream, you've already used them! Each time data is sent to a stream, a commit is created. To help you keep track of the changes in your stream, it is a good idea to add a commit message that succinctly describes what the commit contains. Some of the connectors pre-populate a default commit message for you, but you are still free to write your own to add more detail.
 
 When receiving data in a connector, you have the option of either staying synced with the latest commit or receiving a specific commit based on the `commitId`. If you choose to stay on the latest commit, you'll see a notification when someone else has sent new data to the stream. When you see this, you'll be able to use the receive function to get the new commit and update your file.
+
+## How's Your Brain Holding Up?
+
+For some users, this is their first time hearing about streams, branches and commits. Your head must be spinning!
+
+However, some users can't get enough of this and are ready to take a deep dive into some of our more advanced topics. For these users, we've got you covered!
+
+See our Advanced Concepts page for more! 
 
 ## The Base Object
 
