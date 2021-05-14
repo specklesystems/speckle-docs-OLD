@@ -72,13 +72,13 @@ services:
   # Speckle Server
   #######
   speckle-frontend:
-    image: speckle/speckle-frontend:latest
+    image: speckle/speckle-frontend:2
     restart: always
     ports:
       - "0.0.0.0:80:80"
 
   speckle-server:
-    image: speckle/speckle-server:latest
+    image: speckle/speckle-server:2
     restart: always
     command: ["bash", "-c", "/wait && node bin/www"]
     environment:
@@ -99,6 +99,14 @@ services:
       REDIS_URL: "redis://redis"
       WAIT_HOSTS: postgres:5432, redis:6379
 
+  preview-service:
+    image: speckle/speckle-preview-service:2
+    restart: always
+    command: ["bash", "-c", "/wait && node bin/www"]
+    environment:
+      DEBUG: "preview-service:*"
+      PG_CONNECTION_STRING: "postgres://speckle:speckle@postgres/speckle"
+      WAIT_HOSTS: postgres:5432
 ```
 
 #### Step 3: Edit the fields marked with `TODO`
@@ -132,13 +140,13 @@ If you plan to run PostgreSQL and Redis separately, for example as managed deplo
 version: "3"
 services:
   speckle-frontend:
-    image: speckle/speckle-frontend:latest
+    image: speckle/speckle-frontend:2
     restart: always
     ports:
       - "0.0.0.0:80:80"
 
   speckle-server:
-    image: speckle/speckle-server:latest
+    image: speckle/speckle-server:2
     restart: always
     environment:
       # TODO: Change this to the URL of the speckle server, as accessed from the network
@@ -159,6 +167,14 @@ services:
       # TODO: Change to redis connection string:
       REDIS_URL: "redis://redis"
 
+  preview-service:
+    image: speckle/speckle-preview-service:2
+    restart: always
+    environment:
+      DEBUG: "preview-service:*"
+      
+      # TODO: Change to PostgreSQL connection string:
+      PG_CONNECTION_STRING: "postgres://speckle:speckle@postgres/speckle"
 ```
 
 ## Run your speckle-server fork
@@ -212,6 +228,7 @@ $ docker-compose -f docker-compose-speckle.yml up --build -d
 This will run the following containers, and will automatically launch them at system startup:
 - *speckle-frontend*, an nginx container that serves the Vue app build as static files (exposed on port 80 in the VM network) and proxies server requests to the `speckle-server` container
 - *speckle-server*, the `server` component that doesn't expose any port outside the internal docker network.
+- *preview-service*, the `preview-service` component that doesn't expose any port outside the internal docker network.
 
 
 ## Run in development mode
@@ -224,6 +241,10 @@ To run the Speckle Server, you need to run:
 - the `frontend` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/frontend))
 - the `server` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/server))
 
+Optionally, to enable object previews for the frontend, you can also run:
+- the `preview-service` package (see [the readme.md file in the git repo](https://github.com/specklesystems/speckle-server/tree/main/packages/preview-service)) 
+
+
 Detailed instructions for running them locally are kept up to date in their respective readme.md files.
 
 ::: tip IMPORTANT
@@ -233,6 +254,8 @@ Don't forget to set up the variables in the `.env` file according to your deploy
 In this deployment type, the frontend Vue app will listen by default on the local interface (not available over the network) on `port 8080`, but will have no knowledge about the `server` component, and thus **should not be accessed directly**.
 
 The server component will listen on the local interface (not available over the network) on `port 3000`, and will proxy the frontend requests to the frontend component (as configured in .env file).
+
+The optional `preview-service` component has an internal express app that listens only on the local interface on `port 3001`
 
 You can access Speckle Web from your browser at [http://localhost:3000/](http://localhost:3000/).
 
