@@ -1,7 +1,7 @@
 # Speckle Manager
 
 Speckle Manager is a standalone desktop application that helps you manage your Speckle Accounts and Connectors.
-**You don't need Manager to be able use the rest of the Speckle platform** (web, api, connectors etc), but it greatly helps!
+**You don't need Speckle Manager to be able use the rest of the Speckle platform** (web, api, connectors etc), but it greatly helps!
 
 Throughout this documentation we'll assume you have used Speckle Manager to set up your account and install the connectors. [Alternative methods](/user/manager.md#adding-accounts-manually) are also supported.
 
@@ -12,25 +12,26 @@ If you don't have one provided by your company, you can use our [free Speckle se
 
 ## Installation
 
-Speckle Manager is available for both Windows and Mac.
+Speckle Manager is available for both Windows and Mac (with limitations).
 
 Download the latest version of Speckle Manager:
 
 - [Speckle Manager for Windows](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe)
 - [Speckle Manager for Mac](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.dmg) (currently account management only)
 
-Manager for Windows will automatically update when an update is available, in Mac you have to manually install new versions.
+Speckle Manager for Windows will automatically update when an update is available, in Mac you have to manually install new versions.
 
 ![screenshot of the manager](../.vuepress/public/assets/manager.png)
 
 ### Preventing Manager from running at Startup
 
-On Windows, Manager automatically launches in the background at Startup so that you can get notified about new versions of the installed connectors as soon as they are released.
-If you want to disable it, you can simply do so:
+On Windows, Speckle Manager will automatically launch on startup to check for new updates. It will notify you of any updated connector versions as soon as they are released.
 
-- press the combination `Ctrl + Shift + Esc`
-- go on the Startup tab
-- find the row with **SpeckleManager** and set its **Status** to **Disabled**
+If you want to disable this functionality, you can simply do so:
+
+- Open the Task Manager, using (e.g.) `Ctrl + Shift + Esc`
+- Navigate to the Startup tab..
+- Find the row with **SpeckleManager** and set its **Status** to **Disabled**
 
 ![image](https://user-images.githubusercontent.com/2679513/112289752-7caab280-8c86-11eb-8c9a-928d536e8eb3.png)
 
@@ -42,9 +43,9 @@ On Windows, simply head over **Apps & Features**, find **SpeckleManager** and th
 
 ## Adding Accounts
 
-### From Manager
+### From Speckle Manager
 
-Once you have downloaded the Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Manager.
+Once you have downloaded the Speckle Manager, you'll be able to easily add an account. All you need to do is head to the "Accounts" menu, click the "Add Account" button, and provide your server URL. This will open a browser window where you can log in or register an account on that server and authorise the Speckle  Manager.
 
 ![manager-add-accounts](https://user-images.githubusercontent.com/7717434/106609140-2c07ba80-655d-11eb-9728-d59b850ac9a2.gif)
 
@@ -60,13 +61,13 @@ You can also add an account directly from Speckle Web as part of the onboarding 
 
 ![account-onboarding](./img/manager/account-onboarding.gif)
 
-:::warning Account problems
+:::warning Account Problems
 
-Having trouble adding an account? It's probably the firewall. Check our [quick faq guide for possible solutions](/user/FAQs.html#i-cannot-add-an-account-in-speckle-manager)!
+Having trouble adding an account? It's probably the firewall. Check our [FAQ  for possible solutions](/user/FAQs.html#i-cannot-add-an-account-in-speckle-manager)!
 
 :::
 
-### Adding Accounts manually
+### Adding Accounts Manually
 
 Using Speckle Manager to handle your accounts and connectors is the recommended way, but if you'd like to do without it a manual flow is also available.
 
@@ -92,38 +93,38 @@ Then you can proceed to create a `.json` file in `%appdata%\Speckle\Accounts\` w
 
 ## Installing Connectors
 
-The Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the "Connectors" menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions are released.
+The Speckle Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the "Connectors" menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions are released.
 
 ![manager-connectors](https://user-images.githubusercontent.com/7717434/106609134-2b6f2400-655d-11eb-8d2a-1730115e3bc7.gif)
 
 ### Updating Connectors
 
-You will receive a notification in Manager when updates for your installed connectors are available. You can then update them from the Connectors page.
+You will receive a notification in Speckle Manager when updates for your installed connectors are available. You can then update them from the Connectors page.
 
 ### Uninstalling Connectors
 
-Just head over the Connectors page in Manager and click **Remove**.
+Just head over the Connectors page in Speckle Manager and click **Remove**.
 
 ## Advanced Settings
 
-You can access the Settings page by clicking the ⚙ icon on the top right of the Manager window.
+You can access the Settings page by clicking the ⚙ icon on the top right of the Speckle Manager window.
 ![image](https://user-images.githubusercontent.com/2679513/112290969-a1535a00-8c87-11eb-82f8-8e3a4b630e7c.png)
 
-From here you'll be able to do various things such as clearing your local cache, resetting Manager, allowing beta versions etc.
+From here you'll be able to do various things such as clearing your local cache, resetting Speckle Manager, allowing beta versions etc.
 
 ![image](https://user-images.githubusercontent.com/2679513/112291184-cc3dae00-8c87-11eb-9c02-693108f499fb.png)
 
 ## Troubleshooting
 
-Having issues with Manager? Send us a message on the [forum](https://speckle.community)!
+Having issues with Speckle Manager? Send us a message on the [forum](https://speckle.community)!
 You can help us troubleshoot your issues by doing the following:
 
-- open the settings page
-- click on **Open Dev Tools**, a new window will open
-- try reproducing you issue and if you see any text in the Dev Tools send us a screenshot
-- if you include your `SUUID` in any bug report, that will help us identify what's going on!
+- Open the settings page
+- Click on **Open Dev Tools**, a new window will open
+- Try reproducing you issue and if you see any text in the Dev Tools send us a screenshot
+- If you include your `SUUID` in any bug report, that will help us identify what's going on!
 
 ## License
 
-Manager is free to use and will always be.
+Speckle Manager is free to use and will always be.
 To use it you need to agree to its [End User License Agreement](https://speckle.systems/eula/).
