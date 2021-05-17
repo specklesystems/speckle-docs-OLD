@@ -119,6 +119,11 @@ module.exports = {
           children: ["base", "decomposition", "kits", "transports", "apps-auth"]
         },
         {
+          title: "Advanced Concepts",
+          collapsable: false,
+          children: []
+        },
+        {
           title: ".NET SDK",
           collapsable: false,
           children: ["dotnet", "objects", "connectors-dev", "kits-dev", "transports-dev"]
