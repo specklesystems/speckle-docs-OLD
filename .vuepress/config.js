@@ -75,7 +75,7 @@ module.exports = {
         {
           title: "User Guide 🤷",
           collapsable: false,
-          children: ["", "concepts", "manager", "web"]
+          children: ["", "concepts", "concepts-advanced", "manager", "web"]
         },
         {
           title: "Connectors 🔌",
