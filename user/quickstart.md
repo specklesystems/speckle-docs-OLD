@@ -26,9 +26,11 @@ If you're using our official server, that's: `https://speckle.xyz/onboarding`.
 
 ## Speckle Web App
 
+![image-20210322192558215](./img/quickstart/image-20210322192558215.png)
+
 Our [browser-based app](/user/web) is your gateway to the Speckle server. From here, you can:
-* View and manage your streams, administer them and control who has viewing + editing access to them.
-* Visualise your data in our 3D viewer
+* View and manage your streams, administer them and control who has viewing & editing access to them.
+* Visualise your data in our interactive 3D viewer
 * Create new branches (and soon - commits!)
 * Manage your authorised apps and create personal access tokens to use in your own scripts and apps.
  
@@ -37,8 +39,6 @@ Our [browser-based app](/user/web) is your gateway to the Speckle server. From h
 If you're interested in experimenting with the API, check out our [developer sections](/dev/server-api.).
 
 :::
-
-![image-20210322192558215](./img/quickstart/image-20210322192558215.png)
 
 ## Connectors
 

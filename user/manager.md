@@ -1,9 +1,8 @@
 # Speckle Manager
 
-Speckle Manager is a standalone desktop application that helps you manage your Speckle Accounts and Connectors.
-**You don't need Speckle Manager to be able use the rest of the Speckle platform** (web, api, connectors etc), but it greatly helps!
+Speckle Manager is a standalone desktop application that helps you manage your Speckle [Accounts](/quickstart.html#registration) and [Connectors](/#connectors). While the Speckle Manager isn't strictly required to use the Speckle platform, we highly recommend using it to help keep track of your connectors, install the latest updates and handle multiple user accounts.
 
-Throughout this documentation we'll assume you have used Speckle Manager to set up your account and install the connectors. [Alternative methods](/user/manager.md#adding-accounts-manually) are also supported.
+Throughout this documentation we'll assume you have used Speckle Manager to set up your account and install the connectors ([alternative methods](/user/manager.md#adding-accounts-manually) are also supported).
 
 ::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
@@ -19,7 +18,7 @@ Download the latest version of Speckle Manager:
 - [Speckle Manager for Windows](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.exe)
 - [Speckle Manager for Mac](https://speckle-releases.ams3.digitaloceanspaces.com/manager/SpeckleManager%20Setup.dmg) (currently account management only)
 
-Speckle Manager for Windows will automatically update when an update is available, in Mac you have to manually install new versions.
+Speckle Manager for Windows will automatically update when an update is available, in Mac you'll need to manually install new versions.
 
 ![screenshot of the manager](../.vuepress/public/assets/manager.png)
 
@@ -69,7 +68,7 @@ Having trouble adding an account? It's probably the firewall. Check our [FAQ  fo
 
 ### Adding Accounts Manually
 
-Using Speckle Manager to handle your accounts and connectors is the recommended way, but if you'd like to do without it a manual flow is also available.
+Using Speckle Manager to handle your accounts and [Connectors](/#connectors) is the recommended way, but if you'd like to do without it a manual flow is also available.
 
 To manually add an account you first need to [generate a token for your account](/dev/tokens-apps).
 
@@ -93,17 +92,17 @@ Then you can proceed to create a `.json` file in `%appdata%\Speckle\Accounts\` w
 
 ## Installing Connectors
 
-The Speckle Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the "Connectors" menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions are released.
+The Speckle Manager also shows you the currently available connectors and allows you to install or remove connectors from your machine. Head into the **"Connectors"** menu to see what connectors you have installed and which are available to download. You'll also be able to check which version of each connector you have and update a connector as new versions are released.
 
 ![manager-connectors](https://user-images.githubusercontent.com/7717434/106609134-2b6f2400-655d-11eb-8d2a-1730115e3bc7.gif)
 
 ### Updating Connectors
 
-You will receive a notification in Speckle Manager when updates for your installed connectors are available. You can then update them from the Connectors page.
+You will receive a notification in Speckle Manager when updates for your installed connectors are available. You can then update them from the [Connectors](/#connectors) page.
 
 ### Uninstalling Connectors
 
-Just head over the Connectors page in Speckle Manager and click **Remove**.
+Just head over the [Connectors](/#connectors) page in Speckle Manager and click **Remove**.
 
 ## Advanced Settings
 
