@@ -108,7 +108,7 @@ Almost all geometric elements are supported by the Rhino connector. This include
 
 ### Unsupported elements
 
-Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported. Nested blocks are not supported at this time.
+Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported.
 
 ## Schema Builder
 

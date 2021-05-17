@@ -52,6 +52,7 @@ Any layer information from the incoming stream will be appended to the prefix wi
 | Nurb Surface   | x    |         | `In Progress` |
 | PolyFace Mesh  | x    |         | `In Progress` |
 | SubD Mesh      | x    |         | `In Progress` |
+| 3D Solid       | as Mesh    |         | `In Progress` |
 
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |
@@ -62,17 +63,18 @@ Any layer information from the incoming stream will be appended to the prefix wi
 | Geometry      | Send | Receive | Status         |
 | ------------- | ---- | ------- | -------------- |
 | Featureline   | x    |         | `In Progress`  |
-| Alignment     |      |         | `In Progress`  |
+| Alignment     | x    |         | `In Progress`  |
 | Profile       |      |         | `In Progress`  |
-| Tin Surface   |      |         | `In Progress`  |
-| Grid Surface  |      |         | `In Progress`  |
-| Pipe          |      |         | `In Progress`  |
+| Tin Surface   | as Mesh    |         | `In Progress`  |
+| Grid Surface  | as Mesh    |         | `In Progress`  |
+| Pipe          | as Mesh    |         | `In Progress`  |
+| Structure     | as Mesh    |         | `In Progress`  |
 
 ### Unsupported elements
 
 **AUTOCAD**
 
-Breps, hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic and nested blocks are not supported at this time.
+Hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic blocks are not supported at this time.
 
 **CIVIL3D**
 

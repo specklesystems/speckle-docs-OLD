@@ -89,6 +89,7 @@ If you'd like us to add something specific let us know on the [forum](https://sp
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |
 | RenderMaterial |      |         | `In Progress` |
+| BlockInstance  |      | As Generic Model | `Complete` |
 
 Generally speaking, Revit doesn't support raw geometry as it deals with families. Nonetheless, we've made it simple to receive some types of geometry directly, without the need of specifying family type, name or any other parameter.
 
