@@ -1,3 +1,5 @@
+# Advanced Concepts
+
 Congratulations on being an advanced user of Speckle. 
 You've breezed through our git-based walkthrough guide and have arrived at the hard stuff. 
 
