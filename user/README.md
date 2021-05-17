@@ -5,36 +5,39 @@ permalink: /
 # Welcome! 
 
 Thanks for visiting our user guide! This is the single source of documentation on everything Speckle.
-Organizations all over the world rely on our collaboration, interoperability and automation platform to deliver better buildings, faster.
 
-Speckle is a platform with endless possibilities, we'll walk you through some of its most common usage scenarios, but ultimately you'll have the flexibility to use Speckle (and your data) however you want.
 
-You can read more about what we do on [our website](https://speckle.systems/)
-If you're looking for info on how to _develop_ Speckle, check our [developer docs](/dev).
+Organizations all over the world rely on our collaboration, interoperability and automation platform to deliver better buildings, faster. Speckle is a platform with endless possibilities, we'll walk you through some of its most common usage scenarios, but ultimately you'll have the flexibility to use Speckle (and your data) however you want.
 
-## This Guide
+
+## What We'll Cover
 
 ::: tip IMPORTANT 🙌
 This guide assumes you have access to a **Speckle Server**.
 If you don't have one provided by your company, you can use our [free Speckle server](https://speckle.systems/getstarted/).
 :::
 
-You will get an introduction to the key Speckle concepts and learn how to get set up and send your first objects to Speckle. We'll go over what you need to install, how to create an account, and how to get the Desktop Connectors you need to get going. At the end, there will also be a few [tutorials](/user/tutorials) which will walk you through all the steps to get your data from AEC Software A to AEC Software B.
+This guide provides an introduction to the key Speckle concepts you'll need to know. We'll go over what you need to install, how to create an account, and how to send data to your first Speckle stream.
 
-If you are a developer wanting to learn how to build things with Speckle, head over to the [Dev Docs](/dev/). If you want mode in-depth reading on how Speckle works under the hood, make sure to check the [core concepts section](/dev/base).
+Towards the end of this guide, there are a few [tutorials](/user/tutorials) which provide step-by-step guidance for several common workflows (e.g. sending data Rhino -> Revit and back).
 
-## Basic Concepts
+If you're a programmer wanting to learn how to build things with Speckle, head over to our [developer docs](/dev/). If you're after some in-depth reading on how Speckle works under the hood, make sure to check the [core concepts section](/dev/base).
 
-Speckle is made up of several moving parts, before describing each in detail, let's run through them quickly.
+## Our Tech
 
-[Speckle Web](/user/web) is an online application that lets you manage and coordinate your data, it also includes a 3D viewer to let see your projects directly from your browser.
+Speckle is made up of several moving parts. Before describing each in detail, let's run through them quickly.
 
-The [Desktop Connectors](/user/connectors) are plugins for some of the most popular AEC software including Rhino, Revit, Grasshopper, Dynamo, AutoCAD, Civil3D, Unity, Blender and more. They take care of exporting and importing (or better, sending and receiving) data to Speckle Web - without the need of using files!
+### Speckle Web App
+The [Speckle Web App](/user/web) lets you manage and coordinate your data directly from your web browser. It includes a management interface to help you administer your various streams and a 3D model viewer to let see your projects.
 
-The data handled by the Connectors can be of almost any type, but most commonly it will be CAD and BIM data: geometry and metadata attached to it. Each time the Connectors send data to Speckle Web, they also take care of transforming it from the native closed format of each AEC tool to a neutral open format, this makes accessing it for down the line consumption extremely easy and fast.
-Data in Speckle Web is stored in [Streams, Branches and Commits](/user/concepts).
+### Connectors
+Our desktop [Connectors](/user/connectors) are plugins for some of the most popular construction industry software including Rhino, Revit, Grasshopper, Dynamo, AutoCAD, Civil3D, Unity, Blender (and more). They take care of sending and receiving data in your software (e.g. Rhino) to and from your Speckle server. The Connectors can handle almost any kind of data. Most commonly, this will be CAD and BIM data; essentially, geometry with attached metadata.
 
-[Speckle Manager](/user/manager) is a desktop application that handles accounts and connectors on your machine. You need to add a Speckle account to your computer using Manager in order for the Connectors use them to send and receive data from a Speckle Server.
+Each time the Connectors send data to your Speckle server, they also take care of transforming it from your software's native format to Speckle's own, neutral format. This makes accessing it from other software extremely easy and fast.
+
+### Speckle Manager
+
+The [Speckle Manager](/user/manager) is a desktop application that handles accounts and connectors on your machine. You'll need to add a Speckle account to your computer using Speckle Manager in order to be authorised to send or access data to/from a Speckle Server.
 
 ## Legal stuff
 

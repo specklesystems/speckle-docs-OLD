@@ -1,4 +1,4 @@
-# Speckle Web
+# Speckle Web App
 
 ## Introduction
 

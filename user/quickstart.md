@@ -24,7 +24,7 @@ If you're using our official server, that's: `https://speckle.xyz/onboarding`.
 :::
 
 
-## Speckle Web
+## Speckle Web App
 
 Our [browser-based app](/user/web) is your gateway to the Speckle server. From here, you can:
 * View and manage your streams, administer them and control who has viewing + editing access to them.
