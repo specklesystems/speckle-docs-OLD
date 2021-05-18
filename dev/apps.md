@@ -36,7 +36,7 @@ You'll also need to have Node installed, as well as `vue-cli` and have some basi
 
 :::warning Getting familiar with Vue
 
-If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
+If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
 
 We'll also be using some of Vue's most popular plugins: `vuex` and `vue-router`. If you're unfamiliar with them, they have great quick-start guides on their site!
 
@@ -53,9 +53,9 @@ This is the simplest step. Open a new terminal, set the current directory to whe
 vue create speckle-demo-app
 ```
 
-This will ask you some questions, such as the version of vue to use, what plugins to install, etc.
+This will ask you some questions, such as the version of vue to use, what plugins to install, etc. **It is important that you answer the questions correctly**, otherwise, your project may be missing some key features.
 
-::: details Step by step Vue setup
+::: details Vue setup - Step by step
 
 1. When prompted for a preset, select **Manually select features**
    ![Step 1](./img/apps-guide/app-guide-vue-setup-step1.png)
@@ -76,17 +76,24 @@ This will ask you some questions, such as the version of vue to use, what plugin
    ![Step 5](./img/apps-guide/app-guide-vue-setup-step5.png)
 6. When prompted for a Linter, choose the option **ESLint with error prevention only**
    ![Step 6](./img/apps-guide/app-guide-vue-setup-step6.png)
-7. Choose to place config files **In dedicated config files**
+7. When prompted for aditional lint features, select **Lint on save**
    ![Step 7](./img/apps-guide/app-guide-vue-setup-step7.png)
-8. At last, you can save this selection as a preset, but for this time just select **No**
+8. Choose to place config files **In dedicated config files**
    ![Step 8](./img/apps-guide/app-guide-vue-setup-step8.png)
+9. At last, you can save this selection as a preset, but for this time just select **No**
+   ![Step 9](./img/apps-guide/app-guide-vue-setup-step9.png)
+10. Wait for the process to finish
+    ![Step 10](./img/apps-guide/app-guide-vue-setup-step10.png)
 
 :::
+
+::: tip TL;DR
 
 If you are already familiar with this process, just select the same answers as the screenshot bellow:
 
 ![Vue setup answers](./img/apps-guide/app-guide-vue-setup.png)
 
+:::
 Once done, you'd have your Vue project ready. To open the project in **VSCode** we just need to run:
 
 ```bash
@@ -276,12 +283,9 @@ import {
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
+  state: {},
+  getters: {},
+  mutations: {},
   actions: {
     logout(context) {
       // Wipe the state
