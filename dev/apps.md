@@ -26,7 +26,7 @@ This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCo
 
 You'll also need to have Node installed, as well as `vue-cli` and have some basic understanding of how Vue works.
 
-:::tip Installing the prequisites
+:::tip Installing the prerequisites
 
 **Node:** Probably the easiest way to manage your node installation is through `nvm`. On Windows, you can [use this guide](https://github.com/coreybutler/nvm-windows#install-nvm-windows). If on OSX, you can use the [original nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -38,7 +38,12 @@ You'll also need to have Node installed, as well as `vue-cli` and have some basi
 
 If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
 
-:::
+We'll also be using some of Vue's most popular plugins: `vuex` and `vue-router`. If you're unfamiliar with them, they have great quick-start guides on their site!
+
+- [`vuex`: Getting started](https://vuex.vuejs.org/guide/)
+- [`vue-router`: Getting started](https://router.vuejs.org/guide/)
+
+  :::
 
 ## Setting up the Vue app
 
@@ -48,7 +53,37 @@ This is the simplest step. Open a new terminal, set the current directory to whe
 vue create speckle-demo-app
 ```
 
-This will ask you some questions, select the same answers as the screenshot bellow:
+This will ask you some questions, such as the version of vue to use, what plugins to install, etc.
+
+::: details Step by step Vue setup
+
+1. When prompted for a preset, select **Manually select features**
+   ![Step 1](./img/apps-guide/app-guide-vue-setup-step1.png)
+2. Next, specify the features needed for this project:
+   - Choose vue version
+   - Babel
+   - PWA
+   - Router
+   - Vuex
+   - CSS Pre-processors
+   - Linter
+     ![Step 2](./img/apps-guide/app-guide-vue-setup-step2.png)
+3. Choose version **2.x** of Vue.js
+   ![Step 3](./img/apps-guide/app-guide-vue-setup-step3.png)
+4. Choose **Yes** when prompted to use **history mode for router**
+   ![Step 4](./img/apps-guide/app-guide-vue-setup-step4.png)
+5. For the css-preprocessor to use, select **Sass/SCSS (with dart-sass)**
+   ![Step 5](./img/apps-guide/app-guide-vue-setup-step5.png)
+6. When prompted for a Linter, choose the option **ESLint with error prevention only**
+   ![Step 6](./img/apps-guide/app-guide-vue-setup-step6.png)
+7. Choose to place config files **In dedicated config files**
+   ![Step 7](./img/apps-guide/app-guide-vue-setup-step7.png)
+8. At last, you can save this selection as a preset, but for this time just select **No**
+   ![Step 8](./img/apps-guide/app-guide-vue-setup-step8.png)
+
+:::
+
+If you are already familiar with this process, just select the same answers as the screenshot bellow:
 
 ![Vue setup answers](./img/apps-guide/app-guide-vue-setup.png)
 
