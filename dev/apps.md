@@ -26,7 +26,7 @@ This guide should work in any platform (Mac/Linux/Windows). We'll be using _VSCo
 
 You'll also need to have Node installed, as well as `vue-cli` and have some basic understanding of how Vue works.
 
-:::tip Installing the prequisites
+:::tip Installing the prerequisites
 
 **Node:** Probably the easiest way to manage your node installation is through `nvm`. On Windows, you can [use this guide](https://github.com/coreybutler/nvm-windows#install-nvm-windows). If on OSX, you can use the [original nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
@@ -36,9 +36,14 @@ You'll also need to have Node installed, as well as `vue-cli` and have some basi
 
 :::warning Getting familiar with Vue
 
-If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's a [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
+If you haven't used Vue before, don't worry. It's quite easy to get started with it - here's [some docs](https://vuejs.org/v2/guide/) you could run through beforehand.
 
-:::
+We'll also be using some of Vue's most popular plugins: `vuex` and `vue-router`. If you're unfamiliar with them, they have great quick-start guides on their site!
+
+- [`vuex`: Getting started](https://vuex.vuejs.org/guide/)
+- [`vue-router`: Getting started](https://router.vuejs.org/guide/)
+
+  :::
 
 ## Setting up the Vue app
 
@@ -48,10 +53,47 @@ This is the simplest step. Open a new terminal, set the current directory to whe
 vue create speckle-demo-app
 ```
 
-This will ask you some questions, select the same answers as the screenshot bellow:
+This will ask you some questions, such as the version of vue to use, what plugins to install, etc. **It is important that you answer the questions correctly**, otherwise, your project may be missing some key features.
+
+::: details Vue setup - Step by step
+
+1. When prompted for a preset, select **Manually select features**
+   ![Step 1](./img/apps-guide/app-guide-vue-setup-step1.png)
+2. Next, specify the features needed for this project:
+   - Choose vue version
+   - Babel
+   - PWA
+   - Router
+   - Vuex
+   - CSS Pre-processors
+   - Linter
+     ![Step 2](./img/apps-guide/app-guide-vue-setup-step2.png)
+3. Choose version **2.x** of Vue.js
+   ![Step 3](./img/apps-guide/app-guide-vue-setup-step3.png)
+4. Choose **Yes** when prompted to use **history mode for router**
+   ![Step 4](./img/apps-guide/app-guide-vue-setup-step4.png)
+5. For the css-preprocessor to use, select **Sass/SCSS (with dart-sass)**
+   ![Step 5](./img/apps-guide/app-guide-vue-setup-step5.png)
+6. When prompted for a Linter, choose the option **ESLint with error prevention only**
+   ![Step 6](./img/apps-guide/app-guide-vue-setup-step6.png)
+7. When prompted for aditional lint features, select **Lint on save**
+   ![Step 7](./img/apps-guide/app-guide-vue-setup-step7.png)
+8. Choose to place config files **In dedicated config files**
+   ![Step 8](./img/apps-guide/app-guide-vue-setup-step8.png)
+9. At last, you can save this selection as a preset, but for this time just select **No**
+   ![Step 9](./img/apps-guide/app-guide-vue-setup-step9.png)
+10. Wait for the process to finish
+    ![Step 10](./img/apps-guide/app-guide-vue-setup-step10.png)
+
+:::
+
+::: tip TL;DR
+
+If you are already familiar with this process, just select the same answers as the screenshot bellow:
 
 ![Vue setup answers](./img/apps-guide/app-guide-vue-setup.png)
 
+:::
 Once done, you'd have your Vue project ready. To open the project in **VSCode** we just need to run:
 
 ```bash
@@ -172,6 +214,7 @@ export const TOKEN = `${APP_NAME}.AuthToken`
 export const REFRESH_TOKEN = `${APP_NAME}.RefreshToken`
 export const CHALLENGE = `${APP_NAME}.Challenge`
 
+// Redirects to the Speckle server authentication page, using a randomly generated challenge. Challenge will be stored to compare with when exchanging the access code.
 export function goToSpeckleAuthPage() {
   // Generate random challenge
   var challenge =
@@ -187,13 +230,16 @@ export function goToSpeckleAuthPage() {
   window.location = `${SERVER_URL}/authn/verify/${process.env.VUE_APP_SPECKLE_ID}/${challenge}`
 }
 
+// Log out the current user. This removes the token/refreshToken pair.
 export function speckleLogOut() {
+  // Remove both token and refreshToken from localStorage
   localStorage.removeItem(TOKEN)
   localStorage.removeItem(REFRESH_TOKEN)
 }
 
-export function exchangeAccessCode(accessCode) {
-  return fetch(`${SERVER_URL}/auth/token/`, {
+// Exchanges the provided access code with a token/refreshToken pair, and saves them to local storage.
+export async function exchangeAccessCode(accessCode) {
+  var res = await fetch(`${SERVER_URL}/auth/token/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -205,15 +251,14 @@ export function exchangeAccessCode(accessCode) {
       challenge: localStorage.getItem(CHALLENGE)
     })
   })
-    .then(res => res.json())
-    .then(data => {
-      if (data.token) {
-        localStorage.removeItem(CHALLENGE)
-        localStorage.setItem(TOKEN, data.token)
-        localStorage.setItem(REFRESH_TOKEN, data.refreshToken)
-      }
-      return data
-    })
+  var data = await res.json()
+  if (data.token) {
+    // If retrieving the token was successful, remove challenge and set the new token and refresh token
+    localStorage.removeItem(CHALLENGE)
+    localStorage.setItem(TOKEN, data.token)
+    localStorage.setItem(REFRESH_TOKEN, data.refreshToken)
+  }
+  return data
 }
 ```
 
@@ -241,12 +286,9 @@ import {
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
+  state: {},
+  getters: {},
+  mutations: {},
   actions: {
     logout(context) {
       // Wipe the state
@@ -364,14 +406,14 @@ Open your `src/router/index.js` file and add this code right above the `export d
 ```js
 router.beforeEach(async (to, from, next) => {
   if (to.query.access_code) {
-    // If the route contains an access code, exchange it and go home.
-    store
-      .dispatch("exchangeAccessCode", to.query.access_code)
-      .then(() => next("/"))
-      .catch(err => {
-        console.warn("exchange failed", err)
-        next("/")
-      })
+    // If the route contains an access code, exchange it
+    try {
+      await store.dispatch("exchangeAccessCode", to.query.access_code)
+    } catch (err) {
+      console.warn("exchange failed", err)
+    }
+    // Whatever happens, go home.
+    next("/")
   }
 })
 ```
@@ -403,22 +445,31 @@ export const userInfoQuery = () => `query {
 Add this to the `src/speckleUtils.js` file. Remember to import `userInfoQuery`.
 
 ```js
-export function speckleFetch(query) {
+import { userInfoQuery } from "@/speckleQueries"
+
+// Calls the GraphQL endpoint of the Speckle server with a specific query.
+export async function speckleFetch(query) {
   let token = localStorage.getItem(TOKEN)
   if (token)
-    return fetch(`${SERVER_URL}/graphql`, {
-      method: "POST",
-      headers: {
-        Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        query: query
+    try {
+      var res = await fetch(`${SERVER_URL}/graphql`, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          query: query
+        })
       })
-    }).then(res => res.json())
+      return await res.json()
+    } catch (err) {
+      console.error("API call failed", err)
+    }
   else return Promise.reject("You are not logged in (token does not exist)")
 }
 
+// Fetch the current user data using the userInfoQuery
 export const getUserData = () => speckleFetch(userInfoQuery())
 ```
 
@@ -426,7 +477,7 @@ export const getUserData = () => speckleFetch(userInfoQuery())
 
 Replace the contents of your `src/store/index.js` with the following code:
 
-:::details
+:::details store/index.js
 
 ```js
 import Vue from "vue"
@@ -470,16 +521,15 @@ export default new Vuex.Store({
       // Here, we could save the tokens to the store if necessary.
       return exchangeAccessCode(accessCode)
     },
-    getUser(context) {
-      return getUserData()
-        .then(json => {
-          var data = json.data
-          context.commit("setUser", data.user)
-          context.commit("setServerInfo", data.serverInfo)
-        })
-        .catch(err => {
-          console.error(err)
-        })
+    async getUser(context) {
+      try {
+        var json = await getUserData()
+        var data = json.data
+        context.commit("setUser", data.user)
+        context.commit("setServerInfo", data.serverInfo)
+      } catch (err) {
+        console.error(err)
+      }
     },
     redirectToAuth() {
       goToSpeckleAuthPage()
@@ -488,6 +538,8 @@ export default new Vuex.Store({
   modules: {}
 })
 ```
+
+:::
 
 ### Update `App.vue`
 
@@ -522,20 +574,22 @@ The only thing left to do is to also tell the `router` to check the `user` on ev
 ```js
 router.beforeEach(async (to, from, next) => {
   if (to.query.access_code) {
-    // If the route contains an access code, exchange it and go home.
-    store
-      .dispatch("exchangeAccessCode", to.query.access_code)
-      .then(() => next("/"))
-      .catch(err => {
-        console.warn("exchange failed", err)
-        next("/")
-      })
+    // If the route contains an access code, exchange it
+    try {
+      await store.dispatch("exchangeAccessCode", to.query.access_code)
+    } catch (err) {
+      console.warn("exchange failed", err)
+    }
+    // Whatever happens, go home.
+    next("/")
   } else {
-    // Check on every route change if you still have access.
-    store
-      .dispatch("getUser")
-      .then(to => next(to))
-      .catch(err => next("/"))
+    try {
+      // Check on every route change if you still have access.
+      var goto = await store.dispatch("getUser")
+      next(goto)
+    } catch (err) {
+      next("/")
+    }
   }
 })
 ```
@@ -622,16 +676,15 @@ export default new Vuex.Store({
       // Here, we could save the tokens to the store if necessary.
       return exchangeAccessCode(accessCode)
     },
-    getUser(context) {
-      return getUserData()
-        .then(json => {
-          var data = json.data
-          context.commit("setUser", data.user)
-          context.commit("setServerInfo", data.serverInfo)
-        })
-        .catch(err => {
-          console.error(err)
-        })
+    async getUser(context) {
+      try {
+        var json = await getUserData()
+        var data = json.data
+        context.commit("setUser", data.user)
+        context.commit("setServerInfo", data.serverInfo)
+      } catch (err) {
+        console.error(err)
+      }
     },
     redirectToAuth() {
       goToSpeckleAuthPage()
@@ -716,11 +769,10 @@ export default {
     }
   },
   methods: {
-    fetchSearchResults(e) {
+    async fetchSearchResults(e) {
       if (!e || e?.length < 3) return
-      return searchStreams(e).then(json => {
-        this.streams = json.data.streams
-      })
+      var json = await searchStreams(e)
+      this.streams = json.data.streams
     },
     debounceInput: debounce(function(e) {
       this.fetchSearchResults(e)
@@ -881,9 +933,9 @@ export const getStreamCommits = (streamId, itemsPerPage, cursor) =>
 
 Notice that the query has a `cursor`. This is used to get successive _pages_ of the commits list. There is a current limitation with the cursor, as it only allows to go _forward_ in pages, not backward. To fix this, we'll keep track of these values in our store so we can have pagination going forward (we'll also keep the `itemsPerPage` value fixed to keep things simple).
 
-## Update `router/index.js`
+## Update `store/index.js`
 
-Now, there's quite a bit of modifications in the `router/index.js` file. I've highlighted the changes in the code block, but feel free to replace the whole content for the one bellow.
+Now, there's quite a bit of modifications in the `store/index.js` file. I've highlighted the changes in the code block, but feel free to replace the whole content for the one bellow.
 
 We basically need modify the state to be able to:
 
@@ -896,8 +948,10 @@ We basically need modify the state to be able to:
 ```js
 import Vue from "vue"
 import Vuex from "vuex"
+import VuexPersistence from "vuex-persist"
 
 import {
+  APP_NAME,
   exchangeAccessCode,
   getStreamCommits,
   getUserData,
@@ -907,7 +961,13 @@ import {
 
 Vue.use(Vuex)
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  key: `${APP_NAME}.vuex`
+})
+
 export default new Vuex.Store({
+  plugins: [vuexLocal.plugin],
   state: {
     user: null,
     serverInfo: null,
@@ -958,34 +1018,33 @@ export default new Vuex.Store({
       // Here, we could save the tokens to the store if necessary.
       return exchangeAccessCode(accessCode)
     },
-    getUser(context) {
-      return getUserData()
-        .then(json => {
-          var data = json.data
-          context.commit("setUser", data.user)
-          context.commit("setServerInfo", data.serverInfo)
-        })
-        .catch(err => {
-          console.error(err)
-        })
+    async getUser(context) {
+      try {
+        var json = await getUserData()
+        var data = json.data
+        context.commit("setUser", data.user)
+        context.commit("setServerInfo", data.serverInfo)
+      } catch (err) {
+        console.error(err)
+      }
     },
     redirectToAuth() {
       goToSpeckleAuthPage()
     },
-    handleStreamSelection(context, stream) {
+    async handleStreamSelection(context, stream) {
       context.commit("setCurrentStream", stream)
       context.commit("setTableOptions", { itemsPerPage: 5 })
       context.commit("resetPrevCursors")
-      return getStreamCommits(stream.id, 5, null).then(json => {
-        context.commit("setCommits", json.data.stream.commits)
-      })
+      var json = await getStreamCommits(stream.id, 5, null)
+      context.commit("setCommits", json.data.stream.commits)
     },
-    getCommits(context, cursor) {
-      return getStreamCommits(context.state.currentStream.id, 5, cursor).then(
-        json => {
-          context.commit("setCommits", json.data.stream.commits)
-        }
+    async getCommits(context, cursor) {
+      var json = await getStreamCommits(
+        context.state.currentStream.id,
+        5,
+        cursor
       )
+      context.commit("setCommits", json.data.stream.commits)
     },
     clearStreamSelection(context) {
       context.commit("setCurrentStream", null)
@@ -1097,6 +1156,10 @@ export default {
       selectedKeys: ["id", "message", "branchName", "authorName"]
     }
   },
+  mounted() {
+    var storedOpts = this.$store.state.tableOptions
+    if (storedOpts) this.options = storedOpts
+  },
   methods: {},
   computed: {
     selectedStream: function() {
@@ -1127,25 +1190,23 @@ export default {
   },
   watch: {
     options: {
-      handler(val, oldval) {
+      async handler(val, oldval) {
         this.$store.commit("setTableOptions", val)
         if (oldval.page && val.page != oldval.page) {
           if (val.page > oldval.page) {
-            // Page up
             this.loading = true
             var cursor = this.$store.state.latestCommits.cursor
-            this.$store.dispatch("getCommits", cursor).then(() => {
-              this.$store.commit("addCursorToPreviousList", cursor)
-              this.loading = false
-            })
+            await this.$store.dispatch("getCommits", cursor)
+            this.$store.commit("addCursorToPreviousList", cursor)
+            this.loading = false
           } else {
-            // Page down
+            console.log("page down")
             this.loading = true
-            this.$store
-              .dispatch("getCommits", this.previousCursors[val.page - 1])
-              .then(() => {
-                this.loading = false
-              })
+            await this.$store.dispatch(
+              "getCommits",
+              this.previousCursors[val.page - 1]
+            )
+            this.loading = false
           }
         }
       },
@@ -1156,6 +1217,10 @@ export default {
 </script>
 
 <style lang="scss">
+#viewer {
+  min-height: 500px;
+}
+
 .v-data-footer__select {
   display: none !important;
 }
