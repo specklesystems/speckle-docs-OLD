@@ -9,7 +9,7 @@ Speckle currently supports Autodesk AutoCAD 2021 and Civil 3D 2021.
 To install this connector and add your Speckle account, follow the instructions in [Speckle Manager](/user/manager).
 Once installed, you can find this connector in the `Add-ins` tab under `Speckle 2`. Click the plugin button to call the Speckle Desktop UI for sending and receiving streams.
 
-![](/user/img-acad/setup-plugin.gif)
+![](./img-acad/setup-plugin.gif)
 
 ## User Interface
 
@@ -33,7 +33,7 @@ stream[ branch @ commit id ]
 
 Any layer information from the incoming stream will be appended to the prefix with the standard AutoCAD delimiter `$`. When recieving from applications (like Rhino) with nested layers, the incoming full layer path will replace any default delimiters with `$`.
 
-![](/user/img-acad/receiving-layers.png)
+![](./img-acad/receiving-layers.png)
 
 ## Supported elements
 
