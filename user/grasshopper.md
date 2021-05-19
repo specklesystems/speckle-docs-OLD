@@ -174,51 +174,51 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 Grasshopper supports the same geometry as the Rhino connector:
 
-| Geometry       | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| Point          | x       | x       | `Complete`    |
-| Line           | x       | x       | `Complete`    |
-| Plane          | x       | x       | `Complete`    |
-| Arc            | x       | x       | `Complete`    |
-| Circle         | x       | x       | `Complete`    |
-| Ellipse        | x       | x       | `Complete`    |
-| Polyline       | x       | x       | `Complete`    |
-| Polycurve      | x       | x       | `Complete`    |
-| Spline         | x       | x       | `Complete`    |
-| Nurb Surface   | As Brep | x       | `Complete`    |
-| Brep           | x       | x       | `Complete`    |
-| Extrusion      | x       | As Brep | `Complete`    |
-| Mesh           | x       | x       | `Complete`    |
+| Geometry     | Send    | Receive | Status     |
+| ------------ | ------- | ------- | ---------- |
+| Point        | x       | x       | `Complete` |
+| Line         | x       | x       | `Complete` |
+| Plane        | x       | x       | `Complete` |
+| Arc          | x       | x       | `Complete` |
+| Circle       | x       | x       | `Complete` |
+| Ellipse      | x       | x       | `Complete` |
+| Polyline     | x       | x       | `Complete` |
+| Polycurve    | x       | x       | `Complete` |
+| Spline       | x       | x       | `Complete` |
+| Nurb Surface | As Brep | x       | `Complete` |
+| Brep         | x       | x       | `Complete` |
+| Extrusion    | x       | As Brep | `Complete` |
+| Mesh         | x       | x       | `Complete` |
 
-| Other          | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| RenderMaterial | x       |         | `In Progress` |
+| Other          | Send | Receive | Status        |
+| -------------- | ---- | ------- | ------------- |
+| RenderMaterial | x    |         | `In Progress` |
 
 The **Schema Builder** node also provides additional support for the following built elements:
 
-| BuiltElement                                          | Send    | Receive | Status        |
-| ----------------------------------------------------- | ------- | ------- | ------------- |
-| Adaptive Component                                    | x       |         | `Complete`    |
-| Beam                                                  | x       |         | `Complete`    |
-| Brace                                                 | x       |         | `Complete`    |
-| Ceiling                                               | x       |         | `Complete`    |
-| Column                                                | x       |         | `Complete`    |
-| Curves (Model, Detail, Room Boundary)                 | x       |         | `Complete`    |
-| Direct Shape                                          | x       |         | `Complete`    |
-| Freeform Element                                      | x       |         | `Complete`    |
-| Duct                                                  | x       |         | `Complete`    |
-| Face Wall                                             | x       |         | `Complete`    |
-| Family Instance                                       | x       |         | `Complete`    |
-| Floor                                                 | x       |         | `Complete`    |
-| GridLine                                              | x       |         | `Complete`    |
-| Level                                                 | x       |         | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | x       |         | `Complete`    |
-| Parameter                                             | x       |         | `Complete`    |
-| Railing                                               | x       |         | `Complete`    |
-| Roof (Extrusion, Footprint)                           | x       |         | `Complete`    |
-| Topography                                            | x       |         | `Complete`    |
-| View                                                  |         |         | `In Progress` |
-| Wall                                                  | x       |         | `Complete`    |
+| BuiltElement                          | Send | Receive | Status        |
+| ------------------------------------- | ---- | ------- | ------------- |
+| Adaptive Component                    | x    |         | `Complete`    |
+| Beam                                  | x    |         | `Complete`    |
+| Brace                                 | x    |         | `Complete`    |
+| Ceiling                               | x    |         | `Complete`    |
+| Column                                | x    |         | `Complete`    |
+| Curves (Model, Detail, Room Boundary) | x    |         | `Complete`    |
+| Direct Shape                          | x    |         | `Complete`    |
+| Freeform Element                      | x    |         | `Complete`    |
+| Duct                                  | x    |         | `Complete`    |
+| Face Wall                             | x    |         | `Complete`    |
+| Family Instance                       | x    |         | `Complete`    |
+| Floor                                 | x    |         | `Complete`    |
+| GridLine                              | x    |         | `Complete`    |
+| Level                                 | x    |         | `Complete`    |
+| Opening (Wall, Vertical, Shaft)       | x    |         | `Complete`    |
+| Parameter                             | x    |         | `Complete`    |
+| Railing                               | x    |         | `Complete`    |
+| Roof (Extrusion, Footprint)           | x    |         | `Complete`    |
+| Topography                            | x    |         | `Complete`    |
+| View                                  |      |         | `In Progress` |
+| Wall                                  | x    |         | `Complete`    |
 
 Refer to the section below for additional information on the **Schema Builder** node.
 
@@ -242,23 +242,47 @@ When a new **Schema Builder** node is created, a pop-up window will be displayed
 Check out our [tutorial on sending data from Grasshopper to Revit](/user/interop-gh-revit)!
 :::
 
-<!-- ## Object conversion and Kits
+## Object conversion
 
-Speckle 2.0 comes with one Kit pre-installed, the `Objects Kit`. This kit is in charge of all conversions to and from Speckle, but other kits may be introduced in the future, leaving the decision to choose which kit to use at each given time to the end-user.
+By default, the Speckle nodes will try to convert any compatible objects (such as meshes, solids, lines and points):
 
-Once a document is open in Grasshopper, you will find a `Speckle 2` application menu that will allow you to specify the appropriate kit to use by default.
+- **On input**: to Speckle compatible format.
+- **On output**: to the native Rhino format that Grasshopper will understand.
 
-![Kit selection menu](./img-gh/menu-kit-selection.png)
+There are some situations where this behavior may not be ideal, as it may cause unintentional data-loss. This is particularly true when dealing with nested data inside
 
-This will set the kit to be used by any newly created components in your Grasshopper canvas.
+Speckle can deal with nested speckle objects without any issues but, due to limitations in the Rhino API, you can only attach text to a specific geometry object's custom data, such as a line.
 
-When necessary, you can always adjust the kit being used at each individual component by right-clicking it. The _right-click_ menu should display the same kit selection items. This menu should be available on any component that performs object conversions (most object-management, send, receive...).
+![Creating a Speckle line with custom data attached](./img-gh/speckle-gh-conversion-createNestedLine.png)
 
-![Kit selection component menu](./img-gh/menu-right-click-kit-selection.png)
+Since any valid geometry objects will be automatically converted to their Rhino representation when they're output by a node, this _non-supported_ data will be _"lost"_.
 
-You can also distinguish them by the message displaying the selected kit under the component.
+In order to provide a work-around to this problem, all nodes that perform conversions have an "Do not convert" option in the right-click menu, that will prevent conversion from occurring on that specific node.
 
-![Selected kit message](./img-gh/nodes-create-object.png) -->
+![Do not convert menu item](./img-gh/speckle-gh-conversion-menuitem.png)
+
+::: details Handling geometry objects with nested data
+
+Following the example above, we package and send the custom Speckle Line.
+
+![Send custom line and normal rhino line](./img-gh/speckle-gh-conversion-send.png)
+
+After receiving the data, when expanding Speckle objects you'll have several options:
+
+1. Default behavior when receiving data: Automatic conversion to Rhino objects
+   ![Expand and convert](./img-gh/speckle-gh-conversion-expandAndConvert.png)
+2. Behavior when "Do not convert" options is enabled: Output is a Speckle Line
+   ![Expand but don't convert](./img-gh/speckle-gh-conversion-expandAndNoConvert.png)
+
+Now you can access the custom data attached to the line:
+
+![Access line custom data](./img-gh/speckle-gh-conversion-accessCustomData.png)
+
+:::
+
+::: tip
+Don't worry, we always ensure all objects are converted to Speckle format before preforming a `Send` operation.
+:::
 
 ## Nodes
 
@@ -268,7 +292,7 @@ You can also distinguish them by the message displaying the selected kit under t
 
 The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
 
-There is also an option to set the node to automátically send every time there is a change in the data. You will find this option in the right-click menu of the node.
+There is also an option to set the node to automatically send every time there is a change in the data. You will find this option in the right-click menu of the node.
 
 | ![Activating auto mode in sender](./img-gh/nodes-send-automode-activate.png) | ![Auto-send mode active in sender](./img-gh/nodes-send-automode-active.png) |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -513,13 +537,25 @@ These nodes where developed exclusively for testing/development purposes. If you
 
 The **Convert to Speckle** node will try to convert any Rhino objects (such as lines, curves, meshes...) into Speckle objects.
 
+This node works **recursively**, meaning that if given any non-convertible `base` object, it will traverse through the properties and try to convert each value, leaving the structure intact.
+
+::: warning
+
 This node was developed for testing/development purposes.
+
+:::
 
 #### Convert to Native node
 
 The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
 
+This node works **recursively**, meaning that if given any non-convertible `base` object, it will traverse through the properties and try to convert each value, leaving the structure intact.
+
+::: warning
+
 This node was developed for testing/development purposes.
+
+:::
 
 #### Serialize Speckle objects node
 
