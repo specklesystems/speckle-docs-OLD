@@ -1,13 +1,29 @@
 # Introduction
 
-The Desktop Connectors are plugins for some of the most popular AEC software including [Rhino](/user/rhino), [Revit](/user/revit), [Grasshopper](/user/grasshopper), [Dynamo](/user/dynamo), [AutoCAD](/user/autocadcivil), [Civil3D](/user/autocadcivil), [Unity](/user/unity), Blender and more. They take care of exporting and importing (or better, sending and receiving) data to Speckle Web - without the need of using files!
+Our Desktop Connectors are plugins for some of the most popular AEC software, including:
 
-Want to see a connector for an application we don't support yet? [Let us know in the forum!](https://speckle.community)
+- [McNeel Rhinoceros](/user/rhino)
+- [Grasshopper](/user/grasshopper)
+- [Autodesk Revit](/user/revit)
+- [Dynamo](/user/dynamo)
+- [Autodesk AutoCAD](/user/autocadcivil)
+- [Autodesk Civil3D](/user/autocadcivil)
+- [Unity](/user/unity)
+- [Blender](/user/blender)
+
+...with more on the way soon!
+
+These Connectors take care of sending and receiving data to your Speckle server, in the form of streams (no need for files or file types!)
+
+::: tip 
+
+Want to see a connector for an application we don't support yet? [Let us know in the Speckle community forum!](https://speckle.community)
+
+:::
 
 ## Installation
 
-All our connectors (with a few exceptions) are distributed via [Speckle Manager](/user/manager).
-Head over to that section to see how to install them and how to add an account!
+All our connectors (with a few exceptions) are distributed via the [Speckle Manager](/user/manager). See our section on [installing connectors](/user/manager.html#installing-connectors) for more details.
 
 ## Units
 

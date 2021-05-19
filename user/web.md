@@ -84,12 +84,14 @@ Speckle's built-in **3D Viewer** lets you visualise and interrogate your geometr
 
 Use your left mouse button to rotate the view around and use the right mouse button to pan. Double clicking on an object will bring it into focus and double clicking on the background will bring the whole scene into view.
 
-![3d viewer tour](../.vuepress/public/assets/web-3d-viewer.gif)
+Try playing with our embedded 3D viewer below to get a feel for navigating a model and inspecting its elements in your browser.
+
+<iframe src="https://speckle.xyz/embed?stream=a632e7a784&branch=roof" width=600 height=400></iframe>
 
 The toolbar at the bottom edge of the viewer allows you to:
-1. Focus the whole scene
-2. Cut the view with a section plane
-3. Bring the viewer into full screen
+1. Select a canonical view (such as Top, Front, Left)
+2. Focus the whole scene
+3. Cut the view with a section plane
 4. Open a help menu if you need a reminder of the controls
 
 ## Profile
