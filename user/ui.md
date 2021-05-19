@@ -4,27 +4,65 @@ typora-copy-images-to: img-interop
 
 # User Interface
 
-Most of our connectors share the same UI (also called Desktop UI), this section goes to describe how to use it.
+Most of our Connectors look the same, despite working inside of different applications. Our shared user interface is currently used inside: 
 
-## A Quick Tour
+* McNeel Rhinoceros
+* Autodesk Revit
+* Autodesk Civil3D
+* Autodesk AutoCAD
+* Blender
 
-The home page of the Desktop UI is where you can see all the streams you have in your currently open file. The streams are represented as cards on the home page and can be either _Senders_ or _Receivers_. At the bottom right of the window is a big blue button which is how you add new streams to your current file.
+Other Connectors work slightly differently depending on which software they're used in (e.g. Grasshopper and Dynamo use a node-based environment). 
+
+Let's go on a quick graphical tour of the shared user interface to get you familiar with using Speckle.
+
+## Connector Home Page
+
+When launching a Connector in your host application (e.g. Rhino), you'll be presented with our **home page**, which contains a list of all the streams loaded into whichever file you're in. Each stream displays its name, alongside a host of buttons.
+
+### Sender or Receiver?
+
+When viewed in the Connector, a stream can be in either  _Sender_ or  _Receiver_ mode, which determines whether you're sending data to your Speckle server or receiving data from it. The easiest way to tell which mode it's in is to check whether the stream has a **Send** or a **Receive** button (you can toggle between these two states using the switch button.) 
 
 ![desktopui home page with labelled buttons](https://user-images.githubusercontent.com/7717434/107382404-badd7f80-6ae7-11eb-9941-2265b1cc5748.png)
 
-Senders and Receivers both have three buttons across the bottom. The leftmost one is the branch switching and creation button and the rightmost one is the Send/Receive button. On a Receiver, the centre button allows you to choose which commit you would like to receive. On a Sender, the centre button lets you add objects from your model to the stream.
+Your streams have several buttons along the bottom, which can vary depending on whether they are in _Sender_ or _Receiver_ mode. The leftmost button lets you create and switch between the stream's branches (if you have any). 
 
-![desktopui stream details page with labelled buttons](https://user-images.githubusercontent.com/7717434/107384024-7e128800-6ae9-11eb-8e2d-76dec6f54b03.png)
+The center button changes, depending on the stream's mode: 
+* On a stream in _Receiver_ mode, the center button allows you to choose which commit you would like to receive.
+* On a stream in _Sender_ mode, the center button lets you select which objects in your model should be sent to this stream.
 
-Clicking on a stream card will take you to the details page. Here you can edit the stream's name or description, manage collaborators, or remove it from the connector.
+The rightmost button is the Send/Receive button, for pushing/pulling data to (or from) this stream. This is where the Speckle magic happens!
+
+### Selecting a Stream
+
+The first step of using Speckle is getting your hands on a stream. The Connector lets you create streams from scratch and/or retrieve streams that already exist.
+
+Click the big blue '+' button to get started; it opens a pop up window where you can select a recently-used stream or search for an existing stream. Alternatively, you can start typing to create and name a new stream.
+
+## Stream Details Page
+
+Either way, once you've got a stream, you can click on its name to go to the stream details page. Here you can edit the stream's name or description, manage collaborators, or remove it from the connector.
+
+![desktopui-new-stream](https://user-images.githubusercontent.com/7717434/106741747-08ec1200-6614-11eb-9162-829670899da9.gif)
+
+::: tip
+
+Please note, removing a stream from the Connector will just disassociate it from the file you're in. In order to delete a stream, you'll need to access it via the [Speckle Web App](./web) (i.e. in your browser).
+
+:::
 
 ## Sending Data
 
-### Creating a Stream
+In order to send data to your stream, you'll need to tell Speckle which elements should be sent. Is it: 
 
-Let's look at how you would create a new stream and send some data. The big blue button on the bottom right is how you get started. Clicking it opens a popup where you can select a recently used stream, search for an existing stream, or create a brand new one. Once your stream has been created, you can click on it to get more details. You can also edit the name and description or add collaborators to your stream.
+* Just the items you've selected?
+* A specific layer(s) in Rhino?
+* A specific Revit workset?
 
-![desktopui-new-stream](https://user-images.githubusercontent.com/7717434/106741747-08ec1200-6614-11eb-9162-829670899da9.gif)
+The Connectors are built to help you select objects in ways that make the most sense for the application you're using.
+
+_Please Note: The examples we're showing below are a bit Revit-specific._
 
 ### Adding Objects
 
@@ -40,9 +78,11 @@ By clicking on any of the (2) buttons instead, the elements are added/removed ba
 
 
 
-### Sending to Speckle
+### Sending Data
 
-When you're ready to send your data to your stream, hit that big blue "Send" button. Pro tip: if you want to add a commit message, click the three dots menu next to the send button first.
+When you're ready to send your data to your stream, hit that big blue "Send" button!
+
+_Pro tip: If you want to add a commit message, click the three dots menu next to the send button first._
 
 ![desktopui-commit-message](https://user-images.githubusercontent.com/7717434/106741155-3c7a6c80-6613-11eb-8273-ef59e7261ceb.gif)
 
@@ -52,10 +92,10 @@ Here's a recap in the form of a snappy gif:
 
 ## Receiving Data
 
-Speckle allows you to send and receive from the same stream. To switch a Sender to a Receiver, just click the double arrow button on the top right hand corner of the stream card.
+For streams in Receiver mode, the central button lets you control which commit's data you want to receive. You can either choose to stay up to date with the latest commit or stick to a specific commit. Just press the Commit button and select your desired option.
 
-On a Receiver, you get a new button which lets you control which commit you want to receive. You can either choose to stay up to date with the latest commit or stick to a specific commit. Just press the Commit button and select your desired option. If you choose to stay on the "latest" commit, you won't be updated automatically. You'll see a notification that things have changed and you will be prompted to click the "Receive" button to sync up.
+If you choose to stay on the "latest" commit, you won't be updated automatically. You'll see a notification that things have changed and you will be prompted to click the "Receive" button to sync up.
 
 ![desktopui-switch-cards](https://user-images.githubusercontent.com/7717434/106739209-c5dc6f80-6610-11eb-8625-01b19240c612.gif)
 
-On a Receiver card, receiving is as easy as pressing the blue "Receive" button. If you've never received the data before, the connector will fetch all the objects from your Speckle server. If you have already received some of the objects before, the process will be quicker as the objects will be fetched from your local cache.
+Similar to sending, just hit the big blue "Receive" button to start pulling in data. If you've never received the data before, the connector will fetch all the objects from your Speckle server. If you have already received some of the objects before, the process will be quicker as the objects will be fetched from your local cache.
