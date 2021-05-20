@@ -1,74 +1,73 @@
 # Rhino
 
-Speckle currently supports McNeel Rhino 6 and 7.
+## Quick Start Video
+
+Prefer watching to reading? Who doesn't!
 
 <div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://www.youtube.com/embed/v56nxXBbtfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Getting Started
 
-To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
+To install this Connector and add your Speckle account, follow the instructions in the [Speckle Manager](/user/manager) section.
+Speckle currently supports both Rhino 6 and Rhino 7.
 
-Once installed you can find the connector by running the `Speckle` command in Rhino. This should open a new pop-up window with the [Desktop UI](/user/ui.md)
+Once installed, you can find the connector by running the `Speckle` command in Rhino. This should open a new pop-up window with the [Desktop UI](/user/ui.md) (the old version of Speckle used the `SpecklePanel` command for this).
 
 ![Speckle command](./img-rhino/rhino-speckle-command.png)
 
-> Do not confuse the `Speckle` command with the `SpecklePanel` command, which is for the previous version of Speckle.
 
 ## User Interface
 
-::: tip IMPORTANT 🙌
-
-This connector uses our shared Desktop UI. Read up on general guidelines for usage in the [Desktop UI section](/user/ui).
-
-:::
-
-## Basic usage
+> This connector uses our shared Desktop UI. Read up on general guidelines for usage in the [Desktop UI section](/user/ui).
 
 Once the Desktop UI panel is open, go ahead and create a new stream (or add an existing one) to the current file. Once the Rhino `.3dm` file is saved, the streams associated with that file will be saved too.
 
 ### Sending
 
-In order send your objects, we first need to specify the objects we would like to send.
-This can be done either by selection or by filtering data by layers.
+To send objects to Speckle, you'll first need to specify which objects are to be sent.
+This can be done in two ways:
+
+* The simpler way involves manually selecting elements in Rhino. 
+* The more powerful way is to use filtering logic to select elements.
+
+In the example below, we'll use the simpler method of manually selecting the elements to be sent. First, ensure the stream you want to send data to is in _Sender_ mode.
 
 ![Stream in send mode](./img-rhino/rhino-stream-send-mode.png)
 
-Select the objects you want to send in Rhino, and then click the button that says `0 objects` in the Speckle Panel. A drop-down will appear; from the options select `Set selection`.
+Next, select the objects you want to send, and left-click the button that says `0 objects` in the Speckle Panel. A drop-down will appear; choose `Set Selection`.
 
 ![Stream selection dropdown](./img-rhino/rhino-selection-dropdown.png)
 
-Once that is done, the button that was previously indicating `0 objects` should now display the total count of objects that were selected.
+The same button should now display the total count of objects that were selected.
 
 ![Stream selection set](./img-rhino/rhino-selection-set.png)
 
-Once that is done, press the `Send` button. You should see a progress bar and, once completed, a success message.
+You're ready to send! Press the `Send` button. You should see a progress bar and, once completed, a success message.
 
 ![Stream send operation](./img-rhino/rhino-stream-send.gif)
 
-> Notice that, when sending from Rhino, the layer structure will be replicated as `Base` object properties, which can then be recreated on the receiving end.
+For the detail-lovers out there, you'll notice that your Rhino layer structure is replicated as `Base` object properties, which can be recreated on the receiving end.
 
 ### Receiving
 
-In order to receive data from a Speckle stream, we will first need to add that desired stream into our Speckle DesktopUI panel. If the stream already exists on the server it will automatically be added in _receiver mode_.
+In order to receive data from a Speckle stream, you'll first need to add that stream to your Speckle streams panel. If the stream already exists on the server it will automatically be added in _Receiver_ mode.
 
 ![Stream in receiver mode](./img-rhino/rhino-stream-receive-mode.png)
 
-Once the stream has been added go ahead and hit the `Receive` button. This will display a progress bar (just like the sending operation) and, if successfull, will add the received objects to the current document.
+Once the stream has been added, go ahead and hit the `Receive` button. This will display a progress bar (just like the sending operation) and, if successfull, will add the received objects to the current document.
 
 ![Stream receive operation](./img-rhino/rhino-stream-receive.gif)
 
-In order to prevent overriding existing layers/objects in the file, all received objects will be placed in a nested layer structure.
-
-This structure will contain all the layers. that the sent objects were placed to, with a parent layer with a name in the format `<STREAM_NAME>: <BRANCH_NAME> @ <COMMIT>`.
+In order to prevent overriding existing layers/objects in the file, all received objects will be placed in a nested layer structure. This structure will contain all the layers. that the sent objects were placed to, with a parent layer with a name in the format `<STREAM_NAME>: <BRANCH_NAME> @ <COMMIT>`.
 
 ![Commit layers](./img-rhino/rhino-stream-receive-nested-layers.png)
 
-In the following screenshot, you can appreciate the difference between:
+In the screenshot above, you can see the difference between:
 
-1. the original layers of the sent objects,
-2. and the layers created by Speckle when receiving the data back;
+1. The original layers of the sent objects
+2. The layers created by Speckle when receiving the data back
 
-as well as the overlapping received objects(gray) with the original objects (blue and red).
+You may also notice the overlapping received objects(gray) with the original objects (blue and red).
 
 ![Received layers pattern](./img-rhino/rhino-stream-receive-layers.png)
 
@@ -77,7 +76,7 @@ as well as the overlapping received objects(gray) with the original objects (blu
 Almost all geometric elements are supported by the Rhino connector. This includes:
 
 | Geometry     | Send    | Receive | Status     |
-| ------------ | ------- | ------- | ---------- |
+| ------------ | :-----: | :-----: | :--------: |
 | Point        | x       | x       | `Complete` |
 | Line         | x       | x       | `Complete` |
 | Plane        | x       | x       | `Complete` |
@@ -93,26 +92,26 @@ Almost all geometric elements are supported by the Rhino connector. This include
 | Mesh         | x       | x       | `Complete` |
 
 | BuiltElement | Send | Receive  | Status     |
-| ------------ | ---- | -------- | ---------- |
+| ------------ | :--: | :------: | :--------: |
 | View         | x    | x        | `Complete` |
 | ModelCurve   |      | As Curve | `Complete` |
 | DirectShape  |      | As Mesh  | `Complete` |
 
 | Other           | Send | Receive | Status        |
-| --------------- | ---- | ------- | ------------- |
+| --------------- | :--: | :-----: | :-----------: |
 | RenderMaterial  | x    |         | `In Progress` |
 | BlockInstance   | x    | x       | `Complete`    |
 | BlockDefinition | x    | x       | `Complete`    |
 
-> We fully support sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit with some limitations imposed by the Revit API.
+> Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
 
 ### Unsupported elements
 
-Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported. Nested blocks are not supported at this time.
+Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc are not supported.
 
 ## Schema Builder
 
-Speckle 2.0 gives you the option of streaming objects as `base` geometry from Rhino to Revit, or directly into Revit families as BuiltElements through the Rhino schema builder commands.
+Speckle 2.0 gives you the option of streaming objects as `base` geometry from Rhino to Revit, or directly into native Revit elements  using the Rhino schema builder commands.
 
 ![example](./img-rhino/rhino-revit-example.gif)
 
@@ -131,11 +130,12 @@ Currently, direct conversions are available for the following types:
 
 ### Walkthrough
 
-Stream your Rhino objects directly into Revit as BuiltElements! Rhino to Revit interop uses a custom Speckle Attribute User Text (AUT) string to determine an object's schema before sending streams. AUTs are modified with two commands:
+Stream your Rhino objects directly into Revit as BuiltElements! Rhino to Revit interop uses a custom Speckle `Attribute User Text (AUT)` string to determine an object's schema before sending streams. AUTs are modified with two commands:
 
 - `ApplySpeckleSchema` gives you options for adding AUTs to model objects
 - `RemoveSpeckleSchema` removes schema AUTs from model objects
-  Some schemas have additional parameters that can be manually modified for custom control over parameters like Revit Family or Revit Type.
+
+Some schemas have additional parameters that can be manually modified for custom control over parameters like Revit Family or Revit Type.
 
 ### Assigning schemas
 
