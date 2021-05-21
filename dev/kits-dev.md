@@ -1,4 +1,4 @@
-# Writing your own kit
+# Writing Your Own Kit
 
 Writing your own Kit is a quite simple task, as long as you are not intimidated by the various AEC software APIs 😁.
 As mentioned in [this page](/dev/kits), kits are made of:
