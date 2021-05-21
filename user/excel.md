@@ -21,9 +21,9 @@ Our Excel Connector is currently in early alpha, please use at your own risk!
 
 ### Installing
 
-This connector is not distributed via Manager, it **will instead be available soon via the Microsoft Store.**
+This connector is not distributed via Manager, **it** **will instead be available soon via the Microsoft Store.**
 
-Until then, please see the connector readme on how to run it locally: https://github.com/specklesystems/speckle-excel
+Until then, please see the connector readme on how to run it locally: [https://github.com/specklesystems/speckle-excel](https://github.com/specklesystems/speckle-excel)
 
 After installing the connector, it should show up within Excel:
 
@@ -37,7 +37,7 @@ You need to log in to use this connector as it is not able to fetch accounts tha
 
 :::tip IMPORTANT 🙌
 
-Currently only accounts on our XYZ server are supported. To use a different server please run the connector locally or deploy it with your server details.
+Currently **only accounts on our XYZ server are supported.** To use a different server please run the connector locally or deploy it with your server details.
 
 :::
 
@@ -61,7 +61,7 @@ Data can be received as **objects** or **lists**. Objects will have a `{}` icon 
 
 Click on the download button to their right to pull and write them **in the selected cell**.
 
-![image-20210521205817594](img-excel/image-20210521205817594.png)
+![image-20210521205817594](https://user-images.githubusercontent.com/2679513/119197116-2b991e00-ba7f-11eb-8e70-6d7e962361d5.png)
 
 
 
@@ -87,7 +87,7 @@ We recommend receiving only objects that have a simple structure and few propert
 
 ![image](https://user-images.githubusercontent.com/2679513/119189886-88dba200-ba74-11eb-8066-cd98972a88dd.png)
 
-Nested objects are flattened and their properties delimited by a period `.`. See the example below where 10 lines have been stream from Dynamo to Excel:
+Nested objects are flattened and their properties delimited by a period `.`. See the example below where 10 lines have been streamed from Dynamo to Excel:
 
 ![image](https://user-images.githubusercontent.com/2679513/119195280-4e760300-ba7c-11eb-8601-3ed72a6b0813.png)
 
