@@ -90,7 +90,8 @@ module.exports = {
             "dynamo",
             "unity",
             "unreal",
-            "blender"
+            "blender",
+            "excel"
           ]
         },
         {
