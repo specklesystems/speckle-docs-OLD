@@ -11,6 +11,8 @@ Speckle currently supports the following versions of Excel:
 - Excel 2013 or later on Windows
 - Excel on the web
 
+For any feedback and support requests please visit our [community forum](https://speckle.community/)!
+
 :::tip IMPORTANT 🙌
 
 Our Excel Connector is currently in early alpha, please use at your own risk!
