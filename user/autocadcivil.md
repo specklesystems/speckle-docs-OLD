@@ -6,8 +6,9 @@ Speckle currently supports Autodesk AutoCAD 2021 and Civil 3D 2021.
 
 ## Getting Started
 
-To install this connector and add your Speckle account, follow the instructions in [Speckle Manager](/user/manager).
-Once installed, you can find this connector in the `Add-ins` tab under `Speckle 2`. Click the plugin button to call the Speckle Desktop UI for sending and receiving streams.
+To begin, you'll need to install this Connector and add your Speckle account. Follow our instructions in [Speckle Manager](/user/manager) if you haven't already.
+
+Once installed, you can find this connector in the `Add-Ins` tab under `Speckle 2`. Clicking this button will open the Speckle connector interface, which shows a list of all the streams you currently have in the model.
 
 ![](/user/img-acad/setup-plugin.gif)
 
@@ -19,11 +20,11 @@ This connector uses our shared Desktop UI. Read up on general guidelines for usa
 
 :::
 
-### Sending data
+### Sending Data
 
-The AutoCAD Civil3D connector supports selection filtering by layer.
+The AutoCAD Civil3D Connector supports selection filtering by layer.
 
-### Receiving data
+### Receiving Data
 
 Geometry from streams will be added to AutoCAD / Civil3D layers starting with a prefix with the following format:
 
@@ -35,49 +36,49 @@ Any layer information from the incoming stream will be appended to the prefix wi
 
 ![](/user/img-acad/receiving-layers.png)
 
-## Supported elements
+## Supported Elements
 
-**AUTOCAD**
+**AutoCAD**
 | Geometry       | Send | Receive | Status        |
-| -------------- | ---- | ------- | ------------- |
-| Point          | x    | x       | `Complete`    |
-| Line           | x    | x       | `Complete`    |
-| Arc            | x    | x       | `Complete`    |
-| Circle         | x    | x       | `Complete`    |
-| Ellipse        | x    | x       | `Complete`    |
-| Polyline       | x    | x       | `Complete`    |
-| Polycurve      | x    | x       | `Complete`    |
-| Spline         | x    | x       | `Complete`    |
-| Plane Surface  | x    |         | `In Progress` |
-| Nurb Surface   | x    |         | `In Progress` |
-| PolyFace Mesh  | x    |         | `In Progress` |
-| SubD Mesh      | x    |         | `In Progress` |
+| -------------- | :--: | :-----: | :-----------: |
+| Point          | ✅    | ✅       | `Complete`    |
+| Line           | ✅    | ✅       | `Complete`    |
+| Arc            | ✅    | ✅       | `Complete`    |
+| Circle         | ✅    | ✅       | `Complete`    |
+| Ellipse        | ✅    | ✅       | `Complete`    |
+| Polyline       | ✅    | ✅       | `Complete`    |
+| Polycurve      | ✅    | ✅       | `Complete`    |
+| Spline         | ✅    | ✅       | `Complete`    |
+| Plane Surface  | ✅    |         | `In Progress` |
+| Nurb Surface   | ✅    |         | `In Progress` |
+| PolyFace Mesh  | ✅    |         | `In Progress` |
+| SubD Mesh      | ✅    |         | `In Progress` |
 
 | Other          | Send | Receive | Status        |
-| -------------- | ---- | ------- | ------------- |
-| BlockInstance  | x    | x       | `Complete`    |
-| BlockDefinition| x    | x       | `Complete`    |
+| -------------- | :--: | :-----: | :-----------: |
+| BlockInstance  | ✅    | ✅       | `Complete`    |
+| BlockDefinition| ✅    | ✅       | `Complete`    |
 
-**CIVIL3D**
+**Civil 3D**
 | Geometry      | Send | Receive | Status         |
-| ------------- | ---- | ------- | -------------- |
-| Featureline   | x    |         | `In Progress`  |
+| ------------- | :--: | :-----: | :------------: |
+| Featureline   | ✅    |         | `In Progress`  |
 | Alignment     |      |         | `In Progress`  |
 | Profile       |      |         | `In Progress`  |
 | Tin Surface   |      |         | `In Progress`  |
 | Grid Surface  |      |         | `In Progress`  |
 | Pipe          |      |         | `In Progress`  |
 
-### Unsupported elements
+### Unsupported Elements
 
-**AUTOCAD**
+**AutoCAD**
 
 Breps, hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic and nested blocks are not supported at this time.
 
-**CIVIL3D**
+**Civil 3D**
 
 Subassemblies and Assemblies are not supported.
 
 ### Things to keep in mind
 
-The AutoCAD Civil3D connector is very early stages, expect some 🐛s during use! Comments, feedback, and suggestions welcome in our [community Discourse](https://speckle.community/t/new-speckle-2-0-autocad-civil3d-suggestions/1155)!
+The AutoCAD Civil3D connector is very early stages, expect some bugs during use! Your comments, feedback, and suggestions are welcome in the [Speckle Community Forum](https://speckle.community/t/new-speckle-2-0-autocad-civil3d-suggestions/1155)!

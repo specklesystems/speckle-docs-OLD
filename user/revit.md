@@ -64,32 +64,32 @@ If you'd like us to add something specific, let us know on the [Speckle Communit
 ### Supported Categories
 
 | BuiltElement                                          | Send | Receive | Status        |
-| ----------------------------------------------------- | ---- | ------- | ------------- |
-| Adaptive Component                                    | x    | x       | `Complete`    |
-| Beam                                                  | x    | x       | `Complete`    |
-| Brace                                                 | x    | x       | `Complete`    |
-| Building Pad                                          | x    |         | `In Progress` |
-| Ceiling                                               | x    |         | `In Progress` |
-| Curves (Model, Detail, Room Boundary)                 | x    | x       | `Complete`    |
-| Direct Shape                                          | x    | x       | `Complete`    |
-| Duct                                                  | x    | x       | `Complete`    |
-| Face Wall                                             |      | x       | `In Progress` |
-| Family Instance                                       | x    | x       | `Complete`    |
-| Floor                                                 | x    | x       | `Complete`    |
-| Freeform Element                                      |      | x       | `In Progress` |
-| Group                                                 | x    |         | `In Progress` |
-| Level                                                 | x    | x       | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | x    | x       | `Complete`    |
-| Pipe                                                  | x    | x       | `Complete`    |
-| Project Information                                   | x    |         | `In Progress` |
-| Railing                                               | x    | x       | `Complete`    |
-| Roof (Extrusion, Footprint)                           | x    | x       | `Complete`    |
-| Room                                                  | x    |         | `Complete`    |
-| Stair                                                 | x    |         | `Complete`    |
-| Topography                                            | x    | x       | `Complete`    |
-| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | x    |         | `In Progress` |
-| Wall                                                  | x    | x       | `Complete`    |
-| Wire                                                  | x    | x       | `Complete`    |
+| ----------------------------------------------------- | :--: | :-----: | :-----------: |
+| Adaptive Component                                    | ✅    | ✅       | `Complete`    |
+| Beam                                                  | ✅    | ✅       | `Complete`    |
+| Brace                                                 | ✅    | ✅       | `Complete`    |
+| Building Pad                                          | ✅    |         | `In Progress` |
+| Ceiling                                               | ✅    |         | `In Progress` |
+| Curves (Model, Detail, Room Boundary)                 | ✅    | ✅       | `Complete`    |
+| Direct Shape                                          | ✅    | ✅       | `Complete`    |
+| Duct                                                  | ✅    | ✅       | `Complete`    |
+| Face Wall                                             |      | ✅       | `In Progress` |
+| Family Instance                                       | ✅    | ✅       | `Complete`    |
+| Floor                                                 | ✅    | ✅       | `Complete`    |
+| Freeform Element                                      |      | ✅       | `In Progress` |
+| Group                                                 | ✅    |         | `In Progress` |
+| Level                                                 | ✅    | ✅       | `Complete`    |
+| Opening (Wall, Vertical, Shaft)                       | ✅    | ✅       | `Complete`    |
+| Pipe                                                  | ✅    | ✅       | `Complete`    |
+| Project Information                                   | ✅    |         | `In Progress` |
+| Railing                                               | ✅    | ✅       | `Complete`    |
+| Roof (Extrusion, Footprint)                           | ✅    | ✅       | `Complete`    |
+| Room                                                  | ✅    |         | `Complete`    |
+| Stair                                                 | ✅    |         | `Complete`    |
+| Topography                                            | ✅    | ✅       | `Complete`    |
+| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | ✅    |         | `In Progress` |
+| Wall                                                  | ✅    | ✅       | `Complete`    |
+| Wire                                                  | ✅    | ✅       | `Complete`    |
 
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |

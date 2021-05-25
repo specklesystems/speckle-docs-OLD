@@ -45,14 +45,14 @@ The Blender Connector is still a work in progress and as such, the conversions t
 - Curves have limited support
 
 | Type                                     | Send | Receive      | Status        |
-| ---------------------------------------- | ---- | ------------ | ------------- |
+| ---------------------------------------- | :--: | :----------: | :-----------: |
 | Arc                                      |      | approximated | `In Progress` |
 | Brep                                     |      | as mesh      | `In Progress` |
-| Curve (Nurbs, Bezier, Ngons as Polyline) | x    | x            | `In Progress` |
-| Mesh                                     | x    | x            | `In Progress` |
-| Polycurve                                |      | x            | `In Progress` |
-| Polyline                                 | x    | x            | `In Progress` |
-| Render Material                          | x    | x            | `In Progress` |
+| Curve (Nurbs, Bezier, Ngons as Polyline) | ✅    | ✅            | `In Progress` |
+| Mesh                                     | ✅    | ✅            | `In Progress` |
+| Polycurve                                |      | ✅            | `In Progress` |
+| Polyline                                 | ✅    | ✅            | `In Progress` |
+| Render Material                          | ✅    | ✅            | `In Progress` |
 
 
 ## Developing Locally

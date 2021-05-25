@@ -77,31 +77,31 @@ Almost all geometric elements are supported by the Rhino connector. This include
 
 | Geometry     | Send    | Receive | Status     |
 | ------------ | :-----: | :-----: | :--------: |
-| Point        | x       | x       | `Complete` |
-| Line         | x       | x       | `Complete` |
-| Plane        | x       | x       | `Complete` |
-| Arc          | x       | x       | `Complete` |
-| Circle       | x       | x       | `Complete` |
-| Ellipse      | x       | x       | `Complete` |
-| Polyline     | x       | x       | `Complete` |
-| Polycurve    | x       | x       | `Complete` |
-| Spline       | x       | x       | `Complete` |
-| Nurb Surface | As Brep | x       | `Complete` |
-| Brep         | x       | x       | `Complete` |
-| Extrusion    | x       | As Brep | `Complete` |
-| Mesh         | x       | x       | `Complete` |
+| Point        | ✅       | ✅       | `Complete` |
+| Line         | ✅       | ✅       | `Complete` |
+| Plane        | ✅       | ✅       | `Complete` |
+| Arc          | ✅       | ✅       | `Complete` |
+| Circle       | ✅       | ✅       | `Complete` |
+| Ellipse      | ✅       | ✅       | `Complete` |
+| Polyline     | ✅       | ✅       | `Complete` |
+| Polycurve    | ✅       | ✅       | `Complete` |
+| Spline       | ✅       | ✅       | `Complete` |
+| Nurb Surface | As Brep | ✅       | `Complete` |
+| Brep         | ✅       | ✅       | `Complete` |
+| Extrusion    | ✅       | As Brep | `Complete` |
+| Mesh         | ✅       | ✅       | `Complete` |
 
 | BuiltElement | Send | Receive  | Status     |
 | ------------ | :--: | :------: | :--------: |
-| View         | x    | x        | `Complete` |
+| View         | ✅    | ✅        | `Complete` |
 | ModelCurve   |      | As Curve | `Complete` |
 | DirectShape  |      | As Mesh  | `Complete` |
 
 | Other           | Send | Receive | Status        |
 | --------------- | :--: | :-----: | :-----------: |
-| RenderMaterial  | x    |         | `In Progress` |
-| BlockInstance   | x    | x       | `Complete`    |
-| BlockDefinition | x    | x       | `Complete`    |
+| RenderMaterial  | ✅    |         | `In Progress` |
+| BlockInstance   | ✅    | ✅       | `Complete`    |
+| BlockDefinition | ✅    | ✅       | `Complete`    |
 
 > Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
 
@@ -120,13 +120,13 @@ Speckle 2.0 gives you the option of streaming objects as `base` geometry from Rh
 Currently, direct conversions are available for the following types:
 
 | Base Geometry            | BuiltElement schemas            | Revit type |
-| ------------------------ | ------------------------------- | ---------- |
+| ------------------------ | ------------------------------- | :--------: |
 | Planar surface           | `Wall` `Floor` `Ceiling` `Roof` |            |
 | Planar polysurface       | `Wall`                          |            |
-| Planar and nurbs surface | `FaceWall`                      | x          |
+| Planar and nurbs surface | `FaceWall`                      | ✅          |
 | Line                     | `Column` `Beam`                 |            |
-| Brep / extrusion         | `DirectShape`                   | x          |
-| Mesh                     | `DirectShape`                   | x          |
+| Brep / extrusion         | `DirectShape`                   | ✅          |
+| Mesh                     | `DirectShape`                   | ✅          |
 
 ### Walkthrough
 

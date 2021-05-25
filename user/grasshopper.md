@@ -4,23 +4,21 @@ typora-copy-images-to: ./img-gh
 
 # Grasshopper
 
-Speckle currently supports Grasshopper for McNeel Rhino 6 and 7.
-
 ## Getting Started
 
-To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
+Speckle currently supports Grasshopper for McNeel Rhino 6 and 7.
+To install this Connector and connect your Speckle account, make sure to follow the instructions in [Speckle Manager](/user/manager).
 
 ![GH Connector components](./img-gh/speckle-gh-main-tab.png)
 
 Once installed, the **Grasshopper Connector** will appear under the `Speckle 2` tab, or if you use _tab icons_ you'll see our new Speckle logo instead.
 
-The connector is divided into 2 main categories, on the Speckle 2 category you will find:
-
-- The Send/Receive nodes
+The following component categories are intended for all users:
+- Send/Receive nodes
 - Account category, holding all account related nodes.
 - Stream category, holding all stream related nodes.
 
-You'll also find the `Speckle 2Dev`. These categories hold nodes designed for advanced users and developers:
+We've also built a few components designed for advanced users and developers:
 
 - Dev/Conversion: Conversion + serialization nodes.
 - Dev/Transports: Not sure what transports are? Check [this](/dev/transports.md) out!
@@ -35,7 +33,9 @@ Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different form
 - `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6` points to a specific commit `604bea8cc6` on Stream `3073b96e86`
 
 ::: tip
-Unsure about what _commits_ and _branches_ are? No worries, you don't need to know what they are to use Speckle! But if you're curios, you can read about them in [concepts](/user/concepts).
+Unsure what _commits_ and _branches_ are? 🤔
+
+No worries, you don't need to know what they are to use Speckle! But if you're curious, you can read about them in [concepts](/user/concepts).
 :::
 
 We'll see how branch and commit URLs are used in the following sections.
@@ -46,18 +46,20 @@ Let's look at how we would send some data in grasshopper. First, start by creati
 
 ![image-20210322180706379](./img-gh/image-20210322180706379.png)
 
-In order to select which stream to send data to, you just need to pass a stream URL to the stream port.
+To select the stream you want send data to,just pass in its URL to the stream port.
 
 ![image-20210322181425413](./img-gh/image-20210322181425413.png)
 
 Alternatively, you can also use one of the following nodes to create / retrieve existing streams:
 
-- [create stream](user/grasshopper.md#create-stream)
-- [get stream](user/grasshopper.md#get-stream)
-- [list streams](user/grasshopper.md#list-streams)
+- [Create Stream](user/grasshopper.md#create-stream)
+- [Get Stream](user/grasshopper.md#get-stream)
+- [List Streams](user/grasshopper.md#list-streams)
 
 :::tip NOTE
-You cannot send data to a specific commit. Commits represent your stream in a specific point in time and cannot be edited.
+While you can send data to streams and branches, you cannot send data to a specific commit. This is because commits represent your stream in a specific point in time. Therefore, everything that gets sent to Speckle is already a commit.
+
+Want to edit an old commit? Just re-send the data and use the new commit instead.
 :::
 
 #### Adding objects
@@ -170,57 +172,59 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 :::
 
-## Supported elements
+::: details Supported elements
 
 Grasshopper supports the same geometry as the Rhino connector:
 
 | Geometry       | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| Point          | x       | x       | `Complete`    |
-| Line           | x       | x       | `Complete`    |
-| Plane          | x       | x       | `Complete`    |
-| Arc            | x       | x       | `Complete`    |
-| Circle         | x       | x       | `Complete`    |
-| Ellipse        | x       | x       | `Complete`    |
-| Polyline       | x       | x       | `Complete`    |
-| Polycurve      | x       | x       | `Complete`    |
-| Spline         | x       | x       | `Complete`    |
-| Nurb Surface   | As Brep | x       | `Complete`    |
-| Brep           | x       | x       | `Complete`    |
-| Extrusion      | x       | As Brep | `Complete`    |
-| Mesh           | x       | x       | `Complete`    |
+| -------------- | :-----: | :-----: | :-----------: |
+| Point          | ✅       | ✅       | `Complete`    |
+| Line           | ✅       | ✅       | `Complete`    |
+| Plane          | ✅       | ✅       | `Complete`    |
+| Arc            | ✅       | ✅       | `Complete`    |
+| Circle         | ✅       | ✅       | `Complete`    |
+| Ellipse        | ✅       | ✅       | `Complete`    |
+| Polyline       | ✅       | ✅       | `Complete`    |
+| Polycurve      | ✅       | ✅       | `Complete`    |
+| Spline         | ✅       | ✅       | `Complete`    |
+| Nurb Surface   | As Brep | ✅       | `Complete`    |
+| Brep           | ✅       | ✅       | `Complete`    |
+| Extrusion      | ✅       | As Brep | `Complete`    |
+| Mesh           | ✅       | ✅       | `Complete`    |
 
 | Other          | Send    | Receive | Status        |
-| -------------- | ------- | ------- | ------------- |
-| RenderMaterial | x       |         | `In Progress` |
+| -------------- | :-----: | :-----: | :-----------: |
+| RenderMaterial | ✅       |         | `In Progress` |
 
 The **Schema Builder** node also provides additional support for the following built elements:
 
 | BuiltElement                                          | Send    | Receive | Status        |
-| ----------------------------------------------------- | ------- | ------- | ------------- |
-| Adaptive Component                                    | x       |         | `Complete`    |
-| Beam                                                  | x       |         | `Complete`    |
-| Brace                                                 | x       |         | `Complete`    |
-| Ceiling                                               | x       |         | `Complete`    |
-| Column                                                | x       |         | `Complete`    |
-| Curves (Model, Detail, Room Boundary)                 | x       |         | `Complete`    |
-| Direct Shape                                          | x       |         | `Complete`    |
-| Freeform Element                                      | x       |         | `Complete`    |
-| Duct                                                  | x       |         | `Complete`    |
-| Face Wall                                             | x       |         | `Complete`    |
-| Family Instance                                       | x       |         | `Complete`    |
-| Floor                                                 | x       |         | `Complete`    |
-| GridLine                                              | x       |         | `Complete`    |
-| Level                                                 | x       |         | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | x       |         | `Complete`    |
-| Parameter                                             | x       |         | `Complete`    |
-| Railing                                               | x       |         | `Complete`    |
-| Roof (Extrusion, Footprint)                           | x       |         | `Complete`    |
-| Topography                                            | x       |         | `Complete`    |
-| View                                                  |         |         | `In Progress` |
-| Wall                                                  | x       |         | `Complete`    |
+| ----------------------------------------------------- | :-----: | :-----: | :-----------: |
+| Adaptive Component                                    | ✅       |         | `Complete`    |
+| Beam                                                  | ✅       |         | `Complete`    |
+| Brace                                                 | ✅       |         | `Complete`    |
+| Ceiling                                               | ✅       |         | `Complete`    |
+| Column                                                | ✅       |         | `Complete`    |
+| Curves (Model, Detail, Room Boundary)                 | ✅       |         | `Complete`    |
+| Direct Shape                                          | ✅       |         | `Complete`    |
+| Freeform Element                                      | ✅       |         | `Complete`    |
+| Duct                                                  | ✅       |         | `Complete`    |
+| Face Wall                                             | ✅       |         | `Complete`    |
+| Family Instance                                       | ✅       |         | `Complete`    |
+| Floor                                                 | ✅       |         | `Complete`    |
+| GridLine                                              | ✅       |         | `Complete`    |
+| Level                                                 | ✅       |         | `Complete`    |
+| Opening (Wall, Vertical, Shaft)                       | ✅       |         | `Complete`    |
+| Parameter                                             | ✅       |         | `Complete`    |
+| Railing                                               | ✅       |         | `Complete`    |
+| Roof (Extrusion, Footprint)                           | ✅       |         | `Complete`    |
+| Topography                                            | ✅       |         | `Complete`    |
+| View                                                  |          |         | `In Progress` |
+| Wall                                                  | ✅       |         | `Complete`    |
 
 Refer to the section below for additional information on the **Schema Builder** node.
+
+:::
 
 ### Unsupported elements
 
