@@ -10,7 +10,7 @@ To begin, you'll need to install this Connector and add your Speckle account. Fo
 
 Once installed, you can find this connector in the `Add-Ins` tab under `Speckle 2`. Clicking this button will open the Speckle connector interface, which shows a list of all the streams you currently have in the model.
 
-![](/user/img-acad/setup-plugin.gif)
+![](./img-acad/setup-plugin.gif)
 
 ## User Interface
 
@@ -34,7 +34,7 @@ stream[ branch @ commit id ]
 
 Any layer information from the incoming stream will be appended to the prefix with the standard AutoCAD delimiter `$`. When recieving from applications (like Rhino) with nested layers, the incoming full layer path will replace any default delimiters with `$`.
 
-![](/user/img-acad/receiving-layers.png)
+![](./img-acad/receiving-layers.png)
 
 ## Supported Elements
 
@@ -53,6 +53,7 @@ Any layer information from the incoming stream will be appended to the prefix wi
 | Nurb Surface   | ✅    |         | `In Progress` |
 | PolyFace Mesh  | ✅    |         | `In Progress` |
 | SubD Mesh      | ✅    |         | `In Progress` |
+| 3D Solid       | as Mesh    |         | `In Progress` |
 
 | Other          | Send | Receive | Status        |
 | -------------- | :--: | :-----: | :-----------: |
@@ -61,19 +62,20 @@ Any layer information from the incoming stream will be appended to the prefix wi
 
 **Civil 3D**
 | Geometry      | Send | Receive | Status         |
-| ------------- | :--: | :-----: | :------------: |
+| ------------- | ---- | ------- | -------------- |
 | Featureline   | ✅    |         | `In Progress`  |
-| Alignment     |      |         | `In Progress`  |
+| Alignment     | ✅    |         | `In Progress`  |
 | Profile       |      |         | `In Progress`  |
-| Tin Surface   |      |         | `In Progress`  |
-| Grid Surface  |      |         | `In Progress`  |
-| Pipe          |      |         | `In Progress`  |
+| Tin Surface   | as Mesh    |         | `In Progress`  |
+| Grid Surface  | as Mesh    |         | `In Progress`  |
+| Pipe          | as Mesh    |         | `In Progress`  |
+| Structure     | as Mesh    |         | `In Progress`  |
 
 ### Unsupported Elements
 
 **AutoCAD**
 
-Breps, hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic and nested blocks are not supported at this time.
+Hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic blocks are not supported at this time.
 
 **Civil 3D**
 

@@ -94,6 +94,7 @@ If you'd like us to add something specific, let us know on the [Speckle Communit
 | Other          | Send | Receive | Status        |
 | -------------- | ---- | ------- | ------------- |
 | RenderMaterial |      |         | `In Progress` |
+| BlockInstance  |      | As Generic Model | `Complete` |
 
 
 ### Supported Geometries

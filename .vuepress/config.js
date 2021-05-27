@@ -90,7 +90,8 @@ module.exports = {
             "dynamo",
             "unity",
             "unreal",
-            "blender"
+            "blender",
+            "excel"
           ]
         },
         {
@@ -117,6 +118,11 @@ module.exports = {
           title: "Core Concepts",
           collapsable: false,
           children: ["base", "decomposition", "kits", "transports", "apps-auth"]
+        },
+        {
+          title: "Advanced Concepts",
+          collapsable: false,
+          children: []
         },
         {
           title: ".NET SDK",

@@ -1,4 +1,4 @@
-# Writing your own connector
+# Writing Your Own connector
 
 ![img](./img/connectors-dev/connectors.png)
 
@@ -323,13 +323,13 @@ For any questions feel free to write on the [community forum](https://speckle.co
 
 ### New Objects
 
-If the host app you're targeting uses object types not currently defined in the Objects Kit and you'd like to write conversions for them, we are happy to extend it! 
+If the host app you're targeting uses object types not currently defined in the Objects Kit and you'd like to write conversions for them, we are happy to extend it!
 
 Please get in touch on the forum before making a PR, then have a look at [how to write new objects](/dev/objects.html#writing-objects).
 
 ## Loading the Converter
 
-At some point in your `ConnectorBindings` you'll need to implement the `SendStream` and  `ReceiveStream` methods. It's within these that we will be invoking methods of the converter and then either send or receive data to/from Speckle.
+At some point in your `ConnectorBindings` you'll need to implement the `SendStream` and `ReceiveStream` methods. It's within these that we will be invoking methods of the converter and then either send or receive data to/from Speckle.
 
 ::: tip IMPORTANT
 
@@ -342,7 +342,7 @@ To invoke the `ConvertToNative` and `ConvertToSpeckle` methods (and other method
 ```csharp
 var kit = KitManager.GetDefaultKit();
 var converter = kit.LoadConverter(APP_NAME);
-// then stuff like converter.ConvertToNative(obj); 
+// then stuff like converter.ConvertToNative(obj);
 ```
 
 The converter, as you might have seen above should have implemented other handy methods such as `CanConvertToSpeckle`
@@ -350,8 +350,6 @@ The converter, as you might have seen above should have implemented other handy 
 ## Publishing the Connector
 
 We currently don't have mechanisms to publish third party connectors via Manager, but if you'd like to do so please write on the [community forum](https://speckle.community/) and we'll work out a solution! You are of course free to develop your own installer / deployment mechanism.
-
-
 
 ## Conclusion
 

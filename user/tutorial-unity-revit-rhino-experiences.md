@@ -16,8 +16,8 @@ In this tutorial we will create an interactive Unity app that renders Revit data
 
 The Unity Connector is evolving fast, to follow this tutorial it is recommended that you pull the version at the start commit as future versions might be different.
 
-- [start commit]() - use this if you want to follow along.
-- [end commit]() - the finished version, if you just want to skip to it!
+- [start commit](https://github.com/specklesystems/speckle-unity/commit/3526e8eba769caa8c62f1a9e497952f4839f29fe) - use this if you want to follow along.
+- [end commit](https://github.com/specklesystems/speckle-unity/commit/4241e4a619d078be0c8da7265c5999b646565f6f) - the finished version, if you just want to skip to it!
 
 ## Preparing the models
 

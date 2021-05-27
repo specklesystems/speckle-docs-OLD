@@ -10,12 +10,13 @@ Our Desktop Connectors are plugins for some of the most popular AEC software, in
 - [Autodesk Civil3D](/user/autocadcivil)
 - [Unity](/user/unity)
 - [Blender](/user/blender)
+- [Excel](/user/excel)
 
 ...with more on the way soon!
 
 These Connectors take care of sending and receiving data to your Speckle server, in the form of streams (no need for files or file types!)
 
-::: tip 
+::: tip
 
 Want to see a connector for an application we don't support yet? [Let us know in the Speckle community forum!](https://speckle.community)
 
