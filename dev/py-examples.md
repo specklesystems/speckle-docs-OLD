@@ -35,7 +35,7 @@ Next, we'll need some data to send. To make it more interesting, let's extend `B
 
 ```py
 from specklepy.objects import Base
-from specklepy.objects.point import Point
+from specklepy.objects.geometry import Point
 
 class Block(Base):
     length: float = 1.0
@@ -52,6 +52,9 @@ class Block(Base):
 Now let's send a block to the server! To do this, you'll first need to send the object to the stream and get back the object id or hash. You can then use this to create a commit on the stream that references this object.
 
 ```py
+from specklepy.transports.server import ServerTransport
+from specklepy.api import operations
+
 # here's the data you want to send
 block = Block(length=2, height=4)
 
