@@ -55,12 +55,12 @@ We've only started supporting Unity elements, please let us know what else you'd
 
 | Type                 | Speckle > Unity | Unity > Speckle |
 | -------------------- | :-------------: | :-------------: |
-| Point                | ✅               | ✅               |
-| Line                 | ✅               |                 |
-| Polyline             | ✅               |                 |
-| Curve                | ✅               |                 |
-| Mesh                 | ✅               | ✅               |
-| BuiltElements 3DView | ✅               |                 |
+| Point                |       ✅        |       ✅        |
+| Line                 |       ✅        |                 |
+| Polyline             |       ✅        |                 |
+| Curve                |       ✅        |                 |
+| Mesh                 |       ✅        |       ✅        |
+| BuiltElements 3DView |       ✅        |                 |
 
 ### Metadata
 
@@ -72,3 +72,11 @@ When receiving, a `SpeckleProperties` component is attached to each object, insi
 We have included basic material support in Speckle and in some of our connectors.
 
 When receiving, the Unity connectors first checks if a shader exists in the scene that matches the incoming object's material by name. If none is found it tries to creates a basic material with the same color and transparency. If no material is set on an incoming objet a default material is applied.
+
+## Building
+
+In order to build the Speckle Playground project and potentially any project using the Unity Connector, please make sure of the following
+
+- set the project architecture to `x86_64`
+- if you get errors on missing shaders include them in your build. To do so, just copy them to a Resource folder OR add them in `Project Settings → Graphics → Built-in Shader Settings → Always Included shaders`
+  ![shader](https://speckle.community/uploads/default/optimized/2X/3/38063ce2324d9f5ef00ec30f87d033b750745c20_2_690x247.png)
