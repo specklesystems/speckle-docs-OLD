@@ -6,7 +6,7 @@ Pressed for time? Here's a lightning fast intro to getting started!
 
 Before you can use Speckle, you'll need an account!
 * If your company runs its own Speckle server, you can register using the URL they can provide you.
-* Otherwise, you can request access to the [Speckle 2.0 beta](https://speckle.systems/getstarted/), where you can register with our free official server.
+* Otherwise, you can register with our [free official server](https://speckle.systems/getstarted/))
 
 ## Onboarding
 As you register, our onboarding process will take you through:

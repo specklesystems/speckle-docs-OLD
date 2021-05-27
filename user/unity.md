@@ -54,13 +54,13 @@ The `Send()` method accepts additional optional arguments to use different accou
 We've only started supporting Unity elements, please let us know what else you'd like to see, and do contribute if you have the skillz!
 
 | Type                 | Speckle > Unity | Unity > Speckle |
-| -------------------- | --------------- | --------------- |
-| Point                | x               | x               |
-| Line                 | x               |                 |
-| Polyline             | x               |                 |
-| Curve                | x               |                 |
-| Mesh                 | x               | x               |
-| BuiltElements 3DView | x               |                 |
+| -------------------- | :-------------: | :-------------: |
+| Point                | ✅               | ✅               |
+| Line                 | ✅               |                 |
+| Polyline             | ✅               |                 |
+| Curve                | ✅               |                 |
+| Mesh                 | ✅               | ✅               |
+| BuiltElements 3DView | ✅               |                 |
 
 ### Metadata
 

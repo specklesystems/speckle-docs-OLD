@@ -1,10 +1,10 @@
 # Core Concepts
 
-This section goes into the details on how your data is sent to and stored in Speckle. If you're new to Speckle or need a refresher on the concepts we've introduced in v2, this is a great place to start!
+This section goes into the details on how your data is sent to and stored in Speckle. Whether you're new to Speckle or just need a refresher, this is a great place to start!
 
-::: tip
-Whenever we mention the word **data**, or **objects** or **elements** etc, we're always referring to the same thing. This could be CAD geometry, BIM elements (geometry+data) or pure data (text, numbers, etc...).
-:::
+### A Quick Note on Terminology
+
+We've tried to keep this guide straightforward, removing technical language unless it's absolutely necessary. It's worth noting that whenever we mention the terms **data**, **objects** or **elements**, we're really referring to the same thing. Speckle is built to handle all kinds of data, whether CAD geometry, BIM elements (geometry + metadata) or pure data (text, numbers, etc).
 
 ### Streams, Branches and Commits
 

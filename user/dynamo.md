@@ -292,7 +292,7 @@ The **Stream Details** node returns all relevant information related to a specif
 - _description_: The description of the stream.
 - _createdAt_: The date this stream was created.
 - _updatedAt_: The date marking the last time the stream was updated.
-- _public_: Boolean value indicating if the stream has _link sharing_ enabled.
+- _public_: Boolean value indicating if the stream is public or private.
 - _collaborators_: A list of collaborators that have access to this stream, as well as their roles.
 - _branches_: A list of available branches for this stream.
 
@@ -300,7 +300,7 @@ The **Stream Details** node returns all relevant information related to a specif
 
 ![Stream update node](./img-dyn/nodes-stream-update.png)
 
-The **Stream Update** node allows for updating the _name_, _description_ and _link sharing_ (which will make your data publicly available to read by anyone with the _stream url_)
+The **Stream Update** node allows for updating the _name_, _description_ and whether the node is _public_ (which will make your data publicly available to read by anyone with the _stream url_) or _private_ (only invited collaborators can view this stream).
 
 #### Inputs
 
@@ -374,22 +374,22 @@ Creates a connection to in-memory storage.
 ## Supported elements
 
 | Geometry       | Send          | Receive       | Status     |
-| -------------- | ------------- | ------------- | ---------- |
-| Point          | x             | x             | `Complete` |
-| Line           | x             | x             | `Complete` |
-| Plane          | x             | x             | `Complete` |
-| Arc            | x             | x             | `Complete` |
-| Circle         | x             | x             | `Complete` |
-| Cuboid         | As Box        | x             | `Complete` |
-| Ellipse        | x             | x             | `Complete` |
+| -------------- | :-----------: | :-----------: | :--------: |
+| Point          | ✅             | ✅             | `Complete` |
+| Line           | ✅             | ✅             | `Complete` |
+| Plane          | ✅             | ✅             | `Complete` |
+| Arc            | ✅             | ✅             | `Complete` |
+| Circle         | ✅             | ✅             | `Complete` |
+| Cuboid         | As Box        | ✅             | `Complete` |
+| Ellipse        | ✅             | ✅             | `Complete` |
 | Helix          | As Spline     |               | `Complete` |
 | Polyline       |               | x<sup>α</sup> | `Complete` |
-| Polycurve      | x             | x             | `Complete` |
-| Polygon        | As Polyline   | x             | `Complete` |
-| Rectangle      | As Polyline   | x             | `Complete` |
-| Spline         | x             | x             | `Complete` |
-| Brep           | x             | x             | `Complete` |
-| Mesh           | x             | x             | `Complete` |
+| Polycurve      | ✅             | ✅             | `Complete` |
+| Polygon        | As Polyline   | ✅             | `Complete` |
+| Rectangle      | As Polyline   | ✅             | `Complete` |
+| Spline         | ✅             | ✅             | `Complete` |
+| Brep           | ✅             | ✅             | `Complete` |
+| Mesh           | ✅             | ✅             | `Complete` |
 | Revit Elements | x<sup>β</sup> |               | `Complete` |
 
 <sup>α</sup>: As Rectangle, Polycurve, or Polygon
