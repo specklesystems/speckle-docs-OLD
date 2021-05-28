@@ -17,7 +17,7 @@ For any feedback and support requests please visit our [community forum](https:/
 
 :::tip IMPORTANT 🙌
 
-Our Excel Connector is currently in early alpha, please use at your own risk!
+The Speckle connector for Excel Connector is currently in early alpha, help us get to a stable release by reporting all the 🐛 you may find!
 
 :::
 
