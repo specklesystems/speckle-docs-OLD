@@ -29,7 +29,15 @@ You can also install them manually or use a managed deployment from a cloud prov
 ## Run in a Virtual Machine
 
 ::: tip IMPORTANT
-This setup is not recommended for use in production, if you need help deploying a production server, [we can help](https://speckle.systems/getstarted/)!
+This setup is not recommended for use in production for a few reasons, namely:
+
+- application level updates: we tend to move quite fast, and if things get busy, blink twice and you’re on an outdated server. this has security implications too.
+- guaranteed uptime: from our experience, vm’s tend to restart now and then (they need updates and reboots too), which results in downtime.
+- database backups - again this is up to you mostly on what’s your risk appetite when it comes to dealing with live data. We’re a bit more on the paranoid side, so we’ve set up replication, failover nodes and PITR.
+- end-to-end encryption: possibly less of daily concern - we’re offering from encryption at rest, to https security (SSL/TLS certs & renewal) - so whenever data travels between a client and the db it’s always encrypted, inc. inside the datacenter itself.
+- automatic scalability: for example, the preview service can be quite a monster; that setup can eat up all a vm’s resources, and starve other processes causing general system wide instability.
+
+If you need help deploying a production server, [we can help](https://speckle.systems/getstarted/)!
 :::
 
 This is the easiest way to get the Server running.
