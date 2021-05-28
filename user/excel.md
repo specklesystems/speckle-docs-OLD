@@ -11,7 +11,9 @@ Speckle currently supports the following versions of Excel:
 - Excel 2013 or later on Windows
 - Excel on the web
 
-For any feedback and support requests please visit our [community forum](https://speckle.community/)!
+## Support
+
+For any feedback and support requests please visit our [community forum](https://speckle.community/) or contact us at [hello@speckle.systems](mailto:hello@speckle.systems).
 
 :::tip IMPORTANT 🙌
 
