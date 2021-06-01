@@ -11,10 +11,6 @@ Speckle currently supports the following versions of Excel:
 - Excel 2013 or later on Windows
 - Excel on the web
 
-## Support
-
-For any feedback and support requests please visit our [community forum](https://speckle.community/) or contact us at [hello@speckle.systems](mailto:hello@speckle.systems).
-
 :::tip IMPORTANT 🙌
 
 The Speckle connector for Excel Connector is currently in early alpha, help us get to a stable release by reporting all the 🐛 you may find!
@@ -25,9 +21,17 @@ The Speckle connector for Excel Connector is currently in early alpha, help us g
 
 ### Installing
 
-This connector is not distributed via Manager, **it** **will instead be available soon via the Microsoft Store.**
+**This connector is not distributed via Manager**, it is instead available via the Microsoft Office Store.
 
-Until then, please see the connector readme on how to run it locally: [https://github.com/specklesystems/speckle-excel](https://github.com/specklesystems/speckle-excel)
+To install it:
+- open Excel Desktop or Web
+- Click on _Insert > Office Add-Ins_
+- Search for `speckle` and click _Add_
+
+![image](https://user-images.githubusercontent.com/2679513/120383814-3ffdd600-c31d-11eb-8a77-7b34f8a0785f.png)
+
+Alternatively, just visit [https://appsource.microsoft.com/en-us/product/office/WA200002934](https://appsource.microsoft.com/en-us/product/office/WA200002934).
+
 
 After installing the connector, it should show up within Excel:
 
@@ -41,7 +45,7 @@ You need to log in to use this connector as it is not able to fetch accounts tha
 
 :::tip IMPORTANT 🙌
 
-Currently **only accounts on our XYZ server are supported.** To use a different server please run the connector locally or deploy it with your server details.
+Currently, **only accounts on our XYZ server are supported**, this is because of limitations on the Microsoft Office Store. We're working to add support for any Speckle server.
 
 :::
 
@@ -118,7 +122,6 @@ For instance, you could create 10 new lines with the data below:
 ![image](https://user-images.githubusercontent.com/2679513/119196439-17085600-ba7e-11eb-8273-6fdf60e91894.png)
 
 
+## Support
 
-## Conclusion
-
-This is all for now, we'll keep extending these docs as new features are added. Stay tuned!
+For any feedback and support requests please visit our [community forum](https://speckle.community/).
