@@ -25,8 +25,7 @@ We've also built a few components designed for advanced users and developers:
 
 ## Streams and URLs
 
-In visual programming environments, Speckle Streams are now identified by their URLs (instead of their IDs).
-Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different formats:
+In visual programming environments, Speckle Streams are identified by their URLs. Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different formats:
 
 - `https://speckle.xyz/streams/3073b96e86` points to the `main` branch on Stream `3073b96e86`
 - `https://speckle.xyz/streams/3073b96e86/branches/dev` points to a branch named `dev` on Stream `3073b96e86`
@@ -46,11 +45,11 @@ Let's look at how we would send some data in grasshopper. First, start by creati
 
 ![image-20210322180706379](./img-gh/image-20210322180706379.png)
 
-To select the stream you want send data to,just pass in its URL to the stream port.
+To select the stream you want send data to,just pass in its URL as a string to the stream port.
 
 ![image-20210322181425413](./img-gh/image-20210322181425413.png)
 
-Alternatively, you can also use one of the following nodes to create / retrieve existing streams:
+Alternatively, you can also use one of the following nodes to create or retrieve existing streams:
 
 - [Create Stream](user/grasshopper.md#create-stream)
 - [Get Stream](user/grasshopper.md#get-stream)
@@ -62,34 +61,34 @@ While you can send data to streams and branches, you cannot send data to a speci
 Want to edit an old commit? Just re-send the data and use the new commit instead.
 :::
 
-#### Adding objects
+#### Adding Objects
 
-In order to select which objects to send in grasshopper, we just need to connect the desired nodes to the `Data` input in the `Send` node. The sender supports any type of data, in any structure (item, list, datatree), and will convert any supported Rhino objects into a Speckle compatible format when necessary.
+In order to select which objects to send in grasshopper, we just need to connect the desired nodes to the `Data` input in the `Send` node. The sender supports any type of data, in any structure (item, list, datatree), and will convert any supported Rhino objects into a Speckle-compatible format where necessary.
 
-#### Adding a commit message
+#### Adding a Commit Message
 
-It's good practice to add a "commit message" whenever you send you data, especially if working with others, this message should describe the changes being pushed.
+While not required, it's good practice to add a "commit message" whenever you send you data, especially if working with others.  This message should briefly describe the changes being pushed.
 You can add a commit message by passing some text to the `message` port.
-The commit message will be visible in Speckle Web where you will also be allowed to edit it.
+The commit message will be visible in Speckle Web (where you will also be able to edit it).
 
 #### Sending
 
-The only thing left to do is to press the **Send button**.
+Once you've lined up your objects (and optionally written a commit message) the only thing left to do is to press the **Send button**.
 
 ![gh-send](./img-gh/gh-send.gif)
 
 ::: tip
-To view the data you just sent in Grasshopper, just right-click the `Send` node and select the `View commit ...` option. This should open a new browser window loading the _stream url_. You can share that url with any collaborators so they can receive the data.
+To view the data you just sent in Grasshopper, right-click the `Send` node and select the `View commit ...` option. This should open a new browser window loading the _stream url_. You can share that url with any collaborators so they can receive the data.
 
 ![image-20210322182801307](./img-gh/image-20210322182801307.png)
 
 :::
 
-### Sending to a specific branch
+### Sending to a Specific Branch
 
-When using a stream URL, by default, the `main` branch is used to send and receive data.
+When referring to a stream by its URL, the `main` branch is used to send and receive data by default.
 
-To send to a specific branch, simply use the branch URL, ie: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
+To target a specific branch, simply use the branch URL, such as: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
 
 ## Receiving Data
 
@@ -97,23 +96,23 @@ Receiving data is very simple. You just need a `Receive` node, and a stream URL.
 
 ![gh-receive](./img-gh/gh-receive.gif)
 
-When new data is pushed to this stream a notification will appear on the receive node.
+When new data is pushed to this stream a notification will appear on the receive node, highlighting this fact.
 
 ### Auto Receiving
 
-By right clicking on the node, you can enable/disable auto receiving. If enabled, new data pushed to this stream will be pulled automatically as it's available.
+By right-clicking on the node, you can enable/disable auto receiving. If enabled, new data pushed to this stream will be pulled automatically as it becomes available.
 
 ![image-20210322183400126](./img-gh/image-20210322183400126.png)
 
-### Receiving a specific branch
+### Receiving a Specific Branch
 
-As mentioned earlier, when using a stream URL, by default, the `main` branch is used to send and receive data.
+When referring to a stream by its URL, the `main` branch is used to send and receive data by default.
 
-To receive from a specific branch, simply use the branch URL, ie: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
+To receive from a specific branch, simply use the branch URL, such as: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
 
-### Receiving a specific commit
+### Receiving a Specific Commit
 
-There are circumstances in which you will not want to always receive "new" data, but you'll instead want to only get a specific commit. To do so simply use the commit URL, ie: `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6`
+As we've seen, you can retrieve data from both the 'stream' and 'branch' level. It goes deeper - it's possible to retrieve data from specific commits. To do so, simply use the commit URL, such as: `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6`
 
 ::: tip NOTE
 
@@ -121,14 +120,14 @@ When receiving from a commit, the node will stop showing notifications about new
 
 :::
 
-### Receiving a specific object
+### Receiving a Specific Object
 
-Similarly to commits, you can also point the receive node to a specific object, to do so simply use the commit URL, ie: `https://speckle.xyz/streams/3073b96e86/objects/df7b8bafccefa791d82939dd36541189`. Objects are immutable, so the data received using such a URL will always be consistent.
+Finally, you can also receive just a specific object in a commit, to do so simply use the commit URL, ie: `https://speckle.xyz/streams/3073b96e86/objects/df7b8bafccefa791d82939dd36541189`. Objects can't be edited, so the data received using such a URL will always be consistent.
 You can find the ID of an object from the Speckle Web interface:
 
 ![image-20210322185007725](./img-dyn/image-20210322185007725.png)
 
-## Creating custom objects
+## Creating Custom Objects
 
 A custom object is a [Base Object](/user/concepts.html#the-base-object) with custom properties assigned to it. It's basically a custom data structure you can create to send data in a specific format that you define.
 
@@ -140,7 +139,7 @@ This node is a _variable parameter_ type, meaning if you zoom into the _inputs_ 
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
-#### Modifying the access type
+#### Modifying the Access Type
 
 Access type operates in the same way as the `Python` and `C#` script components. In this case, you can specify if you want a specific property in the object to be a _list_ or a single _item_.
 
@@ -150,7 +149,7 @@ Access type operates in the same way as the `Python` and `C#` script components.
 Choosing the wrong access type for your data may result in duplicated data being generated.
 :::
 
-#### Detach/Do not detach
+#### Detach/Do Not Detach
 
 Every property can also be specified as _detached/non-detached_. When a property is _detached_, it means that the objects it contains will be saved as independent entities in the Speckle database. All properties are detached by default for performance reasons, but you can choose not to by specifying `Do not detach` on the right-click menu.
 
@@ -160,7 +159,7 @@ Every property can also be specified as _detached/non-detached_. When a property
 
 Every property can also be flagged as _optional_. This will allow you to create new objects with _incomplete_ data.
 
-There is a limitation on this behaviour: at least one of the node's inputs must be _non-optional_.
+Please Note: There is a limitation on this behaviour. At least one of the node's inputs must be _non-optional_.
 
 ![Optional menu](./img-gh/menu-Optional.gif)
 
@@ -236,7 +235,7 @@ Non-geometric elements and any geometric element not listed above, such as text 
 
 The **Schema Builder** node is a very powerful one. It works similarly to the node above as it allows to create custom objects, but it does so by following pre-existing schemas. To learn more about [schemas and kits](/dev/kits) check out or dev section.
 
-By default the Schema Builder node comes with a series of types, these include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
+By default, the Schema Builder node comes with a series of types, these include mainly building elements to enhance interoperability between Rhino/Grasshopper and other BIM software solutions like Revit.
 
 When a new **Schema Builder** node is created, a pop-up window will be displayed prompting the user to select a specific object schema. This schema will be used to populate the input/output ports of the node with the appropriate fields.
 
@@ -246,16 +245,16 @@ When a new **Schema Builder** node is created, a pop-up window will be displayed
 Check out our [tutorial on sending data from Grasshopper to Revit](/user/interop-gh-revit)!
 :::
 
-## Object conversion
+## Object Conversion
 
 By default, the Speckle nodes will try to convert any compatible objects (such as meshes, solids, lines and points):
 
-- **On input**: to Speckle compatible format.
-- **On output**: to the native Rhino format that Grasshopper will understand.
+- **On Input**: to Speckle compatible format.
+- **On Output**: to the native Rhino format that Grasshopper will understand.
 
-There are some situations where this behavior may not be ideal, as it may cause unintentional data-loss. This is particularly true when dealing with nested data inside
+There are some situations where this behavior may not be ideal, as it may cause unintentional data-loss. This is particularly true when dealing with nested data.
 
-Speckle can deal with nested speckle objects without any issues but, due to limitations in the Rhino API, you can only attach text to a specific geometry object's custom data, such as a line.
+Speckle can handle nested Speckle objects without any issues but, due to limitations in the Rhino API, you can only attach text to a specific geometry object's custom data, such as a line.
 
 ![Creating a Speckle line with custom data attached](./img-gh/speckle-gh-conversion-createNestedLine.png)
 
@@ -290,11 +289,11 @@ Don't worry, we always ensure all objects are converted to Speckle format before
 
 ## Nodes
 
-### Send node
+### Send Node
 
 ![Send node](./img-gh/nodes-send.png)
 
-The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
+The **Send Node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any Rhino-compatible objects into Speckle format.
 
 There is also an option to set the node to automatically send every time there is a change in the data. You will find this option in the right-click menu of the node.
 
@@ -314,11 +313,11 @@ There is also an option to set the node to automatically send every time there i
 
 - _Stream_: The _commit url_ pointing to the objects in the Speckle server.
 
-### Receive node
+### Receive Node
 
 ![Receive node](./img-gh/nodes-receive.png)
 
-The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
+The **Receive Node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into Rhino-compatible objects.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
@@ -330,7 +329,7 @@ The **Receive node** fetches data from a specified `Stream` or any other valid `
 
 - _Data_: The data that was received from the stream.
 
-### Local Send node
+### Local Send Node
 
 ![Send local node](./img-gh/nodes-send-local.png)
 
@@ -340,17 +339,17 @@ The **Local Send** node performs sending operations directly to the users's loca
 
 #### Inputs
 
-- _Data_: The data to be sent locally. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
+- _Data_: The data to be sent locally. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will perform the conversion to Speckle automatically.
 
 #### Outputs
 
 - _localDataId_: The unique `id` for the data that was locally sent.
 
-### Local receive node
+### Local Receive Node
 
 ![Receive local node](./img-gh/nodes-receive-local.png)
 
-The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
+The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node). The only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
@@ -360,7 +359,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 #### Outputs
 
-- _Data_: The data thas was received. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
+- _Data_: The data that was received. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will perform the conversion to Speckle automatically.
 
 ### Create Speckle Object
 
@@ -370,29 +369,29 @@ Please refer to the [Creating custom objects](/user/grasshopper.html#creating-cu
 
 ![Create object by key/value](img/nodes-create-object-keyval.png)
 
-This node will create a new speckle object using a list of `Keys` to be used as the object's properties, and a list of values (or nested list) to assign to each property.
+This node will create a new Speckle object using a list of `Keys` to be used as the object's properties, and a list of values (or nested list) to assign to each property.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
-> When using this component, there is no option to specify a properties `detached` state, so all props will be detached by default.
+> When using this component, there is no option to specify a properties `detached` state, so all properties will be detached by default.
 
 ![Creating an object with keys and values as items](./img-gh/nodes-create-keyval-item.png)
 
 ![Creating an object with keys and values as lists](./img-gh/nodes-create-keyval-list.png)
 
-> Notice when creating list items, the data structure must mach. Meaning, the keys and values for each object must start with the same branch index.
+> Notice when creating list items, the data structure must match. Meaning, the keys and values for each object must start with the same branch index.
 
 ### Expand Speckle Object
 
 ![Expand Object node](./img-gh/nodes-expand-object.png)
 
-The **Expand Speckle Object** works in the exact oposite way as the [Create Speckle Object](#create-speckle-object). When a `Base` object is plugged into the input, it will automatically create the outputs for each of the `Base` objects properties.
+The **Expand Speckle Object** works in the exact opposite way as the [Create Speckle Object](#create-speckle-object). When a `Base` object is plugged into the input, it will automatically create the outputs for each of the `Base` objects' properties.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
 #### Inputs
 
-- `Speckle Object`: The speckle object to extract the properties from.
+- `Speckle Object`: The Speckle object to extract the properties from.
 
 #### Outputs
 
@@ -425,13 +424,13 @@ Please refer to the [Using the Schema Builder](/user/grasshopper.html#schema-bui
 
 #### Inputs
 
-Inputs are dynamically generated based on the user selected schema.
+Inputs are dynamically generated based on the user-selected schema.
 
 #### Outputs
 
-Output is dynamically generated based on the user selected schema.
+Output is dynamically generated based on the user-selected schema.
 
-### Accounts node
+### Accounts Node
 
 ![Accounts node](./img-gh/nodes-accounts.png)
 
@@ -439,42 +438,42 @@ The **Accounts** node provides a fast way of selecting different Speckle account
 
 > Accounts must be set-up in your computer using the **Speckle Manager**. If no accounts are shown after setting up the solution
 
-### Create stream
+### Create Stream
 
 ![alt](./img-gh/nodes-create-stream.png)
 
-The **Create Stream** node allows for the quick creation of a new Stream. This stream will have default name and description, so it may be a good idea to edit that at some point.
+The **Create Stream** node allows for the quick creation of a new stream. This stream will have default name and description, so it may be a good idea to edit that at some point.
 
-Once an account has been provided, the node will generate a new stream and remember it for as long as the node exists in the canvas; meaning, the only way to create another new stream is to create a new `Create Stream` component.
+Once an account has been provided, the node will generate a new stream and remember it for as long as the node exists in the canvas. This means the only way to create another new stream is to use a new `Create Stream` component.
 
 #### Inputs
 
-- _Account_: A Speckle account, provided by the **Accounts node**.
+- _Account_: A Speckle account, provided by the **Accounts Node**.
 
 #### Ouputs
 
 - _Stream_: A `Stream` object pointing to the newly created stream.
 
-### Get stream
+### Get Stream
 
 ![Stream get node](./img-gh/nodes-stream-get.png)
 
-The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
+The **Get Stream** node will try to find an existing `Stream`, given its unique `id` (or its `stream url`) and a specific account to access that stream with.
 
 ::: tip
-You can also use a stream URL copied from your browser instead of using this node
+You can also use a stream URL copied from your browser instead of using this node.
 :::
 
 #### Inputs
 
 - _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
-- _Account_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
+- _Account_: A Speckle account, provided by the **Accounts Node**. If no account is provided, the _default account_ will be used.
 
 #### Outputs
 
-- _Stream_: A `Stream` object pointing to existing stream. If the stream doesn't exist, an error will be shown.
+- _Stream_: A `Stream` object. If the stream doesn't exist, an error will be shown.
 
-### List streams
+### List Streams
 
 ![Stream list node](./img-gh/nodes-stream-list.png)
 
@@ -486,7 +485,7 @@ You can also use a stream URL copied from your browser instead of using this nod
 
 #### Inputs
 
-- _Account_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
+- _Account_: A Speckle account, provided by the **Accounts Node**. If no account is provided, the _default account_ will be used.
 - _Limit_: The number of streams to fetch from the server.
 
 #### Outputs
@@ -514,7 +513,7 @@ The **Stream Details** node returns all relevant information related to a specif
 - _Collaborators_: A list of collaborators that have access to this stream, as well as their roles.
 - _Branches_: A list of available branches for this stream.
 
-### Stream update
+### Stream Update
 
 ![Stream update node](./img-gh/nodes-stream-update.png)
 
@@ -531,11 +530,11 @@ The **Stream Update** node allows for updating the _name_, _description_ and _li
 
 - _Stream ID_: A `Stream` url pointing to the updated stream.
 
-### Dev tools
+### Developer Tools
 
 These nodes where developed exclusively for testing/development purposes. If you don't know what these are, you most likely won't ever need them.
 
-#### Convert to Speckle node
+#### Convert to Speckle Node
 
 ![Convert to Speckle node](./img-gh/nodes-convert-tospeckle.png)
 
@@ -549,7 +548,7 @@ This node was developed for testing/development purposes.
 
 :::
 
-#### Convert to Native node
+#### Convert to Native Node
 
 The **Convert to Native** node will try to convert any Speckle objects into Rhino compatible objects.
 
@@ -561,7 +560,7 @@ This node was developed for testing/development purposes.
 
 :::
 
-#### Serialize Speckle objects node
+#### Serialize Speckle objects Node
 
 ![alt](./img-gh/node-serialize.png)
 
@@ -571,7 +570,7 @@ The **Serialize objects** node will convert any Speckle object into `JSON` forma
 
 ![alt](./img-gh/nodes-deserialize.png)
 
-The **Deserialize objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
+The **Deserialize Objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
 #### Server Transport
 
