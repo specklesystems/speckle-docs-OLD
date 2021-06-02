@@ -4,23 +4,21 @@ typora-copy-images-to: ./img-dyn
 
 # Dynamo
 
-Speckle currently supports Dynamo versions from 2.1 to 2.8 for Autodesk Revit 2019, 2020 and 2021, as well versions of Dynamo Sandbox from 2.1 to 2.8 are supported.
+Speckle's Dynamo connector currently supports Dynamo versions 2.1 to 2.10 (for Autodesk Revit 2019-2022). All versions of Dynamo Sandbox from 2.1 to 2.10 are also supported.
 
 ## Getting Started
 
-To install this connector and add your Speckle account proceed by following the instructions in [Speckle Manager](/user/manager).
+Our Dynamo Connector takes the form of a node package, which is installed via the Speckle Manager. Please Note: The Speckle package cannot be downloaded from Autodesk's Package Manager. To install the Dynamo Connector and add your Speckle account, follow the instructions in our [Speckle Manager](/user/manager) section.
 
 ![Dyn Connector components](./img-dyn/nodes-cat-all.png)
 
-Once installed, the **Dynamo Connector** will appear under the `Speckle 2` and `Speckle 2 Dev Tools` tabs.
+Once installed, the **Dynamo Connector** will appear as a node package in your library as `Speckle 2`.
 
-The `Speckle 2` tab contains the main nodes necessary to operate with Speckle, including send/receive nodes, streams and accounts.
-
-The `Speckle 2 Dev Tools` tabs contain nodes for more advanced use-cases, as well as some handy tools for Speckle developers/hackers.
+The `Speckle 2` package contains the main nodes necessary to use Speckle within Dynamo, including nodes for sending and receiving data, managing streams and selecting accounts. We've also built a few nodes for more advanced use-cases, as well as some handy tools for Speckle developers/hackers. These are found in the `Developer Tools` sub-section of the package. 
 
 ## Streams and URLs
 
-In visual programming environments, Speckle Streams are now identified by their URLs (instead of their IDs).
+In Dynamo, Speckle Streams are identified by their URLs.
 Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different formats:
 
 - `https://speckle.xyz/streams/3073b96e86` points to the `main` branch on Stream `3073b96e86`
@@ -29,70 +27,61 @@ Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different form
 - `https://speckle.xyz/streams/3073b96e86/objects/df7b8bafccefa791d82939dd36541189` points to a specific object `df7b8bafccefa791d82939dd36541189` on Stream `3073b96e86`
 
 ::: tip
-Unsure about what _commits_ and _branches_ are? No worries, you don't need to know what they are to use Speckle! But if you're curios, you can read about them in [concepts](/user/concepts).
+Unsure about what _commits_ and _branches_ are? No worries, you don't need to know what they are to use Speckle! But if you're curious, you can read about them in [Core Concepts](/user/concepts).
 :::
 
 We'll see how branch and commit URLs are used in the following sections.
 
 ## Sending Data
 
-Let's look at how we would send some data in Dynamo. First, start by creating a new `Send` node.
+Let's look at how we would send some data in Dynamo. First, start by creating a new `Send Data` node.
 
 ![Send node](./img-dyn/nodes-send.png)
 
-In order to select which stream to send data to, you just need to pass a stream URL to the `stream` port.
+In order to select which stream to send data to, you just need to pass a stream URL to the `streamUrl` port.
 
 ![image-20210322170153584](./img-dyn/image-20210322170153584.png)
 
 Alternatively, you can also use one of the following nodes to create / retrieve existing streams:
 
-- [create stream](user/dynamo.md#create-stream)
-- [get stream](user/dynamo.md#get-stream)
-- [list streams](user/dynamo.md#list-streams)
+- [Create Stream](user/dynamo.md#create-stream)
+- [Get Stream](user/dynamo.md#get-stream)
+- [List Streams](user/dynamo.md#list-streams)
 
 :::tip NOTE
-You cannot send data to a specific commit. Commits represent your stream in a specific point in time and cannot be edited.
+You cannot send data to a specific commit. Commits are a snapshot of data at a specific point in time and therefore cannot be edited.
 :::
 
-### Adding objects
+### Adding Objects
 
-In order to select which objects to send in Dynamo, we just need to connect the desired node to the `data` input in the `Send` node. The sender will convert any supported Dynamo objects into a Speckle compatible format when necessary.
+In order to select which objects to should be sent to your stream, you just need to connect the desired data to the `data` input in the `Send Data` node. The node will automatically convert any supported Dynamo objects into a Speckle-compatible format.
 
-### Adding a commit message
+### Adding a Commit Message
 
-It's good practice to add a "commit message" whenever you send you data, especially if working with others, this message should describe the changes being pushed.
-You can add a commit message by passing some text to the `message` port.
-The commit message will be visible in Speckle Web where you will also be allowed to edit it.
+Although optional, it's considered good practice to add a "commit message" whenever you send you data (especially if working with others). This message should describe the changes being pushed. You can add a commit message by passing any string to the `message` port.
+The commit message will be visible in the Speckle Web App (where you will also be able to edit it).
 
-### Sending
+### Sending Data
 
-The only thing left to do is to press the **Send button**.
+With a Stream URL and some data to send, the only thing left to do is to press the **Send button**. This will begin the process of translating your data to Speckle's object model and uploading it to your Speckle server.
 
 ![dyn-send](./img-dyn/dyn-send.gif)
 
-To view the data you just sent from Dynamo online, you can use the `View Online` node. Just plug in the `stream`, `branch` or `commit` URL and click the button.
-
-![View online](./img-dyn/nodes-view-online.png)
-
-::: tip
-The View Online node is especially useful as data cannot be easily copy/pasted from dynamo nodes
-:::
-
-### Viewing a Stream online
+### Viewing a Stream Online
 
 To view the sent stream online you can just right click on the sender node:
 
 ![image](https://user-images.githubusercontent.com/2679513/114192190-1b9d0300-9945-11eb-952a-8676a4854397.png)
 
-### Sending to a specific branch
+### Sending to a Specific Branch
 
 When using a stream URL, by default, the `main` branch is used to send and receive data.
 
-To send to a specific branch, simply use the branch URL, ie: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
+To send to a specific branch, simply use the branch URL, such as: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
 
 ## Receiving Data
 
-Receiving data is very simple, you just need a `Receive` node, and a stream URL.
+Receiving data is very simple, you just need a `Receive Data` node, and a stream URL.
 
 ![dyn-receive](./img-dyn/dyn-receive.gif)
 
@@ -102,40 +91,41 @@ When new data is pushed to this stream a notification will appear on the receive
 
 By using the toggle on the node, you can enable/disable auto receiving. If enabled, new data pushed to this stream will be pulled automatically as it's available.
 
-### Receiving a specific branch
+### Receiving a Specific Branch
 
-As mentioned earlier, when using a stream URL, by default, the `main` branch is used to send and receive data.
+When using a stream URL, the `main` branch is used to send and receive data by default.
 
-To receive from a specific branch, simply use the branch URL, ie: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
+You can also receive data from a specific branch; simply use the branch URL, such as: `https://speckle.xyz/streams/3073b96e86/branches/dev`.
 
-### Receiving a specific commit
+### Receiving a Specific Commit
 
-There are circumstances in which you will not want to always receive "new" data, but you'll instead want to only get a specific commit. To do so simply use the commit URL, ie: `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6`
+We've already seen how to retrieve data from streams and branches. It's possible to go even deeper, retrieving data from specific commits. To do this, simply use the commit URL, such as: `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6`
 
 ::: tip NOTE
 
-When receiving from a commit, the node will stop showing notifications about new activity on such stream and the auto receive toggle will be disabled.
+When receiving from a commit, the node will stop showing notifications about new activity and the auto-receive toggle will be disabled. This is because commits cannot be edited.
 
 :::
 
 ![image-20210322172730078](./img-dyn/image-20210322172730078.png)
 
-### Receiving a specific object
+### Receiving a Specific Object
 
-Similarly to commits, you can also point the receive node to a specific object, to do so simply use the commit URL, ie: `https://speckle.xyz/streams/3073b96e86/objects/df7b8bafccefa791d82939dd36541189`. Objects are immutable, so the data received using such a URL will always be consistent.
-You can find the ID of an object from the Speckle Web interface:
+Similarly to commits, you can also point the receive node to a specific object. To do this, simply use the object's URL, such as: `https://speckle.xyz/streams/3073b96e86/objects/df7b8bafccefa791d82939dd36541189`.
+
+Like commits, objects in a commit cannot be edited, so the data received using such a URL will always be consistent. You can find the ID of an object from the Speckle Web interface:
 
 ![image-20210322185007725](./img-dyn/image-20210322185007725.png)
 
-### Viewing a Stream online
+### Viewing a Stream Online
 
-To view the received stream online you can just right click on the receiver node:
+To view the received stream online you can just right-click on the receiver node:
 
 ![image](https://user-images.githubusercontent.com/2679513/114192622-9bc36880-9945-11eb-8b49-639f0f34b619.png)
 
-## Creating custom objects
+## Creating Custom Objects
 
-A custom object is a [Base Object](/user/concepts.html#the-base-object) with custom properties assigned to it. It's basically a custom data structure you can create to send data in a specific format that you define.
+A `Custom Object` is a [Base Object](/user/concepts.html#the-base-object) with custom properties assigned to it. It's basically a custom data structure you can create to send data in a specific format that you define.
 
 In Dynamo, we use dictionaries to represent custom objects since they are natively supported, so creating custom objects is as simple as creating a dictionary containing the keys and values you wish to include in the `Base` object.
 
@@ -147,85 +137,85 @@ Learn more about the Speckle `Base` object [here](/user/concepts.md#the-base-obj
 
 ![Create custom objects](./img-dyn/guide-custom-objects.png)
 
-## Nodes
+## All Speckle Nodes
 
-### Send node
+### Send Data
 
 ![Send node](./img-dyn/nodes-send.png)
 
-The **Send node** performs sending operations, usually to a Speckle Server, but also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node wil try to convert any compatible objects into Speckle format.
+The **Send Data** node performs sending operations. Data is usually sent to a Speckle Server, but the node also supports sending to a different data storage using _transports_. Whenever possible, the _Send_ node will try to convert any compatible objects into Speckle format.
 
 There is also an switch you can toggle to enable the node to send automatically the data whenever it changes.
 
 #### Input
 
-- _Data_: This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
-- _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
-- _Message_: The message you want to attach to the _commit_ when you send the data. Defaults to `"Dynamo push"`.
+- _data_: This port will accept almost anything you give it! If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
+- _streamUrl_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
+- _message (optional)_: The message you want to attach to the _commit_ when you send the data. Defaults to `"Dynamo push"`.
 
 #### Output
 
-- _Stream_: The _commit url_ pointing to the objects in the Speckle server.
+- _streamUrl_: The _commit url_ pointing to the objects in the Speckle server.
 
-### Receive node
+### Receive Data
 
-![Receive node](./img-dyn/nodes-receive.png)
+![Receive Data](./img-dyn/nodes-receive.png)
 
-The **Receive node** fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into compatible objects.
+The **Receive Data** node fetches data from a specified `Stream` or any other valid `Transport`. Whenever possible, the receiver node will try to convert all Speckle objects into compatible objects.
 
 #### Inputs
 
-- _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
+- _streamUrl_: The URL of any Speckle stream, branch, commit or object.
 
 #### Outputs
 
-- _Data_: The data that was received from the stream.
+- _data_: Any data that was received from the stream.
 
-### Local Send node
+### Send Local Data
 
 ![Send local node](./img-dyn/nodes-send-local.png)
 
-The **Local Send** node performs sending operations directly to the users's local database.
+The **Send Local Data** node performs sending operations directly to the users's local database.
 
 #### Inputs
 
-- _Data_: The data to be sent locally. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
+- _data_: The data to be sent locally. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
 
 #### Outputs
 
 - _localDataId_: The unique `id` for the data that was locally sent.
 
-### Local receive node
+### Receive Local Data
 
 ![Receive local node](./img-dyn/nodes-receive-local.png)
 
-The **Local Receive** node performs receive operations in the same way as the [Receive node](#receive-node), the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
+The **Receive Local Data** node performs receive operations in the same way as the [Receive Data](#receive-node) node, the only difference is that data is received locally from the Speckle's user local database, instead of the server or any other transport.
 
 #### Inputs
 
-- _localDataId_: The unique `id` for the data you want to fetch locally. This would be provided from a [Local Send node](#local-send-node)
+- _localDataId_: The unique `id` for the data you want to fetch locally. This would be provided from a [Send Local Data](#local-send-node) node.
 
 #### Outputs
 
 - _Data_: The data thas was received. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
 
-### Accounts node
+### Select Account
 
 ![Accounts node](./img-dyn/nodes-accounts.png)
 
-The **Accounts** node provides a fast way of selecting different Speckle accounts.
+The **Select Account** node provides a fast way of selecting different Speckle accounts.
 
-> Accounts must be set-up in your computer using the **Speckle Manager**. If no accounts are shown after setting up the solution
+> Accounts must be set-up in your computer using the **Speckle Manager**.
 
-### Create stream
+### Create Stream
 
-To create a new stream, right-click on the canvas and search for the `Stream Create` node. This node has a custom UI that allows you to select a specific account to use, and a button to confirm the stream creation.
+To create a new stream, right-click on the canvas and search for the `Create Stream` node. This node has a custom UI that allows you to select a specific account to use, and a button to confirm the stream creation.
 
 ::: tip
-You can always, also create streams online form Speckle Web. From there you can also set their name, description and permissions.
+You can also create streams online form Speckle Web. From there you can also set their name, description and permissions.
 :::
 
-Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (just create a new `Stream Create` node).
+Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (to do this, just create a new `Stream Create` node).
 
 Select the appropriate account and press the blue button. If the stream creation was successful, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
 
@@ -233,49 +223,49 @@ Select the appropriate account and press the blue button. If the stream creation
 
 #### Viewing the Stream online
 
-To view the newly created stream online you can just right click on the node:
+To view the newly-created stream online you can just right click on the node:
 
 ![image](https://user-images.githubusercontent.com/2679513/114194176-2193e380-9947-11eb-8b55-8f2f56d07773.png)
 
 #### Inputs
 
-> This node has no inputs, as the account selection is done using it's custom UI.
+> This node has no inputs.
 
 #### Ouputs
 
-- _stream_: A `Stream` object pointing to the newly created stream.
+- _streamUrl_: A URL, pointing to the newly-created stream.
 
-### Get stream
+### Get Stream
 
 ![Stream get node](./img-dyn/nodes-stream-get.png)
 
-The **Stream Get** node will try to find an existing `Stream`, given it's unique `id` (or its `stream url`) and a specific account to access that stream with.
+The **Get Stream** node will try to retrieve an existing `Stream`, given its URL and a specific account to access that stream with. This may be useful if there are multiple accounts registered on the same machine and a certain stream requires a specific account to be accessible.
 
 #### Inputs
 
-- _stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
-- _account_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
+- _streamUrl_: The URL of any Speckle stream, branch, commit or object.
+- _account (optional)_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
 
 #### Outputs
 
 - _stream_: A `Stream` object pointing to existing stream. If the stream doesn't exist, an error will be shown.
 
-### List streams
+### List Streams
 
 ![Stream list node](./img-dyn/nodes-stream-list.png)
 
-The **List Streams** node returns a specified ammount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
+The **List Streams** node returns a specified amount of streams available in an account. For performance reasons, it has been limited to fetching a maximum of 20 streams.
 
 #### Inputs
 
-- _account_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
-- _limit_: The number of streams to fetch from the server.
+- _account (optional)_: A Speckle account, provided by the **Accounts node**. If no account is provided, the _default account_ will be used.
+- _limit (optional)_: The number of streams to fetch from the server.
 
 #### Outputs
 
 - _streams_: List of `Stream` objects available to the specified account.
 
-### Stream details
+### Stream Details
 
 ![Strean details node](./img-dyn/nodes-stream-details.png)
 
@@ -296,30 +286,28 @@ The **Stream Details** node returns all relevant information related to a specif
 - _collaborators_: A list of collaborators that have access to this stream, as well as their roles.
 - _branches_: A list of available branches for this stream.
 
-### Stream update
+### Update Stream
 
 ![Stream update node](./img-dyn/nodes-stream-update.png)
 
-The **Stream Update** node allows for updating the _name_, _description_ and whether the node is _public_ (which will make your data publicly available to read by anyone with the _stream url_) or _private_ (only invited collaborators can view this stream).
+The **Update Stream** node allows for updating a stream's _name_, its _description_ and whether it is _public_ (publicly available to read by anyone with the _stream url_) or _private_ (only invited collaborators can view this stream).
 
 #### Inputs
 
-- _stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
+- _streamUrl_: The URL of a stream, branch, commit or object.
 - _name (optional)_: Text string with the new name for the stream.
 - _description (optional)_: Text string with the new description for the stream.
-- _isPublic_: Boolean value to activate/deactivate this stream's _link sharing_.
+- _isPublic (optional)_: Boolean value to activate/deactivate this stream's _link sharing_.
 
 #### Output
 
-- _stream_: A `Stream` url pointing to the updated stream.
+- _streamUrl_: The URL of the updated stream.
 
-### Dev tools
+### Developer Tools
 
-![Conversion Category](./img-dyn/nodes-cat-conversion.png)
+These nodes were developed exclusively for testing/development purposes. If you don't know what these are, you most likely won't ever need them.
 
-These nodes where developed exclusively for testing/development purposes. If you don't know what these are, you most likely won't ever need them.
-
-#### Convert to Speckle node
+#### Convert to Speckle
 
 ![Convert to Speckle node](./img-dyn/nodes-convert-tospeckle.png)
 
@@ -327,7 +315,7 @@ The **Convert to Speckle** node will convert any supported objects (such as line
 
 This node was developed for testing/development purposes, as the Send/Receive nodes will already perform this conversion step automatically.
 
-#### Convert to Native node
+#### Convert to Native
 
 ![Convert to Native node](./img-dyn/nodes-convert-tonative.png)
 
@@ -335,17 +323,17 @@ The **Convert to Native** node will convert any supported Speckle objects into c
 
 This node was developed for testing/development purposes.
 
-#### Serialize Speckle objects node
+#### Serialize to JSON
 
 ![Serialize objects node](./img-dyn/node-serialize.png)
 
-The **Serialize objects** node will convert any Speckle object into `JSON` formatted text.
+The **Serialize to JSON** node will convert any Speckle object into `JSON` formatted text.
 
-#### Deserialize Speckle objects node
+#### Deserialize from JSON
 
 ![Deserialize objects node](./img-dyn/nodes-deserialize.png)
 
-The **Deserialize objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
+The **Deserialize from JSON** node will convert a serialized Speckle object in `JSON` format into `Base` Speckle objects.
 
 #### Server Transport
 
@@ -371,7 +359,7 @@ Creates a connection to a specific file in the computer's disk, where the data w
 
 Creates a connection to in-memory storage.
 
-## Supported elements
+## Supported Elements
 
 | Geometry       | Send          | Receive       | Status     |
 | -------------- | :-----------: | :-----------: | :--------: |
@@ -396,6 +384,6 @@ Creates a connection to in-memory storage.
 
 <sup>β</sup>: All Revit elements described [here](/user/revit.html#supported-elements) can also be sent from Dynamo
 
-### Unsupported elements
+### Unsupported Elements
 
 Any geometric element not listed above are not supported.
