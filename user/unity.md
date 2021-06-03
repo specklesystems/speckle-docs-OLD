@@ -1,9 +1,8 @@
 # Unity
 
-Our Unity connector differs form the other connectors described in our User Guide as it's meant to be used by developers.
-It doesn't have an elaborated UI but it offers convenience methods to send and receive data.
+Our Unity connector differs form the other connectors described in our User Guide as it's only really meant for use by software developers. It doesn't have an elaborate UI, but it offers convenience methods to send and receive data.
 
-Complementary to the information below, you should check out the [.NET SDK section](/dev/dotnet) too!
+In addition to this page, you should also take a look at our [.NET SDK section](/dev/dotnet).
 
 ::: tip
 Check out our [Unity tutorial](/user/tutorial-unity-revit-rhino-experiences)!
@@ -13,16 +12,15 @@ Check out our [Unity tutorial](/user/tutorial-unity-revit-rhino-experiences)!
 
 ## Getting Started
 
-To use this connector you should first install and add a Speckle account by following the instructions in [Speckle Manager](/user/manager).
-Then you can proceed to clone the [Speckle Unity repository on GitHub](https://github.com/specklesystems/speckle-unity).
+Before using this connector, you'll need to follow our standard setup instructions to [install Speckle Manager and add a Speckle account](/user/manager). After this, you can proceed to clone the [Speckle Unity repository on GitHub](https://github.com/specklesystems/speckle-unity).
 
 The repo contains a sample scene named `SpecklePlayground` that shows how to send and receive data from your default account.
 
-## Editor time Sending and Receiving
+## Editor Time Sending and Receiving
 
 Coming soon!
 
-## Game time Sending and Receiving
+## Game Time Sending and Receiving
 
 Sending and receiving supports either flat and nested structures (such as Grasshopper tress and Dynamo nested lists).
 
@@ -49,7 +47,7 @@ sender.Send(streamId, objs);
 
 The `Send()` method accepts additional optional arguments to use different accounts, report progress and errors etc. Please check the [source code](https://github.com/specklesystems/speckle-unity/blob/main/Assets/Speckle%20Connector/Sender.cs) for a complete list.
 
-### Supported elements
+### Supported Elements
 
 We've only started supporting Unity elements, please let us know what else you'd like to see, and do contribute if you have the skillz!
 
@@ -64,19 +62,19 @@ We've only started supporting Unity elements, please let us know what else you'd
 
 ### Metadata
 
-Geometry alone is not much fun, that's why we've made it easy to also transfer BIM and custom data with your objects.
-When receiving, a `SpeckleProperties` component is attached to each object, inside it there is a `Dictionary<string,object>` called `Data` that contains all the metadata coming from Speckle. Likewise, when sending if the objects have a `SpeckleProperties` component attached to them, it will be used.
+Geometry alone isn't much fun, that's why we've made it easy to also transfer BIM and custom data with your objects.
+When receiving data, a `SpeckleProperties` component is attached to each object. Inside it there is a `Dictionary<string,object>` called `Data` that contains all the metadata coming from Speckle. This works similarly when sending data; if any objects have a `SpeckleProperties` component attached to them, it will be used.
 
 ### Materials
 
 We have included basic material support in Speckle and in some of our connectors.
 
-When receiving, the Unity connectors first checks if a shader exists in the scene that matches the incoming object's material by name. If none is found it tries to creates a basic material with the same color and transparency. If no material is set on an incoming objet a default material is applied.
+When receiving, the Unity connectors first checks if a shader exists in the scene that matches the incoming object's material _by name_. If a match cannot be found, Speckle will try to create a basic material with the same color and transparency. If an incoming object has no materials set, a default material will be applied.
 
 ## Building
 
-In order to build the Speckle Playground project and potentially any project using the Unity Connector, please make sure of the following
+In order to build the Speckle Playground project (and potentially any project) using the Unity Connector, please ensure the following:
 
-- set the project architecture to `x86_64`
-- if you get errors on missing shaders include them in your build. To do so, just copy them to a Resource folder OR add them in `Project Settings → Graphics → Built-in Shader Settings → Always Included shaders`
+- Set the project architecture to `x86_64`
+- If you get errors on missing shaders include them in your build. To do so, just copy them to a Resource folder OR add them in `Project Settings → Graphics → Built-in Shader Settings → Always Included shaders`
   ![shader](https://speckle.community/uploads/default/optimized/2X/3/38063ce2324d9f5ef00ec30f87d033b750745c20_2_690x247.png)
