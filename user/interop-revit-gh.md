@@ -6,21 +6,25 @@
 >
 > **Software used:** Revit 2021, Grasshopper for Rhino 7
 
-You can stream _Revit_ native elements to _Grasshopper_ using Speckle! In this guide, we will send different types of Revit elements, such as walls, floors, levels, etc. We will also learn how to specify which data will be sent by using _filters_, extract parameter values, use them to drive our Grasshopper definitions and how to update parameter values back in the Revit model.
+**Stream _Revit_ native elements to _Grasshopper_ using Speckle!**
+
+In this guide, we will send different types of Revit elements, such as walls, floors, levels, etc. We will also learn how to specify which data will be sent by using _filters_. We'll extract parameter values, use them to drive our Grasshopper definitions and see how to update parameter values back in the Revit model.
 
 ![Intro image](./img-interop/rvt-gh-intro-img.png)
 
-## Getting started
+## Getting Started
 
-Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-21) and the Speckle 2.0 connectors installed for **Grasshopper** and **Revit**. Then download the Revit and Grasshopper files for this tutorial [here](https://drive.google.com/drive/folders/19JNfCRJcPaO4QBo2q0swwjNLZ1nOnMMS?usp=sharing)
+Before getting started, check that you have a supported version of Rhino (6 or 7) and Revit (2019-22) and the Speckle 2.0 connectors installed for both **Grasshopper** and **Revit**.
+
+With the setup sorted, download the Revit and Grasshopper files for this tutorial [here](https://drive.google.com/drive/folders/19JNfCRJcPaO4QBo2q0swwjNLZ1nOnMMS?usp=sharing)
 
 ::: tip
-Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose which one is appropriate for you, or install both! 😁
+Our Rhino and Grasshopper connectors are independent of each other, unlike in Speckle 1.0. This means you can choose whichever one best suits your workflow 😁
 :::
 
-## Sharing project data
+## Sharing Project Data
 
-In many cases, we may want to share some basic project data, such as it's views, existing levels or loaded families. These types of elements are not really selectable in Revit, but we can use one of the _filters_ to select them.
+In many cases, we'll want to share some basic project data between software, such as our Revit model's views, existing levels or loaded families. These types of elements are not really selectable in Revit, but we can use one of Speckle's _filters_ to get them across.
 
 1. Create a new stream called `Interop - Revit/GH v2 - Project Data`.
 2. Select the `Project Information` filter
@@ -30,27 +34,27 @@ In many cases, we may want to share some basic project data, such as it's views,
 
 ![Sharing project data](./img-interop/v2/rvtGh-sendingProjectData.gif)
 
-## Sharing Revit elements
+## Sharing Revit Elements
 
-Now that everyone can access the project data, let's create a new stream to send a selection of the buidling elements.
+Now that everyone can access the project data, let's create a new stream to send a few building elements over.
 
-In this case, we'll be sending the **Walls**, **Floors** and **Structural Framing**, to be later used in Grasshopper.
+In this case, we'll be sending the **Walls**, **Floors** and **Structural Framing**, over to Grasshopper.
 
 ![Sharing revit elements](./img-interop/v2/rvtGH-sendingBuildingElements.gif)
 
 1. Create a new stream called `Interop - Revit/GH v2 - Building`.
 2. Select the `Category` filter
-3. Choose the **Walls**, **Floors** and **Structural Framing** options and press `Set Filter`.
+3. Choose the **Walls**, **Floors** and **Structural Framing** categories and click on `Set Filter`.
    You should see the filter selection appear in the _Stream card_.
 4. Press `Send`.
 
-## Receiving Revit elements in Grasshopper
+## Receiving Revit Elements in Grasshopper
 
-Now that we have both our _Project Data_ and some _Building Elements_ in the Speckle server. Let's switch to Grasshopper and use those elements to do some simple Grasshopper tasks.
+Now we have both our _Project Data_ and some _Building Elements_ saved as streams in the Speckle server. Let's switch to Grasshopper and use those elements to do some simple Grasshopper tasks.
 
-## Displaying existing levels
+## Displaying Existing Levels
 
-Included in the _Project Data_ we have the levels available in our building. Lets create some planes at each elevation, and use those to display the name of each floor.
+Included in the _Project Data_ we sent over we have the levels from Revit.Let's create some planes at each elevation, and use those to display the name of each floor.
 
 ![Generating level planes](./img-interop/v2/rvtGh-createLevelTextTag.png)
 
@@ -59,7 +63,7 @@ Included in the _Project Data_ we have the levels available in our building. Let
 3. Press the `Receive` button inside the node and wait for the process to finish.
 
    ::: tip Base objects
-   You'll notice that the data you received is a `Base` object. In order to see what's _inside_ that speckle object, we need to **expand it**.
+   You'll notice that the data you received is a `Base` object. In order to see what's _inside_ that Speckle object, we need to **expand it**.
 
    We'll use the 'Expand Speckle Object` node extensively in this guide.
    :::
@@ -71,11 +75,11 @@ Included in the _Project Data_ we have the levels available in our building. Let
 8. Create a vector using the `elevation` value, and plug that into an `XY Plane` node.
 9. Create a `Text Tag` and plug our newly created planes and our `level` names.
 
-If everything went well, you should see on your screen the generated planes and text tags with the level names on each chposition.
+If everything went well, you should see on your screen the generated planes and text tags with the level names on each position.
 
 ![Generating level planes](./img-interop/v2/rvtGh-generateLevelTagsRhino.png)
 
-## Displaying revit elements in Grasshopper
+## Displaying Revit Elements in Grasshopper
 
 Let's also receive the Revit elements we sent to the `Interop - Revit/GH - Building` stream.
 
@@ -84,7 +88,7 @@ Let's also receive the Revit elements we sent to the `Interop - Revit/GH - Build
 1.  Create a `Receive` node and a panel with the `Interop - Revit/GH v2 - Building` **stream url**.
 2.  Connect the panel to the only input in the `Receive` node.
 3.  Press the `Receive` button inside the node and wait for the process to finish.
-4.  Create an `ExpandSpeckleObject` component and plug the `Base` object into it's input.
+4.  Create an `ExpandSpeckleObject` component and plug the `Base` object into its input.
 
     ::: tip
     You'll see that every category we selected on the Revit filter is organized in different outputs:+
@@ -93,7 +97,7 @@ Let's also receive the Revit elements we sent to the `Interop - Revit/GH - Build
 
     :::
 
-### Visualizing revit elements
+### Visualizing Revit Elements
 
 Every Revit element will always have a `displayMesh` property containing the geometric representation of that object.
 
@@ -103,9 +107,9 @@ In order to access it, we can use the `Speckle Object Value by Key` node to just
 
 We can now proceed to extract some parameters from each object and use them to color our elements accordingly.
 
-### Color by category
+### Color by Category
 
-Coloring by category is the most straighforward. Using the data tree we generated with our elements:
+Coloring by category is the most straightforward. Using the data tree we generated with our elements:
 
 ![Color elements by category](./img-interop/v2/rvtGh-colorByCategory.png)
 
@@ -115,7 +119,7 @@ Coloring by category is the most straighforward. Using the data tree we generate
 
 ![Color elements by category result](./img-interop/v2/rvtGh-colorElementsByCategoryRhino.png)
 
-### Color by level
+### Color by Level
 
 Coloring by level requires also extracting the assigned level for each element. We can do it just like we did for the `displayMesh`
 
@@ -128,7 +132,7 @@ Coloring by level requires also extracting the assigned level for each element. 
 
 ![Color elements by level](./img-interop/v2/rvtGh-colorElementsByLevelRhino.png)
 
-### Color by parameter value
+### Color by Parameter Value
 
 Coloring by parameter requires a little bit more Grasshopper knowledge. As you'd have to handle the parameter list on your own.
 
@@ -143,9 +147,9 @@ You should see the colored elements in the Rhino viewport (in the screenshot, gr
 
 ![Color elements by parameter](./img-interop/v2/rvtGH-colorElementsByTypeRhino.png)
 
-## Updating Revit parameter values from GH
+## Updating Revit Parameter Values from Grasshopper
 
-Now, receiving revit elements and playing with their values in Grasshopper is only part of the story. You may eventually need to send some extra information back to the original Revit model (labelling elements, modifying family types or any other parameter change).
+ So far, we're received Revit elements and played around with their values in Grasshopper. Next, let's send some extra information back to the original Revit model (labelling elements, modifying family types or any other parameter change).
 
 ::: tip
 You can send parameter updates to Revit using the `ParameterUpdater` schema. For that, you'll need to:
@@ -158,11 +162,11 @@ The process is quite simple, you first need to _create a parameter_ with a `name
 In order to be able to update a parameter value, the parameter _**must exist**_ in the element.
 :::
 
-### Sending update orders from GH
+### Sending Update Orders from Grasshopper
 
 Let's use this to update the `Mark` parameter (which exists in all Revit elements) of all walls in our model.
 
-We're just going to name each wall sequentially with the pattern `WALL1, WALL2...WALLXX`, so each wall will have a unique `mark`.
+We're just going to name each wall sequentially with the pattern `WALL1, WALL2...WALLXX`, so each wall will have a unique `Mark` value.
 
 ![Creating parameter updates](./img-interop/v2/rvtGh-updateParameters.png)
 
@@ -171,17 +175,17 @@ We're just going to name each wall sequentially with the pattern `WALL1, WALL2..
 3. Connect the list to the `Parameter` node, and connect a panel with the text **Mark** to the `name`
 4. Connect the `elementId` and the `parameter` list appropriately in the `ParameterUpdater` node.
 
-We will also need a new stream and `send node` to send this data to Revit. Create a new stream called `Interop - Revit/GH v2 - ParamUpdate` and send the `ParameterUpdater` elements.
+We will also need a new stream and `Send Data` node to send this data to Revit. Create a new stream called `Interop - Revit/GH v2 - ParamUpdate` and send the `ParameterUpdater` elements.
 
 ![Sending parameter updates from GH](./img-interop/v2/rvtGh-sendParameterUpdater.gif)
 
-### Receiving the updates in Revit
+### Receiving the Updates in Revit
 
-In Revit, add the stream we just created to your project and press `Receive`. Once the process has completed, you should see the `Mark` property has been filled with unique values for each wall. You can repeat this process as many times as necessary.
+In Revit, add the stream we just created to your project and press `Receive`. Once the process has completed, you should see the `Mark` property has been filled with unique values for each wall. You can repeat this process as many times as is necessary.
 
 ![Receiving parameter updates in GH](./img-interop/v2/rvtGh-receiveParameterUpdates.gif)
 
-## Known issues
+## Known Issues
 
 - Under the `beta` release, there is limited support for Solid elements to be sent _from_ Revit _to_ Speckle. Any solid that is not supported will be converted to a `Mesh` instead.
 
