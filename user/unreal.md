@@ -3,7 +3,7 @@
 Our Unreal connector is in an early stage of development.
 It supports receiving meshes from Speckle in Unreal Engine 4.
 
-Github repository: [https://github.com/specklesystems/speckle-unreal](https://github.com/specklesystems/speckle-unreal)
+Make sure to check out (and star :star: ) our Github repository: [https://github.com/specklesystems/speckle-unreal](https://github.com/specklesystems/speckle-unreal)
 
 <video width="761" height="454" controls>
   <source src="https://user-images.githubusercontent.com/2551138/114720093-61403e00-9d40-11eb-8045-6e8ca656554d.mp4" type="video/mp4">
@@ -11,7 +11,7 @@ Github repository: [https://github.com/specklesystems/speckle-unreal](https://gi
 </video> 
 
 ## Installation
-The Unreal connector is package as an Unreal Engine 4 plugin that is available on Github. To use it in your project:
+The Unreal connector is packaged as an Unreal Engine 4 plugin that is currently only available through Github. To use it in your project:
 1. Download and extract the `speckle-unreal` repository archive from [https://github.com/specklesystems/speckle-unreal/archive/refs/heads/master.zip](https://github.com/specklesystems/speckle-unreal/archive/refs/heads/master.zip) (or clone the repository using `git` tools)
 
 2. Go to the `SpeckleUnrealProject/Plugins` directory and copy the `SpeckleUnreal` plugin directory to your project's `Plugins` directory (if your project directory doesn't contain a directory called `Plugins`, you should create it)
@@ -20,7 +20,7 @@ The Unreal connector is package as an Unreal Engine 4 plugin that is available o
    
 3. Open your UE4 project (or restart the editor if you already have it opened). This will build the plugin in your environment.
 
-👉 Your project can now use the Speckle plugin
+**That's It!** Your project can now use the Speckle plugin!
 
 ## Usage
 The plugin includes an actor type named `Speckle Unreal Manager` that you can use to import objects from Speckle.
@@ -35,7 +35,7 @@ Here is how to use it:
 
 ![SpeckleUnrealManager config](./img-unreal/speckle_manager_config.png)
 
-3. Currently, we require an explicit ObjectID to import. You can explore the objects in a stream by using the Speckle Web Interface of the Speckle server that you use.
+3. Currently, we require an explicit ObjectID to import. You can explore the objects in a stream by using the [Speckle Web App](/user/Web) for the Speckle server that you use.
 
 ![FindingObjectId](./img-unreal/finding_object_id.png)
 
