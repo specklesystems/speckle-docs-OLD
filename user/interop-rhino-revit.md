@@ -6,32 +6,36 @@
 >
 >**Software used:** Revit 2021, Rhino 7
 
-Stream Rhino geometry directly into Revit as BuiltElements with Speckle! In this tutorial, we'll send a sample building from Rhino into default `Floor`, `Wall`, `Facewall`, and `Column` and `Beam` families in Revit with the **ApplySpeckleSchema** command.
+**Stream Rhino geometry directly into Revit with Speckle!**
+
+In this tutorial, we'll send a sample building from Rhino into default `Floor`, `Wall`, `Facewall`, and `Column` and `Beam` families in Revit with the **ApplySpeckleSchema** command.
 
 ![](./img-interop/rhino-revit-intro.gif)
 
 ## Tutorial
 
-Before getting started, make sure you have Speckle Manager installed and an active account set up on a server. This tutorial uses Rhino 7 and any supported version of Revit - check that you have the Speckle 2.0 connectors installed for these applications. Then, download the Rhino 7 file for this tutorial [here](https://drive.google.com/file/d/1FhMNXpmd3VR8OK_4riCvnAdMImXVmFAl/view?usp=sharing).
+Before getting started, make sure you have [Speckle Manager](./manager) installed and an active account set up on a server. This tutorial uses Rhino 7 and any supported version of Revit - check that you have the Speckle 2.0 connectors installed for these applications. Then, download the Rhino 7 file for this tutorial [here](https://drive.google.com/file/d/1FhMNXpmd3VR8OK_4riCvnAdMImXVmFAl/view?usp=sharing).
 
 1.  Open the Rhino file. The model is organized into layers for each section of the model we will be sending.
 2.  Pull up the Rhino Desktop UI by typing `Speckle` in the command line.
-3.  Open a new Revit file, and call up the Revit Desktop UI via the Speckle 2 plugin ribbon.
+3.  Open a new Revit file, and open our Revit connector, which can be found in the Add-ins ribbon .
 
-### Send context geometry as Breps
+### Send Context Geometry as Breps
 
 Let's send our first stream! Since we won't be sending the context geometry as families, the next steps are just a warm up (with some fun layer filtering action):
 
-1. Create a new `Context` stream and check that it is on **Sender** mode. If not, click the arrows on the top right corner to swap the card mode.
+1. Create a new stream, name it `Context` and check that it is on **Sender** mode. If not, click the arrows on the top right corner to toggle between the two modes.
 2. Click the blue **Objects** button and select _Set/Edit Objects Filter_ from the dropdown.
 3. From the `Layer` filter tab, select _Context::Buildings_ and _Leadenhallish:Substructure_ and click **Set Filter**.
 4. Click **Send** on the `Context` stream card.
-5. In Revit Desktop UI, click the blue **Add a stream** button on the bottom. Add the `Context` stream card to UI by clicking the arrow next to the stream in the popup window.
-6. Click **Receive** on the stream card, and watch the geometry come in as generic models!
+5. In Revit Desktop UI, click the blue **Add a stream** button on the bottom. Add the `Context` stream by clicking the arrow next to the stream in the popup window.
+6. Click **Receive** on the stream, and watch the geometry come in as generic models.
+
+Overall, not a bad start - now let's do some serious sending!
 
 ![](./img-interop/rhino-revit-context.mp4)
 
-### Send ground floor geometry with walls, floors, and a facewall
+### Send Ground Floor Geometry with Walls, Floors, and a Facewall
 
 For the ground level of our building, we're going to send geometry as a mix of walls, floors, facewalls, and generic models for elements (like ramp surfaces) that are not currently supported.
 
@@ -50,11 +54,11 @@ You should see a **<SpeckleSchema,Floor>** keyvalue pair in the attribute user t
 4. Check the _Attribute User Text_ panel and you should see a **<SpeckleSchema,Wall>** entry now!
 5. Repeat steps 1-4 for the curving surface on the ground floor, this time selecting the _Schema=Facewall_ option instead.
 
-Create a `Ground Floor` stream to send all geometry from the _Leadenhallish::Ground Floor_ layer, and receive it in your Revit file! Any objects that were assigned a schema will be converted as default Revit families.
+Create a new stream, name it `Ground Floor` and send all geometry from the _Leadenhallish::Ground Floor_ layer. In Revit, receive this stream and any objects that were assigned a schema will be converted as default Revit families.
 
 ![](./img-interop/rhino-revit-ground-floor.mp4)
 
-### Send the core brep as walls and floors
+### Send the Core Brep as Walls and Floors
 
 Next, we'll send try to send the core geometry as `Wall` and `Floor` surfaces.
 
@@ -67,14 +71,14 @@ Next, we'll send try to send the core geometry as `Wall` and `Floor` surfaces.
 
 ![](./img-interop/rhino-revit-core.mp4)
 
-### Send the floor slabs and truss to complete the model
+### Send the Floor, Slabs and Truss to Complete the Model
 
-To finish off our model, let's now send the floor slabs and truss with the automagic method. We don't need to worry about missing schemas in the _Leadenhallish::Floor Slabs_ layer since it only has horizontal surfaces, and the truss curves in _Leadenhallish::Structure_ sublayers will be smartly picked up as either `Column` or `Beam` members!
+To finish off our model, let's send the floor slabs and truss with the automagic method. We don't need to worry about missing schemas in the _Leadenhallish::Floor Slabs_ layer since it only has horizontal surfaces, and the truss curves in _Leadenhallish::Structure_ sublayers will be intelligently picked up as either `Column` or `Beam` objects!
 
 1. Lock the previous layer and unhide _Leadenhallish::Structure_ and select _Leadenhallish::Floor Slabs_. Select all containing geometry.
 2. Apply schemas automatically with the **ApplySpeckleSchema** command.
-3. Cycle through some of the truss members to look at their assigned schema: lines with < 45 degree deviation from vertical are assigned as columns, while all others are assigned as beams.
-4. Create a `Floors and Truss` stream and send to Revit - our Leadenhall lookalike building is now complete!
+3. Cycle through some of the truss members to look at their assigned schema. Lines with < 45 degree deviation from vertical are assigned as columns, while all others are assigned as beams.
+4. Create a new `Floors and Truss` stream and send to Revit. Go to Revit and receive it - our Leadenhall lookalike building is now complete!
 
 ![](./img-interop/rhino-revit-floors-and-truss.mp4)
 
