@@ -48,7 +48,7 @@ Let's look at how we would send some data in Dynamo. First, start by creating a 
 
 In order to select which stream to send data to, you just need to pass a stream URL to the `streamUrl` port.
 
-![image-20210322170153584](./img-dyn/image-20210322170153584.png)
+![image-20210322170153584](./img-dyn/sending-multiple-branches.png)
 
 Alternatively, you can also use one of the following nodes to create / retrieve existing streams:
 
@@ -75,11 +75,12 @@ With a Stream URL and some data to send, the only thing left to do is to press t
 
 ![dyn-send](./img-dyn/dyn-send.gif)
 
+
 ### Viewing a Stream Online
 
 To view the sent stream online you can just right click on the sender node:
 
-![image](https://user-images.githubusercontent.com/2679513/114192190-1b9d0300-9945-11eb-952a-8676a4854397.png)
+![image](./img-dyn/viewing-a-stream-online.png)
 
 ### Sending to a Specific Branch
 
@@ -129,7 +130,7 @@ Like commits, objects in a commit cannot be edited, so the data received using s
 
 To view the received stream online you can just right-click on the receiver node:
 
-![image](https://user-images.githubusercontent.com/2679513/114192622-9bc36880-9945-11eb-8b49-639f0f34b619.png)
+![image](./img-dyn/viewing-a-stream-online.png)
 
 ## Creating Custom Objects
 
@@ -233,7 +234,7 @@ Select the appropriate account and press the blue button. If the stream creation
 
 To view the newly-created stream online you can just right click on the node:
 
-![image](https://user-images.githubusercontent.com/2679513/114194176-2193e380-9947-11eb-8b55-8f2f56d07773.png)
+![image](./img-dyn/viewing-the-stream-online.png)
 
 #### Inputs
 
