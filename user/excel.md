@@ -24,6 +24,7 @@ The Speckle connector for Excel Connector is currently in early alpha, help us g
 **This connector is not distributed via Manager**, it is instead available via the Microsoft Office Store.
 
 To install it:
+
 - open Excel Desktop or Web
 - Click on _Insert > Office Add-Ins_
 - Search for `speckle` and click _Add_
@@ -32,12 +33,9 @@ To install it:
 
 Alternatively, just visit [https://appsource.microsoft.com/en-us/product/office/WA200002934](https://appsource.microsoft.com/en-us/product/office/WA200002934).
 
-
 After installing the connector, it should show up within Excel:
 
 ![image](https://user-images.githubusercontent.com/2679513/119171684-cdf3da00-ba5c-11eb-87a5-bee798f96f90.png)
-
-
 
 ### Logging in
 
@@ -55,55 +53,57 @@ Just click the top left menu > Add stream > click on a stream to add to the docu
 
 ![excel-add](https://user-images.githubusercontent.com/2679513/119180828-b4588f80-ba68-11eb-8ac3-0aa8f9d5158f.gif)
 
-
-
 By default streams are added as receivers, but you can easily toggle to sender mode.
 
 ![image](https://user-images.githubusercontent.com/2679513/119181346-61330c80-ba69-11eb-9100-7f1b0f9ec82c.png)
 
 ## Receiving data
 
-Receiving data in excel is quite different than receiving it in other connectors, and this is because excel can only be represented in a table. Therefore, after clicking the **receive button**, you'll be presented with the data structure of the stream and prompted to select which data inside it to actually pull and write to your file.
+Receiving data in excel is quite different than in other connectors, and this is because we need to "flatten" it so to represent it in a table. In general, a stream will either contain:
 
-Data can be received as **objects** or **lists**. Objects will have a `{}` icon next to them, and lists a `[]` icon.
+- simple values like numbers, text etc
+- complex data structures (objects) like a Revit Wall or a Grasshopper Line. Objects are identified by a `{}` symbol.
 
-Click on the download button to their right to pull and write them **in the selected cell**.
+The Excel connector works best when receiving lists of either simple values or objects of the same type. Lists are identified by a `[]` symbol.
+
+Since a commit can contain a variety of data types, after clicking the **receive button**, you'll have the possibility to expand and select which data inside it to actually pull and write to your file. You don't have to receive an entire commit each time!
 
 ![image-20210521205817594](https://user-images.githubusercontent.com/2679513/119197116-2b991e00-ba7f-11eb-8e70-6d7e962361d5.png)
 
+### Simple values
 
-
-### Lists
-
-Lists (or lists of lists aka tables) are received without transformations and are outputted by default in rows. So a single list will write data to a single row, a list of lists to multiple rows. If the incoming data has any further levels of nesting, it will be "string-ified".
+When receiving lists (or lists of lists aka tables) of numbers or text, the data is received without transformations and the values are outputted by default in rows. Therefore, a single list will write data to a single row, a list of lists to multiple rows. If the incoming data has any further levels of nesting, it will be "string-ified".
 
 ![image](https://user-images.githubusercontent.com/2679513/119188807-1b7b4180-ba73-11eb-955e-744cf2906e76.png)
 
 ### Objects
 
-Objects are flattened when received. This means that **all their property names will become headers**, and for each object its values will be listed in a row. Same will apply to their sub-objects.
+When receiving lists of objects they are flattened. This means that each object will become a new row and **all its property values (and sub-property values) will become columns**, their names will be the headers.
+Individual objects can be received too, and only one row will be created.
 
-:::tip IMPORTANT 🙌
+:::tip TIP 🙌
 
-We recommend receiving only objects that have a simple structure and few properties. We also discourage receiving data of different types as the list of headers would become very long. 
-
-**Currently, some Revit objects are too complex to be received and displayed**, we're working to add support for them.
+We recommend receiving lists of objects that have the same data structure / type.
 
 :::
 
-
-
 ![image](https://user-images.githubusercontent.com/2679513/119189886-88dba200-ba74-11eb-8066-cd98972a88dd.png)
 
-Nested objects are flattened and their properties delimited by a period `.`. See the example below where 10 lines have been streamed from Dynamo to Excel:
+Nested objects are flattened as well and their properties delimited by a period `.`. See the example below where 10 lines have been streamed from Dynamo to Excel:
 
 ![image](https://user-images.githubusercontent.com/2679513/119195280-4e760300-ba7c-11eb-8601-3ed72a6b0813.png)
 
+#### Complex Objects
+
+When receiving complex objects (with more than 25 properties or sub-objects), you'll be presented with an additional dialog to help you filter the columns to be received.
+
+![excel-receive](https://user-images.githubusercontent.com/2679513/120610238-e1cf1100-c44a-11eb-88cd-669d18faf0a6.gif)
+
 ## Sending Data
 
-Similarly to receiving, data can be sent as **lists** (or lists of lists aka tables) or **objects**.
+Similarly to receiving, data can be sent a list of **simple values** or of **objects**.
 
-### Lists
+### Simple values
 
 Just select the range of data you want to send and click "Set range"
 
@@ -113,7 +113,7 @@ This is how it'll look in Speckle.
 
 ![image](https://user-images.githubusercontent.com/2679513/119196013-72861400-ba7d-11eb-9258-b10f285a6eba.png)
 
-## Objects
+### Objects
 
 To send objects, just replicate the structure of objects that you have previously received, then select "Set range with headers".
 
@@ -121,6 +121,10 @@ For instance, you could create 10 new lines with the data below:
 
 ![image](https://user-images.githubusercontent.com/2679513/119196439-17085600-ba7e-11eb-8273-6fdf60e91894.png)
 
+#### Advanced Objects
+
+More advance use of Objects is possible, and similarly to how our [Grasshopper Schema Builder](/user/grasshopper.html#schema-builder) works, you can **create BIM elements** directly from Excel and **update Revit elements** too.
+We will add more documentation on this soon!
 
 ## Support
 
