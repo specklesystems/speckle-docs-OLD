@@ -1,6 +1,6 @@
 # Unity
 
-Our Unity connector differs form the other connectors described in our User Guide as it's only really meant for use by software developers. It doesn't have an elaborate UI, but it offers convenience methods to send and receive data.
+Our Unity connector differs from the other connectors described in our User Guide as it's only really meant for use by software developers. It doesn't have an elaborate UI, but it offers convenience methods to send and receive data.
 
 In addition to this page, you should also take a look at our [.NET SDK section](/dev/dotnet).
 
