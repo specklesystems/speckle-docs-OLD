@@ -6,19 +6,27 @@ typora-copy-images-to: ./img-dyn
 
 Speckle's Dynamo connector currently supports Dynamo versions 2.1 to 2.10 (for Autodesk Revit 2019-2022). All versions of Dynamo Sandbox from 2.1 to 2.10 are also supported.
 
+::: tip Please Note!
+
+The Speckle node package is not available from Dynamo's Package Manager. For installation instructions, see the section below.
+
+:::
+
 ## Getting Started
 
-Our Dynamo Connector takes the form of a node package, which is installed via the Speckle Manager. Please Note: The Speckle package cannot be downloaded from Autodesk's Package Manager. To install the Dynamo Connector and add your Speckle account, follow the instructions in our [Speckle Manager](/user/manager) section.
+Our Dynamo Connector takes the form of a node package, which is installed via the Speckle Manager. To install the Dynamo Connector and add your Speckle account, follow the instructions in our [Speckle Manager](/user/manager) section.
 
 ![Dyn Connector components](./img-dyn/nodes-cat-all.png)
 
 Once installed, the **Dynamo Connector** will appear as a node package in your library as `Speckle 2`.
 
-The `Speckle 2` package contains the main nodes necessary to use Speckle within Dynamo, including nodes for sending and receiving data, managing streams and selecting accounts. We've also built a few nodes for more advanced use-cases, as well as some handy tools for Speckle developers/hackers. These are found in the `Developer Tools` sub-section of the package. 
+The `Speckle 2` package contains the main nodes necessary to use Speckle within Dynamo, including nodes for sending and receiving data, managing streams and selecting accounts.
+
+We've also built a few nodes for more advanced use cases, as well as some handy tools for Speckle developers/hackers (these are found in the `Developer Tools` sub-section of the package).
 
 ## Streams and URLs
 
-In Dynamo, Speckle Streams are identified by their URLs.
+Speckle Streams are identified by their URLs.
 Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different formats:
 
 - `https://speckle.xyz/streams/3073b96e86` points to the `main` branch on Stream `3073b96e86`
@@ -215,7 +223,7 @@ To create a new stream, right-click on the canvas and search for the `Create Str
 You can also create streams online form Speckle Web. From there you can also set their name, description and permissions.
 :::
 
-Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (to do this, just create a new `Stream Create` node).
+Once created, the node will remember that stream. Meaning you will not be able to _change_ the stream you created, or create a new one using the same node (to do this, just place a new `Create Stream` node).
 
 Select the appropriate account and press the blue button. If the stream creation was successful, the output of the node should be a _stream url_ pointing to the newly created stream and linked to the specified account.
 
@@ -386,4 +394,4 @@ Creates a connection to in-memory storage.
 
 ### Unsupported Elements
 
-Any geometric element not listed above are not supported.
+Any geometric elements not listed above are not supported.
