@@ -1,18 +1,20 @@
 # Collaborative Data Informed Design Workflows With Rhino and Grasshopper
 
-> **Level:** intermediate
+> **Level:** Intermediate
 >
 > **Author:** Dim
 >
 > **Software used:** Grasshopper and Rhino 7
 
-We're going to create a simple collaborative workflow with Rhino, Grasshopper and Speckle. We're assuming a design process in which three or more persons are collaborating on the design of a market hall. Here's a diagram of the workflow:
+In this tutorial, we're going to create a simple collaborative workflow with Rhino, Grasshopper and Speckle. We're assuming a design process in which three (or more) persons are collaborating on the design of a market hall.
+
+Here is a diagram of the workflow:
 
 ![workflow](./img-collab-gh/GhMultiplayerGraph.png)
 
 :::tip Curious about the final result?
 
-Check it the [model out right here in your browser](https://speckle.xyz/streams/a632e7a784/commits/a4427aede3)!
+Check the model out [right here in your browser](https://speckle.xyz/streams/a632e7a784/commits/a4427aede3)!
 
 :::
 
@@ -29,9 +31,9 @@ How are we going to structure this? Simple! First off, we're going to create a n
 3. Structure Branch (Bob)
 4. Roofing Branch (Franz)
 
-Alice, our project manager, will use the default branch, "main", to hold the combined data - somewhat of a release branch, where information is "stable". 
+Alice, our project manager, will use the default branch, "main" to hold the combined data. This 'canonical' branch can be seen as representing the "official" state of the model, free from whatever goes on in other branches.
 
-Here's a quick video of how to setup this stream:
+Here's a quick video of how to set up this stream:
 
 [stream creation](./img-collab-gh/stream-creation.mp4)
 
@@ -40,18 +42,18 @@ Here's a quick video of how to setup this stream:
 The base files are [right here](https://drive.google.com/drive/folders/1yUXmP_IPH2Ek3XyLR5XaZ5zBfLvzr3JU?usp=sharing).  
 
 
-Do note that you will not be able to send to the same stream, as you do not have write access to it. You can just [create one on our server](https://speckle.systems/getstarted) and get going!
+Please Note: You will not be able to send to the same stream as the one we're using, as you don't have write access to it. You can just [create one on our server](https://speckle.systems/getstarted) and get going!
 
 :::
 
 ## **Step 0**: Sending the Site & Surroundings to Speckle
 
-We'll assume the site is modelled in Rhino directly - consequently, Alice will use the Rhino connector to send the data out. To open it in Rhino, simply type Speckle in the command line. 
+We'll assume the site is modelled in Rhino directly. Consequently, Alice will use the Rhino connector to send the data out. To open it in Rhino, simply type Speckle in the command line. 
 
 
 ![final-result](./img-collab-gh/GhMultiplayerSite.png)
 
-In this step, Alice is just sending "everything" out that's in the file. You might want to curate what you send, but it's the easiest option. To do so, first add the stream you have just created to the connector. Then swap it to a sender, and set it's object filter to "All". Finally, Alice clicks **Send**!
+In this step, Alice is just sending "everything" out that's in the file. You might want to curate what you send, but it's the easiest option. To do so, first add the stream you have just created to the connector. Then swap it to a sender, and set its object filter to "All". Finally, Alice hits **Send**!
 
 :::tip 
 
@@ -61,7 +63,7 @@ In this step, Alice is just sending "everything" out that's in the file. You mig
 
 ## **Step 1:** Conceptual Modelling
 
-Before starting to work on her concept design, first pulls in the site information that Alice is keeping updated on the "site" branch. 
+Before starting to work on her concept design, Mary first pulls in the site information that Alice is keeping updated on the "site" branch. 
 
 [stream creation](./img-collab-gh/site-receive.mp4)
 
@@ -71,23 +73,23 @@ Mary's Grasshopper definition takes a surface and cuts it into three main sectio
 
 ![concept design](./img-collab-gh/GhMultiplayerConcept.png)
 
-When sending the data out, Mary is organising it a bit, rather than just "sending it". She is discussed with Bob and Franz in what way it would be useful for them down the line, when devising a structural system (Bob) and the roofing solution (Franz) and decided to separate the generator curves from the actual surfaces. She does this by creating and nesting a series of custom speckle objects that describe each hall section:
+When sending the data out, Mary is organising it a bit, rather than just _"sending it"_. She discussed with Bob and Franz how best to prepare it for them to use "down the line". When devising a structural system (for Bob) and the roofing solution (for Franz) they decided to separate the generator curves from the actual surfaces. Mary does this by creating and nesting a series of custom speckle objects that describe each hall section:
 
 ![sending the concept design](./img-collab-gh/GhMultiplayerConceptSend.png)
 
-TIP: When plugging data directly into a grasshopper sender and receiving it back out again, Speckle respects your tree structures; that might be enough!
+TIP: When plugging data directly into a Grasshopper sender and receiving it back out again, Speckle respects your tree structures; that might be enough!
 
-Lastly, Mary sends her work in the "concept" branch. In Grasshopper, to do so, the easiest way is to simply copy paste the branch url from online and plug it into the "S" input port of the sender. 
+Lastly, Mary sends her work in the "concept" branch. In Grasshopper, the easiest way to do this is to simply copy paste the branch URL from the [Speckle Web App](./web.md) and plug it into the "S" input port of the sender node. 
 
-## **Step 2:** Structure Design
+## **Step 2:** Structural Design
 
 Bob will now start designing a structure for the market halls. To start, he will receive the surfaces from the conceptual modelling branch. Here's a quick video of the process:   
 
 [receiving the data for structure generation](./img-collab-gh/structure-receive.mp4)
 
-Notice how, when Bob just received the data, there's no visible geometry. That's because it comes from upstream in a custom structure that needs to be expanded first to reach the actual geometry. 
+Notice how when Bob just received the data, there's no visible geometry. That's because it comes from upstream in a custom structure that needs to be expanded first to reach the actual geometry. 
 
-Great - now Bob has a bunch of generator curves, as well as the original surfaces of the roof. From here onwards, we can start designing our structure! Once done, Bob sends his structural design to the "structure" branch of the stream. 
+Great! Now Bob has a bunch of generator curves, as well as the original surfaces of the roof. From here onwards, we can start designing our structure! Once done, Bob sends his structural design to the "structure" branch of the stream. 
 
 ![structure preview](./img-collab-gh/structure-preview.png)
 
@@ -125,13 +127,13 @@ First, he converts each panel to a Speckle object. Then, using the Extend Speckl
 
 Alice, our project manager, is in charge of this stage of the project. As such, she will want to verify and release data down the line before it goes out to other contractors or different teams. 
 
-Her main task is to coordinate and merge the data from the structure, roofing and the site branches and push it to main, where it can be easily referred to in the future. How does she do that? Well, there's more ways than one. She could receive and bake all the data streams in Rhino, check that they are in good order, and then send them out again. 
+Her main task is to coordinate and merge the data from the structure, roofing and the site branches and push it to main, where it can be easily referred to in the future. How does she do that? Well, there's more than one way! She could receive and bake all the data streams in Rhino, check that they are in good order, and then send them out again. 
 
 Alternatively, she can also receive all this data in Grasshopper and merge it there before sending it out to the main branch: 
 
 ![merging data in grasshopper](./img-collab-gh/merge.png)
 
-Using the online interface, Alice as well will assign that commit a specific "commit message", or description, that matches the project's delivery naming conventions and specifications. Here's how to do it: 
+Using the online interface, Alice will assign that commit a specific "commit message", or description, that matches the project's delivery naming conventions and specifications. Here's how to do it: 
 
 [renaming a commit](./img-collab-gh/commit-rename.mp4)
 
@@ -139,15 +141,15 @@ Using the online interface, Alice as well will assign that commit a specific "co
 
 ### Updates
 
-As you know, things can change during the design phase. One nifty advantage of using Speckle is that you can have real-time updates as they do! 
+As you know, things can change during the design phase. One nifty advantage of using Speckle is that you can have real-time updates as soon as they are sent! 
 
-Each receiver will notify users when there's a newer commit on a given branch; moreover, if set to "auto-receive", it will automatically pull that data down! Here's a quick video of a live-update session:
+Each receiver will notify users when there's a newer commit on a given branch. Moreover, if set to "auto-receive" mode, the connector will automatically pull that data down! Here's a quick video of a live-update session:
 
 [live updates](./img-collab-gh/live-updates.mp4)
 
 :::tip 
 
-Note: sometimes it's better *not* to have live updates. I mean, who would want to publish design data out before it's ready? That's why the default behaviour of Senders and Receivers is set to "manual": publish data when you're ready drafting; pull new data in at your leisure! 
+Note: Sometimes it's better *not* to have live updates. I mean, who would want to publish design data out before it's ready? That's why the default behaviour of Senders and Receivers is set to "manual" - publish data when you're ready drafting and pull new data in at your leisure! 
 
 :::
 
@@ -157,7 +159,7 @@ Note: sometimes it's better *not* to have live updates. I mean, who would want t
 
 This quick tutorial taught you one of the ways in which you can use Speckle in a collaborative design environment in Rhino and Grasshopper. 
 
-- You've gotten familiar with the **basics** of the Rhino and Grasshopper connectors, and some **advanced features** such as adding custom properties to objects.
+- You've become familiar with the **basics** of the Rhino and Grasshopper connectors, and some **advanced features** such as adding custom properties to objects.
 - You've used stream **branches** to separate the design tasks amongst a team of architects and engineers.
 - You've also seen how to **structure data** so that downstream actions can be easier to achieve.
 - Lastly, you've **merged** multiple data sources to create a master model to "pin" a version of your design.
