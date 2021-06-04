@@ -94,6 +94,23 @@ The toolbar at the bottom edge of the viewer allows you to:
 3. Cut the view with a section plane
 4. Open a help menu if you need a reminder of the controls
 
+## Globals
+
+Want to keep track of project information, design values, notes, or any other general info alongside your geometry? Each stream can have a set of global variables which can do just that! These globals could be things like site region, building height, maximum areas, summer / winter temperatures, etc - your imagination is the limit!
+
+To build or edit a stream's globals, click the "Globals" button in the stream sidebar.
+
+![globals button on stream page](./img/web/globals-button.png)
+
+This will take you to the interactive globals editor. Here, you can add new fields with the ➕ button and fill in its name and value. Any field can be transformed into a group by clicking the box button on the right. Any group can also be flattened by clicking the collapse button on the right of its name. You can drag and drop any field or group anywhere you want within the editor to build the structure you want!
+
+![editing your globals](./img/web/globals-info.png)
+::: tip NOTE 
+
+Globals currently do not support detached objects. Let us know on the forum if this is something you would want!
+
+:::
+
 ## Profile
 
 Click on your profile image to head to the **Profile** management page. If you haven't added a profile pic yet, we've auto-generated you a nice little robot avatar (you're welcome :smile: ) 
