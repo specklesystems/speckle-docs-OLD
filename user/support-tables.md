@@ -134,6 +134,7 @@ Non-geometric elements and any geometric element not listed above, such as text 
 | Level                                                 | ✅    | ✅       | `Complete`    |
 | Opening (Wall, Vertical, Shaft)                       | ✅    | ✅       | `Complete`    |
 | Pipe                                                  | ✅    | ✅       | `Complete`    |
+| Pointcloud                                            | ✅    |         | `Complete`    |
 | Project Information                                   | ✅    |         | `In Progress` |
 | Railing                                               | ✅    | ✅       | `Complete`    |
 | Roof (Extrusion, Footprint)                           | ✅    | ✅       | `Complete`    |
@@ -211,11 +212,12 @@ Any geometric elements not listed above are not supported.
 | ------------- | ---- | ------- | -------------- |
 | Featureline   | ✅    |         | `In Progress`  |
 | Alignment     | ✅    |         | `In Progress`  |
-| Profile       |      |         | `In Progress`  |
+| Profile       | ✅    |         | `In Progress`  |
 | Tin Surface   | as Mesh    |         | `In Progress`  |
 | Grid Surface  | as Mesh    |         | `In Progress`  |
 | Pipe          | as Mesh    |         | `In Progress`  |
 | Structure     | as Mesh    |         | `In Progress`  |
+| Corridor      |            |         | `In Progress`  |
 
 ### Unsupported Elements
 
