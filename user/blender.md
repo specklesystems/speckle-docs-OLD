@@ -39,22 +39,7 @@ At the very bottom of the panel (not pictured), you'll find a button that will o
 
 ## Supported Elements
 
-The Blender Connector is still a work in progress and, as such, the conversions to and from Speckle are not yet robust. We welcome feedback, requests, edge cases, and contributions!
-
-- Meshes are fairy well supported
-- Breps are imported as meshes using their `displayValue`
-- Curves have limited support
-
-| Type                                     | Send | Receive      | Status        |
-| ---------------------------------------- | :--: | :----------: | :-----------: |
-| Arc                                      |      | approximated | `In Progress` |
-| Brep                                     |      | as mesh      | `In Progress` |
-| Curve (Nurbs, Bezier, Ngons as Polyline) | ✅    | ✅            | `In Progress` |
-| Mesh                                     | ✅    | ✅            | `In Progress` |
-| Polycurve                                |      | ✅            | `In Progress` |
-| Polyline                                 | ✅    | ✅            | `In Progress` |
-| Render Material                          | ✅    | ✅            | `In Progress` |
-
+* [Blender Support Tables](/user/support-tables.html#blender)
 
 ## Developing Locally
 

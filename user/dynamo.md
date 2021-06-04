@@ -370,29 +370,4 @@ Creates a connection to in-memory storage.
 
 ## Supported Elements
 
-| Geometry       | Send          | Receive       | Status     |
-| -------------- | :-----------: | :-----------: | :--------: |
-| Point          | ✅             | ✅             | `Complete` |
-| Line           | ✅             | ✅             | `Complete` |
-| Plane          | ✅             | ✅             | `Complete` |
-| Arc            | ✅             | ✅             | `Complete` |
-| Circle         | ✅             | ✅             | `Complete` |
-| Cuboid         | As Box        | ✅             | `Complete` |
-| Ellipse        | ✅             | ✅             | `Complete` |
-| Helix          | As Spline     |               | `Complete` |
-| Polyline       |               | x<sup>α</sup> | `Complete` |
-| Polycurve      | ✅             | ✅             | `Complete` |
-| Polygon        | As Polyline   | ✅             | `Complete` |
-| Rectangle      | As Polyline   | ✅             | `Complete` |
-| Spline         | ✅             | ✅             | `Complete` |
-| Brep           | ✅             | ✅             | `Complete` |
-| Mesh           | ✅             | ✅             | `Complete` |
-| Revit Elements | x<sup>β</sup> |               | `Complete` |
-
-<sup>α</sup>: As Rectangle, Polycurve, or Polygon
-
-<sup>β</sup>: All Revit elements described [here](/user/revit.html#supported-elements) can also be sent from Dynamo
-
-### Unsupported Elements
-
-Any geometric elements not listed above are not supported.
+* [Dynamo Support Tables](/user/support-tables.html#dynamo)

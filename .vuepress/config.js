@@ -91,7 +91,8 @@ module.exports = {
             "unity",
             "unreal",
             "blender",
-            "excel"
+            "excel",
+            "support-tables"
           ]
         },
         {

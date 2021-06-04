@@ -71,43 +71,9 @@ You may also notice the overlapping received objects(gray) with the original obj
 
 ![Received layers pattern](./img-rhino/rhino-stream-receive-layers.png)
 
-## Supported elements
+## Supported Elements
 
-Almost all geometric elements are supported by the Rhino connector. This includes:
-
-| Geometry     | Send    | Receive | Status     |
-| ------------ | :-----: | :-----: | :--------: |
-| Point        | ✅       | ✅       | `Complete` |
-| Line         | ✅       | ✅       | `Complete` |
-| Plane        | ✅       | ✅       | `Complete` |
-| Arc          | ✅       | ✅       | `Complete` |
-| Circle       | ✅       | ✅       | `Complete` |
-| Ellipse      | ✅       | ✅       | `Complete` |
-| Polyline     | ✅       | ✅       | `Complete` |
-| Polycurve    | ✅       | ✅       | `Complete` |
-| Spline       | ✅       | ✅       | `Complete` |
-| Nurb Surface | As Brep | ✅       | `Complete` |
-| Brep         | ✅       | ✅       | `Complete` |
-| Extrusion    | ✅       | As Brep | `Complete` |
-| Mesh         | ✅       | ✅       | `Complete` |
-
-| BuiltElement | Send | Receive  | Status     |
-| ------------ | :--: | :------: | :--------: |
-| View         | ✅    | ✅        | `Complete` |
-| ModelCurve   |      | As Curve | `Complete` |
-| DirectShape  |      | As Mesh  | `Complete` |
-
-| Other           | Send | Receive | Status        |
-| --------------- | :--: | :-----: | :-----------: |
-| RenderMaterial  | ✅    |         | `In Progress` |
-| BlockInstance   | ✅    | ✅       | `Complete`    |
-| BlockDefinition | ✅    | ✅       | `Complete`    |
-
-> Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
-
-### Unsupported elements
-
-Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc are not supported.
+* [Rhino Support Tables](/user/support-tables.html#rhino)
 
 ## Schema Builder
 

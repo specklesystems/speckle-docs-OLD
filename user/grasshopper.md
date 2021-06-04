@@ -171,7 +171,7 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 :::
 
-::: details Supported elements
+Supported Elements
 
 Grasshopper supports the same geometry as the Rhino connector:
 
@@ -222,8 +222,6 @@ The **Schema Builder** node also provides additional support for the following b
 | Wall                                                  | ✅       |         | `Complete`    |
 
 Refer to the section below for additional information on the **Schema Builder** node.
-
-:::
 
 ### Unsupported elements
 

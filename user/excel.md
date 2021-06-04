@@ -21,7 +21,8 @@ The Speckle connector for Excel Connector is currently in early alpha, help us g
 
 ### Installing
 
-**Our Excel connector is not distributed via the Speckle Manager**
+**Our Excel connector is not distributed via the Speckle Manager.**
+
 Instead, you can get it from the Microsoft Office Store.
 
 To install it:

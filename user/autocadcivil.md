@@ -38,48 +38,8 @@ Any layer information from the incoming stream will be appended to the prefix wi
 
 ## Supported Elements
 
-**AutoCAD**
-| Geometry       | Send | Receive | Status        |
-| -------------- | :--: | :-----: | :-----------: |
-| Point          | ✅    | ✅       | `Complete`    |
-| Line           | ✅    | ✅       | `Complete`    |
-| Arc            | ✅    | ✅       | `Complete`    |
-| Circle         | ✅    | ✅       | `Complete`    |
-| Ellipse        | ✅    | ✅       | `Complete`    |
-| Polyline       | ✅    | ✅       | `Complete`    |
-| Polycurve      | ✅    | ✅       | `Complete`    |
-| Spline         | ✅    | ✅       | `Complete`    |
-| Plane Surface  | ✅    |         | `In Progress` |
-| Nurb Surface   | ✅    |         | `In Progress` |
-| PolyFace Mesh  | ✅    |         | `In Progress` |
-| SubD Mesh      | ✅    |         | `In Progress` |
-| 3D Solid       | as Mesh    |         | `In Progress` |
-
-| Other          | Send | Receive | Status        |
-| -------------- | :--: | :-----: | :-----------: |
-| BlockInstance  | ✅    | ✅       | `Complete`    |
-| BlockDefinition| ✅    | ✅       | `Complete`    |
-
-**Civil 3D**
-| Geometry      | Send | Receive | Status         |
-| ------------- | ---- | ------- | -------------- |
-| Featureline   | ✅    |         | `In Progress`  |
-| Alignment     | ✅    |         | `In Progress`  |
-| Profile       |      |         | `In Progress`  |
-| Tin Surface   | as Mesh    |         | `In Progress`  |
-| Grid Surface  | as Mesh    |         | `In Progress`  |
-| Pipe          | as Mesh    |         | `In Progress`  |
-| Structure     | as Mesh    |         | `In Progress`  |
-
-### Unsupported Elements
-
-**AutoCAD**
-
-Hatches, labels, and annotations are not supported, as well as any unlisted element. Dynamic blocks are not supported at this time.
-
-**Civil 3D**
-
-Subassemblies and Assemblies are not supported.
+* [AutoCAD Support Tables](/user/support-tables.html#autocad)
+* [Civil 3D Support Tables](/user/support-tables.html#civil3d)
 
 ### Things to keep in mind
 
