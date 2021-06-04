@@ -134,6 +134,7 @@ Non-geometric elements and any geometric element not listed above, such as text 
 | Level                                                 |  ✅  |   ✅    |  `Complete`   |
 | Opening (Wall, Vertical, Shaft)                       |  ✅  |   ✅    |  `Complete`   |
 | Pipe                                                  |  ✅  |   ✅    |  `Complete`   |
+| PointCloud                                            |  ✅  |         |  `Complete`   |
 | Project Information                                   |  ✅  |         |  `Complete`   |
 | Railing                                               |  ✅  |   ✅    |  `Complete`   |
 | Roof (Extrusion, Footprint)                           |  ✅  |   ✅    |  `Complete`   |
@@ -206,15 +207,16 @@ Any geometric elements not listed above are not supported.
 
 ### Supported Elements
 
-| Geometry     | Send    | Receive | Status        |
-| ------------ | ------- | ------- | ------------- |
-| Featureline  | ✅      |         | `In Progress` |
-| Alignment    | ✅      |         | `In Progress` |
-| Profile      |         |         | `In Progress` |
-| Tin Surface  | as Mesh |         | `In Progress` |
-| Grid Surface | as Mesh |         | `In Progress` |
-| Pipe         | as Mesh |         | `In Progress` |
-| Structure    | as Mesh |         | `In Progress` |
+| Geometry     | Send       | Receive | Status        |
+| ------------ | ---------- | ------- | ------------- |
+| Alignment    | ✅         |         | `In Progress` |
+| Corridor     |            |         | `In Progress` |
+| FeatureLine  | ✅         |         | `In Progress` |
+| Grid Surface | ✅ as Mesh |         | `In Progress` |
+| Pipe         | ✅ as Mesh |         | `In Progress` |
+| Profile      | ✅         |         | `In Progress` |
+| Structure    | ✅ as Mesh |         | `In Progress` |
+| Tin Surface  | ✅ as Mesh |         | `In Progress` |
 
 ### Unsupported Elements
 
