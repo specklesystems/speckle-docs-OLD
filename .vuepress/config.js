@@ -46,6 +46,10 @@ module.exports = {
     activeHeaderLinks: false,
     lastUpdated: true,
     logo: "/assets/logo-docs.png",
+    algolia: {
+      apiKey: '4f23c1e333e0ff5c9e7e5cbb8a933749',
+      indexName: 'speckle'
+    },
     nav: [
       {
         text: "User Guide",
