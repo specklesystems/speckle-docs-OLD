@@ -39,7 +39,7 @@ Any layer information from the incoming stream will be appended to the prefix wi
 ## Supported Elements
 
 * [AutoCAD Support Tables](/user/support-tables.html#autocad)
-* [Civil 3D Support Tables](/user/support-tables.html#civil3d)
+* [Civil 3D Support Tables](/user/support-tables.html#civil-3d)
 
 ### Things to keep in mind
 
