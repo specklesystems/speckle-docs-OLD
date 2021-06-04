@@ -171,61 +171,10 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 :::
 
-Supported Elements
+## Supported Elements
 
-Grasshopper supports the same geometry as the Rhino connector:
+* [Grasshopper Support Tables](/user/support-tables.html#grasshopper)
 
-| Geometry       | Send    | Receive | Status        |
-| -------------- | :-----: | :-----: | :-----------: |
-| Point          | ✅       | ✅       | `Complete`    |
-| Line           | ✅       | ✅       | `Complete`    |
-| Plane          | ✅       | ✅       | `Complete`    |
-| Arc            | ✅       | ✅       | `Complete`    |
-| Circle         | ✅       | ✅       | `Complete`    |
-| Ellipse        | ✅       | ✅       | `Complete`    |
-| Polyline       | ✅       | ✅       | `Complete`    |
-| Polycurve      | ✅       | ✅       | `Complete`    |
-| Spline         | ✅       | ✅       | `Complete`    |
-| Nurb Surface   | As Brep | ✅       | `Complete`    |
-| Brep           | ✅       | ✅       | `Complete`    |
-| Extrusion      | ✅       | As Brep | `Complete`    |
-| Mesh           | ✅       | ✅       | `Complete`    |
-
-| Other          | Send    | Receive | Status        |
-| -------------- | :-----: | :-----: | :-----------: |
-| RenderMaterial | ✅       |         | `In Progress` |
-
-The **Schema Builder** node also provides additional support for the following built elements:
-
-| BuiltElement                                          | Send    | Receive | Status        |
-| ----------------------------------------------------- | :-----: | :-----: | :-----------: |
-| Adaptive Component                                    | ✅       |         | `Complete`    |
-| Beam                                                  | ✅       |         | `Complete`    |
-| Brace                                                 | ✅       |         | `Complete`    |
-| Ceiling                                               | ✅       |         | `Complete`    |
-| Column                                                | ✅       |         | `Complete`    |
-| Curves (Model, Detail, Room Boundary)                 | ✅       |         | `Complete`    |
-| Direct Shape                                          | ✅       |         | `Complete`    |
-| Freeform Element                                      | ✅       |         | `Complete`    |
-| Duct                                                  | ✅       |         | `Complete`    |
-| Face Wall                                             | ✅       |         | `Complete`    |
-| Family Instance                                       | ✅       |         | `Complete`    |
-| Floor                                                 | ✅       |         | `Complete`    |
-| GridLine                                              | ✅       |         | `Complete`    |
-| Level                                                 | ✅       |         | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | ✅       |         | `Complete`    |
-| Parameter                                             | ✅       |         | `Complete`    |
-| Railing                                               | ✅       |         | `Complete`    |
-| Roof (Extrusion, Footprint)                           | ✅       |         | `Complete`    |
-| Topography                                            | ✅       |         | `Complete`    |
-| View                                                  |          |         | `In Progress` |
-| Wall                                                  | ✅       |         | `Complete`    |
-
-Refer to the section below for additional information on the **Schema Builder** node.
-
-### Unsupported elements
-
-Non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported.
 
 ## Schema Builder
 
