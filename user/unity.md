@@ -47,18 +47,9 @@ sender.Send(streamId, objs);
 
 The `Send()` method accepts additional optional arguments to use different accounts, report progress and errors etc. Please check the [source code](https://github.com/specklesystems/speckle-unity/blob/main/Assets/Speckle%20Connector/Sender.cs) for a complete list.
 
-### Supported Elements
+### Supported Elements 
 
-We've only started supporting Unity elements, please let us know what else you'd like to see, and do contribute if you have the skillz!
-
-| Type                 | Speckle > Unity | Unity > Speckle |
-| -------------------- | :-------------: | :-------------: |
-| Point                |       ✅        |       ✅        |
-| Line                 |       ✅        |                 |
-| Polyline             |       ✅        |                 |
-| Curve                |       ✅        |                 |
-| Mesh                 |       ✅        |       ✅        |
-| BuiltElements 3DView |       ✅        |                 |
+* [Unity Support Tables](/user/support-tables.html#unity)
 
 ### Metadata
 

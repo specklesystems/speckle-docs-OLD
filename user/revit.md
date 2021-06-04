@@ -56,68 +56,7 @@ The list of available parameters comes from the current elements in the model. I
 
 ## Supported Elements
 
-We're working hard to support additional elements. The list below will be updated as soon new conversion routines are added.
-
-If you'd like us to add something specific, let us know on the [Speckle Community Forum](https://speckle.community/t/speckle-unity-2-0-feedback-wanted/1108)!
-
-
-### Supported Categories
-
-| BuiltElement                                          | Send | Receive | Status        |
-| ----------------------------------------------------- | :--: | :-----: | :-----------: |
-| Adaptive Component                                    | ✅    | ✅       | `Complete`    |
-| Beam                                                  | ✅    | ✅       | `Complete`    |
-| Brace                                                 | ✅    | ✅       | `Complete`    |
-| Building Pad                                          | ✅    |         | `In Progress` |
-| Ceiling                                               | ✅    |         | `In Progress` |
-| Curves (Model, Detail, Room Boundary)                 | ✅    | ✅       | `Complete`    |
-| Direct Shape                                          | ✅    | ✅       | `Complete`    |
-| Duct                                                  | ✅    | ✅       | `Complete`    |
-| Face Wall                                             |      | ✅       | `In Progress` |
-| Family Instance                                       | ✅    | ✅       | `Complete`    |
-| Floor                                                 | ✅    | ✅       | `Complete`    |
-| Freeform Element                                      |      | ✅       | `In Progress` |
-| Group                                                 | ✅    |         | `In Progress` |
-| Level                                                 | ✅    | ✅       | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | ✅    | ✅       | `Complete`    |
-| Pipe                                                  | ✅    | ✅       | `Complete`    |
-| Project Information                                   | ✅    |         | `In Progress` |
-| Railing                                               | ✅    | ✅       | `Complete`    |
-| Roof (Extrusion, Footprint)                           | ✅    | ✅       | `Complete`    |
-| Room                                                  | ✅    |         | `Complete`    |
-| Stair                                                 | ✅    |         | `Complete`    |
-| Topography                                            | ✅    | ✅       | `Complete`    |
-| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | ✅    |         | `In Progress` |
-| Wall                                                  | ✅    | ✅       | `Complete`    |
-| Wire                                                  | ✅    | ✅       | `Complete`    |
-
-| Other          | Send | Receive | Status        |
-| -------------- | ---- | ------- | ------------- |
-| RenderMaterial |      |         | `In Progress` |
-| BlockInstance  |      | As Generic Model | `Complete` |
-
-
-### Supported Geometries
-
-Generally speaking, Revit doesn't support raw geometry as it deals with families. Nonetheless, we've made it simple to receive some types of geometry directly, without the need of specifying family type, name or any other parameter.
-
-| Geometry     | Send | Receive        | Status        |
-| ------------ | ---- | -------------- | ------------- |
-| Line & Curve |      | As ModelCurve  | `In Progress` |
-| Brep         |      | As DirectShape | `Complete`    |
-| Mesh         |      | As DirectShape | `Complete`    |
-
-### Non Supported Elements
-
-Various element and data types do not have a direct conversions in Revit. Therefore sending Numbers, Points, Vectors or other non supported elements will have no effects.
-
-To use such data types in Revit you should check our our [Dynamo Connector](/user/dynamo)
-
-:::tip
-
-If non supported elements are received in this connector, no errors are thrown.
-
-:::
+* [Revit Support Tables](/user/support-tables.html#revit)
 
 ## Updating Elements
 
