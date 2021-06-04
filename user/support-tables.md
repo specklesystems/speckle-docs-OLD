@@ -46,6 +46,7 @@ Almost all geometric elements are supported by the Rhino connector. This include
 | RenderMaterial  | ✅    |         | `In Progress` |
 | BlockInstance   | ✅    | ✅       | `Complete`    |
 | BlockDefinition | ✅    | ✅       | `Complete`    |
+| Pointcloud      | ✅    | ✅       | `Complete`    |
 
 > Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
 
@@ -134,7 +135,6 @@ Non-geometric elements and any geometric element not listed above, such as text 
 | Level                                                 | ✅    | ✅       | `Complete`    |
 | Opening (Wall, Vertical, Shaft)                       | ✅    | ✅       | `Complete`    |
 | Pipe                                                  | ✅    | ✅       | `Complete`    |
-| Pointcloud                                            | ✅    |         | `Complete`    |
 | Project Information                                   | ✅    |         | `In Progress` |
 | Railing                                               | ✅    | ✅       | `Complete`    |
 | Roof (Extrusion, Footprint)                           | ✅    | ✅       | `Complete`    |
@@ -149,6 +149,7 @@ Non-geometric elements and any geometric element not listed above, such as text 
 | -------------- | ---- | ------- | ------------- |
 | RenderMaterial |      |         | `In Progress` |
 | BlockInstance  |      | As Generic Model | `Complete` |
+| Pointcloud     | ✅  |         | `Complete` |
 
 ### Supported Geometries
 
