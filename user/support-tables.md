@@ -2,8 +2,7 @@
 
 As Speckle develops, we are able to build further integrations with each of the applications we support. However, each application, and its API, comes with its own limitations that (alas) no programmer can overcome!
 
-The tables below give an per-application indication of which object conversions Speckle is currently able to support, and to what extent. 
-
+The tables below give an per-application indication of which object conversions Speckle is currently able to support, and to what extent.
 
 ::: tip Not Seeing Support for Something you Want? 🧃
 
@@ -19,33 +18,33 @@ If you'd like us to add something specific, let us know on the [Speckle Communit
 
 Almost all geometric elements are supported by the Rhino connector. This includes:
 
-| Geometry     | Send    | Receive | Status     |
+| Geometry     |  Send   | Receive |   Status   |
 | ------------ | :-----: | :-----: | :--------: |
-| Point        | ✅       | ✅       | `Complete` |
-| Line         | ✅       | ✅       | `Complete` |
-| Plane        | ✅       | ✅       | `Complete` |
-| Arc          | ✅       | ✅       | `Complete` |
-| Circle       | ✅       | ✅       | `Complete` |
-| Ellipse      | ✅       | ✅       | `Complete` |
-| Polyline     | ✅       | ✅       | `Complete` |
-| Polycurve    | ✅       | ✅       | `Complete` |
-| Spline       | ✅       | ✅       | `Complete` |
-| Nurb Surface | As Brep | ✅       | `Complete` |
-| Brep         | ✅       | ✅       | `Complete` |
-| Extrusion    | ✅       | As Brep | `Complete` |
-| Mesh         | ✅       | ✅       | `Complete` |
+| Point        |   ✅    |   ✅    | `Complete` |
+| Line         |   ✅    |   ✅    | `Complete` |
+| Plane        |   ✅    |   ✅    | `Complete` |
+| Arc          |   ✅    |   ✅    | `Complete` |
+| Circle       |   ✅    |   ✅    | `Complete` |
+| Ellipse      |   ✅    |   ✅    | `Complete` |
+| Polyline     |   ✅    |   ✅    | `Complete` |
+| Polycurve    |   ✅    |   ✅    | `Complete` |
+| Spline       |   ✅    |   ✅    | `Complete` |
+| Nurb Surface | As Brep |   ✅    | `Complete` |
+| Brep         |   ✅    |   ✅    | `Complete` |
+| Extrusion    |   ✅    | As Brep | `Complete` |
+| Mesh         |   ✅    |   ✅    | `Complete` |
 
-| BuiltElement | Send | Receive  | Status     |
+| BuiltElement | Send | Receive  |   Status   |
 | ------------ | :--: | :------: | :--------: |
-| View         | ✅    | ✅        | `Complete` |
+| View         |  ✅  |    ✅    | `Complete` |
 | ModelCurve   |      | As Curve | `Complete` |
 | DirectShape  |      | As Mesh  | `Complete` |
 
-| Other           | Send | Receive | Status        |
+| Other           | Send | Receive |    Status     |
 | --------------- | :--: | :-----: | :-----------: |
-| RenderMaterial  | ✅    |         | `In Progress` |
-| BlockInstance   | ✅    | ✅       | `Complete`    |
-| BlockDefinition | ✅    | ✅       | `Complete`    |
+| RenderMaterial  |  ✅  |         | `In Progress` |
+| BlockInstance   |  ✅  |   ✅    |  `Complete`   |
+| BlockDefinition |  ✅  |   ✅    |  `Complete`   |
 
 > Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
 
@@ -53,57 +52,57 @@ Almost all geometric elements are supported by the Rhino connector. This include
 
 Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc are not supported.
 
-
 ## Grasshopper
 
 ### Supported Elements
+
 Grasshopper supports the same geometry as the Rhino connector:
 
-| Geometry       | Send    | Receive | Status        |
-| -------------- | :-----: | :-----: | :-----------: |
-| Point          | ✅       | ✅       | `Complete`    |
-| Line           | ✅       | ✅       | `Complete`    |
-| Plane          | ✅       | ✅       | `Complete`    |
-| Arc            | ✅       | ✅       | `Complete`    |
-| Circle         | ✅       | ✅       | `Complete`    |
-| Ellipse        | ✅       | ✅       | `Complete`    |
-| Polyline       | ✅       | ✅       | `Complete`    |
-| Polycurve      | ✅       | ✅       | `Complete`    |
-| Spline         | ✅       | ✅       | `Complete`    |
-| Nurb Surface   | As Brep | ✅       | `Complete`    |
-| Brep           | ✅       | ✅       | `Complete`    |
-| Extrusion      | ✅       | As Brep | `Complete`    |
-| Mesh           | ✅       | ✅       | `Complete`    |
+| Geometry     |  Send   | Receive |   Status   |
+| ------------ | :-----: | :-----: | :--------: |
+| Point        |   ✅    |   ✅    | `Complete` |
+| Line         |   ✅    |   ✅    | `Complete` |
+| Plane        |   ✅    |   ✅    | `Complete` |
+| Arc          |   ✅    |   ✅    | `Complete` |
+| Circle       |   ✅    |   ✅    | `Complete` |
+| Ellipse      |   ✅    |   ✅    | `Complete` |
+| Polyline     |   ✅    |   ✅    | `Complete` |
+| Polycurve    |   ✅    |   ✅    | `Complete` |
+| Spline       |   ✅    |   ✅    | `Complete` |
+| Nurb Surface | As Brep |   ✅    | `Complete` |
+| Brep         |   ✅    |   ✅    | `Complete` |
+| Extrusion    |   ✅    | As Brep | `Complete` |
+| Mesh         |   ✅    |   ✅    | `Complete` |
 
-| Other          | Send    | Receive | Status        |
-| -------------- | :-----: | :-----: | :-----------: |
-| RenderMaterial | ✅       |         | `In Progress` |
+| Other          | Send | Receive |    Status     |
+| -------------- | :--: | :-----: | :-----------: |
+| RenderMaterial |  ✅  |         | `In Progress` |
 
 The **Schema Builder** node also provides additional support for the following built elements:
 
-| BuiltElement                                          | Send    | Receive | Status        |
-| ----------------------------------------------------- | :-----: | :-----: | :-----------: |
-| Adaptive Component                                    | ✅       |         | `Complete`    |
-| Beam                                                  | ✅       |         | `Complete`    |
-| Brace                                                 | ✅       |         | `Complete`    |
-| Ceiling                                               | ✅       |         | `Complete`    |
-| Column                                                | ✅       |         | `Complete`    |
-| Curves (Model, Detail, Room Boundary)                 | ✅       |         | `Complete`    |
-| Direct Shape                                          | ✅       |         | `Complete`    |
-| Freeform Element                                      | ✅       |         | `Complete`    |
-| Duct                                                  | ✅       |         | `Complete`    |
-| Face Wall                                             | ✅       |         | `Complete`    |
-| Family Instance                                       | ✅       |         | `Complete`    |
-| Floor                                                 | ✅       |         | `Complete`    |
-| GridLine                                              | ✅       |         | `Complete`    |
-| Level                                                 | ✅       |         | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | ✅       |         | `Complete`    |
-| Parameter                                             | ✅       |         | `Complete`    |
-| Railing                                               | ✅       |         | `Complete`    |
-| Roof (Extrusion, Footprint)                           | ✅       |         | `Complete`    |
-| Topography                                            | ✅       |         | `Complete`    |
-| View                                                  |          |         | `In Progress` |
-| Wall                                                  | ✅       |         | `Complete`    |
+| BuiltElement                          | Send | Receive |    Status     |
+| ------------------------------------- | :--: | :-----: | :-----------: |
+| Adaptive Component                    |  ✅  |         |  `Complete`   |
+| Beam                                  |  ✅  |         |  `Complete`   |
+| Brace                                 |  ✅  |         |  `Complete`   |
+| Ceiling                               |  ✅  |         |  `Complete`   |
+| Column                                |  ✅  |         |  `Complete`   |
+| Curves (Model, Detail, Room Boundary) |  ✅  |         |  `Complete`   |
+| Direct Shape                          |  ✅  |         |  `Complete`   |
+| Freeform Element                      |  ✅  |         |  `Complete`   |
+| Duct                                  |  ✅  |         |  `Complete`   |
+| Face Wall                             |  ✅  |         |  `Complete`   |
+| Family Instance                       |  ✅  |         |  `Complete`   |
+| Floor                                 |  ✅  |         |  `Complete`   |
+| GridLine                              |  ✅  |         |  `Complete`   |
+| Level                                 |  ✅  |         |  `Complete`   |
+| Opening (Wall, Vertical, Shaft)       |  ✅  |         |  `Complete`   |
+| Parameter                             |  ✅  |         |  `Complete`   |
+| Railing                               |  ✅  |         |  `Complete`   |
+| Roof (Extrusion, Footprint)           |  ✅  |         |  `Complete`   |
+| Topography                            |  ✅  |         |  `Complete`   |
+| View                                  |      |         | `In Progress` |
+| Wall                                  |  ✅  |         |  `Complete`   |
 
 Refer to the section below for additional information on the **Schema Builder** node.
 
@@ -111,53 +110,54 @@ Refer to the section below for additional information on the **Schema Builder** 
 
 Non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc... are not supported.
 
-
 ## Revit
 
 ### Supported Elements
 
-| BuiltElement                                          | Send | Receive | Status        |
+| BuiltElement                                          | Send | Receive |    Status     |
 | ----------------------------------------------------- | :--: | :-----: | :-----------: |
-| Adaptive Component                                    | ✅    | ✅       | `Complete`    |
-| Beam                                                  | ✅    | ✅       | `Complete`    |
-| Brace                                                 | ✅    | ✅       | `Complete`    |
-| Building Pad                                          | ✅    |         | `In Progress` |
-| Ceiling                                               | ✅    |         | `In Progress` |
-| Curves (Model, Detail, Room Boundary)                 | ✅    | ✅       | `Complete`    |
-| Direct Shape                                          | ✅    | ✅       | `Complete`    |
-| Duct                                                  | ✅    | ✅       | `Complete`    |
-| Face Wall                                             |      | ✅       | `In Progress` |
-| Family Instance                                       | ✅    | ✅       | `Complete`    |
-| Floor                                                 | ✅    | ✅       | `Complete`    |
-| Freeform Element                                      |      | ✅       | `In Progress` |
-| Group                                                 | ✅    |         | `In Progress` |
-| Level                                                 | ✅    | ✅       | `Complete`    |
-| Opening (Wall, Vertical, Shaft)                       | ✅    | ✅       | `Complete`    |
-| Pipe                                                  | ✅    | ✅       | `Complete`    |
-| Project Information                                   | ✅    |         | `In Progress` |
-| Railing                                               | ✅    | ✅       | `Complete`    |
-| Roof (Extrusion, Footprint)                           | ✅    | ✅       | `Complete`    |
-| Room                                                  | ✅    |         | `Complete`    |
-| Stair                                                 | ✅    |         | `Complete`    |
-| Topography                                            | ✅    | ✅       | `Complete`    |
-| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) | ✅    |         | `In Progress` |
-| Wall                                                  | ✅    | ✅       | `Complete`    |
-| Wire                                                  | ✅    | ✅       | `Complete`    |
+| Area                                                  |  ✅  |         |  `Complete`   |
+| Adaptive Component                                    |  ✅  |   ✅    |  `Complete`   |
+| Beam                                                  |  ✅  |   ✅    |  `Complete`   |
+| Brace                                                 |  ✅  |   ✅    |  `Complete`   |
+| Building Pad                                          |  ✅  |         |  `Complete`   |
+| Ceiling                                               |  ✅  |         |  `Complete`   |
+| Curves (Model, Detail, Room Boundary)                 |  ✅  |   ✅    |  `Complete`   |
+| Direct Shape                                          |  ✅  |   ✅    |  `Complete`   |
+| Duct                                                  |  ✅  |   ✅    |  `Complete`   |
+| Face Wall                                             |      |   ✅    |  `Complete`   |
+| Family Instance                                       |  ✅  |   ✅    |  `Complete`   |
+| Floor                                                 |  ✅  |   ✅    |  `Complete`   |
+| Freeform Element                                      |      |   ✅    | `In Progress` |
+| Grid                                                  |  ✅  |   ✅    |  `Complete`   |
+| Group                                                 |  ✅  |         | `In Progress` |
+| Level                                                 |  ✅  |   ✅    |  `Complete`   |
+| Opening (Wall, Vertical, Shaft)                       |  ✅  |   ✅    |  `Complete`   |
+| Pipe                                                  |  ✅  |   ✅    |  `Complete`   |
+| Project Information                                   |  ✅  |         |  `Complete`   |
+| Railing                                               |  ✅  |   ✅    |  `Complete`   |
+| Roof (Extrusion, Footprint)                           |  ✅  |   ✅    |  `Complete`   |
+| Room                                                  |  ✅  |   ✅    |  `Complete`   |
+| Stair                                                 |  ✅  |         |  `Complete`   |
+| Topography                                            |  ✅  |   ✅    |  `Complete`   |
+| View (FloorPlan, CeilingPlan, Elevation, Section, 3D) |  ✅  |         |  `Complete`   |
+| Wall                                                  |  ✅  |   ✅    |  `Complete`   |
+| Wire                                                  |  ✅  |   ✅    |  `Complete`   |
 
-| Other          | Send | Receive | Status        |
-| -------------- | ---- | ------- | ------------- |
-| RenderMaterial |      |         | `In Progress` |
-| BlockInstance  |      | As Generic Model | `Complete` |
+| Other          | Send | Receive             | Status     |
+| -------------- | ---- | ------------------- | ---------- |
+| RenderMaterial | ✅   |                     | `Complete` |
+| BlockInstance  |      | ✅ As Generic Model | `Complete` |
 
 ### Supported Geometries
 
 Generally speaking, Revit doesn't support raw geometry as it deals with families. Nonetheless, we've made it simple to receive some types of geometry directly, without the need of specifying family type, name or any other parameter.
 
-| Geometry     | Send | Receive        | Status        |
-| ------------ | ---- | -------------- | ------------- |
-| Line & Curve |      | As ModelCurve  | `In Progress` |
-| Brep         |      | As DirectShape | `Complete`    |
-| Mesh         |      | As DirectShape | `Complete`    |
+| Geometry     | Send | Receive           | Status     |
+| ------------ | ---- | ----------------- | ---------- |
+| Line & Curve |      | ✅ As ModelCurve  | `Complete` |
+| Brep         |      | ✅ As DirectShape | `Complete` |
+| Mesh         |      | ✅ As DirectShape | `Complete` |
 
 ### Non Supported Elements
 
@@ -171,28 +171,27 @@ If non supported elements are received in this connector, no errors are thrown.
 
 :::
 
-
 ## Dynamo
 
 ### Supported Elements
 
-| Geometry       | Send          | Receive       | Status     |
+| Geometry       |     Send      |    Receive    |   Status   |
 | -------------- | :-----------: | :-----------: | :--------: |
-| Point          | ✅             | ✅             | `Complete` |
-| Line           | ✅             | ✅             | `Complete` |
-| Plane          | ✅             | ✅             | `Complete` |
-| Arc            | ✅             | ✅             | `Complete` |
-| Circle         | ✅             | ✅             | `Complete` |
-| Cuboid         | As Box        | ✅             | `Complete` |
-| Ellipse        | ✅             | ✅             | `Complete` |
-| Helix          | As Spline     |               | `Complete` |
+| Point          |      ✅       |      ✅       | `Complete` |
+| Line           |      ✅       |      ✅       | `Complete` |
+| Plane          |      ✅       |      ✅       | `Complete` |
+| Arc            |      ✅       |      ✅       | `Complete` |
+| Circle         |      ✅       |      ✅       | `Complete` |
+| Cuboid         |    As Box     |      ✅       | `Complete` |
+| Ellipse        |      ✅       |      ✅       | `Complete` |
+| Helix          |   As Spline   |               | `Complete` |
 | Polyline       |               | x<sup>α</sup> | `Complete` |
-| Polycurve      | ✅             | ✅             | `Complete` |
-| Polygon        | As Polyline   | ✅             | `Complete` |
-| Rectangle      | As Polyline   | ✅             | `Complete` |
-| Spline         | ✅             | ✅             | `Complete` |
-| Brep           | ✅             | ✅             | `Complete` |
-| Mesh           | ✅             | ✅             | `Complete` |
+| Polycurve      |      ✅       |      ✅       | `Complete` |
+| Polygon        |  As Polyline  |      ✅       | `Complete` |
+| Rectangle      |  As Polyline  |      ✅       | `Complete` |
+| Spline         |      ✅       |      ✅       | `Complete` |
+| Brep           |      ✅       |      ✅       | `Complete` |
+| Mesh           |      ✅       |      ✅       | `Complete` |
 | Revit Elements | x<sup>β</sup> |               | `Complete` |
 
 <sup>α</sup>: As Rectangle, Polycurve, or Polygon
@@ -207,15 +206,15 @@ Any geometric elements not listed above are not supported.
 
 ### Supported Elements
 
-| Geometry      | Send | Receive | Status         |
-| ------------- | ---- | ------- | -------------- |
-| Featureline   | ✅    |         | `In Progress`  |
-| Alignment     | ✅    |         | `In Progress`  |
-| Profile       |      |         | `In Progress`  |
-| Tin Surface   | as Mesh    |         | `In Progress`  |
-| Grid Surface  | as Mesh    |         | `In Progress`  |
-| Pipe          | as Mesh    |         | `In Progress`  |
-| Structure     | as Mesh    |         | `In Progress`  |
+| Geometry     | Send    | Receive | Status        |
+| ------------ | ------- | ------- | ------------- |
+| Featureline  | ✅      |         | `In Progress` |
+| Alignment    | ✅      |         | `In Progress` |
+| Profile      |         |         | `In Progress` |
+| Tin Surface  | as Mesh |         | `In Progress` |
+| Grid Surface | as Mesh |         | `In Progress` |
+| Pipe         | as Mesh |         | `In Progress` |
+| Structure    | as Mesh |         | `In Progress` |
 
 ### Unsupported Elements
 
@@ -225,26 +224,26 @@ Subassemblies and Assemblies are not supported.
 
 ### Supported Elements
 
-| Geometry       | Send | Receive | Status        |
-| -------------- | :--: | :-----: | :-----------: |
-| Point          | ✅    | ✅       | `Complete`    |
-| Line           | ✅    | ✅       | `Complete`    |
-| Arc            | ✅    | ✅       | `Complete`    |
-| Circle         | ✅    | ✅       | `Complete`    |
-| Ellipse        | ✅    | ✅       | `Complete`    |
-| Polyline       | ✅    | ✅       | `Complete`    |
-| Polycurve      | ✅    | ✅       | `Complete`    |
-| Spline         | ✅    | ✅       | `Complete`    |
-| Plane Surface  | ✅    |         | `In Progress` |
-| Nurb Surface   | ✅    |         | `In Progress` |
-| PolyFace Mesh  | ✅    |         | `In Progress` |
-| SubD Mesh      | ✅    |         | `In Progress` |
-| 3D Solid       | as Mesh    |         | `In Progress` |
+| Geometry      |  Send   | Receive |    Status     |
+| ------------- | :-----: | :-----: | :-----------: |
+| Point         |   ✅    |   ✅    |  `Complete`   |
+| Line          |   ✅    |   ✅    |  `Complete`   |
+| Arc           |   ✅    |   ✅    |  `Complete`   |
+| Circle        |   ✅    |   ✅    |  `Complete`   |
+| Ellipse       |   ✅    |   ✅    |  `Complete`   |
+| Polyline      |   ✅    |   ✅    |  `Complete`   |
+| Polycurve     |   ✅    |   ✅    |  `Complete`   |
+| Spline        |   ✅    |   ✅    |  `Complete`   |
+| Plane Surface |   ✅    |         | `In Progress` |
+| Nurb Surface  |   ✅    |         | `In Progress` |
+| PolyFace Mesh |   ✅    |         | `In Progress` |
+| SubD Mesh     |   ✅    |         | `In Progress` |
+| 3D Solid      | as Mesh |         | `In Progress` |
 
-| Other          | Send | Receive | Status        |
-| -------------- | :--: | :-----: | :-----------: |
-| BlockInstance  | ✅    | ✅       | `Complete`    |
-| BlockDefinition| ✅    | ✅       | `Complete`    |
+| Other           | Send | Receive |   Status   |
+| --------------- | :--: | :-----: | :--------: |
+| BlockInstance   |  ✅  |   ✅    | `Complete` |
+| BlockDefinition |  ✅  |   ✅    | `Complete` |
 
 ### Unsupported Elements
 
@@ -260,15 +259,15 @@ The Blender Connector is still a work in progress and, as such, the conversions 
 - Breps are imported as meshes using their `displayValue`
 - Curves have limited support
 
-| Type                                     | Send | Receive      | Status        |
+| Type                                     | Send |   Receive    |    Status     |
 | ---------------------------------------- | :--: | :----------: | :-----------: |
 | Arc                                      |      | approximated | `In Progress` |
-| Brep                                     |      | as mesh      | `In Progress` |
-| Curve (Nurbs, Bezier, Ngons as Polyline) | ✅    | ✅            | `In Progress` |
-| Mesh                                     | ✅    | ✅            | `In Progress` |
-| Polycurve                                |      | ✅            | `In Progress` |
-| Polyline                                 | ✅    | ✅            | `In Progress` |
-| Render Material                          | ✅    | ✅            | `In Progress` |
+| Brep                                     |      |   as mesh    | `In Progress` |
+| Curve (Nurbs, Bezier, Ngons as Polyline) |  ✅  |      ✅      | `In Progress` |
+| Mesh                                     |  ✅  |      ✅      | `In Progress` |
+| Polycurve                                |      |      ✅      | `In Progress` |
+| Polyline                                 |  ✅  |      ✅      | `In Progress` |
+| Render Material                          |  ✅  |      ✅      | `In Progress` |
 
 ## Unity
 
