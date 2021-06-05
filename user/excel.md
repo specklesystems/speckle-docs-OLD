@@ -123,11 +123,39 @@ For instance, you could create 10 new lines with the data below:
 
 ![image](https://user-images.githubusercontent.com/2679513/119196439-17085600-ba7e-11eb-8273-6fdf60e91894.png)
 
-#### Advanced Objects
+## Advanced workflows
 
-More advanced use of Objects is possible, and similarly to how our [Grasshopper Schema Builder](/user/grasshopper.html#schema-builder) works, you can **create BIM elements** directly from Excel and **update Revit elements** too.
+::: tip IMPORTANT 
+🚧 This section is under construction, we will add more documentation and examples on this soon! 🚧 
+:::
 
-We will add more documentation on this soon!
+More advanced workflows are possible, similarly to how our [Grasshopper Schema Builder](/user/grasshopper.html#schema-builder) works, you can **create BIM elements** directly from Excel and **update Revit elements** too.
+
+### Updating Revit Parameters
+
+To update Revit paramteres from Excel, just copy paste the sample table below and update it with your element ids and values.
+**We are working to make this flow simpler and more intuitive, it might change in the future**
+
+|revitId|parameters.0.name|parameters.0.value|parameters.0.revitUnit              |parameters.0.speckle_type            |parameters.0.applicationId|speckle_type                                |
+|-------|-----------------|------------------|------------------------------------|-------------------------------------|--------------------------|--------------------------------------------|
+|198694 |Top Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|1                         |Objects.BuiltElements.Revit.ParameterUpdater|
+|198749 |Top Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|2                         |Objects.BuiltElements.Revit.ParameterUpdater|
+|234869 |Bottom Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|3                         |Objects.BuiltElements.Revit.ParameterUpdater|
+|418079 |Comments       |Hello!              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|4                         |Objects.BuiltElements.Revit.ParameterUpdater|
+
+
+Here's a breakdown of what each column means:
+
+- **revitId** the Revit `ElementId` or `UniqueId`
+- **parameters.0.name** the name or built-in name of the parameter to update. Eg `Top Offset` or `WALL_TOP_OFFSET`
+- **parameters.0.value** the value to set on the parameter
+- **parameters.0.revitUnit** the Revit unit of the parameter. If in Revit 2022 you must use the new `ForgeTypeId` (not sure where to find a list). If on earlier versions, [any of these values](https://www.revitapidocs.com/2021.1/7d3d3306-a4c2-c577-0aeb-cca42d6cfd2f.htm).
+- **parameters.0.speckle_type** always set to `Objects.BuiltElements.Revit.Parameter`
+- **parameters.0.applicationId** any values will do (we will remove this)
+- **speckle_type** always set to `Objects.BuiltElements.Revit.ParameterUpdater`
+
+You can also **update multiple parameters** for each Revit element, to do so, just add more `parameters.X` columns. 
+
 
 ## Support
 
