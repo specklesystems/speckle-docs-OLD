@@ -96,15 +96,30 @@ The toolbar at the bottom edge of the viewer allows you to:
 
 ## Globals
 
-Want to keep track of project information, design values, notes, or any other general info alongside your geometry? Each stream can have a set of global variables which can do just that! These globals could be things like site region, building height, maximum areas, summer / winter temperatures, etc - your imagination is the limit!
+Want to keep track of project information, design values, notes, or any other general info alongside your geometry? Each stream can have a set of global variables which can do just that! These globals could be things like site region, building height, maximum areas, summer / winter temperatures, etc - your imagination is the limit! 
+
+These globals can then be accessed from your scripts or applications to plug right into your calculations or get pulled into reports or spreadsheets. You can also look back at the history and see who changed what and why.
 
 To build or edit a stream's globals, click the "Globals" button in the stream sidebar.
 
 ![globals button on stream page](./img/web/globals-button.png)
 
-This will take you to the interactive globals editor. Here, you can add new fields with the ➕ button and fill in its name and value. Any field can be transformed into a group by clicking the box button on the right. Any group can also be flattened by clicking the collapse button on the right of its name. You can drag and drop any field or group anywhere you want within the editor to build the structure you want!
+This will take you to the interactive globals editor. Here, you can add new fields with the ➕ button and fill in their info. You also have a toolbar on the top right to "clear" (delete all the fields / groups), "reset all" (undo all your changes), and "save" your changes with a message.
 
-![editing your globals](./img/web/globals-info.png)
+![globals ui](./img/web/globals-info.png)
+
+Any field can be transformed into a group by clicking the box button on the right. Any group can also be flattened by clicking the collapse button on the right of its name. You can drag and drop any field or group anywhere you want within the editor to build the structure you want!
+
+![editing your globals](./img/web/globals-flatten-and-group.gif)
+
+If you need to delete a field or group, toggle on "delete" mode and click the big red buttons.
+
+![deleting globals](./img/web/globals-delete.gif)
+
+Each time you hit "save", you'll be prompted to add a message along with your changes. This will be saved to the chronological history which you can see at the bottom of the page. You can click on any of these messages to go back see the globals from that point in time.
+
+![globals history](./img/web/globals-history.png)
+
 ::: tip NOTE 
 
 Globals currently do not support detached objects. Let us know on the forum if this is something you would want!
