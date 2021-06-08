@@ -39,3 +39,75 @@ How do you create a token, we hear you ask? Read the section on [personal access
 
 :::
 
+### Examples
+
+#### Example 1
+
+When trying to query Revit parameters (family, category, etc.) for a specific object (0d0a4...), in a specific stream (c6b0c...) :
+
+``` graphql
+Query($myQuery:[JSONObject!]){
+    Stream(id:"c6b0c4077a"){
+        object(id:"0d0a4abc6a5fcc763e6c850dd3d5ecab"){
+            totalChildrenCount
+            children(query: $myQuery select:["parameters", "speckle_type", "type", "family", "category"]){
+                totalCount
+                cursor
+                objects{
+                    id
+                    data
+                }
+            }
+        }
+    }
+}
+```
+
+Where the "myQuery" variable is:
+
+``` graphql
+{
+    "myQuery": [
+        {
+            "field":"applicationId",
+            "value":"6cbabf1d-e8d0-47f0-ac4d-9a7923128d37-0006fb07",
+            "operator":"="
+        }
+    ]
+}
+```
+
+#### Example 2
+Return objects while querying by a specific parameter value. Here, only objects with a parameter value greater than 5 are returned.
+
+``` graphql
+Query($myQuery:[JSONObject!]){
+    Stream(id:"c6b0c4077a"){
+        object(id:"0d0a4abc6a5fcc763e6c850dd3d5ecab"){
+            totalChildrenCount
+            children(query: $myQuery select:["parameters[0]".value, "parameters[0].name"]){
+                totalCount
+                cursor
+                objects{
+                    id
+                    data
+                }
+            }
+        }
+    }
+}
+```
+
+Where the "myQuery" variable is:
+
+``` graphql
+{
+    "myQuery": [
+        {
+            "field":"parameters[0].value",
+            "value":5,
+            "operator":"<"
+        }
+    ]
+}
+```
