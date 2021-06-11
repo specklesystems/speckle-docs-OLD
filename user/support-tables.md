@@ -49,6 +49,8 @@ Almost all geometric elements are supported by the Rhino connector. This include
 
 > Speckle supports sending BREPs from Rhino <-> Rhino, and Rhino <-> Revit, with some limitations imposed by Revit's API.
 
+Note: If Rhino's unit system is changed by the user, this may result in incorrectly scaled blocks. Make sure blocks are created in the same unit system as they are intended to be sent in.
+
 ### Unsupported elements
 
 Many non-geometric elements and any geometric element not listed above, such as text tags, hatches, etc are not supported.
