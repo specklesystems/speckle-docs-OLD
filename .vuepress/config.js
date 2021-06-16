@@ -147,7 +147,7 @@ module.exports = {
         {
           title: "Server API & Apps",
           collapsable: false,
-          children: ["server-api", "server-setup", "server-manualsetup", "tokens", "apps"]
+          children: ["server-api", "server-rest-api", "server-setup", "server-manualsetup", "tokens", "apps"]
         }
       ]
     }
