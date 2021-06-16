@@ -65,7 +65,7 @@ module.exports = {
       },
       //this button has custom style in index.styl under `.nav-item:last-child a`
       {
-        text: "Join the beta",
+        text: "Get Started",
         link: "https://speckle.systems/getstarted/"
       }
     ],
