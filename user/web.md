@@ -68,6 +68,8 @@ By going even deeper, you can access a page for a single branch in your stream. 
 
 ## The Commit Page
 
+👀 Not sure what commits are? [Check this out!](/user/concepts.html#commits)
+
 Clicking on a particular commit will take you to a new page where you can view the commit in the viewer and explore the commit object.
 
 The "Data" section on this page allows you to explore the commit object by expanding it. The top level [_Base_](/user/concepts.html#the-base-object) is the root commit object and each item within it is a property. Properties can either be simple values (like the id, speckle type, and children count), another object, or a list of objects.
@@ -96,9 +98,11 @@ The toolbar at the bottom edge of the viewer allows you to:
 
 ## Globals
 
-Want to keep track of project information, design values, notes, or any other general info alongside your geometry? Each stream can have a set of global variables which can do just that! These globals could be things like site region, building height, maximum areas, summer / winter temperatures, etc - your imagination is the limit! 
+Want to keep track of project information, design values, notes, or any other general info alongside your geometry? Each stream can have a set of global variables which can do just that! These globals could be things like site region, building height, number of floors, maximum areas, summer / winter temperatures, etc - your imagination is the limit! 
 
-These globals can then be accessed from your scripts or applications to plug right into your calculations or get pulled into reports or spreadsheets. You can also look back at the history and see who changed what and why.
+These globals can then be accessed from your scripts or applications like any other Speckle data. You can plug them into calculations or pull them into reports or spreadsheets. You can also look back at the history and see who changed what and why.
+
+### Creating and Editing
 
 To build or edit a stream's globals, click the "Globals" button in the stream sidebar.
 
@@ -126,9 +130,35 @@ Globals currently do not support detached objects. Let us know on the forum if t
 
 :::
 
+### Receiving Globals
+
+The quickest way to grab your globals is to use the Grasshopper or Dynamo connectors. You can receive the globals using their URL just like you would any other stream, branch, or commit.
+
+![receive globals in grasshopper](./img/web/globals-gh-receive.gif)
+
+If you want to get your globals using code, you can do this in the same way you would receive a commit. Under the hood, the globals exist in a branch called `globals`. Each time you save the globals, you create a new commit on this branch. The following snippet is a complete example of receiving the latest version of your globals using python:
+
+```py
+# initialise and authenticate your client
+stream_id = "62e5ff6a2b"
+account = get_default_account()
+client = SpeckleClient(host=account.serverInfo.url)
+client.authenticate(token=account.token)
+transport = ServerTransport(client, stream_id)
+
+# get the `globals` branch
+branch = client.branch.get(stream_id, "globals")
+
+# get the latest commit
+latest_commit = branch.commits.items[0]
+
+# receive the globals object
+globals = operations.receive(latest_commit.referencedObject, transport)
+```
+
 ## Profile
 
-Click on your profile image to head to the **Profile** management page. If you haven't added a profile pic yet, we've auto-generated you a nice little robot avatar (you're welcome :smile: ) 
+Click on your profile image to head to the **Profile** management page. If you haven't added a profile pic yet, we've auto-generated you a nice little robot avatar (you're welcome :smile:) 
 
 From your profile page, you can edit your personal details and manage your authorised applications in the "Your Apps" section. These are the applications that you have granted access to your streams and profile. On this page, you can make sure you recognise all the apps and easily revoke access to any apps you no longer want to authorise.
 
