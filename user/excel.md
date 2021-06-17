@@ -41,11 +41,11 @@ After installing the connector, it should appear in Excel under the Home ribbon 
 
 ### Logging In
 
-You'll need to log in to use this connector as it is unable to access your accounts from Speckle Manager. To do so, simply click on the log in button and insert your credentials.
+You'll need to log in to use this connector as it is unable to access your accounts from Speckle Manager. To do so, simply type your server url click on the log in button and insert your credentials.
 
 :::tip IMPORTANT 🙌
 
-Currently, **only accounts on our XYZ server are supported**, this is because of limitations on the Microsoft Office Store. We're currently working to add support for any Speckle server.
+Currently, **only accounts on servers managed by us are supported**, this is because of limitations on the Microsoft Office Store. To use the Excel connector with a server deployed by you, you'll have to publish it yourself.
 
 :::
 
@@ -125,8 +125,8 @@ For instance, you could create 10 new lines with the data below:
 
 ## Advanced workflows
 
-::: tip IMPORTANT 
-🚧 This section is under construction, we will add more documentation and examples on this soon! 🚧 
+::: tip IMPORTANT
+🚧 This section is under construction, we will add more documentation and examples on this soon! 🚧
 :::
 
 More advanced workflows are possible, similarly to how our [Grasshopper Schema Builder](/user/grasshopper.html#schema-builder) works, you can **create BIM elements** directly from Excel and **update Revit elements** too.
@@ -136,13 +136,12 @@ More advanced workflows are possible, similarly to how our [Grasshopper Schema B
 To update Revit paramteres from Excel, just copy paste the sample table below and update it with your element ids and values.
 **We are working to make this flow simpler and more intuitive, it might change in the future**
 
-|revitId|parameters.0.name|parameters.0.value|parameters.0.revitUnit              |parameters.0.speckle_type            |parameters.0.applicationId|speckle_type                                |
-|-------|-----------------|------------------|------------------------------------|-------------------------------------|--------------------------|--------------------------------------------|
-|198694 |Top Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|1                         |Objects.BuiltElements.Revit.ParameterUpdater|
-|198749 |Top Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|2                         |Objects.BuiltElements.Revit.ParameterUpdater|
-|234869 |Bottom Offset       |1000              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|3                         |Objects.BuiltElements.Revit.ParameterUpdater|
-|418079 |Comments       |Hello!              |autodesk.unit.unit:millimeters-1.0.1|Objects.BuiltElements.Revit.Parameter|4                         |Objects.BuiltElements.Revit.ParameterUpdater|
-
+| revitId | parameters.0.name | parameters.0.value | parameters.0.revitUnit               | parameters.0.speckle_type             | parameters.0.applicationId | speckle_type                                 |
+| ------- | ----------------- | ------------------ | ------------------------------------ | ------------------------------------- | -------------------------- | -------------------------------------------- |
+| 198694  | Top Offset        | 1000               | autodesk.unit.unit:millimeters-1.0.1 | Objects.BuiltElements.Revit.Parameter | 1                          | Objects.BuiltElements.Revit.ParameterUpdater |
+| 198749  | Top Offset        | 1000               | autodesk.unit.unit:millimeters-1.0.1 | Objects.BuiltElements.Revit.Parameter | 2                          | Objects.BuiltElements.Revit.ParameterUpdater |
+| 234869  | Bottom Offset     | 1000               | autodesk.unit.unit:millimeters-1.0.1 | Objects.BuiltElements.Revit.Parameter | 3                          | Objects.BuiltElements.Revit.ParameterUpdater |
+| 418079  | Comments          | Hello!             | autodesk.unit.unit:millimeters-1.0.1 | Objects.BuiltElements.Revit.Parameter | 4                          | Objects.BuiltElements.Revit.ParameterUpdater |
 
 Here's a breakdown of what each column means:
 
@@ -154,8 +153,7 @@ Here's a breakdown of what each column means:
 - **parameters.0.applicationId** any values will do (we will remove this)
 - **speckle_type** always set to `Objects.BuiltElements.Revit.ParameterUpdater`
 
-You can also **update multiple parameters** for each Revit element, to do so, just add more `parameters.X` columns. 
-
+You can also **update multiple parameters** for each Revit element, to do so, just add more `parameters.X` columns.
 
 ## Support
 
