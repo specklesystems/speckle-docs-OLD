@@ -25,11 +25,12 @@ We've also built a few components designed for advanced users and developers:
 
 ## Streams and URLs
 
-In visual programming environments, Speckle Streams are identified by their URLs. Across our Dynamo and Grasshopper connectors you'll see URLs in 3 different formats:
+In visual programming environments, Speckle Streams are identified by their URLs. Across our Dynamo and Grasshopper connectors you'll see URLs in 4 different formats:
 
 - `https://speckle.xyz/streams/3073b96e86` points to the `main` branch on Stream `3073b96e86`
 - `https://speckle.xyz/streams/3073b96e86/branches/dev` points to a branch named `dev` on Stream `3073b96e86`
 - `https://speckle.xyz/streams/3073b96e86/commits/604bea8cc6` points to a specific commit `604bea8cc6` on Stream `3073b96e86`
+- `https://speckle.xyz/streams/3073b96e86/globals/d227da61c1` points to the [globals](/user/web.html#globals) at `d227da61c1` on Stream `3073b96e86` (the globals id is optional)
 
 ::: tip
 Unsure what _commits_ and _branches_ are? 🤔
