@@ -5,7 +5,7 @@
 The **Speckle Web App** is our browser-based interface for managing all things Speckle. It is your one stop shop for:
 
 - Managing your streams and their viewing / editing permissions
-- Coordinating your data among various parties & users 
+- Coordinating your data among various parties & users
 - Creating and editing streams
 - Viewing your data in our 3D model viewer
 - Managing your account
@@ -30,7 +30,7 @@ These streams are the ones you have access to including streams you've created a
 
 👉 Psst - need a streams refresher? [Let's go!](/user/concepts.html#what-are-streams)
 
-On a stream page, you can browse the existing commits and view the data in our lovely 3D viewer. The most recent commit is the one you will initially see in the viewer. 
+On a stream page, you can browse the existing commits and view the data in our lovely 3D viewer. The most recent commit is the one you will initially see in the viewer.
 
 ![image-20210322192409067](./img/web/image-20210322192409067.png)
 
@@ -48,7 +48,7 @@ The list of recent commits by default refers to the `main` branch. You can swap 
 
 ## Branches
 
-🤔  Wait, what were branches again? [We gotchu!](/user/concepts.html#what-are-branches)
+🤔 Wait, what were branches again? [We gotchu!](/user/concepts.html#what-are-branches)
 
 Each stream contains a little branching-icon button to help you easily switch between a stream's different branches. By default, each stream will contain only one branch, called **main**.
 
@@ -91,10 +91,40 @@ Try playing with our embedded 3D viewer below to get a feel for navigating a mod
 <iframe src="https://speckle.xyz/embed?stream=a632e7a784&branch=roof" width=600 height=400></iframe>
 
 The toolbar at the bottom edge of the viewer allows you to:
+
 1. Select a canonical view (such as Top, Front, Left)
 2. Focus the whole scene
 3. Cut the view with a section plane
 4. Open a help menu if you need a reminder of the controls
+
+### Embedding the 3D viewer
+
+You can easily embed any stream, branch, commit or object directly from the **web app**. To do so, just follow these steps:
+
+::: warning Please note
+Your stream must be made **public** in order for the embedded viewer to properly load.
+:::
+
+1. In the **_web app_**, go to a stream page containing _geometric data_.
+
+   ![Stream page with geometric data](./img/web/embedViewer-StreamPage.png)
+
+2. Press the _play_ button to load the viewer. The viewer toolbar should appear in the bottom.
+
+   ![Viewer toolbar](./img/web/embedViewer-Toolbar.png)
+
+3. You'll find the share button on the left-hand side.
+
+   ![Viewer embed button](./img/web/embedViewer-embedButton.png)
+
+4. Click it and you'll be provided with 2 options:
+
+   ![Viewer embed options](./img/web/embedViewer-embedOptions.png)
+
+   - Copy `iframe`: Will copy the `iframe` code required to paste on any html document.
+   - Copy `url`: Will copy the `url` of the embed viewer.
+
+The result would be a viewer like the one [above ☝🏼](#_3d-viewer)
 
 ## Globals
 
