@@ -235,6 +235,78 @@ Now you can access the custom data attached to the line:
 Don't worry, we always ensure all objects are converted to Speckle format before preforming a `Send` operation.
 :::
 
+## Using the C#/Python script nodes
+
+For more advanced scenarios, you can also use the Speckle libraries inside your custom C# or Python scripts in any Grasshopper definition. There is, though, a bit of a set up involved for this to properly work.
+
+::: tip Fair warning
+
+About creating your own objects in scripting nodes: Creating objects with [`circular references`](https://en.wikipedia.org/wiki/Circular_reference) is **not supported**, and although there is nothing stopping you from creating this types of object relationships in your code, they will fail to be sent to the server (or any other transport for that matter).
+
+That said, they **will work** inside your Grasshopper definition, but we heavily suggest you don't. If you end up doing so (for whatever reason we don't want to know... 😉), just make sure you remove all those nasty `circular references` before sending.
+
+:::
+
+### C# Script
+
+1. Create a new C# node on your canvas.
+
+   ![](./img-gh/speckle-gh-script-csharpNode.png)
+
+2. Right-click the node and select `Manage assemblies...` from the dropdown menu.
+
+   ![](./img-gh/speckle-gh-script-assemblyMenu.png)
+
+3. A new window will appear. Press the `Add` link to select a new library. You'll need to add **two libraries**:
+   1. Find the location of the Speckle Grasshopper connector. It should be in the same library as all your other 3rd party plugins (usually `%appdata%\Grasshopper\Libraries\SpeckleGrasshopper2`) and select `SpeckleCore2.dll`.
+   2. Now head to `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\netstandard\v4.0_2.0.0.0__cc7b13ffcd2ddd51` and select `netstandard.dll`
+4. Once done, it should look like this:
+
+   ![](./img-gh/speckle-gh-script-assemblies.png)
+
+5. Now open up your script and add the following lines of code:
+
+   ```csharp
+   var speckleObject = new Speckle.Core.Models.Base();
+   speckleObject["aProperty"] = "A property value";
+   speckleObject["aListProperty"] = new List<double>{ 1, 2, 3, 4, 5 };
+   A = speckleObject;
+   ```
+
+   ![](./img-gh/speckle-gh-script-code.png)
+
+6. This will output a `Base` object, to see the properties inside it you can always use `Expand Speckle Node`
+
+   ![](./img-gh/speckle-gh-script-final.png)
+
+### Python Script
+
+The process to use Speckle in a python script is similar to the C# node steps, only this time, we'll reference the assemblies directly in our code using `clr`.
+
+1. Add a new python node to your canvas
+2. Double click it to open the editor, and paste this code to reference the libraries (remember to replace `USERNAME` for the actual name in your computer)
+
+   ```python
+    import clr
+   clr.AddReferenceToFileAndPath("C:\\Windows\\Microsoft.NET\\assembly\\GAC_MSIL\\netstandard\\v4.0_2.0.0.0__cc7b13ffcd2ddd51\\netstandard.dll")
+   clr.AddReferenceToFileAndPath("C:\\Users\\USERNAME\\AppData\\Roaming\\Grasshopper\\Libraries\\SpeckleGrasshopper2\\SpeckleCore2.dll")
+   import Speckle.Core.Models.Base as Base
+   ```
+
+3. Bellow that, add this code to create a new Speckle object.
+
+   ```python
+   speckleObject = Base()
+   speckleObject["aProperty"] = "A single item value"
+   speckleObject["aListProperty"] = [ 1, 2, 3, 4, 5 ]
+   a = speckleObject
+   ```
+
+4. Your final result should look like this:
+   ![](./img-gh/speckle-gh-script-pythoncode.png)
+
+5. And that's it! The output will be a `Base` object you can operate with just like any other created with the `Object Management` nodes.
+
 ## Nodes
 
 ### Send Node
@@ -577,3 +649,7 @@ Creates a connection to a specific file in the computer's disk, where the data w
 ![Memory transport](./img-gh/nodes-transport-memory.png)
 
 Creates a connection to in-memory storage.
+
+```
+
+```
