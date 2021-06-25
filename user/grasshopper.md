@@ -626,12 +626,6 @@ The **Serialize objects** node will convert any Speckle object into `JSON` forma
 
 The **Deserialize Objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
-#### Server Transport
-
-![Server transport node](./img-gh/nodes-transports-server.png)
-
-Creates a connection to a specific Speckle Server.
-
 #### SQLite Transport
 
 ![SQLite Transport](./img-gh/nodes-transport-sqlite.png)
