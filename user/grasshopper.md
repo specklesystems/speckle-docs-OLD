@@ -456,7 +456,25 @@ All outputs will appear in alphabetical order regardless on the order they were 
 
 ![Extend object node](./img-gh/nodes-extend-object.png)
 
-The **Extend Speckle Object** provides a way to add new properties to an already existing `Base` object.
+The **Extend Speckle Object** node provides a way to add new properties to an already existing `Base` object using _variable parameters_.
+
+#### Inputs
+
+- _Speckle Object_: The Speckle object to be extended.
+
+::: tip Variable inputs
+You can add or remove inputs just like you would with the `Create Speckle Object` node.
+:::
+
+#### Outpus
+
+- _Speckle Object_: The extended/updated Speckle `Base` object.
+
+### Extend Speckle Object by Key/Value
+
+![Extend object by key/value node](./img-gh/nodes-extend-object-keyval.png)
+
+The **Extend Speckle Object by Key/Value** provides a way to add new properties to an already existing `Base` object.
 
 <!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
 
@@ -626,6 +644,18 @@ The **Serialize objects** node will convert any Speckle object into `JSON` forma
 
 The **Deserialize Objects** node will convert a serialized speckle object in json format into `Base` speckle objects.
 
+#### Send to Transport
+
+![](./img-gh/nodes-transports-send.png)
+
+Sends an object to a specified transport and returns the `id` of the object.
+
+#### Receive from Transport
+
+Receives an object from the specified transport using it's `id`
+
+![](./img-gh/nodes-transports-receive.png)
+
 #### SQLite Transport
 
 ![SQLite Transport](./img-gh/nodes-transport-sqlite.png)
@@ -643,7 +673,3 @@ Creates a connection to a specific file in the computer's disk, where the data w
 ![Memory transport](./img-gh/nodes-transport-memory.png)
 
 Creates a connection to in-memory storage.
-
-```
-
-```
