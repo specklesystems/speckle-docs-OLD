@@ -14,6 +14,7 @@ To install this Connector and connect your Speckle account, make sure to follow 
 Once installed, the **Grasshopper Connector** will appear under the `Speckle 2` tab, or if you use _tab icons_ you'll see our new Speckle logo instead.
 
 The following component categories are intended for all users:
+
 - Send/Receive nodes
 - Account category, holding all account related nodes.
 - Stream category, holding all stream related nodes.
@@ -68,7 +69,7 @@ In order to select which objects to send in grasshopper, we just need to connect
 
 #### Adding a Commit Message
 
-While not required, it's good practice to add a "commit message" whenever you send you data, especially if working with others.  This message should briefly describe the changes being pushed.
+While not required, it's good practice to add a "commit message" whenever you send you data, especially if working with others. This message should briefly describe the changes being pushed.
 You can add a commit message by passing some text to the `message` port.
 The commit message will be visible in Speckle Web (where you will also be able to edit it).
 
@@ -174,8 +175,7 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 ## Supported Elements
 
-* [Grasshopper Support Tables](/user/support-tables.html#grasshopper)
-
+- [Grasshopper Support Tables](/user/support-tables.html#grasshopper)
 
 ## Schema Builder
 
@@ -308,6 +308,40 @@ The **Local Receive** node performs receive operations in the same way as the [R
 #### Outputs
 
 - _Data_: The data that was received. This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will perform the conversion to Speckle automatically.
+
+### Synchronous Send Node
+
+![image](https://user-images.githubusercontent.com/2679513/123424980-709dfc00-d5b9-11eb-9076-cc0bdbbdfdd0.png)
+
+The **Synchronous Send** node performs receive operations in the same way as the [Send node](#send-node) but synchronously and it will lock the canvas.
+
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
+
+#### Input
+
+- _Data_: This port will accept almost anything you give it. If the objects provided are not `Base` objects, it will also perform the conversion to Speckle automatically.
+- _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
+- _Message_: The message you want to attach to the _commit_ when you send the data. Defaults to `"Grasshopper push"`.
+
+#### Output
+
+- _Stream_: The _commit url_ pointing to the objects in the Speckle server.
+
+### Synchronous Receive Node
+
+![image](https://user-images.githubusercontent.com/2679513/123424913-5f54ef80-d5b9-11eb-82f7-9840697eeca7.png)
+
+The **Synchronous Receive** node performs receive operations in the same way as the [Receive node](#receive-node) but synchronously and it will lock the canvas.
+
+<!-- > This node is capable of [Kit Selection](#object-conversion-and-kits) -->
+
+#### Inputs
+
+- _Stream_: Supports any generated stream from within the `Stream` component category, but also _stream urls_ in text format.
+
+#### Outputs
+
+- _Data_: The data that was received from the stream.
 
 ### Create Speckle Object
 
