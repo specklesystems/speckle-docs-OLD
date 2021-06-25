@@ -12,6 +12,12 @@ The Speckle node package is not available from Dynamo's Package Manager. For ins
 
 :::
 
+## Quick Start Video
+
+Prefer watching to reading? Who doesn't!
+
+<div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://youtu.be/jHtNxhtbtDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 ## Getting Started
 
 Our Dynamo Connector takes the form of a node package, which is installed via the Speckle Manager. To install the Dynamo Connector and add your Speckle account, follow the instructions in our [Speckle Manager](/user/manager) section.
@@ -74,7 +80,6 @@ The commit message will be visible in the Speckle Web App (where you will also b
 With a Stream URL and some data to send, the only thing left to do is to press the **Send button**. This will begin the process of translating your data to Speckle's object model and uploading it to your Speckle server.
 
 ![dyn-send](./img-dyn/dyn-send.gif)
-
 
 ### Viewing a Stream Online
 
@@ -370,4 +375,4 @@ Creates a connection to in-memory storage.
 
 ## Supported Elements
 
-* [Dynamo Support Tables](/user/support-tables.html#dynamo)
+- [Dynamo Support Tables](/user/support-tables.html#dynamo)
