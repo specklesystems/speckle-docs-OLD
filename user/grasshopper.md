@@ -311,7 +311,7 @@ The **Local Receive** node performs receive operations in the same way as the [R
 
 ### Synchronous Send Node
 
-![image](https://user-images.githubusercontent.com/2679513/123424980-709dfc00-d5b9-11eb-9076-cc0bdbbdfdd0.png)
+![image](./img-gh/gh-sendSync.png)
 
 The **Synchronous Send** node performs receive operations in the same way as the [Send node](#send-node) but synchronously and it will lock the canvas.
 
@@ -329,7 +329,7 @@ The **Synchronous Send** node performs receive operations in the same way as the
 
 ### Synchronous Receive Node
 
-![image](https://user-images.githubusercontent.com/2679513/123424913-5f54ef80-d5b9-11eb-82f7-9840697eeca7.png)
+![image](./img-gh/gh-receiveSync.png)
 
 The **Synchronous Receive** node performs receive operations in the same way as the [Receive node](#receive-node) but synchronously and it will lock the canvas.
 
