@@ -235,6 +235,10 @@ Now you can access the custom data attached to the line:
 Don't worry, we always ensure all objects are converted to Speckle format before preforming a `Send` operation.
 :::
 
+::: warning Changing document units
+If you ever change the units of your Rhino document, make sure you recompute the entire Grasshopper definition (press `F5`) to ensure the change is properly propagated to all nodes.
+:::
+
 ## Using the C#/Python script nodes
 
 For more advanced scenarios, you can also use the Speckle libraries inside your custom C# or Python scripts in any Grasshopper definition. There is, though, a bit of a set up involved for this to properly work.
