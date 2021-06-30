@@ -1,3 +1,6 @@
+---
+
+---
 # Unity
 
 Our Unity connector differs from the other connectors described in our User Guide as it's only really meant for use by software developers. It doesn't have an elaborate UI, but it offers convenience methods to send and receive data.
@@ -18,7 +21,13 @@ The repo contains a sample scene named `SpecklePlayground` that shows how to sen
 
 ## Editor Time Sending and Receiving
 
-Coming soon!
+### Receiving
+
+To receive data directly from the editor, just add the `SpeckleManager.cs` script to a GameObject, in the inspector you'll now be able to select accounts, streams, branches and commits.
+
+Please note this feature is in early release and might be a bit unstable.
+
+!\[image\](![](https://user-images.githubusercontent.com/2679513/123954157-fb0ea300-d99f-11eb-8507-724676d4717c.png))
 
 ## Game Time Sending and Receiving
 
@@ -47,7 +56,7 @@ sender.Send(streamId, objs);
 
 The `Send()` method accepts additional optional arguments to use different accounts, report progress and errors etc. Please check the [source code](https://github.com/specklesystems/speckle-unity/blob/main/Assets/Speckle%20Connector/Sender.cs) for a complete list.
 
-### Supported Elements 
+### Supported Elements
 
 * [Unity Support Tables](/user/support-tables.html#unity)
 
@@ -66,6 +75,6 @@ When receiving, the Unity connectors first checks if a shader exists in the scen
 
 In order to build the Speckle Playground project (and potentially any project) using the Unity Connector, please ensure the following:
 
-- Set the project architecture to `x86_64`
-- If you get errors on missing shaders include them in your build. To do so, just copy them to a Resource folder OR add them in `Project Settings → Graphics → Built-in Shader Settings → Always Included shaders`
+* Set the project architecture to `x86_64`
+* If you get errors on missing shaders include them in your build. To do so, just copy them to a Resource folder OR add them in `Project Settings → Graphics → Built-in Shader Settings → Always Included shaders`
   ![shader](https://speckle.community/uploads/default/optimized/2X/3/38063ce2324d9f5ef00ec30f87d033b750745c20_2_690x247.png)

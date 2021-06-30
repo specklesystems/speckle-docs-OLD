@@ -17,7 +17,6 @@ sections:
 - type: document
   path: ".vuepress/config.js"
   label: Config
-  match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
