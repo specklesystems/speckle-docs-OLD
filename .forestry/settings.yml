@@ -5,9 +5,18 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
-  path: "."
+  path: dev
+  label: Dev
+  create: all
+  match: "**/*.md"
+- type: directory
+  path: user
   label: User
   create: all
+  match: "**/*.md"
+- type: document
+  path: ".vuepress/config.js"
+  label: Config
   match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
