@@ -19,6 +19,10 @@ The Speckle connector for Excel Connector is currently in early alpha, help us g
 
 ## Getting Started
 
+For a quick overview, check out this short video on how to get started sending and receiving in Excel!
+
+<div style="position: relative;padding-bottom: 56.25%;"><iframe width="100%" height="100%" style="position: absolute;" src="https://www.youtube.com/embed/4viUTvo6BCw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 ### Installing
 
 **Our Excel connector is not distributed via the Speckle Manager.**
