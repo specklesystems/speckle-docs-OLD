@@ -75,21 +75,97 @@ You may also notice the overlapping received objects(gray) with the original obj
 
 * [Rhino Support Tables](/user/support-tables.html#rhino)
 
-## Schema Builder
+# Rhino BIM
 
-Speckle 2.0 gives you the option of streaming objects as `base` geometry from Rhino to Revit, or directly into native Revit elements  using the Rhino schema builder commands.
+Speckle 2.0 lets you tag Rhino geometry as Speckle BIM elements, so you can send objects like lines and surfaces as beams and floors! This means you can bring in your Rhino geometry directly as native Revit family elements 💥
 
 ![example](./img-rhino/rhino-revit-example.gif)
 
-### Features
+## Features
+
+Access Rhino BIM element creation through the Speckle BIM toolbar, which includes a button for every supported BIM element. Check the section below for a run through of which geometries can be tagged as Speckle BIM elements and their associated commands.
+
+![toolbar](./img-rhino/rhino-bim.png)
+
+Rhino BIM manages BIM tags by assigning geometry objects a `Attribute User Text` property if they have been flagged as BIM elements while sending to a stream. Once they are added, remember to remove these tags with the `Remove` button if you wish to send the objects as plain geometry instead of BIM elements, or if you wish to assign them a different tag.
+
+:::tip NOTE
+
+If this is your first time installing the Speckle connector, you may need to load the toolbar by navigating to Options > Toolbars > SpeckleConnectorRhino, and then making sure the Speckle2 checkbox is selected.
+
+:::
+
+Keep in mind that when streaming Speckle BIM elements from Rhino into Revit, they will come in as the first available family type in your Revit document. Currently there is no way to assign specific revit families to Rhino BIM elements, but this may be changed in the future.
+
+## Using Rhino BIM 
+
+Assigning or removing Speckle BIM tags from geometry objects is easy:
+
+1. Click the BIM button corresponding to the BIM element or action you would like apply
+2. Select all geometry objects you wish to apply the button action to
+3. Press Enter
+
+If you'd prefer to use the command line instead of the toolbar buttons, refer to each button section for their respective command. There's also a bit of magic happening behind the scenes to detect which types of geometry can be assigned Speckle BIM tags, so if a selected object is missing its Speckle BIM `Attribute User Text` property when you try to turn it into a BIM element, it probably doesn't qualify for that tag!
+
+### Wall
+
+**Command:** *CreateWall* 
+
+Speckle walls can be created from vertical planar surfaces and vertical planar polysurfaces.
+
+### Floor
+
+**Command:** *CreateFloor* 
+
+Speckle floors can be created from horizontal planar surfaces, including ones with voids.
+
+### Column
+
+**Command:** *CreateColumn* 
+
+Speckle columns can be created from approximately vertical lines: if the line's angle from the z axis is more than 45 degrees, it can't become a column.
+
+### Beam
+
+**Command:** *CreateBeam* 
+
+Speckle beams can be created from approximately horizontal lines: if the line's angle from the xy plane is more than 45 degrees, it can't become a beam.
+
+### Face Wall
+
+**Command:** *CreateFaceWall* 
+
+Speckle Revit facewalls can be created from any kind of surface.
+
+### Direct Shape
+
+**Command:** *CreateDirectShape* 
+
+Speckle Revit direct shapes can be created from breps, extrusions, and meshes. As an extra step in the command process, select the family that you'd like to send the direct shape as (in the command line prompt) after selecting the geometry.
+
+### Automatic
+
+**Command:** *CreateAutomatic* 
+
+This is a super magic option that will try to automatically assign the most appropriate Speckle BIM tags to all of your selected geometry 🔮
+
+### Remove
+
+**Command:** *RemoveSpeckleSchema* 
+
+Removes all Speckle BIM tags from selected geometry objects.
+
+## Schema Builder (OLD)
+
+This feature is now replaced by Rhino BIM, but the commands still work - check below for a walkthrough of old schema builder features.
 
 Currently, direct conversions are available for the following types:
 
 | Base Geometry            | BuiltElement schemas            | Revit type |
 | ------------------------ | ------------------------------- | :--------: |
-| Planar surface           | `Wall` `Floor` `Ceiling` `Roof` |            |
+| Planar surface           | `Wall` `Floor` `Roof`           |            |
 | Planar polysurface       | `Wall`                          |            |
-| Planar and nurbs surface | `FaceWall`                      | ✅          |
+| Planar and nurbs surface | `FaceWall`                      | ✅         |
 | Line                     | `Column` `Beam`                 |            |
 | Brep / extrusion         | `DirectShape`                   | ✅          |
 | Mesh                     | `DirectShape`                   | ✅          |
