@@ -12,12 +12,11 @@ If you cannot access the server from **your browser** or from **Speckle Manager*
 
 If the server address is **blocked by a corporate firewall or VPN**, kindly ask your IT department to whitelist the following domains and subdomains that Speckle uses: 
 
-- speckle.xyz (critical)
+- **speckle.xyz (critical)**
+- **speckle-releases.ams3.digitaloceanspaces.com (critical)**
 - speckle.systems
 - speckle.dev
 - speckle.community
-- speckle-releases.ams3.digitaloceanspaces.com (critical)
-- raw.githubusercontent.com (critical)
 
 For any more questions about this, feel free to [contact us](https://speckle.systems/contact/)!
 
