@@ -177,7 +177,57 @@ When you activate any of the previous options, the corresponding icon will be sh
 
 - [Grasshopper Support Tables](/user/support-tables.html#grasshopper)
 
-## Schema Builder
+## Grasshopper BIM
+
+Speckle 2.0 lets you create _Speckle BIM Elements_ from Rhino Geometry, so you can send objects like lines and surfaces as beams and flors! This means you can bring in your Rhino geometry directly as native Revit family elements using Grasshopper 💥
+
+![Grasshopper BIM](./img-gh/gh-bim.png)
+
+::: tip
+
+You'll find the same functionality for Rhino [here](XXX).
+
+:::
+
+### Features
+
+Access Grasshopper BIM element creation through the Grasshopper toolbars, which include a button for every supported BIM element.
+
+The functionality is currently split into 2 distinct categories: `Speckle 2 BIM` and `Speckle 2 Revit`. You'll find a tab for each of them in Grasshopper when you install the GH Connector.
+
+### The "Speckle 2 BIM" Tab
+
+![Speckle BIM](./img-gh/speckle-bim.png)
+
+The `Speckle 2 BIM` tab holds all components that can create _generic_ BIM elements. These are the most basic BIM elements supported by Speckle, and consist on the minimum amount of information required to make them work.
+
+![Examle of simple wall, floor and level](https://link)
+
+### The "Speckle 2 Revit" Tab
+
+![Revit-bim](./img-gh/revit-bim.png)
+
+The `Speckle 2 Revit`tab holds all the components that can create _Revit specific_ BIM elements. These elements require a higher amount of data from that is specific to your Revit Project, such as _family name_, _type_, _parameters_, etc.
+
+![Example of revit wall floor and level](https://link)
+
+
+
+### Using Grasshopper BIM
+
+In simple scenarios, Grasshopper BIM works by assigning a new `@speckleSchema` property to a given geometry, such as a line. Once these objects are received in a BIM capable software (like Revit), our Revit Connector will detect this special property and generate the corresponding Revit element instead of a model curve.
+
+The example bellow creates a `Wall` using a line. If you expand the line's properties, you can see the `@speckleSchema` property is present and it's type is `Objects.BuiltElements.Revit.Wall`
+
+![Line with wall speckle schema attached](https://link)
+
+For more complex scenarios, where attaching a schema to the object is not viable, the result of the node will directly be the BIM object of choice, and it will contain all the geometric objects inside it.
+
+The example bellow creates a `DirectShape` from a list of spheres. Since Revit's DirectShape allows you to add more than one geometry to each DS, the output of the node will be a `Objects.BuiltElements.Revit.DirectShape` with the list of geometries attached to it's `@baseGeometries` property.
+
+![Direct shape from list of spheres](https://link)
+
+### Schema Builder
 
 ![Schema Builder node](./img-gh/nodes-schema-builder.png)
 
