@@ -112,12 +112,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateWall* 
 
 1. Create or select *vertically planar* surfaces.
-![wall](./img-rhino/BIM/wall_1.png)
+![wall](./img-rhino/BIM/wall_1.gif)
 2. Click on the Speckle BIM wall button and press Enter. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![wall](./img-rhino/BIM/wall_2.png)
+![wall](./img-rhino/BIM/wall_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The surface will be created as a default wall type.
-![wall](./img-rhino/BIM/wall_3.png)
+![wall](./img-rhino/BIM/wall_3.gif)
 5. Transform your rhino surface, and resend it to Revit - your wall will automatically update!
 
 
@@ -126,12 +126,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateFloor* 
 
 1. Create or select *xy planar* surfaces.
-![floor](./img-rhino/BIM/floor_1.png)
+![floor](./img-rhino/BIM/floor_1.gif)
 2. Click on the Speckle BIM floor button and press Enter. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![floor](./img-rhino/BIM/floor_2.png)
+![floor](./img-rhino/BIM/floor_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The surface will be created as a default floor type.
-![floor](./img-rhino/BIM/floor_3.png)
+![floor](./img-rhino/BIM/floor_3.gif)
 5. Transform your rhino surface, and resend it to Revit - your floor will automatically update!
 
 ### Creating Columns
@@ -139,12 +139,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateColumn* 
 
 1. Create or select lines that are *approximately vertical*, defined as less than 45 degrees tilted relative to the z-axis.
-![column](./img-rhino/BIM/column_1.png)
+![column](./img-rhino/BIM/column_1.gif)
 2. Click on the Speckle BIM Column button and press Enter. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![column](./img-rhino/BIM/column_2.png)
+![column](./img-rhino/BIM/column_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The line will be created as a default column type.
-![column](./img-rhino/BIM/column_3.png)
+![column](./img-rhino/BIM/column_3.gif)
 5. Transform your rhino line, and resend it to Revit - your column will automatically update!
 
 
@@ -153,12 +153,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateBeam* 
 
 1. Create or select lines that are *approximately horizontal*, defined as less than 45 degrees tilted relative to the xy-plane.
-![beam](./img-rhino/BIM/beam_1.png)
+![beam](./img-rhino/BIM/beam_1.gif)
 2. Click on the Speckle BIM Beam button and press Enter. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![beam](./img-rhino/BIM/beam_2.png)
+![beam](./img-rhino/BIM/beam_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The line will be created as a default beam type.
-![beam](./img-rhino/BIM/beam_3.png)
+![beam](./img-rhino/BIM/beam_3.gif)
 5. Transform your rhino line, and resend it to Revit - your beam will automatically update!
 
 
@@ -167,12 +167,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateFaceWall* 
 
 1. Create or select any kind of surface.
-![facewall](./img-rhino/BIM/facewall_1.png)
+![facewall](./img-rhino/BIM/facewall_1.gif)
 2. Click on the Speckle BIM face wall button and press Enter. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![facewall](./img-rhino/BIM/facewall_2.png)
+![facewall](./img-rhino/BIM/facewall_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The surface will be created as a default wall type.
-![facewall](./img-rhino/BIM/facewall_3.png)
+![facewall](./img-rhino/BIM/facewall_3.gif)
 5. Transform your rhino surface, and resend it to Revit - your face wall will automatically update!
 
 ### Creating Direct Shapes
@@ -180,12 +180,12 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 **Command:** *CreateDirectShape* 
 
 1. Create or select any kind of brep, extrusion, or mesh.
-![directshape](./img-rhino/BIM/directshape_1.png)
+![directshape](./img-rhino/BIM/directshape_1.gif)
 2. Click on the Speckle BIM direct shape button and press Enter. *Select the BIM type for this direct shape in the commandline*. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
-![directshape](./img-rhino/BIM/directshape_2.png)
+![directshape](./img-rhino/BIM/directshape_2.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The geometry will be created as a generic model.
-![directshape](./img-rhino/BIM/directshape_3.png)
+![directshape](./img-rhino/BIM/directshape_3.gif)
 5. Transform your rhino geometry, and resend it to Revit - your generic model will automatically update!
 
 ### Automatically Creating BIM elements
@@ -196,10 +196,10 @@ This is a super magic option that will try to automatically assign the most appr
 
 1. Select all geometry that you want to turn into BIM elements.
 2. Click on the Speckle BIM automatic button and press enter. Check each geometry's User Attribute Text to see the Speckle BIM tag that is applied.
-![automatic](./img-rhino/BIM/automatic_1.png)
+![automatic](./img-rhino/BIM/automatic_1.gif)
 3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
 4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The geometries that have a BIM tag will come in as their respective default category type.
-![automatic](./img-rhino/BIM/automatic_2.png)
+![automatic](./img-rhino/BIM/automatic_2.gif)
 
 ### Remove
 
