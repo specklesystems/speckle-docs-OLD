@@ -179,7 +179,14 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 
 **Command:** *CreateDirectShape* 
 
-Speckle Revit direct shapes can be created from breps, extrusions, and meshes. As an extra step in the command process, select the family that you'd like to send the direct shape as (in the command line prompt) after selecting the geometry.
+1. Create or select any kind of brep, extrusion, or mesh.
+![directshape](./img-rhino/BIM/directshape_1.png)
+2. Click on the Speckle BIM direct shape button and press Enter. *Select the BIM type for this direct shape in the commandline*. Check your object's User Attribute Text to confirm the Speckle BIM tag was successfully applied.
+![directshape](./img-rhino/BIM/directshape_2.png)
+3. Send the geometry with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
+4. Receive the geometry in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! The geometry will be created as a generic model.
+![directshape](./img-rhino/BIM/directshape_3.png)
+5. Transform your rhino geometry, and resend it to Revit - your generic model will automatically update!
 
 ### Automatically Creating BIM elements
 
@@ -198,7 +205,10 @@ This is a super magic option that will try to automatically assign the most appr
 
 **Command:** *RemoveSpeckleSchema* 
 
-Removes all Speckle BIM tags from selected geometry objects.
+Removes all Speckle BIM tags from selected geometry objects. This is necessary when you want to send your geometry as regular geometry, or if you'd like to change the BIM tag for an object.
+
+1. Select all geometry that you want to remove Speckle BIM tags for.
+2. Click on the Speckle BIM remove button and press enter. If you check your geometry's User Attribute Text, you should no longer see the SpeckleSchema tag!
 
 ## Schema Builder (OLD)
 
