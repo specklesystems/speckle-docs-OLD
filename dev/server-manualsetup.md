@@ -42,7 +42,7 @@ If you need help deploying a production server, [we can help](https://speckle.sy
 
 This is the easiest way to get the Server running.
 
-As prerequisites, you only need a Linux VM and have [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [Docker Compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) installed.
+As prerequisites, you only need a Linux VM with at least 4 GB of RAM and have [Docker](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script) and [Docker Compose](https://docs.docker.com/compose/install/#install-compose-on-linux-systems) installed.
 
 #### Step 1: Create a directory for this deployment on the system:
 ```
@@ -51,7 +51,7 @@ As prerequisites, you only need a Linux VM and have [Docker](https://docs.docker
 
 #### Step 2: Copy and paste this into a file named `docker-compose.yml` in your directory:
 ```yaml
-version: "3"
+version: "2"
 services:
   ####
   # Speckle Server dependencies
@@ -110,6 +110,8 @@ services:
   preview-service:
     image: speckle/speckle-preview-service:2
     restart: always
+    mem_limit: "1000m"
+    memswap_limit: "1000m"
     command: ["bash", "-c", "/wait && node bin/www"]
     environment:
       DEBUG: "preview-service:*"
@@ -145,7 +147,7 @@ All containers automatically start at system startup (so if the VM gets rebooted
 
 If you plan to run PostgreSQL and Redis separately, for example as managed deployments by a cloud provider (DigitalOcean, AWS, Azure, etc), you can follow the same instructions as above, but with this simplified `docker-compose.yml` file:
 ```yaml
-version: "3"
+version: "2"
 services:
   speckle-frontend:
     image: speckle/speckle-frontend:2
@@ -178,6 +180,8 @@ services:
   preview-service:
     image: speckle/speckle-preview-service:2
     restart: always
+    mem_limit: "1000m"
+    memswap_limit: "1000m"
     environment:
       DEBUG: "preview-service:*"
       
