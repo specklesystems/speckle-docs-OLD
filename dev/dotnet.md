@@ -1,37 +1,32 @@
 # Introduction
 
-Our .NET SDK is called [Core](https://github.com/specklesystems/speckle-sharp/tree/master/Core), and it's part of our [SpeckleSharp repo](https://github.com/specklesystems/speckle-sharp).
+Our .NET SDK is called [Core](https://github.com/specklesystems/speckle-sharp/tree/master/Core), and it's part of our [SpeckleSharp repo](https://github.com/specklesystems/speckle-sharp). Together with it you might find useful [Objects](https://github.com/specklesystems/speckle-sharp/tree/master/Objects), our default kit.
 
-Core is written in .NET Standard 2.0, it's been tested on Windows and MacOS and it's being used by all our .NET based connectors.
-
-::: tip
-Core is available on NuGet as `Speckle.Core`.
-:::
+Core and Objects are written in .NET Standard 2.0, they've been tested on Windows and MacOS and are being used by all our .NET based connectors.
 
 ## Getting started
 
-Core and Objects are written in .NET Standard 2.0, before using them [please make sure they are supported by your .NET framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
+Before using them [please make sure they are supported by your .NET framework](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support).
 
-We have published various Nugets to make it simpler to use Speckle in your next .NET project. Here's what's available at the moment:
+We have published various NuGets to make it simpler to use Speckle in your next .NET project. Here's what's available at the moment:
 
 - Core
 - All Transports
 - Objects
 - All Objects Converters
 
-All our nugets are prefixed by `Speckle.`
+All our NuGets are prefixed by `Speckle.`. Please don't confuse them with the old v1 packages.
 
 ![image](https://user-images.githubusercontent.com/2679513/113474800-0833f880-946a-11eb-8c90-92b23918a0c8.png)
 
 ## How to use
 
-We'll soon be adding here plenty of examples on how to use Core, in the meantime the best way to explore its functionalities is to check out the unit and integration tests in the repo.
 
 Here's a quick summary of the main tasks Core helps you with:
 
 - sending and receiving data to and from multiple transports
+- speckle kit management & data conversion (the interoperability core)
 - serialization and deserialization
-- speckle kit management (the interoperability core)
 
 Server specific tasks:
 
@@ -39,7 +34,7 @@ Server specific tasks:
 - update notifications (subscriptions)
 - local account management
 
-## Structuring Your Data 🚧
+## Structuring Your Data
 
 Speckle allows you to structure your data in any way you like. Here's a quick example:
 
@@ -59,12 +54,106 @@ The `Base` object behaves like a dictionary - with some added Speckle smarts - a
 ::: tip
 
 For more advanced usage, check [the tests out](https://github.com/specklesystems/speckle-sharp/blob/master/Core/Tests/BaseTests.cs)!
+More on `Base` [can be found here](/dev/base)
 
 :::
 
-TODO: Creating a simple class that extends Base
+For advanced use of `Base`, please see how our [BuiltElement classes](https://github.com/specklesystems/speckle-sharp/tree/master/Objects/Objects/BuiltElements) have been structured inheriting from `Base`.
 
-## Serializing Data 🚧
+## Receiving Data
+
+Receiving data from Speckle couldn't be easier when using our SDKs. Assuming you have SpeckleManager set up locally, all you need to do is:
+
+```csharp
+using Speckle.Core.Api;
+
+var data = Helpers.Receive("Stream URL or ID").Result;
+```
+
+Just use a stream URL or Id to receive from. If the URL contains branchName, commitId or objectId those will be used, otherwise the latest commit from main will be received.
+
+The `Helpers.Receive` takes optional arguments for specifying an `account` (otherwise the default will be used) and for progress/error reporting.
+
+### Advanced Receiving
+
+If you want more control on how and where from your data is Received, just use some of our lower lever functions. 
+For instance, the code below receives the last commit of a stream from a specific branch:
+
+```csharp
+using Speckle.Core.Api;
+using Speckle.Core.Models;
+using Speckle.Core.Transports;
+
+
+
+var streamId = "streamId";
+var branchName = "main";
+var client = new Client(account);
+var branch = await client.BranchGet(streamId, branchName, 1);
+var objectId = branch.commits.items[0].referencedObject; // take last commit
+
+var transport = new ServerTransport(account, "streamId");
+
+var data = await Operations.Receive(
+  objectId,
+  remoteTransport: transport,
+  onErrorAction: onErrorAction,
+  onProgressAction: onProgressAction,
+  onTotalChildrenCountKnown: onTotalChildrenCountKnown,
+  disposeTransports: true
+);
+
+```
+
+## Sending Data 
+
+Sending data to Speckle is also pretty straightforward. Assuming you have SpeckleManager set up locally, all you need to do is:
+
+```csharp
+using Speckle.Core.Api;
+
+var commitId = Helpers.Send("Stream URL or ID", data, "My commit message").Result;
+```
+
+### Advanced Sending
+
+If you want more control on how and where to your data is Sent, just use some of our lower lever functions. 
+For instance:
+
+```csharp
+using Speckle.Core.Api;
+using Speckle.Core.Models;
+using Speckle.Core.Transports;
+
+
+
+var streamId = "streamId";
+var branchName = "main";
+var client = new Client(account);
+
+var transport = new ServerTransport(account, streamId);
+
+var objectId = await Operations.Send(
+  data,
+  new List<ITransport> { transport },
+  useDefaultCache,
+  onProgressAction,
+  onErrorAction, disposeTransports: true);
+
+var commitId = await client.CommitCreate(
+  new CommitCreateInput
+  {
+    streamId = sw.StreamId,
+    branchName = branchName,
+    objectId = objectId,
+    message = message,
+    sourceApplication = sourceApplication,
+    totalChildrenCount = totalChildrenCount,
+  });
+```
+
+
+## Serializing & Deserializing Data
 
 Getting a JSON representation of your data is easy:
 
@@ -72,33 +161,9 @@ Getting a JSON representation of your data is easy:
 using Speckle.Core.Api;
 using Speckle.Core.Models;
 
-var serlializedBuilding = Operations.Serialize( myBuilding );
-var deserializedBuilding = Operations.Deserialize( serlialisedBuilding );
+var json = Operations.Serialize(data);
+
+var data = Operations.Deserialize(json);
 
 ```
 
-::: tip
-
-For more advanced usage, check [the serialisation tests out](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/Tests/SerializationTests.cs#L10-L34)!
-
-:::
-
-## Sending Data 🚧
-
-TODO
-
-::: tip
-
-For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)!
-
-:::
-
-## Receiving Data 🚧
-
-TODO
-
-::: tip
-
-For more advanced usage, check out [the integration tests](https://github.com/specklesystems/speckle-sharp/blob/9039c5bd1e3e6b86538c145ad8d6e899995230c2/Core/IntegrationTests/Api.cs#L303-L321)!
-
-:::
