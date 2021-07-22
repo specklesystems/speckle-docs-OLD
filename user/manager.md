@@ -113,6 +113,17 @@ From here you'll be able to do various things such as clearing your local cache,
 
 ![image](https://user-images.githubusercontent.com/2679513/112291184-cc3dae00-8c87-11eb-9c02-693108f499fb.png)
 
+### Using Beta Versions of our Connectors
+
+From the settings tab you'll be able to toggle **on** beta versions of connectors. This means that every time we make a beta release you'll be able to install it as well.
+In general, **you should not enable this setting unless you have been asked to**, this could happen when we are trying to release a fix for a specific issue affecting you.
+
+To uninstall the beta version of a connector and to return to its latest stable release, just do the following:
+
+- set the beta toggle to **off**
+- uninstall & reinstall the connector
+
+
 ## Troubleshooting
 
 Having issues with Speckle Manager? Send us a message on the [forum](https://speckle.community)!

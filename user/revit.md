@@ -75,10 +75,26 @@ Here are some technical details if you're curious about what's happening behind 
 - If no cached element is found, but there is an element in the document with a matching `applicationId` that is used for the update (this is the case of someone restoring changes previously sent, in the same project)
 - If an element being received doesn’t have an `applicationId` no update mechanism will happen (this could be the case of BuiltElements created in Python if no `applicationIds` are generated manually)
 
-## BIM Data
+## Revit & BIM Data
 
-All Revit type and instance parameters are automatically attached to each element when it gets sent to Speckle.
+When sending from Revit, Speckle takes care of converting the data to a Speckle friendly format. If you're curious about how this data is being structured, please have a look at our [Objects Kit class definitions](https://github.com/specklesystems/speckle-sharp/tree/master/Objects/Objects/BuiltElements).
 
-You can inspect them in our [Speckle Web App](/user/web.html) interface and from any other applications that let you explore object metadata (eg Grasshopper, Dynamo, Unity, etc).
+For instance, a Revit room will look like this:
+
+![image](https://user-images.githubusercontent.com/2679513/126662562-ce3a5c6e-cf8c-4f24-bc60-61ff3fe25c4c.png)
+
+At a high level we have all the main properties that define the room, such as the name, area, number, geometry etc. All the other Revit parameters, both **type and instance**, are nested inside the **parameters** property.
+
+See an example below:
+
+![image](https://user-images.githubusercontent.com/2679513/126662964-6ce0c0f2-7e42-4835-ac7b-51fce0eb0f2a.png)
+
+::: tip Note 🙌
+
+All the parameters are stored using their **internal Revit names**. You can see the full list of `BuiltInParameter` values [here](https://www.revitapidocs.com/2022/fb011c91-be7e-f737-28c7-3f1e1917a0e0.htm). If you need to access their display name, just refer to the `name` property of each parameter, but please keep in mind these are not unique and can vary between languages.
+
+:::
+
+To easily explore on object's data and parameters, our [Speckle Web App](/user/web.html) interface can be of great help. As well as any other applications that lets you explore the object metadata (eg Grasshopper, Dynamo, Unity, etc).
 
 ![image-20210303224640764](./img-revit/image-20210303224640764.png)
