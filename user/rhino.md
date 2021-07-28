@@ -188,6 +188,18 @@ If you'd prefer to use the command line instead of the toolbar buttons, refer to
 ![directshape](./img-rhino/BIM/directshape_3.gif)
 5. Transform your rhino geometry, and resend it to Revit - your generic model will automatically update!
 
+### Creating Adaptive Components
+
+**Command:** *CreateAdaptiveComponent* 
+
+1. Create a set of points that define your adaptive components. In this example, our Revit adaptive family is defined by four points, so we will have a collection of points in a multiple of four.
+![adaptivecomponent](./img-rhino/BIM/adaptive_1.gif)
+2. Click on the Speckle BIM adaptive component button and press Enter. *Then type the family name for your adaptive component in commandline*. Select your points in order, pressing enter after every group of four. Press Enter again when done, and blocks will be created for each point group. Check your block's User Attribute Text to confirm the Speckle BIM tag was successfully applied!
+![adaptivecomponent](./img-rhino/BIM/adaptive_2.gif)
+3. Send the blocks with Speckle: if you're unfamiliar with how to do this, check out the How To Get Started with Rhino docs!
+4. Receive the blocks in Revit: if you're unfamiliar with how to do this, check out the How To Get Started with Revit docs! Make sure you have your Adaptive Family loaded into your Revit document. The geometry will be created as instances of your adaptive component!
+![adaptivecomponent](./img-rhino/BIM/adaptive_3.gif)
+
 ### Automatically Creating BIM elements
 
 **Command:** *CreateAutomatic* 
