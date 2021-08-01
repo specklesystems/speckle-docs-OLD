@@ -20,6 +20,12 @@ Prefer watching to reading? Who doesn't!
 
 ## Getting Started
 
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Dynamo](https://speckle.systems/tutorials/getting-started-with-speckle-for-dyanmo/)!
+
+:::
+
 Our Dynamo Connector takes the form of a node package, which is installed via the Speckle Manager. To install the Dynamo Connector and add your Speckle account, follow the instructions in our [Speckle Manager](/user/manager) section.
 
 ![Dyn Connector components](./img-dyn/nodes-cat-all.png)

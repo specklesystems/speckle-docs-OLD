@@ -103,13 +103,7 @@ module.exports = {
           title: "Tutorials ⚡",
           collapsable: false,
           children: [
-            "tutorials",
-            "interop-gh-revit",
-            "interop-revit-gh",
-            "interop-rhino-revit",
-            "tutorial-autocad-rhinogh",
-            "tutorial-unity-revit-rhino-experiences",
-            "tutorial-collab-rh-gh"
+            "tutorials"
           ]
         }
       ],

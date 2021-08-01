@@ -8,6 +8,12 @@ Prefer watching to reading? Who doesn't!
 
 ## Getting Started
 
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Rhino](https://speckle.systems/tutorials/getting-started-with-speckle-for-rhino/)!
+
+:::
+
 To install this Connector and add your Speckle account, follow the instructions in the [Speckle Manager](/user/manager) section.
 Speckle currently supports both Rhino 6 and Rhino 7.
 

@@ -11,6 +11,12 @@ Speckle currently supports the following versions of Excel:
 - Excel 2013 or later on Windows
 - Excel on the web
 
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Excel](https://speckle.systems/tutorials/getting-started-with-speckle-for-excel/)!
+
+:::
+
 ## Getting Started
 
 For a quick overview, check out this short video on how to get started sending and receiving in Excel!

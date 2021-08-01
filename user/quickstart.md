@@ -95,7 +95,7 @@ A Receiver has a commit selection button in the centre instead of an objects sel
 
 For information on using specific connectors, check out the [Desktop Connectors](/user/connectors) section of the User Guide.
 
-If you'd like more detailed guides for sending data between AEC software, check out our [tutorials](/user/tutorials)
+If you'd like more detailed guides for sending data between AEC software, check out our [tutorials](https://speckle.systems/tutorials/).
 
 ## Conclusion
 

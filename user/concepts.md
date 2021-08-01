@@ -53,7 +53,7 @@ Streams are the main mechanism by which data is shared between people and applic
 
 If any of your colleagues have _collaborator_ access, they are also free to make their own changes and send their changes to the stream. You can then receive those changes from the stream in your original model to see the changes reflected.
 
-To see step-by-step guides on how to send your data between various supported applications, check out our [tutorials](/user/tutorials).
+To see step-by-step guides on how to send your data between various supported applications, check out our [tutorials](https://speckle.systems/tutorials/).
 
 ## Branches
 

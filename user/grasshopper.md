@@ -4,6 +4,12 @@ typora-copy-images-to: ./img-gh
 
 # Grasshopper
 
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Grasshopper](https://speckle.systems/tutorials/getting-started-with-speckle-for-grasshopper/)!
+
+:::
+
 ## Getting Started
 
 Speckle currently supports Grasshopper for McNeel Rhino 6 and 7.

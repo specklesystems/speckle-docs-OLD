@@ -13,7 +13,7 @@ Organizations all over the world rely on our collaboration, interoperability and
 
 This guide provides an introduction to the key Speckle concepts you'll need to know. We'll go over what you need to install, how to [create an account](/user/quickstart.html#registration), and how to [send data](/user/ui.html#sending-data) to your first Speckle stream.
 
-Towards the end of this guide, there are a few [tutorials](/user/tutorials) which provide step-by-step guidance for several common workflows (e.g. sending data Rhino -> Revit and back).
+We also have a few [tutorials](https://speckle.systems/tutorials/) which provide step-by-step guidance for several common workflows (e.g. sending data Rhino -> Revit and back).
 
 If you're a programmer wanting to learn how to build things with Speckle, head over to our [developer docs](/dev/). If you're after some in-depth reading on how Speckle works under the hood, make sure to check the [core concepts section](/dev/base).
 

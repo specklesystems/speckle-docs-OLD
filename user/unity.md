@@ -7,8 +7,10 @@ Our Unity connector differs from the other connectors described in our User Guid
 
 In addition to this page, you should also take a look at our [.NET SDK section](/dev/dotnet).
 
-::: tip
-Check out our [Unity tutorial](/user/tutorial-unity-revit-rhino-experiences)!
+::: tip 
+
+Check out our dedicated [tutorials on Unity](https://speckle.systems/tag/unity/)!
+
 :::
 
 ![unity example](https://user-images.githubusercontent.com/2679513/108543628-3a83ff00-72dd-11eb-8792-3d43ce54e6af.gif)

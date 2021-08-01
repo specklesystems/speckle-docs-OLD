@@ -1,9 +1,9 @@
 # Blender
 
-::: tip DISCLAIMER 🐉
-This connector is in early alpha and has limited functionality.
-It should be used with caution and only on non-sensitive projects.
-There will be breaking changes!
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Blender](https://speckle.systems/tutorials/getting-started-with-speckle-for-blender/)!
+
 :::
 
 ## Getting Started

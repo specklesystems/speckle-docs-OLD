@@ -6,6 +6,12 @@ typora-copy-images-to: img-revit
 
 The Speckle Revit Connector currently supports Autodesk Revit 2019, 2020 and 2021.
 
+::: tip 
+
+Check out our dedicated tutorial on [how to get started with Revit](https://speckle.systems/tutorials/getting-started-with-speckle-for-revit/)!
+
+:::
+
 ## Getting Started
 
 To install the Revit Connector and add your Speckle account, proceed by following the instructions in [Speckle Manager](/user/manager).
